@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-10-28T09:08:49.498Z</updated>
+  <updated>2014-10-28T09:11:54.659Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://chenqx.github.com/2014/10/28/Cmd-An-Effective-Markdown-Editor/"/>
     <id>http://chenqx.github.com/2014/10/28/Cmd-An-Effective-Markdown-Editor/</id>
     <published>2014-10-28T08:36:24.000Z</published>
-    <updated>2014-10-28T09:08:34.000Z</updated>
-    <content type="html"><![CDATA[<p>　　我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。</p>
+    <updated>2014-10-28T09:11:36.000Z</updated>
+    <content type="html"><![CDATA[<p>　　为了更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 为我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。</p>
 <p>　　您可以使用 Cmd Markdown：</p>
 <blockquote>
 <ul>
@@ -30,7 +30,6 @@
 <li>撰写发布学术论文（LaTeX 公式支持）</li>
 </ul>
 </blockquote>
-<p>　　请保留此份 Cmd Markdown 的欢迎稿兼使用说明，如需撰写新稿件，点击顶部工具栏右侧的 <i class="icon-file"></i> <strong>新文稿</strong> 或者使用快捷键 <code>Ctrl+Alt+N</code>。</p>
 <hr>
 <h2 id="什么是_Markdown">什么是 Markdown</h2>
 <p>　　Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> 某些文字，更棒的是，它还可以</p>
@@ -114,8 +113,8 @@
 <p>[^code]: 代码高亮功能支持包括 Java, Python, JavaScript 在内的，<strong>四十一</strong>种主流编程语言。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>　　我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。</p>
-<p>　　您可以使用 Cmd Markdown]]>
+    <![CDATA[<p>　　为了更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 为我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。</p>
+<p>　　您可以使用 Cmd Markdown：</p>]]>
     </summary>
     
       <category term="Markdown" scheme="http://chenqx.github.com/tags/Markdown/"/>
