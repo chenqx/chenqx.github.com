@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-10-28T15:17:16.264Z</updated>
+  <updated>2014-10-28T15:20:37.827Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -307,7 +307,7 @@
     <link href="http://chenqx.github.com/2014/10/28/Cmd-An-Effective-Markdown-Editor/"/>
     <id>http://chenqx.github.com/2014/10/28/Cmd-An-Effective-Markdown-Editor/</id>
     <published>2014-10-28T08:36:24.000Z</published>
-    <updated>2014-10-28T09:13:07.000Z</updated>
+    <updated>2014-10-28T15:20:22.000Z</updated>
     <content type="html"><![CDATA[<p>　　为了更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 为我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。</p>
 <p>　　您可以使用 Cmd Markdown：</p>
 <blockquote>
@@ -365,35 +365,35 @@
 <hr>
 <h2 id="什么是_Cmd_Markdown">什么是 Cmd Markdown</h2>
 <p>　　您可以使用很多工具书写 Markdown，但是 Cmd Markdown 是这个星球上我们已知的、最好的 Markdown 工具——没有之一 ：）因为深信文字的力量，所以我们和你一样，对流畅书写，分享思想和知识，以及阅读体验有极致的追求，我们把对于这些诉求的回应整合在 Cmd Markdown，并且一次，两次，三次，乃至无数次地提升这个工具的体验，最终将它演化成一个 <strong>编辑/发布/阅读</strong> Markdown 的在线平台——您可以在任何地方，任何系统/设备上管理这里的文字。</p>
-<h3 id="1-_实时同步预览">1. 实时同步预览</h3>
+<h3 id="实时同步预览">实时同步预览</h3>
 <p>我们将 Cmd Markdown 的主界面一分为二，左边为<strong>编辑区</strong>，右边为<strong>预览区</strong>，在编辑区的操作会实时地渲染到预览区方便查看最终的版面效果，并且如果你在其中一个区拖动滚动条，我们有一个巧妙的算法把另一个区的滚动条同步到等价的位置，超酷！</p>
-<h3 id="2-_编辑工具栏">2. 编辑工具栏</h3>
+<h3 id="编辑工具栏">编辑工具栏</h3>
 <p>　　也许您还是一个 Markdown 语法的新手，在您完全熟悉它之前，我们在 <strong>编辑区</strong> 的顶部放置了一个如下图所示的工具栏，您可以使用鼠标在工具栏上调整格式，不过我们仍旧鼓励你使用键盘标记格式，提高书写的流畅度。</p>
 <p><img src="https://www.zybuluo.com/static/img/toolbar-editor.png" alt="tool-editor"></p>
-<h3 id="3-_编辑模式">3. 编辑模式</h3>
+<h3 id="编辑模式">编辑模式</h3>
 <p>　　完全心无旁骛的方式编辑文字：点击 <strong>编辑工具栏</strong> 最右测的拉伸按钮或者按下 <code>Ctrl + M</code>，将 Cmd Markdown 切换到独立的编辑模式，这是一个极度简洁的写作环境，所有可能会引起分心的元素都已经被挪除，超清爽！</p>
-<h3 id="4-_实时的云端文稿">4. 实时的云端文稿</h3>
+<h3 id="实时的云端文稿">实时的云端文稿</h3>
 <p>　　为了保障数据安全，Cmd Markdown 会将您每一次击键的内容保存至云端，同时在 <strong>编辑工具栏</strong> 的最右侧提示 <code>已保存</code> 的字样。无需担心浏览器崩溃，机器掉电或者地震，海啸——在编辑的过程中随时关闭浏览器或者机器，下一次回到 Cmd Markdown 的时候继续写作。</p>
-<h3 id="5-_离线模式">5. 离线模式</h3>
+<h3 id="离线模式">离线模式</h3>
 <p>　　在网络环境不稳定的情况下记录文字一样很安全！在您写作的时候，如果电脑突然失去网络连接，Cmd Markdown 会智能切换至离线模式，将您后续键入的文字保存在本地，直到网络恢复再将他们传送至云端，即使在网络恢复前关闭浏览器或者电脑，一样没有问题，等到下次开启 Cmd Markdown 的时候，她会提醒您将离线保存的文字传送至云端。简而言之，我们尽最大的努力保障您文字的安全。</p>
-<h3 id="6-_管理工具栏">6. 管理工具栏</h3>
+<h3 id="管理工具栏">管理工具栏</h3>
 <p>　　为了便于管理您的文稿，在 <strong>预览区</strong> 的顶部放置了如下所示的 <strong>管理工具栏</strong>：</p>
 <p><img src="https://www.zybuluo.com/static/img/toolbar-manager.jpg" alt="tool-manager"></p>
 <p>　　通过管理工具栏可以：</p>
 <p><i class="icon-share"></i> 　　发布：将当前的文稿生成固定链接，在网络上发布，分享<br><i class="icon-file"></i> 　　新建：开始撰写一篇新的文稿<br><i class="icon-trash"></i> 　　删除：删除当前的文稿<br><i class="icon-cloud"></i> 　　导出：将当前的文稿转化为 Markdown 文本或者 Html 格式，并导出到本地<br><i class="icon-reorder"></i> 　　列表：所有新增和过往的文稿都可以在这里查看、操作<br><i class="icon-pencil"></i> 　　模式：切换 普通/Vim/Emacs 编辑模式</p>
-<h3 id="7-_阅读工具栏">7. 阅读工具栏</h3>
+<h3 id="阅读工具栏">阅读工具栏</h3>
 <p><img src="https://www.zybuluo.com/static/img/toolbar-reader.jpg" alt="tool-manager"></p>
 <p>　　通过 <strong>预览区</strong> 右上角的 <strong>阅读工具栏</strong>，可以查看当前文稿的目录并增强阅读体验。</p>
 <p>工具栏上的五个图标依次为：</p>
 <p><i class="icon-list"></i> 　　目录：快速导航当前文稿的目录结构以跳转到感兴趣的段落<br><i class="icon-chevron-sign-left"></i> 　　视图：互换左边编辑区和右边预览区的位置<br><i class="icon-adjust"></i> 　　主题：内置了黑白两种模式的主题，试试 <strong>黑色主题</strong>，超炫！<br><i class="icon-desktop"></i> 　　阅读：心无旁骛的阅读模式提供超一流的阅读体验<br><i class="icon-fullscreen"></i> 　　全屏：简洁，简洁，再简洁，一个完全沉浸式的写作和阅读环境</p>
-<h3 id="8-_阅读模式">8. 阅读模式</h3>
+<h3 id="阅读模式">阅读模式</h3>
 <p>　　在 <strong>阅读工具栏</strong> 点击 <i class="icon-desktop"></i> 或者按下 <code>Ctrl+Alt+M</code> 随即进入独立的阅读模式界面，我们在版面渲染上的每一个细节：字体，字号，行间距，前背景色都倾注了大量的时间，努力提升阅读的体验和品质。</p>
-<h3 id="9-_标签、分类和搜索">9. 标签、分类和搜索</h3>
+<h3 id="标签、分类和搜索">标签、分类和搜索</h3>
 <p>　　在编辑区任意行首位置输入以下格式的文字可以标签当前文档：</p>
 <p>　　标签： 未分类</p>
 <p>　　标签以后的文稿在【文件列表】（Ctrl+Alt+F）里会按照标签分类，用户可以同时使用键盘或者鼠标浏览查看，或者在【文件列表】的搜索文本框内搜索标题关键字过滤文稿，如下图所示：</p>
 <p><img src="https://www.zybuluo.com/static/img/file-list.png" alt="file-list"></p>
-<h3 id="10-_文稿发布和分享">10. 文稿发布和分享</h3>
+<h3 id="文稿发布和分享">文稿发布和分享</h3>
 <p>　　在您使用 Cmd Markdown 记录，创作，整理，阅读文稿的同时，我们不仅希望它是一个有力的工具，更希望您的思想和知识通过这个平台，连同优质的阅读体验，将他们分享给有相同志趣的人，进而鼓励更多的人来到这里记录分享他们的思想和知识，尝试点击 <i class="icon-share"></i> (Ctrl+Alt+P) 发布这份文档给好友吧！</p>
 <hr>
 <p>See more <a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">@Cmdeditor</a>     </p>
