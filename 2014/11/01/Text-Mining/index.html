@@ -1,0 +1,419 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>文本挖掘 | Chan&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Chan">
+    
+    <meta name="description" content="Preliminary
+简介　
+　　在现实世界中，可获取的大部信息是以文本形式存储在文本数据库中的，由来自各种数据源的大量文档组成，如新闻文档、研究论文、书籍、数字图书馆、电子邮件和Web页面。由于电子形式的文本信息飞速增涨，文本挖掘已经成为信息领域的研究热点。　　文本数据库中存储的数据可能是高度非">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Chan&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Chan&#39;s blog" title="Chan&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Chan&#39;s blog">Chan&#39;s blog</a></h1>
+				<h2 class="blog-motto">Vi Veri Veniversum Vivus Vici</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">About</a></li>
+					
+
+					<li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:chenqx.github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/11/01/Text-Mining/" title="文本挖掘" itemprop="url">文本挖掘</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://chenqx.github.com" title="Chan">Chan</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-11-01T07:56:48.000Z" itemprop="datePublished">Nov 1 2014</time>
+    Updated:<time datetime="2014-11-01T08:00:48.000Z" itemprop="dateModified">Nov 1 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Preliminary"><span class="toc-number">1.</span> <span class="toc-text">Preliminary</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介_"><span class="toc-number">1.1.</span> <span class="toc-text">简介　</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本步骤"><span class="toc-number">1.2.</span> <span class="toc-text">基本步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取文本数据源"><span class="toc-number">2.</span> <span class="toc-text">获取文本数据源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本预处理"><span class="toc-number">3.</span> <span class="toc-text">文本预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文本数据预处理"><span class="toc-number">3.1.</span> <span class="toc-text">文本数据预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#去标签，去停用词，分词，生成数据集"><span class="toc-number">3.1.1.</span> <span class="toc-text">去标签，去停用词，分词，生成数据集</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征提取"><span class="toc-number">3.2.</span> <span class="toc-text">特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征将维"><span class="toc-number">3.3.</span> <span class="toc-text">特征将维</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#挖掘与分析"><span class="toc-number">4.</span> <span class="toc-text">挖掘与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-number">4.1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#聚类"><span class="toc-number">4.2.</span> <span class="toc-text">聚类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关联分析"><span class="toc-number">4.3.</span> <span class="toc-text">关联分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评估与可视化"><span class="toc-number">5.</span> <span class="toc-text">评估与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#评估"><span class="toc-number">5.1.</span> <span class="toc-text">评估</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可视化"><span class="toc-number">5.2.</span> <span class="toc-text">可视化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">6.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">7.</span> <span class="toc-text">References</span></a></li></ol>
+		</div>
+		
+		<h2 id="Preliminary"><strong>Preliminary</strong></h2>
+<h3 id="简介_">简介　</h3>
+<p>　　在现实世界中，可获取的大部信息是以文本形式存储在文本数据库中的，由来自各种数据源的大量文档组成，如新闻文档、研究论文、书籍、数字图书馆、电子邮件和Web页面。由于电子形式的文本信息飞速增涨，文本挖掘已经成为信息领域的研究热点。<br>　　文本数据库中存储的数据可能是高度非结构化的，如WWW上的网页;也可能是半结构化的，如e-mail消息和一些XML网页:而其它的则可能是良结构化的。良结构化文本数据的典型代表是图书馆数据库中的文档，这些文档可能包含结构字段，如标题、作者、出版日期、长度、分类等等，也可能包含大量非结构化文本成分，如摘要和内容。通常，具有较好结构的文本数据库可以使用关系数据库系统实现，而对非结构化的文本成分需要采用特殊的处理方法对其进行转化。<br>　　文本挖掘(Text Mining)是一个从非结构化文本信息中获取用户感兴趣或者有用的模式的过程。其中被普遍认可的文本挖掘定义如下:文本挖掘是指从大量文本数据中抽取事先未知的、可理解的、最终可用的知识的过程，同时运用这些知识更好地组织信息以便将来参考。<br>　　文本挖掘的主要用途是从原本未经处理的文本中提取出未知的知识，但是文本挖掘也是一项非常困难的工作,因为它必须处理那些本来就模糊而且非结构化的文本数据,所以它是一个多学科混杂的领域,涵盖了信息技术、文本分析、模式识别、统计学、数据可视化、数据库技术、机器学习以及数据挖掘等技术 。文本挖掘是从数据挖掘发展而来，因此其定义与我们熟知的数据挖掘定义相类似。但与传统的数据挖掘相比，文本挖掘有其独特之处，主要表现在:文档本身是半结构化或非结构化的，无确定形式并且缺乏机器可理解的语义;而数据挖掘的对象以数据库中的结构化数据为主，并利用关系表等存储结构来发现知识。因此，有些数据挖掘技术并不适用于文本挖掘，即使可用，也需要建立在对文本集预处理的基础之上。<br>　　文本挖掘是应用驱动的。它在商业智能、信息检索、生物信息处理等方面都有广泛的应用；例如，客户关系管理，自动邮件回复，垃圾邮件过滤，自动简历评审，搜索引擎等等。</p>
+<h3 id="基本步骤">基本步骤</h3>
+<p>　　有些人把文本挖掘视为另一常用术语文本知识发现(KDD)的同义词，而另一些人只是把文本挖掘视为文本知识发现过程的一个基本步骤。文本知识发现主要由以下步骤组成：</p>
+<blockquote>
+<ol>
+<li>获取文本数据源</li>
+<li>文本预处理</li>
+<li>挖掘与分析</li>
+<li>评估与可视化</li>
+</ol>
+</blockquote>
+<p>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。
+　　</p>
+<h2 id="获取文本数据源">获取文本数据源</h2>
+<p>　　各文档数据库，语料库，论文集<br>　　web网页，如通过爬虫抓取，RSS订阅<br>　　<br>　　等
+　　
+　　</p>
+<h2 id="文本预处理">文本预处理</h2>
+<h3 id="文本数据预处理">文本数据预处理</h3>
+<h4 id="去标签，去停用词，分词，生成数据集">去标签，去停用词，分词，生成数据集</h4>
+<h3 id="特征提取">特征提取</h3>
+<h3 id="特征将维">特征将维</h3>
+<h2 id="挖掘与分析">挖掘与分析</h2>
+<h3 id="分类">分类</h3>
+<h3 id="聚类">聚类</h3>
+<h3 id="关联分析">关联分析</h3>
+<h2 id="评估与可视化">评估与可视化</h2>
+<h3 id="评估">评估</h3>
+<h3 id="可视化">可视化</h3>
+<h2 id="Conclusion">Conclusion</h2>
+<h2 id="References">References</h2>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Text-Mining/">Text Mining</a><a href="/tags/NLP/">NLP</a><a href="/tags/Machine-Learning/">Machine Learning</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Data-Mining/">Data Mining</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://chenqx.github.com/2014/11/01/Text-Mining/" data-title="文本挖掘 | Chan&#39;s blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2014/10/29/Python/"  title="Python">
+ <strong>NEXT:</strong><br/> 
+ <span>Python
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2014/11/01/Text-Mining/" data-title=”文本挖掘” data-url="http://chenqx.github.com/2014/11/01/Text-Mining/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chenqx"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Preliminary"><span class="toc-number">1.</span> <span class="toc-text">Preliminary</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介_"><span class="toc-number">1.1.</span> <span class="toc-text">简介　</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本步骤"><span class="toc-number">1.2.</span> <span class="toc-text">基本步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取文本数据源"><span class="toc-number">2.</span> <span class="toc-text">获取文本数据源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本预处理"><span class="toc-number">3.</span> <span class="toc-text">文本预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文本数据预处理"><span class="toc-number">3.1.</span> <span class="toc-text">文本数据预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#去标签，去停用词，分词，生成数据集"><span class="toc-number">3.1.1.</span> <span class="toc-text">去标签，去停用词，分词，生成数据集</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征提取"><span class="toc-number">3.2.</span> <span class="toc-text">特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征将维"><span class="toc-number">3.3.</span> <span class="toc-text">特征将维</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#挖掘与分析"><span class="toc-number">4.</span> <span class="toc-text">挖掘与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-number">4.1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#聚类"><span class="toc-number">4.2.</span> <span class="toc-text">聚类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关联分析"><span class="toc-number">4.3.</span> <span class="toc-text">关联分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评估与可视化"><span class="toc-number">5.</span> <span class="toc-text">评估与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#评估"><span class="toc-number">5.1.</span> <span class="toc-text">评估</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可视化"><span class="toc-number">5.2.</span> <span class="toc-text">可视化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">6.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">7.</span> <span class="toc-text">References</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Machine-Learning/" title="Machine Learning">Machine Learning<sup>1</sup></a></li>
+		
+			<li><a href="/categories/NLP/" title="NLP">NLP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+	  <li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
+	  <li><a href="http://www.pami.sjtu.edu.cn/" target="_blank" title="PAMI Lab">PAMI Lab</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Follow brain, heart is stupid as shit. <br/>
+			 </p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/chenqx" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://chenqx.github.com" target="_blank" title="Chan">Chan</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
