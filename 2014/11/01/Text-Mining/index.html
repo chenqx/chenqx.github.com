@@ -83,7 +83,7 @@
     </p>
   <p class="article-time">
     <time datetime="2014-11-01T07:56:48.000Z" itemprop="datePublished">Nov 1 2014</time>
-    Updated:<time datetime="2014-11-01T13:25:15.000Z" itemprop="dateModified">Nov 1 2014</time>
+    Updated:<time datetime="2014-11-01T13:48:13.000Z" itemprop="dateModified">Nov 1 2014</time>
     
   </p>
 </header>
@@ -108,19 +108,18 @@
 <li>评估与可视化</li>
 </ol>
 </blockquote>
-<p>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。
-　　</p>
+<p>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。</p>
+<hr>
 <h2 id="获取文本数据源">获取文本数据源</h2>
-<p>　　各文档数据库，语料库，论文集<br>　　web网页，如通过爬虫抓取，RSS订阅<br>　　<br>　　等
-　　
-　　</p>
+<p>　　各文档数据库，语料库，论文集<br>　　web网页，如通过爬虫抓取，RSS订阅<br>　　<br>　　等</p>
+<hr>
 <h2 id="文本预处理">文本预处理</h2>
 <h3 id="文本数据预处理">文本数据预处理</h3>
 <p>去标签，去停用词，分词，生成数据集</p>
 <h3 id="特征表达">特征表达</h3>
 <p>　　<strong>常用表达模型</strong><br>　　特征表达模型种类较多，大体可分为基于集合论的模型、基于代数论的模型和基于概率统计的模型。下面将分别介绍其中比较有代表性和常用的模型。<br>　　<em>布尔模型（Bool model）</em><br>　　一个文档表示为文档中出现特征词的集合，也可以表示为一个特征空间上的向量，向量空间的每个分量的权值为0或1。</p>
 <blockquote>
-<p><em>例</em><br>　　词条数据集 words = [‘love’, ‘have’, ‘dream’]<br>　　文档1： doc_1 = [‘I’, ‘have’, ‘a’, ‘dream’]<br>　　文档2： doc_2= [‘Cats’, ‘love’, ‘fish’]<br>　　那么文档1的布尔模型表达为vector_doc_1 = (0, 1, 0, 1)，同理文档2的布尔模型表达为vector_doc_2 = (0, 1, 0, 0)</p>
+<p><em>例</em><br>　　词条数据集 wordset = [‘love’, ‘have’, ‘dream’]<br>　　文档1： doc_1 = [‘I’, ‘have’, ‘a’, ‘dream’]<br>　　文档2： doc_2= [‘Cats’, ‘love’, ‘fish’]<br>　　那么文档1的布尔模型表达为vector_doc_1 = (0, 1, 0, 1)，同理文档2的布尔模型表达为vector_doc_2 = (0, 1, 0, 0)</p>
 </blockquote>
 <p><em>向量空间模型（VSM：Vector Space Model）</em><br>　　向量空间模型 (或者 词组向量模型) 作为向量的标识符（比如索引），是一个用来表示文本文件的代数模型。如词频向量模型，TF/IDF权重模型。</p>
 <blockquote>
@@ -129,18 +128,24 @@
 </blockquote>
 <p><em>Logistic回归模型</em><br>　　基本思想：为了求 P(R=1|Q,D)，定义多个特征函数fi(Q,D),认为求 P(R=1|Q,D)是这些函数的组合。<br>　　通过训练集合拟合得到相应的系数，对于新的文档带入公式得到概率 P。</p>
 <h3 id="特征提取">特征提取</h3>
-<p>　　　<em>开方检验</em><br>　　　<br>　　　<br>　　　<em>信息增益</em></p>
+<p>　　　<em>开方检验</em>
+　　　</p>
+<p>　　　<em>信息增益</em></p>
 <h3 id="特征降维">特征降维</h3>
 <p>　　　<em>主成分分析（PCA）</em><br>　　　<br>　　　<br>　　　<em>线性判别分析（LDA）</em></p>
+<hr>
 <h2 id="挖掘与分析">挖掘与分析</h2>
 <h3 id="文本分类与聚类">文本分类与聚类</h3>
 <h3 id="信息抽取">信息抽取</h3>
 <h3 id="关系抽取">关系抽取</h3>
 <h3 id="关联分析">关联分析</h3>
+<hr>
 <h2 id="评估与可视化">评估与可视化</h2>
 <h3 id="评估">评估</h3>
 <h3 id="可视化">可视化</h3>
+<hr>
 <h2 id="Conclusion">Conclusion</h2>
+<hr>
 <h2 id="References">References</h2>
 <p>[1] Ronen Feldman and James Sanger, The Text Mining Handbook, Cambridge University Press.<br>[2] Kao Anne, Poteet, Steve R. (Editors), Natural Language Processing and Text Mining, Springer.</p>
   
