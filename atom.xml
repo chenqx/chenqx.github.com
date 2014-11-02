@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-02T15:52:14.453Z</updated>
+  <updated>2014-11-02T15:53:48.355Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -228,7 +228,7 @@
     <link href="http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/"/>
     <id>http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/</id>
     <published>2014-10-28T10:11:03.000Z</published>
-    <updated>2014-11-02T15:51:13.000Z</updated>
+    <updated>2014-11-02T15:53:34.000Z</updated>
     <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。</p>
 <hr>
 <p>　　你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。</p>
