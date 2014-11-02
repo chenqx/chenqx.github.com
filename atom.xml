@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-02T15:46:34.392Z</updated>
+  <updated>2014-11-02T15:51:31.009Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -148,25 +148,6 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Data Mining]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
-    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:43:10.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Natural Language Processing]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
     <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
@@ -205,6 +186,25 @@
   </entry>
   
   <entry>
+    <title><![CDATA[Data Mining]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
+    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-10-29T02:43:10.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Machine Learning]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Machine-Learning/"/>
     <id>http://chenqx.github.com/2014/10/29/Machine-Learning/</id>
@@ -228,7 +228,7 @@
     <link href="http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/"/>
     <id>http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/</id>
     <published>2014-10-28T10:11:03.000Z</published>
-    <updated>2014-11-02T15:46:16.000Z</updated>
+    <updated>2014-11-02T15:51:13.000Z</updated>
     <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。</p>
 <hr>
 <p>　　你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。</p>
@@ -366,7 +366,7 @@
 <li>gg → 到第一行。（相当于1G，或 :1）</li>
 <li>G → 到最后一行。</li>
 <li>按单词移动：<blockquote>
-<p>　　w → 到下一个单词的开头。<br>　　e → 到下一个单词的结尾。<br>　　&gt; 如果你认为单词是由默认方式，那么就用小写的e和w。默认上来说，　　　一个单词由字母，数字和下划线组成（程序变量）<br>　　&gt; 如果你认为单词是由blank字符分隔符，那么你需要使用大写的E和W。　　（程序语句）<br>　　　　<img src="http://newtonblogimg.qiniudn.com/word_moves.jpg" alt="word_moves"></p>
+<p>　　w → 到下一个单词的开头。<br>　　e → 到下一个单词的结尾。<br>　　&gt; 如果你认为单词是由默认方式，那么就用小写的e和w。默认上来说，　　　一个单词由字母，数字和下划线组成（程序变量）<br>　　&gt; 如果你认为单词是由blank字符分隔符，那么你需要使用大写的E和W。　　（程序语句）<br>　　<img src="http://newtonblogimg.qiniudn.com/word_moves.jpg" alt="word_moves"></p>
 </blockquote>
 </li>
 </ol>
@@ -406,7 +406,7 @@
 <p>　　你只需要掌握前面的命令，你就可以很舒服的使用VIM了。但是，现在，我们向你介绍的是VIM杀手级的功能。下面这些功能是我只用vim的原因。</p>
 <h3 id="在当前行上移动光标">在当前行上移动光标</h3>
 <blockquote>
-<p>0 → 到行头<br>^ → 到本行的第一个非blank字符<br>$ → 到行尾<br>g_ → 到本行最后一个不是blank字符的位置。<br>fa → 到下一个为a的字符处，你也可以fs到下一个为s的字符。<br>t, → 到逗号前的第一个字符。逗号可以变成其它字符。<br>3fa → 在当前行查找第三个出现的a。<br>F 和 T → 和 f 和 t 一样，只不过是相反方向。<br>　　　　　<img src="http://newtonblogimg.qiniudn.com/line_moves.jpg" alt="line_moves"></p>
+<p>0 → 到行头<br>^ → 到本行的第一个非blank字符<br>$ → 到行尾<br>g_ → 到本行最后一个不是blank字符的位置。<br>fa → 到下一个为a的字符处，你也可以fs到下一个为s的字符。<br>t, → 到逗号前的第一个字符。逗号可以变成其它字符。<br>3fa → 在当前行查找第三个出现的a。<br>F 和 T → 和 f 和 t 一样，只不过是相反方向。<br><img src="http://newtonblogimg.qiniudn.com/line_moves.jpg" alt="line_moves"></p>
 </blockquote>
 <p>　　还有一个很有用的命令是 dt” → 删除所有的内容，直到遇到双引号—— “。</p>
 <h3 id="区域选择">区域选择</h3>
@@ -425,7 +425,7 @@
 <li>vi) → 会选择 “foo”.</li>
 <li>va) → 会选择(“foo”).</li>
 <li>v2i) → 会选择 map (+) (“foo”)</li>
-<li>v2a) → 会选择 (map (+) (“foo”))<br>　　　　　　　　<img src="http://newtonblogimg.qiniudn.com/textobjects.png" alt="textobjects"></li>
+<li>v2a) → 会选择 (map (+) (“foo”))<br><img src="http://newtonblogimg.qiniudn.com/textobjects.png" alt="textobjects"></li>
 </ul>
 </blockquote>
 <h3 id="块操作">块操作</h3>
@@ -435,14 +435,14 @@
 <li>^ → 到行头</li>
 <li>&lt;　C-v&gt; → 开始块操作</li>
 <li>&lt;　C-d&gt; → 向下移动 &gt; (你也可以使用hjkl来移动光标，或是使用%，或是别的)</li>
-<li>I— [ESC] → I是插入，插入“—”，按ESC键来为每一行生效。<br>　　　　　　<img src="http://newtonblogimg.qiniudn.com/rectangular-blocks.gif" alt="rectangular-blocks"></li>
+<li>I— [ESC] → I是插入，插入“—”，按ESC键来为每一行生效。<br><img src="http://newtonblogimg.qiniudn.com/rectangular-blocks.gif" alt="rectangular-blocks"></li>
 </ul>
 </blockquote>
 <p>　　在Windows下的vim，你需要使用 &lt; C-q&gt; 而不是 &lt; C-v&gt; ，&lt; C-v&gt; 是拷贝剪贴板。</p>
 <h3 id="自动提示">自动提示</h3>
 <p>　　在 Insert 模式下，你可以输入一个词的开头，然后按 &lt; C-p&gt;或是&lt; C-n&gt;，自动补齐功能就出现了……</p>
 <blockquote>
-<p><img src="http://newtonblogimg.qiniudn.com/completion.gif" alt="completion"></p>
+<p>　<img src="http://newtonblogimg.qiniudn.com/completion.gif" alt="completion"></p>
 </blockquote>
 <h3 id="宏录制">宏录制</h3>
 <blockquote>
@@ -464,7 +464,7 @@
 <li><p>@a → 在1下面写下 2</p>
 </li>
 <li>@@ → 在2 正面写下3</li>
-<li>现在做 100@@ 会创建新的100行，并把数据增加到 103.<br>　　　<img src="http://newtonblogimg.qiniudn.com/macros.gif" alt="macros"></li>
+<li>现在做 100@@ 会创建新的100行，并把数据增加到 103.<br><img src="http://newtonblogimg.qiniudn.com/macros.gif" alt="macros"></li>
 </ul>
 </blockquote>
 <h3 id="可视化选择">可视化选择</h3>
@@ -473,7 +473,7 @@
 <ul>
 <li>J → 把所有的行连接起来（变成一行）</li>
 <li>&lt; 或 &gt; → 左右缩进</li>
-<li>= → 自动给缩进 （陈皓注：这个功能相当强大，我太喜欢了）<br>　　<img src="http://newtonblogimg.qiniudn.com/autoindent.gif" alt="autoindent"></li>
+<li>= → 自动给缩进 （陈皓注：这个功能相当强大，我太喜欢了）<br><img src="http://newtonblogimg.qiniudn.com/autoindent.gif" alt="autoindent"></li>
 </ul>
 </blockquote>
 <p>　　在所有被选择的行后加上点东西：</p>
@@ -482,7 +482,7 @@
 <li><c-v></c-v></li>
 <li>选中相关的行 (可使用 j 或 <c-d> 或是 /pattern 或是 % 等……)</c-d></li>
 <li>$ 到行最后</li>
-<li>A, 输入字符串，按 ESC。<br>　　<img src="http://newtonblogimg.qiniudn.com/append-to-many-lines.gif" alt="append-to-many-lines"></li>
+<li>A, 输入字符串，按 ESC。<br><img src="http://newtonblogimg.qiniudn.com/append-to-many-lines.gif" alt="append-to-many-lines"></li>
 </ul>
 </blockquote>
 <h3 id="分屏">分屏</h3>
@@ -492,7 +492,7 @@
 <li>:split → 创建分屏 (:vsplit创建垂直分屏)</li>
 <li><c-w><dir> : dir就是方向，可以是 hjkl 或是 ←↓↑→ 中的一个，其用来切换分屏。</dir></c-w></li>
 <li><c-w>_ (或 <c-w>|) : 最大化尺寸 (<c-w>| 垂直分屏)</c-w></c-w></c-w></li>
-<li><c-w>+ (或 <c-w>-) : 增加尺寸<br>　　<img src="http://newtonblogimg.qiniudn.com/split.gif" alt="split"></c-w></c-w></li>
+<li><c-w>+ (或 <c-w>-) : 增加尺寸<br><img src="http://newtonblogimg.qiniudn.com/split.gif" alt="split"></c-w></c-w></li>
 </ul>
 </blockquote>
 <hr>
