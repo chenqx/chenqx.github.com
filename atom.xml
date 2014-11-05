@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-05T14:01:28.544Z</updated>
+  <updated>2014-11-05T14:04:00.335Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenqx.github.com/2014/11/01/Text-Mining/"/>
     <id>http://chenqx.github.com/2014/11/01/Text-Mining/</id>
     <published>2014-11-01T07:56:48.000Z</published>
-    <updated>2014-11-05T13:59:20.000Z</updated>
+    <updated>2014-11-05T14:02:34.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
 <hr>
 <h3 id="简介_">简介　</h3>
@@ -85,7 +85,7 @@
 <h2 id="References"><strong><code>References</code></strong></h2>
 <hr>
 <p>[1] Ronen Feldman and James Sanger, The Text Mining Handbook, Cambridge University Press.<br>[2] Kao Anne, Poteet, Steve R. (Editors), Natural Language Processing and Text Mining, Springer.</p>
-<p><img src="/img/blogImage/pacman.jpg" alt="Then End"></p>
+<p><img src="/img/blogImage/pacman.jpg" alt="The End"></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
@@ -162,6 +162,25 @@
   </entry>
   
   <entry>
+    <title><![CDATA[Data Mining]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
+    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-10-29T02:43:10.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Natural Language Processing]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
     <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
@@ -200,25 +219,6 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Data Mining]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
-    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:43:10.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Machine Learning]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Machine-Learning/"/>
     <id>http://chenqx.github.com/2014/10/29/Machine-Learning/</id>
@@ -242,7 +242,7 @@
     <link href="http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/"/>
     <id>http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/</id>
     <published>2014-10-28T10:11:03.000Z</published>
-    <updated>2014-11-05T14:01:00.000Z</updated>
+    <updated>2014-11-05T14:03:16.000Z</updated>
     <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。</p>
 <hr>
 <p>　　你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。</p>
