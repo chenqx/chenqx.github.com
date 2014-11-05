@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-05T12:54:06.364Z</updated>
+  <updated>2014-11-05T13:14:53.076Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,8 +19,9 @@
     <link href="http://chenqx.github.com/2014/11/01/Text-Mining/"/>
     <id>http://chenqx.github.com/2014/11/01/Text-Mining/</id>
     <published>2014-11-01T07:56:48.000Z</published>
-    <updated>2014-11-05T12:53:48.000Z</updated>
+    <updated>2014-11-05T13:14:35.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
+<hr>
 <h3 id="简介_">简介　</h3>
 <p>　　在现实世界中，可获取的大部信息是以文本形式存储在文本数据库中的，由来自各种数据源的大量文档组成，如新闻文档、研究论文、书籍、数字图书馆、电子邮件和Web页面。由于电子形式的文本信息飞速增涨，文本挖掘已经成为信息领域的研究热点。<br>　　文本数据库中存储的数据可能是高度非结构化的，如WWW上的网页。也可能是半结构化的，如e-mail消息和一些XML网页：而其它的则可能是良结构化的。良结构化文本数据的典型代表是图书馆数据库中的文档，这些文档可能包含结构字段，如标题、作者、出版日期、长度、分类等等，也可能包含大量非结构化文本成分，如摘要和内容。通常，具有较好结构的文本数据库可以使用关系数据库系统实现，而对非结构化的文本成分需要采用特殊的处理方法对其进行转化。<br>　　文本挖掘(Text Mining)是一个从非结构化文本信息中获取用户感兴趣或者有用的模式的过程。其中被普遍认可的文本挖掘定义如下：文本挖掘是指从大量文本数据中抽取事先未知的、可理解的、最终可用的知识的过程，同时运用这些知识更好地组织信息以便将来参考。<br>　　文本挖掘的主要用途是从原本未经处理的文本中提取出未知的知识，但是文本挖掘也是一项非常困难的工作,因为它必须处理那些本来就模糊而且非结构化的文本数据,所以它是一个多学科混杂的领域,涵盖了信息技术、文本分析、模式识别、统计学、数据可视化、数据库技术、机器学习以及数据挖掘等技术 。文本挖掘是从数据挖掘发展而来，因此其定义与我们熟知的数据挖掘定义相类似。但与传统的数据挖掘相比，文本挖掘有其独特之处，主要表现在:文档本身是半结构化或非结构化的，无确定形式并且缺乏机器可理解的语义;而数据挖掘的对象以数据库中的结构化数据为主，并利用关系表等存储结构来发现知识。因此，有些数据挖掘技术并不适用于文本挖掘，即使可用，也需要建立在对文本集预处理的基础之上。<br>　　文本挖掘是应用驱动的。它在商业智能、信息检索、生物信息处理等方面都有广泛的应用；例如，客户关系管理，自动邮件回复，垃圾邮件过滤，自动简历评审，搜索引擎等等。</p>
 <h3 id="基本步骤">基本步骤</h3>
@@ -34,11 +35,11 @@
 </ol>
 </blockquote>
 <p><img src="http://newtonblogimg.qiniudn.com/textminingflowchart.jpg" alt="image"><br>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。</p>
-<hr>
 <h2 id="获取文本数据源"><strong><code>获取文本数据源</code></strong></h2>
-<p>　　各文档数据库，语料库，论文集<br>　　web网页，如通过爬虫抓取，RSS订阅<br>　　<br>　　等</p>
 <hr>
+<p>　　各文档数据库，语料库，论文集<br>　　web网页，如通过爬虫抓取，RSS订阅<br>　　<br>　　等</p>
 <h2 id="文本预处理"><strong><code>文本预处理</code></strong></h2>
+<hr>
 <h3 id="文本数据预处理">文本数据预处理</h3>
 <p>去标签，去停用词，分词，生成数据集</p>
 <h3 id="特征表达">特征表达</h3>
@@ -68,27 +69,28 @@
 　　　
 　　　</p>
 <h4 id="线性判别分析"><em><code>线性判别分析</code></em></h4>
-<p>　　线性判别式分析(Linear Discriminant Analysis, LDA)，也叫做Fisher线性判别(Fisher Linear Discriminant ,FLD)。LDA基本思想是将高维的模式样本投影到最佳鉴别矢量空间，以达到抽取分类信息和压缩特征空间维数的效果，投影后保证模式样本在新的子空间有最大的类间距离和最小的类内距离，即模式在该空间中有最佳的可分离性。因此，它是一种有效的特征抽取方法。使用这种方法能够使投影后模式样本的类间散布矩阵最大，并且同时类内散布矩阵最小。就是说，它能够保证投影后模式样本在新的空间中有最小的类内距离和最大的类间距离，即模式在该空间中有最佳的可分离性。</p>
-<hr>
+<p>　　线性判别式分析(Linear Discriminant Analysis, LDA)，也叫做Fisher线性判别(Fisher Linear Discriminant ，FLD)。LDA基本思想是将高维的模式样本投影到最佳鉴别矢量空间，以达到抽取分类信息和压缩特征空间维数的效果，投影后保证模式样本在新的子空间有最大的类间距离和最小的类内距离，即模式在该空间中有最佳的可分离性。因此，它是一种有效的特征抽取方法。使用这种方法能够使投影后模式样本的类间散布矩阵最大，并且同时类内散布矩阵最小。就是说，它能够保证投影后模式样本在新的空间中有最小的类内距离和最大的类间距离，即模式在该空间中有最佳的可分离性。</p>
 <h2 id="挖掘与分析"><strong><code>挖掘与分析</code></strong></h2>
+<hr>
 <h3 id="文本分类与聚类">文本分类与聚类</h3>
 <h3 id="信息抽取">信息抽取</h3>
 <h3 id="关系抽取">关系抽取</h3>
 <h3 id="关联分析">关联分析</h3>
-<hr>
 <h2 id="评估与可视化"><strong><code>评估与可视化</code></strong></h2>
+<hr>
 <h3 id="评估">评估</h3>
 <h3 id="可视化">可视化</h3>
-<hr>
 <h2 id="Conclusion"><strong><code>Conclusion</code></strong></h2>
 <hr>
 <h2 id="References"><strong><code>References</code></strong></h2>
+<hr>
 <p>[1] Ronen Feldman and James Sanger, The Text Mining Handbook, Cambridge University Press.<br>[2] Kao Anne, Poteet, Steve R. (Editors), Natural Language Processing and Text Mining, Springer.</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
+<hr>
 <h3 id="简介_">简介　</h3>
-<p>　　在现实世界中，可获取的大部信息是以文本形式存储在文本数据库中的，由来自各种数据源的大量]]>
+<p>　　在现实世界中，可获取的大部信息是以文本形式存储在文本数据库中的，由来自各种数]]>
     </summary>
     
       <category term="Text Mining" scheme="http://chenqx.github.com/tags/Text-Mining/"/>
@@ -159,25 +161,6 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Data Mining]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
-    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:43:10.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Natural Language Processing]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
     <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
@@ -212,6 +195,25 @@
       <category term="Linux" scheme="http://chenqx.github.com/tags/Linux/"/>
     
       <category term="Linux" scheme="http://chenqx.github.com/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Data Mining]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
+    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-10-29T02:43:10.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
     
   </entry>
   
