@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-05T13:36:59.821Z</updated>
+  <updated>2014-11-05T13:52:25.597Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenqx.github.com/2014/11/01/Text-Mining/"/>
     <id>http://chenqx.github.com/2014/11/01/Text-Mining/</id>
     <published>2014-11-01T07:56:48.000Z</published>
-    <updated>2014-11-05T13:27:10.000Z</updated>
+    <updated>2014-11-05T13:50:50.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
 <hr>
 <h3 id="简介_">简介　</h3>
@@ -85,6 +85,7 @@
 <h2 id="References"><strong><code>References</code></strong></h2>
 <hr>
 <p>[1] Ronen Feldman and James Sanger, The Text Mining Handbook, Cambridge University Press.<br>[2] Kao Anne, Poteet, Steve R. (Editors), Natural Language Processing and Text Mining, Springer.</p>
+<p><img src="/img/blogImage/pacman.jpg" alt="icon"></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
@@ -161,6 +162,25 @@
   </entry>
   
   <entry>
+    <title><![CDATA[Data Mining]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
+    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-10-29T02:43:10.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Natural Language Processing]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
     <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
@@ -195,25 +215,6 @@
       <category term="Linux" scheme="http://chenqx.github.com/tags/Linux/"/>
     
       <category term="Linux" scheme="http://chenqx.github.com/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Data Mining]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
-    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:43:10.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
     
   </entry>
   

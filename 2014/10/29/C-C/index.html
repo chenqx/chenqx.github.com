@@ -132,9 +132,9 @@
 
 
 <div class="next">
-<a href="/2014/10/29/Natural-Language-Processing/"  title="Natural Language Processing">
+<a href="/2014/10/29/Data-Mining/"  title="Data Mining">
  <strong>NEXT:</strong><br/> 
- <span>Natural Language Processing
+ <span>Data Mining
 </span>
 </a>
 </div>
@@ -386,6 +386,27 @@ $(document).ready(function(){
 
 
 
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
 
 
 

@@ -123,18 +123,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/10/29/Linux/" title="Linux">
+ <a href="/2014/10/29/C-C/" title="C/C++">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Linux</span>
+  C/C++</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/10/29/Machine-Learning/"  title="Machine Learning">
+<a href="/2014/10/29/Natural-Language-Processing/"  title="Natural Language Processing">
  <strong>NEXT:</strong><br/> 
- <span>Machine Learning
+ <span>Natural Language Processing
 </span>
 </a>
 </div>
@@ -386,6 +386,27 @@ $(document).ready(function(){
 
 
 
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
 
 
 
