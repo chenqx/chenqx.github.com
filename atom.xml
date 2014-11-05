@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-05T13:52:25.597Z</updated>
+  <updated>2014-11-05T14:01:28.544Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenqx.github.com/2014/11/01/Text-Mining/"/>
     <id>http://chenqx.github.com/2014/11/01/Text-Mining/</id>
     <published>2014-11-01T07:56:48.000Z</published>
-    <updated>2014-11-05T13:50:50.000Z</updated>
+    <updated>2014-11-05T13:59:20.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
 <hr>
 <h3 id="简介_">简介　</h3>
@@ -34,7 +34,7 @@
 <li>评估与可视化</li>
 </ol>
 </blockquote>
-<p><img src="http://newtonblogimg.qiniudn.com/textminingflowchart.jpg" alt="image"><br>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。</p>
+<p><img src="http://newtonblogimg.qiniudn.com/textminingflowchart.jpg" alt="Text Mining Flow Chart"><br>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。</p>
 <h2 id="获取文本数据源"><strong><code>获取文本数据源</code></strong></h2>
 <hr>
 <p>　　各文档数据库，语料库，论文集<br>　　web网页，如通过爬虫抓取，RSS订阅<br>　　<br>　　等</p>
@@ -61,7 +61,7 @@
 <h4 id="开方检验"><em><code>开方检验</code></em></h4>
 <p>　　　</p>
 <h4 id="信息增益"><em><code>信息增益</code></em></h4>
-<p>　　前文提到过，除了开方检验（CHI）以外，信息增益（IG，Information Gain）也是很有效的特征选择方法。信息增益（Kullback–Leibler divergence）又称information divergence，information gain，relative entropy 或者KLIC。但凡是特征选择，总是在将特征的重要程度量化之后再进行选择，而如何量化特征的重要性，就成了各种方法间最大的不同。开方检验中使用特征与类别间的关联性来进行这个量化，关联性越强，特征得分越高，该特征越应该被保留。<br>　　在信息增益中，衡量标准是看特征能够为分类系统带来多少信息，带来的信息越多，该特征越重要。对一个特征而言，系统有它和没它时信息量将发生变化，而前后信息量的差值就是这个特征给系统带来的信息量。所谓信息量，就是熵。<br>　　假如有变量X，分别是x1，x2，……，xn，每一种取到的概率分别是P1，P2，……，Pn，，那么X的熵就定义为：<br><img src="http://newtonblogimg.qiniudn.com/Entropy.png" alt="Entropy"><br>　　也就是说X可能的变化越多，X所携带的信息量越大，熵也就越大。对于文本分类或聚类而言，就是说文档属于哪个类别的变化越多，类别的信息量就越大。所以特征T给聚类C或分类C带来的信息增益为IG(T)=H(C)-H(C|T)。<br>　　H(C|T)包含两种情况：一种是特征T出现，标记为t，一种是特征T不出现，标记为t’。所以H(C|T)=P(t)H(C|t) + P(t’)H(C|t’)，再由熵的计算公式便可推得特征与类别的信息增益公式。<br>　　信息增益最大的问题在于它只能考察特征对整个系统的贡献，而不能具体到某个类别上，这就使得它只适合用来做所谓“全局”的特征选择（指所有的类都使用相同的特征集合），而无法做“本地”的特征选择（每个类别有自己的特征集合，因为有的词，对这个类别很有区分度，对另一个类别则无足轻重）。</p>
+<p>　　前文提到过，除了开方检验（CHI）以外，信息增益（IG，Information Gain）也是很有效的特征选择方法。信息增益（Kullback–Leibler divergence）又称information divergence，information gain，relative entropy 或者KLIC。但凡是特征选择，总是在将特征的重要程度量化之后再进行选择，而如何量化特征的重要性，就成了各种方法间最大的不同。开方检验中使用特征与类别间的关联性来进行这个量化，关联性越强，特征得分越高，该特征越应该被保留。<br>　　在信息增益中，衡量标准是看特征能够为分类系统带来多少信息，带来的信息越多，该特征越重要。对一个特征而言，系统有它和没它时信息量将发生变化，而前后信息量的差值就是这个特征给系统带来的信息量。所谓信息量，就是熵。<br>　　假如有变量X，分别是x1，x2，……，xn，每一种取到的概率分别是P1，P2，……，Pn，，那么X的熵就定义为：<br><img src="http://newtonblogimg.qiniudn.com/Entropy.png" alt=""><br>　　也就是说X可能的变化越多，X所携带的信息量越大，熵也就越大。对于文本分类或聚类而言，就是说文档属于哪个类别的变化越多，类别的信息量就越大。所以特征T给聚类C或分类C带来的信息增益为IG(T)=H(C)-H(C|T)。<br>　　H(C|T)包含两种情况：一种是特征T出现，标记为t，一种是特征T不出现，标记为t’。所以H(C|T)=P(t)H(C|t) + P(t’)H(C|t’)，再由熵的计算公式便可推得特征与类别的信息增益公式。<br>　　信息增益最大的问题在于它只能考察特征对整个系统的贡献，而不能具体到某个类别上，这就使得它只适合用来做所谓“全局”的特征选择（指所有的类都使用相同的特征集合），而无法做“本地”的特征选择（每个类别有自己的特征集合，因为有的词，对这个类别很有区分度，对另一个类别则无足轻重）。</p>
 <h3 id="特征降维">特征降维</h3>
 <h4 id="主成分分析"><em><code>主成分分析</code></em></h4>
 <p>　　主成分分析（Principal Component Analysis，PCA）， 将多个变量通过线性变换以选出较少个数重要变量的一种多元统计分析方法。又称主分量分析。在很多情形，变量之间是有一定的相关关系的，当两个变量之间有一定相关关系时，可以解释为这两个变量反映某特征的信息有一定的重叠。PCA通过少数几个主成分来揭示多个变量间的内部结构，即从原始变量中导出少数几个主成分，将许多相关性较高的变量转化成彼此相互独立或不相关的变量，并使它们尽可能多地保留原始变量的信息。
@@ -85,7 +85,7 @@
 <h2 id="References"><strong><code>References</code></strong></h2>
 <hr>
 <p>[1] Ronen Feldman and James Sanger, The Text Mining Handbook, Cambridge University Press.<br>[2] Kao Anne, Poteet, Steve R. (Editors), Natural Language Processing and Text Mining, Springer.</p>
-<p><img src="/img/blogImage/pacman.jpg" alt="icon"></p>
+<p><img src="/img/blogImage/pacman.jpg" alt="Then End"></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
@@ -162,25 +162,6 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Data Mining]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
-    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:43:10.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
-    
-      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Natural Language Processing]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
     <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
@@ -219,6 +200,25 @@
   </entry>
   
   <entry>
+    <title><![CDATA[Data Mining]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Data-Mining/"/>
+    <id>http://chenqx.github.com/2014/10/29/Data-Mining/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-10-29T02:43:10.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
+    
+      <category term="Data Mining" scheme="http://chenqx.github.com/categories/Data-Mining/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Machine Learning]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Machine-Learning/"/>
     <id>http://chenqx.github.com/2014/10/29/Machine-Learning/</id>
@@ -242,7 +242,7 @@
     <link href="http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/"/>
     <id>http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/</id>
     <published>2014-10-28T10:11:03.000Z</published>
-    <updated>2014-11-02T16:05:02.000Z</updated>
+    <updated>2014-11-05T14:01:00.000Z</updated>
     <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。</p>
 <hr>
 <p>　　你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。</p>
@@ -380,7 +380,7 @@
 <li>gg → 到第一行。（相当于1G，或 :1）</li>
 <li>G → 到最后一行。</li>
 <li>按单词移动：<blockquote>
-<p>　　w → 到下一个单词的开头。<br>　　e → 到下一个单词的结尾。<br>　　&gt; 如果你认为单词是由默认方式，那么就用小写的e和w。默认上来说，　　　一个单词由字母，数字和下划线组成（程序变量）<br>　　&gt; 如果你认为单词是由blank字符分隔符，那么你需要使用大写的E和W。　　（程序语句）<br>　　<img src="http://newtonblogimg.qiniudn.com/word_moves.jpg" alt="word_moves"></p>
+<p>　　w → 到下一个单词的开头。<br>　　e → 到下一个单词的结尾。<br>　　&gt; 如果你认为单词是由默认方式，那么就用小写的e和w。默认上来说，　　　一个单词由字母，数字和下划线组成（程序变量）<br>　　&gt; 如果你认为单词是由blank字符分隔符，那么你需要使用大写的E和W。　　（程序语句）<br>　　<img src="http://newtonblogimg.qiniudn.com/word_moves.jpg" alt="Word Moves"></p>
 </blockquote>
 </li>
 </ol>
@@ -420,7 +420,7 @@
 <p>　　你只需要掌握前面的命令，你就可以很舒服的使用VIM了。但是，现在，我们向你介绍的是VIM杀手级的功能。下面这些功能是我只用vim的原因。</p>
 <h3 id="在当前行上移动光标">在当前行上移动光标</h3>
 <blockquote>
-<p>0 → 到行头<br>^ → 到本行的第一个非blank字符<br>$ → 到行尾<br>g_ → 到本行最后一个不是blank字符的位置。<br>fa → 到下一个为a的字符处，你也可以fs到下一个为s的字符。<br>t, → 到逗号前的第一个字符。逗号可以变成其它字符。<br>3fa → 在当前行查找第三个出现的a。<br>F 和 T → 和 f 和 t 一样，只不过是相反方向。<br><img src="http://newtonblogimg.qiniudn.com/line_moves.jpg" alt="line_moves"></p>
+<p>0 → 到行头<br>^ → 到本行的第一个非blank字符<br>$ → 到行尾<br>g_ → 到本行最后一个不是blank字符的位置。<br>fa → 到下一个为a的字符处，你也可以fs到下一个为s的字符。<br>t, → 到逗号前的第一个字符。逗号可以变成其它字符。<br>3fa → 在当前行查找第三个出现的a。<br>F 和 T → 和 f 和 t 一样，只不过是相反方向。<br><img src="http://newtonblogimg.qiniudn.com/line_moves.jpg" alt="Line Moves"></p>
 </blockquote>
 <p>　　还有一个很有用的命令是 dt” → 删除所有的内容，直到遇到双引号—— “。</p>
 <h3 id="区域选择">区域选择</h3>
@@ -439,7 +439,7 @@
 <li>vi) → 会选择 “foo”.</li>
 <li>va) → 会选择(“foo”).</li>
 <li>v2i) → 会选择 map (+) (“foo”)</li>
-<li>v2a) → 会选择 (map (+) (“foo”))<br><img src="http://newtonblogimg.qiniudn.com/textobjects.png" alt="textobjects"></li>
+<li>v2a) → 会选择 (map (+) (“foo”))<br><img src="http://newtonblogimg.qiniudn.com/textobjects.png" alt="Text Objects"></li>
 </ul>
 </blockquote>
 <h3 id="块操作">块操作</h3>
@@ -449,14 +449,14 @@
 <li>^ → 到行头</li>
 <li>&lt;　C-v&gt; → 开始块操作</li>
 <li>&lt;　C-d&gt; → 向下移动 &gt; (你也可以使用hjkl来移动光标，或是使用%，或是别的)</li>
-<li>I— [ESC] → I是插入，插入“—”，按ESC键来为每一行生效。<br><img src="http://newtonblogimg.qiniudn.com/rectangular-blocks.gif" alt="rectangular-blocks"></li>
+<li>I— [ESC] → I是插入，插入“—”，按ESC键来为每一行生效。<br><img src="http://newtonblogimg.qiniudn.com/rectangular-blocks.gif" alt="Rectangular Blocks"></li>
 </ul>
 </blockquote>
 <p>　　在Windows下的vim，你需要使用 &lt; C-q&gt; 而不是 &lt; C-v&gt; ，&lt; C-v&gt; 是拷贝剪贴板。</p>
 <h3 id="自动提示">自动提示</h3>
 <p>　　在 Insert 模式下，你可以输入一个词的开头，然后按 &lt; C-p&gt;或是&lt; C-n&gt;，自动补齐功能就出现了……</p>
 <blockquote>
-<p>　<img src="http://newtonblogimg.qiniudn.com/completion.gif" alt="completion"></p>
+<p>　<img src="http://newtonblogimg.qiniudn.com/completion.gif" alt="Completion"></p>
 </blockquote>
 <h3 id="宏录制">宏录制</h3>
 <blockquote>
@@ -478,7 +478,7 @@
 <li><p>@a → 在1下面写下 2</p>
 </li>
 <li>@@ → 在2 正面写下3</li>
-<li>现在做 100@@ 会创建新的100行，并把数据增加到 103.<br><img src="http://newtonblogimg.qiniudn.com/macros.gif" alt="macros"></li>
+<li>现在做 100@@ 会创建新的100行，并把数据增加到 103.<br><img src="http://newtonblogimg.qiniudn.com/macros.gif" alt="Macros"></li>
 </ul>
 </blockquote>
 <h3 id="可视化选择">可视化选择</h3>
@@ -487,7 +487,7 @@
 <ul>
 <li>J → 把所有的行连接起来（变成一行）</li>
 <li>&lt; 或 &gt; → 左右缩进</li>
-<li>= → 自动给缩进 （陈皓注：这个功能相当强大，我太喜欢了）<br><img src="http://newtonblogimg.qiniudn.com/autoindent.gif" alt="autoindent"></li>
+<li>= → 自动给缩进 （陈皓注：这个功能相当强大，我太喜欢了）<br><img src="http://newtonblogimg.qiniudn.com/autoindent.gif" alt="Auto Indent"></li>
 </ul>
 </blockquote>
 <p>　　在所有被选择的行后加上点东西：</p>
@@ -496,7 +496,7 @@
 <li><c-v></c-v></li>
 <li>选中相关的行 (可使用 j 或 <c-d> 或是 /pattern 或是 % 等……)</c-d></li>
 <li>$ 到行最后</li>
-<li>A, 输入字符串，按 ESC。<br><img src="http://newtonblogimg.qiniudn.com/append-to-many-lines.gif" alt="append-to-many-lines"></li>
+<li>A, 输入字符串，按 ESC。<br><img src="http://newtonblogimg.qiniudn.com/append-to-many-lines.gif" alt="Append to Many Lines"></li>
 </ul>
 </blockquote>
 <h3 id="分屏">分屏</h3>
@@ -506,7 +506,7 @@
 <li>:split → 创建分屏 (:vsplit创建垂直分屏)</li>
 <li><c-w><dir> : dir就是方向，可以是 hjkl 或是 ←↓↑→ 中的一个，其用来切换分屏。</dir></c-w></li>
 <li><c-w>_ (或 <c-w>|) : 最大化尺寸 (<c-w>| 垂直分屏)</c-w></c-w></c-w></li>
-<li><c-w>+ (或 <c-w>-) : 增加尺寸<br><img src="http://newtonblogimg.qiniudn.com/split.gif" alt="split"></c-w></c-w></li>
+<li><c-w>+ (或 <c-w>-) : 增加尺寸<br><img src="http://newtonblogimg.qiniudn.com/split.gif" alt="Split"></c-w></c-w></li>
 </ul>
 </blockquote>
 <hr>

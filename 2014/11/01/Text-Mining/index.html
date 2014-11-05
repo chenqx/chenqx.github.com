@@ -84,7 +84,7 @@
     </p>
   <p class="article-time">
     <time datetime="2014-11-01T07:56:48.000Z" itemprop="datePublished">Nov 1 2014</time>
-    Updated:<time datetime="2014-11-05T13:50:50.000Z" itemprop="dateModified">Nov 5 2014</time>
+    Updated:<time datetime="2014-11-05T13:59:20.000Z" itemprop="dateModified">Nov 5 2014</time>
     
   </p>
 </header>
@@ -110,7 +110,7 @@
 <li>评估与可视化</li>
 </ol>
 </blockquote>
-<p><img src="http://newtonblogimg.qiniudn.com/textminingflowchart.jpg" alt="image"><br>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。</p>
+<p><img src="http://newtonblogimg.qiniudn.com/textminingflowchart.jpg" alt="Text Mining Flow Chart"><br>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。</p>
 <h2 id="获取文本数据源"><strong><code>获取文本数据源</code></strong></h2>
 <hr>
 <p>　　各文档数据库，语料库，论文集<br>　　web网页，如通过爬虫抓取，RSS订阅<br>　　<br>　　等</p>
@@ -137,7 +137,7 @@
 <h4 id="开方检验"><em><code>开方检验</code></em></h4>
 <p>　　　</p>
 <h4 id="信息增益"><em><code>信息增益</code></em></h4>
-<p>　　前文提到过，除了开方检验（CHI）以外，信息增益（IG，Information Gain）也是很有效的特征选择方法。信息增益（Kullback–Leibler divergence）又称information divergence，information gain，relative entropy 或者KLIC。但凡是特征选择，总是在将特征的重要程度量化之后再进行选择，而如何量化特征的重要性，就成了各种方法间最大的不同。开方检验中使用特征与类别间的关联性来进行这个量化，关联性越强，特征得分越高，该特征越应该被保留。<br>　　在信息增益中，衡量标准是看特征能够为分类系统带来多少信息，带来的信息越多，该特征越重要。对一个特征而言，系统有它和没它时信息量将发生变化，而前后信息量的差值就是这个特征给系统带来的信息量。所谓信息量，就是熵。<br>　　假如有变量X，分别是x1，x2，……，xn，每一种取到的概率分别是P1，P2，……，Pn，，那么X的熵就定义为：<br><img src="http://newtonblogimg.qiniudn.com/Entropy.png" alt="Entropy"><br>　　也就是说X可能的变化越多，X所携带的信息量越大，熵也就越大。对于文本分类或聚类而言，就是说文档属于哪个类别的变化越多，类别的信息量就越大。所以特征T给聚类C或分类C带来的信息增益为IG(T)=H(C)-H(C|T)。<br>　　H(C|T)包含两种情况：一种是特征T出现，标记为t，一种是特征T不出现，标记为t’。所以H(C|T)=P(t)H(C|t) + P(t’)H(C|t’)，再由熵的计算公式便可推得特征与类别的信息增益公式。<br>　　信息增益最大的问题在于它只能考察特征对整个系统的贡献，而不能具体到某个类别上，这就使得它只适合用来做所谓“全局”的特征选择（指所有的类都使用相同的特征集合），而无法做“本地”的特征选择（每个类别有自己的特征集合，因为有的词，对这个类别很有区分度，对另一个类别则无足轻重）。</p>
+<p>　　前文提到过，除了开方检验（CHI）以外，信息增益（IG，Information Gain）也是很有效的特征选择方法。信息增益（Kullback–Leibler divergence）又称information divergence，information gain，relative entropy 或者KLIC。但凡是特征选择，总是在将特征的重要程度量化之后再进行选择，而如何量化特征的重要性，就成了各种方法间最大的不同。开方检验中使用特征与类别间的关联性来进行这个量化，关联性越强，特征得分越高，该特征越应该被保留。<br>　　在信息增益中，衡量标准是看特征能够为分类系统带来多少信息，带来的信息越多，该特征越重要。对一个特征而言，系统有它和没它时信息量将发生变化，而前后信息量的差值就是这个特征给系统带来的信息量。所谓信息量，就是熵。<br>　　假如有变量X，分别是x1，x2，……，xn，每一种取到的概率分别是P1，P2，……，Pn，，那么X的熵就定义为：<br><img src="http://newtonblogimg.qiniudn.com/Entropy.png" alt=""><br>　　也就是说X可能的变化越多，X所携带的信息量越大，熵也就越大。对于文本分类或聚类而言，就是说文档属于哪个类别的变化越多，类别的信息量就越大。所以特征T给聚类C或分类C带来的信息增益为IG(T)=H(C)-H(C|T)。<br>　　H(C|T)包含两种情况：一种是特征T出现，标记为t，一种是特征T不出现，标记为t’。所以H(C|T)=P(t)H(C|t) + P(t’)H(C|t’)，再由熵的计算公式便可推得特征与类别的信息增益公式。<br>　　信息增益最大的问题在于它只能考察特征对整个系统的贡献，而不能具体到某个类别上，这就使得它只适合用来做所谓“全局”的特征选择（指所有的类都使用相同的特征集合），而无法做“本地”的特征选择（每个类别有自己的特征集合，因为有的词，对这个类别很有区分度，对另一个类别则无足轻重）。</p>
 <h3 id="特征降维">特征降维</h3>
 <h4 id="主成分分析"><em><code>主成分分析</code></em></h4>
 <p>　　主成分分析（Principal Component Analysis，PCA）， 将多个变量通过线性变换以选出较少个数重要变量的一种多元统计分析方法。又称主分量分析。在很多情形，变量之间是有一定的相关关系的，当两个变量之间有一定相关关系时，可以解释为这两个变量反映某特征的信息有一定的重叠。PCA通过少数几个主成分来揭示多个变量间的内部结构，即从原始变量中导出少数几个主成分，将许多相关性较高的变量转化成彼此相互独立或不相关的变量，并使它们尽可能多地保留原始变量的信息。
@@ -161,7 +161,7 @@
 <h2 id="References"><strong><code>References</code></strong></h2>
 <hr>
 <p>[1] Ronen Feldman and James Sanger, The Text Mining Handbook, Cambridge University Press.<br>[2] Kao Anne, Poteet, Steve R. (Editors), Natural Language Processing and Text Mining, Springer.</p>
-<p><img src="/img/blogImage/pacman.jpg" alt="icon"></p>
+<p><img src="/img/blogImage/pacman.jpg" alt="Then End"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
