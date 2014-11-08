@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-08T07:41:51.213Z</updated>
+  <updated>2014-11-08T07:46:56.654Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -109,15 +109,14 @@
     <link href="http://chenqx.github.com/2014/10/29/Python-fastest-way-to-read-a-large-file/"/>
     <id>http://chenqx.github.com/2014/10/29/Python-fastest-way-to-read-a-large-file/</id>
     <published>2014-10-29T02:34:59.000Z</published>
-    <updated>2014-11-08T07:41:39.000Z</updated>
+    <updated>2014-11-08T07:46:27.000Z</updated>
     <content type="html"><![CDATA[<p>　　最近处理文本文档时（文件约2GB大小），出现<code>memoryError</code>错误和文件读取太慢的问题，后来找到了两种比较快<code>Large File Reading</code> 的方法，本文将介绍这两种读取方法。</p>
 <h2 id="Preliminary"><strong><code>Preliminary</code></strong></h2>
 <hr>
 <p>　　我们谈到“文本处理”时，我们通常是指处理的内容。Python 将文本文件的内容读入可以操作的字符串变量非常容易。文件对象提供了三个“读”方法： <code>.read()</code>、<code>.readline()</code> 和 <code>.readlines()</code>。每种方法可以接受一个变量以限制每次读取的数据量，但它们通常不使用变量。 <code>.read()</code> 每次读取整个文件，它通常用于将文件内容放到一个字符串变量中。然而 <code>.read()</code> 生成文件内容最直接的字符串表示，但对于连续的面向行的处理，它却是不必要的，并且如果文件大于可用内存，则不可能实现这种处理。下面是<code>read()</code>方法示例：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    f = open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>)</div><div class="line">    <span class="keyword">print</span> f.read()</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">if</span> f:</div><div class="line">        f.close()</div></pre></td></tr></table></figure>
 
-<p>　　调用<code>read()</code>会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用<code>read(size)</code>方法，每次最多读取size个字节的内容。另外，调用<code>readline()</code>可以每次读取一行内容，调用<code>readlines()</code>一次读取所有内容并按行返回list。因此，要根据需要决定怎么调用。</p>
-<p>　　如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便：</p>
+<p>　　调用<code>read()</code>会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用<code>read(size)</code>方法，每次最多读取size个字节的内容。另外，调用<code>readline()</code>可以每次读取一行内容，调用<code>readlines()</code>一次读取所有内容并按行返回list。因此，要根据需要决定怎么调用。<br>　　如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">    process(line) <span class="comment"># &lt;do something with line&gt;</span></div></pre></td></tr></table></figure>
 
 <h2 id="Read_In_Chunks"><strong><code>Read In Chunks</code></strong></h2>
@@ -201,25 +200,6 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Natural Language Processing]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
-    <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:44:54.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
-    
-      <category term="NLP" scheme="http://chenqx.github.com/categories/NLP/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Linux]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Linux/"/>
     <id>http://chenqx.github.com/2014/10/29/Linux/</id>
@@ -235,6 +215,25 @@
       <category term="Linux" scheme="http://chenqx.github.com/tags/Linux/"/>
     
       <category term="Linux" scheme="http://chenqx.github.com/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Natural Language Processing]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
+    <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-10-29T02:44:54.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
+    
+      <category term="NLP" scheme="http://chenqx.github.com/categories/NLP/"/>
     
   </entry>
   
