@@ -9,10 +9,10 @@
     
     <meta name="author" content="Chan">
     
-    <meta name="description" content="最近处理文本文档时（文件约2GB大小），经常出现memoryError错误和文件读取太慢的问题，后来找到了两种比较快Large File Read 的方法，本文将介绍这两种读取方法。
+    <meta name="description" content="最近处理文本文档时（文件约2GB大小），出现memoryError错误和文件读取太慢的问题，后来找到了两种比较快Large File Reading 的方法，本文将介绍这两种读取方法。
 Preliminary
 
-　　我们谈到“文本处理”时，我们通常是指处理的内容。Python 将文本文件的内容读入可以">
+　　我们谈到“文本处理”时，我们通常是指处理的内容。Python 将文本文件的内容读入可">
     
     
     
@@ -84,7 +84,7 @@ Preliminary
     </p>
   <p class="article-time">
     <time datetime="2014-10-29T02:34:59.000Z" itemprop="datePublished">Oct 29 2014</time>
-    Updated:<time datetime="2014-11-08T07:22:08.000Z" itemprop="dateModified">Nov 8 2014</time>
+    Updated:<time datetime="2014-11-08T07:32:03.000Z" itemprop="dateModified">Nov 8 2014</time>
     
   </p>
 </header>
@@ -93,10 +93,10 @@ Preliminary
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Preliminary"><span class="toc-number">1.</span> <span class="toc-text">Preliminary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read_In_Chunks"><span class="toc-number">2.</span> <span class="toc-text">Read In Chunks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usingwith_open()"><span class="toc-number">3.</span> <span class="toc-text">Usingwith open()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Preliminary"><span class="toc-number">1.</span> <span class="toc-text">Preliminary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read_In_Chunks"><span class="toc-number">2.</span> <span class="toc-text">Read In Chunks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using_with_open()"><span class="toc-number">3.</span> <span class="toc-text">Using with open()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li></ol>
 		</div>
 		
-		<p>　　最近处理文本文档时（文件约2GB大小），经常出现<code>memoryError</code>错误和文件读取太慢的问题，后来找到了两种比较快<code>Large File Read</code> 的方法，本文将介绍这两种读取方法。</p>
+		<p>　　最近处理文本文档时（文件约2GB大小），出现<code>memoryError</code>错误和文件读取太慢的问题，后来找到了两种比较快<code>Large File Reading</code> 的方法，本文将介绍这两种读取方法。</p>
 <h2 id="Preliminary"><strong><code>Preliminary</code></strong></h2>
 <hr>
 <p>　　我们谈到“文本处理”时，我们通常是指处理的内容。Python 将文本文件的内容读入可以操作的字符串变量非常容易。文件对象提供了三个“读”方法： <code>.read()</code>、<code>.readline()</code> 和 <code>.readlines()</code>。每种方法可以接受一个变量以限制每次读取的数据量，但它们通常不使用变量。 <code>.read()</code> 每次读取整个文件，它通常用于将文件内容放到一个字符串变量中。然而 <code>.read()</code> 生成文件内容最直接的字符串表示，但对于连续的面向行的处理，它却是不必要的，并且如果文件大于可用内存，则不可能实现这种处理。下面是<code>read()</code>方法示例：</p>
@@ -108,10 +108,10 @@ Preliminary
 
 <h2 id="Read_In_Chunks"><strong><code>Read In Chunks</code></strong></h2>
 <hr>
-<p>　　处理大文件是很容易想到的就是讲大文件分割成若干小文件处理，处理完每个小文件后释放该部分内存。这里用了 <code>iter</code> &amp; <code>yield</code></p>
+<p>　　处理大文件是很容易想到的就是将大文件分割成若干小文件处理，处理完每个小文件后释放该部分内存。这里用了 <code>iter</code> &amp; <code>yield</code>：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_in_chunks</span><span class="params">(filePath, chunk_size=<span class="number">1024</span>*<span class="number">1024</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Lazy function (generator) to read a file piece by piece.</div><div class="line">    Default chunk size: 1M</div><div class="line">    You san set your own chunk size </div><div class="line">    """</div><div class="line">    file_object = open(filename)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        chunk_data = file_object.read(chunk_size)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> chunk_data:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="keyword">yield</span> chunk_data</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line"></div><div class="line">    filenPath = <span class="string">'./path/filename'</span></div><div class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> read_in_chunks(filenPath):</div><div class="line">        process(chunk) <span class="comment"># &lt;do_something with chunk&gt;</span></div></pre></td></tr></table></figure>
 
-<h2 id="Usingwith_open()"><strong><code>Using</code><em><code>with open()</code></em></strong></h2>
+<h2 id="Using_with_open()"><strong><code>Using</code> <em><code>with open()</code></em></strong></h2>
 <p>　　<code>with</code>语句打开和关闭文件，包括抛出一个内部块异常。<code>for line in f</code>文件对象<code>f</code>视为一个迭代器，会自动的采用缓冲<code>IO</code>和内存管理，所以你不必担心大文件。</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#If the file is line based</span></div><div class="line"><span class="keyword">with</span> open(...) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">        process(line) <span class="comment"># &lt;do something with line&gt;</span></div></pre></td></tr></table></figure>
 
@@ -190,7 +190,7 @@ var duoshuoQuery = {short_name:"chenqx"};
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Preliminary"><span class="toc-number">1.</span> <span class="toc-text">Preliminary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read_In_Chunks"><span class="toc-number">2.</span> <span class="toc-text">Read In Chunks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usingwith_open()"><span class="toc-number">3.</span> <span class="toc-text">Usingwith open()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Preliminary"><span class="toc-number">1.</span> <span class="toc-text">Preliminary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read_In_Chunks"><span class="toc-number">2.</span> <span class="toc-text">Read In Chunks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using_with_open()"><span class="toc-number">3.</span> <span class="toc-text">Using with open()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li></ol>
   </div>
 
 <div id="asidepart">
