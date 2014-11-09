@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-09T06:18:34.858Z</updated>
+  <updated>2014-11-09T08:34:31.539Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Scrapy爬虫之爬取BBS数据]]></title>
+    <title><![CDATA[Scrapy爬虫抓取网站数据]]></title>
     <link href="http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/"/>
     <id>http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/</id>
     <published>2014-11-09T05:34:46.000Z</published>
-    <updated>2014-11-09T06:17:32.000Z</updated>
+    <updated>2014-11-09T08:34:08.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Scrapy_at_a_glance"><strong><code>Scrapy at a glance</code></strong></h2>
 <hr>
 <p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。<br>　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。</p>
@@ -325,6 +325,25 @@
   </entry>
   
   <entry>
+    <title><![CDATA[Natural Language Processing]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
+    <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-10-29T02:44:54.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
+    
+      <category term="NLP" scheme="http://chenqx.github.com/categories/NLP/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Linux]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Linux/"/>
     <id>http://chenqx.github.com/2014/10/29/Linux/</id>
@@ -359,25 +378,6 @@
       <category term="Database" scheme="http://chenqx.github.com/tags/Database/"/>
     
       <category term="Database" scheme="http://chenqx.github.com/categories/Database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Natural Language Processing]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
-    <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:44:54.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
-    
-      <category term="NLP" scheme="http://chenqx.github.com/categories/NLP/"/>
     
   </entry>
   
