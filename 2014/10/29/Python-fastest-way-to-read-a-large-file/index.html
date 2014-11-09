@@ -84,7 +84,7 @@ Preliminary
     </p>
   <p class="article-time">
     <time datetime="2014-10-29T02:34:59.000Z" itemprop="datePublished">Oct 29 2014</time>
-    Updated:<time datetime="2014-11-08T07:56:47.000Z" itemprop="dateModified">Nov 8 2014</time>
+    Updated:<time datetime="2014-11-09T02:37:49.000Z" itemprop="dateModified">Nov 9 2014</time>
     
   </p>
 </header>
@@ -111,10 +111,12 @@ Preliminary
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_in_chunks</span><span class="params">(filePath, chunk_size=<span class="number">1024</span>*<span class="number">1024</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Lazy function (generator) to read a file piece by piece.</div><div class="line">    Default chunk size: 1M</div><div class="line">    You can set your own chunk size </div><div class="line">    """</div><div class="line">    file_object = open(filePath)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        chunk_data = file_object.read(chunk_size)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> chunk_data:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="keyword">yield</span> chunk_data</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line"></div><div class="line">    filePath = <span class="string">'./path/filename'</span></div><div class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> read_in_chunks(filePath):</div><div class="line">        process(chunk) <span class="comment"># &lt;do something with chunk&gt;</span></div></pre></td></tr></table></figure>
 
 <h2 id="Using_with_open()"><strong><code>Using</code> <em><code>with open()</code></em></strong></h2>
+<hr>
 <p>　　<code>with</code>语句打开和关闭文件，包括抛出一个内部块异常。<code>for line in f</code>文件对象<code>f</code>视为一个迭代器，会自动的采用缓冲<code>IO</code>和内存管理，所以你不必担心大文件。</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#If the file is line based</span></div><div class="line"><span class="keyword">with</span> open(...) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">        process(line) <span class="comment"># &lt;do something with line&gt;</span></div></pre></td></tr></table></figure>
 
 <h2 id="Conclusion"><strong><code>Conclusion</code></strong></h2>
+<hr>
 <p>　　在使用python进行大文件读取时，应该让系统来处理，使用最简单的方式，交给解释器，就管好自己的工作就行了。<br>　　<br><img src="/img/blogImage/pacman.jpg" alt="The End"></p>
   
 	</div>
@@ -203,7 +205,9 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
-			<li><a href="/categories/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
+			<li><a href="/categories/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Database/" title="Database">Database<sup>1</sup></a></li>
 		
 			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
 		
@@ -228,7 +232,7 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
