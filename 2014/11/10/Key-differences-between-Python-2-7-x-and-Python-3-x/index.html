@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   
     <title>Python 2.7.x 和 Python 3.x 的主要差异 | Chan&#39;s blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Chan">
     
@@ -14,7 +14,7 @@
     
     
     
-    <link rel="alternate" href="/atom.xml" title="Chan&#39;s blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Chan&#39;s blog" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon_new.ico">
@@ -43,7 +43,8 @@
 			</a></div>
 			<nav class="animated">
 				<ul>
-					
+					<ul>
+					 
 						<li><a href="/">Home</a></li>
 					
 						<li><a href="/archives">Archives</a></li>
@@ -54,10 +55,10 @@
 					<li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
 					
 					<li>
-					
+ 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:chenqx.github.com">
 					</form>
 					
@@ -65,7 +66,6 @@
 				</ul>
 			</nav>			
 </div>
-
     </header>
     <div id="container">
       <div id="main" class="post" itemscope itemprop="blogPost">
@@ -76,12 +76,11 @@
       <a href="/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/" title="Python 2.7.x 和 Python 3.x 的主要差异" itemprop="url">Python 2.7.x 和 Python 3.x 的主要差异</a>
   </h1>
   <p class="article-author">By
-    
-      <a href="http://chenqx.github.com" title="Chan">Chan</a>
-    </p>
+       
+		<a href="http://chenqx.github.com/about" title="Chan" target="_blank" itemprop="author">Chan</a>
+		
   <p class="article-time">
-    <time datetime="2014-11-10T12:04:25.000Z" itemprop="datePublished">Nov 10 2014</time>
-    Updated:<time datetime="2014-11-10T14:36:39.000Z" itemprop="dateModified">Nov 10 2014</time>
+    <time datetime="2014-11-10T12:04:25.000Z" itemprop="datePublished"> Published Nov 10 2014</time>
     
   </p>
 </header>
@@ -90,7 +89,9 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#__future__模块"><span class="toc-number">1.</span> <span class="toc-text">__future__模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print函数"><span class="toc-number">2.</span> <span class="toc-text">print函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整除"><span class="toc-number">3.</span> <span class="toc-text">整除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">4.</span> <span class="toc-text">Unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xrange模块"><span class="toc-number">5.</span> <span class="toc-text">xrange模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python3中的range对象的__contains__方法"><span class="toc-number">6.</span> <span class="toc-text">Python3中的range对象的__contains__方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raising_exceptions"><span class="toc-number">7.</span> <span class="toc-text">Raising exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handling_exceptions"><span class="toc-number">8.</span> <span class="toc-text">Handling exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next()函数_and_-next()方法"><span class="toc-number">9.</span> <span class="toc-text">next()函数 and .next()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For循环变量和全局命名空间泄漏"><span class="toc-number">10.</span> <span class="toc-text">For循环变量和全局命名空间泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不可排序类型"><span class="toc-number">11.</span> <span class="toc-text">比较不可排序类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过input()解析用户的输入"><span class="toc-number">12.</span> <span class="toc-text">通过input()解析用户的输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回可迭代对象，而不是列表"><span class="toc-number">13.</span> <span class="toc-text">返回可迭代对象，而不是列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多的关于_Python_2_和_Python_3_的文章"><span class="toc-number">14.</span> <span class="toc-text">更多的关于 Python 2 和 Python 3 的文章</span></a></li></ol>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#__future__模块"><span class="toc-number">1.</span> <span class="toc-text">__future__模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print函数"><span class="toc-number">2.</span> <span class="toc-text">print函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整除"><span class="toc-number">3.</span> <span class="toc-text">整除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">4.</span> <span class="toc-text">Unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xrange模块"><span class="toc-number">5.</span> <span class="toc-text">xrange模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python3中的range对象的__contains__方法"><span class="toc-number">6.</span> <span class="toc-text">Python3中的range对象的__contains__方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raising_exceptions"><span class="toc-number">7.</span> <span class="toc-text">Raising exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handling_exceptions"><span class="toc-number">8.</span> <span class="toc-text">Handling exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next()函数_and_-next()方法"><span class="toc-number">9.</span> <span class="toc-text">next()函数 and .next()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For循环变量和全局命名空间泄漏"><span class="toc-number">10.</span> <span class="toc-text">For循环变量和全局命名空间泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不可排序类型"><span class="toc-number">11.</span> <span class="toc-text">比较不可排序类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过input()解析用户的输入"><span class="toc-number">12.</span> <span class="toc-text">通过input()解析用户的输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回可迭代对象，而不是列表"><span class="toc-number">13.</span> <span class="toc-text">返回可迭代对象，而不是列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多的关于_Python_2_和_Python_3_的文章"><span class="toc-number">14.</span> <span class="toc-text">更多的关于 Python 2 和 Python 3 的文章</span></a></li></ol>
+		
 		</div>
 		
 		<p>　　因这学期负责Python课程的助教，刚开始上机试验的几节课，有很多同学用 Python3.4 的编译器编译 Python 2.7 的程序而导致不通过。Python 2.7.x 和 Python 3.x 版本并非完全兼容。<br>　　许多 Python 初学者想知道他们应该从 Python 的哪个版本开始学习。对于这个问题我的答案是 “你学习你喜欢的教程的版本，然后检查他们之间的不同。” 但如果你并未了解过两个版本之间的差异，个人推荐使用 Python 2.7.x 版本，毕竟大部分教材等资料还是用Python 2.7.x来写的。<br>　　但是如果你开始一个新项目，并且有选择权？我想说的是目前没有对错，只要你计划使用的库 Python 2.7.x 和 Python 3.x 双方都支持的话。尽管如此，当在编写它们中的任何一个的代码，或者是你计划移植你的项目的时候，是非常值得看看这两个主要流行的 Python 版本之间的差别的，以便避免常见的陷阱。<br>　　本文翻译自：<a href="http://nbviewer.ipython.org/github/rasbt/python_reference/blob/master/tutorials/key_differences_between_python_2_and_3.ipynb?create=1" target="_blank" rel="external">《Key differences between Python 2.7.x and Python 3.x》</a></p>
@@ -420,18 +421,20 @@ enter a number: 123
   
 	</div>
 		<footer class="article-footer clearfix">
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Python/">Python</a>
-  </div>
-
+<div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
   <a class="article-category-link" href="/categories/Python/">Python</a>
 </div>
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Python/">Python</a>
+  </div>
+
+</div>
 
 
 <div class="article-share" id="share">
@@ -448,7 +451,7 @@ enter a number: 123
 
 <div class="next">
 <a href="/2014/11/09/Scrapy-Tutorial-for-BBSSpider/"  title="Scrapy爬虫抓取网站数据">
- <strong>NEXT:</strong><br/> 
+ <strong>下一篇：</strong><br/> 
  <span>Scrapy爬虫抓取网站数据
 </span>
 </a>
@@ -475,14 +478,14 @@ var duoshuoQuery = {short_name:"chenqx"};
 <!-- 多说公共JS代码 end -->
 
 
-
-
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#__future__模块"><span class="toc-number">1.</span> <span class="toc-text">__future__模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print函数"><span class="toc-number">2.</span> <span class="toc-text">print函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整除"><span class="toc-number">3.</span> <span class="toc-text">整除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">4.</span> <span class="toc-text">Unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xrange模块"><span class="toc-number">5.</span> <span class="toc-text">xrange模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python3中的range对象的__contains__方法"><span class="toc-number">6.</span> <span class="toc-text">Python3中的range对象的__contains__方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raising_exceptions"><span class="toc-number">7.</span> <span class="toc-text">Raising exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handling_exceptions"><span class="toc-number">8.</span> <span class="toc-text">Handling exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next()函数_and_-next()方法"><span class="toc-number">9.</span> <span class="toc-text">next()函数 and .next()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For循环变量和全局命名空间泄漏"><span class="toc-number">10.</span> <span class="toc-text">For循环变量和全局命名空间泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不可排序类型"><span class="toc-number">11.</span> <span class="toc-text">比较不可排序类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过input()解析用户的输入"><span class="toc-number">12.</span> <span class="toc-text">通过input()解析用户的输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回可迭代对象，而不是列表"><span class="toc-number">13.</span> <span class="toc-text">返回可迭代对象，而不是列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多的关于_Python_2_和_Python_3_的文章"><span class="toc-number">14.</span> <span class="toc-text">更多的关于 Python 2 和 Python 3 的文章</span></a></li></ol>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#__future__模块"><span class="toc-number">1.</span> <span class="toc-text">__future__模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print函数"><span class="toc-number">2.</span> <span class="toc-text">print函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整除"><span class="toc-number">3.</span> <span class="toc-text">整除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">4.</span> <span class="toc-text">Unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xrange模块"><span class="toc-number">5.</span> <span class="toc-text">xrange模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python3中的range对象的__contains__方法"><span class="toc-number">6.</span> <span class="toc-text">Python3中的range对象的__contains__方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raising_exceptions"><span class="toc-number">7.</span> <span class="toc-text">Raising exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handling_exceptions"><span class="toc-number">8.</span> <span class="toc-text">Handling exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next()函数_and_-next()方法"><span class="toc-number">9.</span> <span class="toc-text">next()函数 and .next()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For循环变量和全局命名空间泄漏"><span class="toc-number">10.</span> <span class="toc-text">For循环变量和全局命名空间泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不可排序类型"><span class="toc-number">11.</span> <span class="toc-text">比较不可排序类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过input()解析用户的输入"><span class="toc-number">12.</span> <span class="toc-text">通过input()解析用户的输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回可迭代对象，而不是列表"><span class="toc-number">13.</span> <span class="toc-text">返回可迭代对象，而不是列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多的关于_Python_2_和_Python_3_的文章"><span class="toc-number">14.</span> <span class="toc-text">更多的关于 Python 2 和 Python 3 的文章</span></a></li></ol>
+ 
   </div>
 
 <div id="asidepart">
@@ -521,29 +524,29 @@ var duoshuoQuery = {short_name:"chenqx"};
 	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+		
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
+		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
-			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
-			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
 		</ul>
 </div>
@@ -552,11 +555,17 @@ var duoshuoQuery = {short_name:"chenqx"};
   <div class="linkslist">
   <p class="asidetitle">Links</p>
     <ul>
-	  <li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
-	  <li><a href="http://www.pami.sjtu.edu.cn/" target="_blank" title="PAMI Lab">PAMI Lab</a></li>
+        
+          <li>
+            <a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a>
+          </li>
+        
+          <li>
+            <a href="http://www.pami.sjtu.edu.cn/" target="_blank" title="PAMI Lab">PAMI Lab</a>
+          </li>
+        
     </ul>
 </div>
-
 
   <div class="rsspart">
 	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
@@ -573,23 +582,27 @@ var duoshuoQuery = {short_name:"chenqx"};
 			 </p>
 	</section>
 	 
-	<div class="social-font clearfix">
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/chenqx" target="_blank" class="icon-github" title="github"></a>
 		
 		
 		
-		<a href="https://github.com/chenqx" target="_blank" title="github"></a>
+		
+		
 		
 		
 		
 	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2014 
 		
-		<a href="http://chenqx.github.com" target="_blank" title="Chan">Chan</a>
+		<a href="http://chenqx.github.com/about" target="_blank" title="Chan">Chan</a>
 		
 		</p>
 </div>
 </footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){ 
   $('.navbar').click(function(){
@@ -676,14 +689,15 @@ $(document).ready(function(){
       url = $this.attr('data-url'),
       encodedUrl = encodeURIComponent(url),
       title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
   var html = [
   '<a href="#" class="overlay" id="qrcode"></a>',
   '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
   '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
   '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
   '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
   '<span title="Share to"></span>'
   ].join('');
@@ -697,6 +711,11 @@ $(document).ready(function(){
   });
 });     
 </script>
+
+
+
+
+
 
 
 
@@ -723,6 +742,8 @@ $(document).ready(function(){
 </script>
 
 
+
+
 <script type="text/javascript">
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -731,6 +752,17 @@ $(document).ready(function(){
 ga('create', 'UA-56584658-1', 'http://chenqx.github.io/');  
 ga('send', 'pageview');
 </script>
+
+
+
+
+<div id="totop">
+<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
 
 
   </body>
