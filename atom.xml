@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-10T13:47:50.205Z</updated>
+  <updated>2014-11-10T13:49:42.172Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,9 +19,9 @@
     <link href="http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/"/>
     <id>http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/</id>
     <published>2014-11-10T12:04:25.000Z</published>
-    <updated>2014-11-10T13:46:58.000Z</updated>
+    <updated>2014-11-10T13:48:34.000Z</updated>
     <content type="html"><![CDATA[<p>　　因这学期负责Python课程的助教，刚开始上机试验的几节课，有很多同学用 Python3.4 的编译器编译 Python 2.7 的程序而导致不通过。Python 2.7.x 和 Python 3.x 版本并非完全兼容。<br>　　许多 Python 初学者想知道他们应该从 Python 的哪个版本开始学习。对于这个问题我的答案是 “你学习你喜欢的教程的版本，然后检查他们之间的不同。” 但如果你并未了解过两个版本之间的差异，个人推荐使用 Python 2.7.x 版本，毕竟大部分教材等资料还是用Python 2.7.x来写的。<br>　　但是如果你开始一个新项目，并且有选择权？我想说的是目前没有对错，只要你计划使用的库 Python 2.7.x 和 Python 3.x 双方都支持的话。尽管如此，当在编写它们中的任何一个的代码，或者是你计划移植你的项目的时候，是非常值得看看这两个主要流行的 Python 版本之间的差别的，以便避免常见的陷阱。<br>　　本文翻译自：<a href="http://nbviewer.ipython.org/github/rasbt/python_reference/blob/master/tutorials/key_differences_between_python_2_and_3.ipynb?create=1" target="_blank" rel="external">《Key differences between Python 2.7.x and Python 3.x》</a></p>
-<h2 id="future_模块"><strong><strong>future</strong> 模块</strong></h2>
+<h2 id="__future___模块"><strong><code>__future__</code> 模块</strong></h2>
 <hr>
 <p>　　Python 3.x 介绍的 一些Python 2 不兼容的关键字和特性可以通过在 Python 2 的内置 <code>__future__</code> 模块导入。如果你计划让你的代码支持 Python 3.x，建议你使用 <code>__future__</code> 模块导入。例如，如果我想要 在Python 2 中表现 Python 3.x 中的整除，我们可以通过如下导入</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</div></pre></td></tr></table></figure>
@@ -660,11 +660,11 @@ enter a number: 123
   </entry>
   
   <entry>
-    <title><![CDATA[Natural Language Processing]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
-    <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
+    <title><![CDATA[Linux]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Linux/"/>
+    <id>http://chenqx.github.com/2014/10/29/Linux/</id>
     <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:44:54.000Z</updated>
+    <updated>2014-10-29T02:47:36.000Z</updated>
     <content type="html"><![CDATA[<p>　　Building…</p>
 ]]></content>
     <summary type="html">
@@ -672,9 +672,9 @@ enter a number: 123
 ]]>
     </summary>
     
-      <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
+      <category term="Linux" scheme="http://chenqx.github.com/tags/Linux/"/>
     
-      <category term="NLP" scheme="http://chenqx.github.com/categories/NLP/"/>
+      <category term="Linux" scheme="http://chenqx.github.com/categories/Linux/"/>
     
   </entry>
   
@@ -698,11 +698,11 @@ enter a number: 123
   </entry>
   
   <entry>
-    <title><![CDATA[Linux]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Linux/"/>
-    <id>http://chenqx.github.com/2014/10/29/Linux/</id>
+    <title><![CDATA[Natural Language Processing]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
+    <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
     <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:47:36.000Z</updated>
+    <updated>2014-10-29T02:44:54.000Z</updated>
     <content type="html"><![CDATA[<p>　　Building…</p>
 ]]></content>
     <summary type="html">
@@ -710,9 +710,9 @@ enter a number: 123
 ]]>
     </summary>
     
-      <category term="Linux" scheme="http://chenqx.github.com/tags/Linux/"/>
+      <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
     
-      <category term="Linux" scheme="http://chenqx.github.com/categories/Linux/"/>
+      <category term="NLP" scheme="http://chenqx.github.com/categories/NLP/"/>
     
   </entry>
   
