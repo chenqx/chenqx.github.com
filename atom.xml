@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-10T14:32:52.312Z</updated>
+  <updated>2014-11-10T14:35:42.419Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/"/>
     <id>http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/</id>
     <published>2014-11-10T12:04:25.000Z</published>
-    <updated>2014-11-10T14:32:17.000Z</updated>
+    <updated>2014-11-10T14:35:29.000Z</updated>
     <content type="html"><![CDATA[<p>　　因这学期负责Python课程的助教，刚开始上机试验的几节课，有很多同学用 Python3.4 的编译器编译 Python 2.7 的程序而导致不通过。Python 2.7.x 和 Python 3.x 版本并非完全兼容。<br>　　许多 Python 初学者想知道他们应该从 Python 的哪个版本开始学习。对于这个问题我的答案是 “你学习你喜欢的教程的版本，然后检查他们之间的不同。” 但如果你并未了解过两个版本之间的差异，个人推荐使用 Python 2.7.x 版本，毕竟大部分教材等资料还是用Python 2.7.x来写的。<br>　　但是如果你开始一个新项目，并且有选择权？我想说的是目前没有对错，只要你计划使用的库 Python 2.7.x 和 Python 3.x 双方都支持的话。尽管如此，当在编写它们中的任何一个的代码，或者是你计划移植你的项目的时候，是非常值得看看这两个主要流行的 Python 版本之间的差别的，以便避免常见的陷阱。<br>　　本文翻译自：<a href="http://nbviewer.ipython.org/github/rasbt/python_reference/blob/master/tutorials/key_differences_between_python_2_and_3.ipynb?create=1" target="_blank" rel="external">《Key differences between Python 2.7.x and Python 3.x》</a></p>
 <h2 id="__future__模块"><strong><code>__future__</code>模块</strong></h2>
 <hr>
@@ -241,7 +241,7 @@
 
 <p><em>run result:</em> </p>
 <p>Python 3.4.1<br>name ‘let_us_cause_a_NameError’ is not defined —&gt; our error message</p>
-<h2 id="next()_函数_and_-next()_方法"><strong>next() 函数 and .next() 方法</strong></h2>
+<h2 id="next()函数and_-next()方法"><strong><code>next()</code>函数<code>and .next()</code>方法</strong></h2>
 <hr>
 <p>　　因为 <code>next() (.next())</code> 是一个如此普通的使用函数（方法），这里有另外一个语法改变（或者是实现上改变了），值得一提的是：在 Python 2.7.5 中函数和方法你都可以使用，<code>next()</code> 函数在 Python 3 中一直保留着（调用 <code>.next()</code> 抛出属性异常）。</p>
 <p><strong><em>Python 2</em></strong></p>
@@ -282,7 +282,7 @@
 <p><em>run result:</em><br>Python 3.4.1</p>
 <p>-—————————————————————————————————————<br>TypeError                                 Traceback (most recent call last)<br>&lt; ipython-input-16-a9031729f4a0&gt; in &lt; module&gt;()<br>      1 print(‘Python’, python_version())<br>——&gt; 2 print(“[1, 2] &gt; ‘foo’ = “, [1, 2] &gt; ‘foo’)<br>      3 print(“(1, 2) &gt; ‘foo’ = “, (1, 2) &gt; ‘foo’)<br>      4 print(“[1, 2] &gt; (1, 2) = “, [1, 2] &gt; (1, 2))</p>
 <p>TypeError: unorderable types: list() &gt; str()</p>
-<h2 id="通过_input()_解析用户的输入"><strong>通过 input() 解析用户的输入</strong></h2>
+<h2 id="通过input()解析用户的输入"><strong>通过<code>input()</code>解析用户的输入</strong></h2>
 <hr>
 <p>　　幸运的是，在 Python 3 中已经解决了把用户的输入存储为一个 <code>str</code> 对象的问题。为了避免在 Python 2 中的读取非字符串类型的危险行为，我们不得不使用 <code>raw_input()</code> 代替。</p>
 <p><strong><em>Python 2</em></strong><br>    Python 2.7.6<br>    [GCC 4.0.1 (Apple Inc. build 5493)] on darwin<br>    Type “help”, “copyright”, “credits” or “license” for more information.</p>
@@ -694,25 +694,6 @@ enter a number: 123
   </entry>
   
   <entry>
-    <title><![CDATA[Linux]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Linux/"/>
-    <id>http://chenqx.github.com/2014/10/29/Linux/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:47:36.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Linux" scheme="http://chenqx.github.com/tags/Linux/"/>
-    
-      <category term="Linux" scheme="http://chenqx.github.com/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Data Base]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Data-Base/"/>
     <id>http://chenqx.github.com/2014/10/29/Data-Base/</id>
@@ -728,6 +709,25 @@ enter a number: 123
       <category term="Database" scheme="http://chenqx.github.com/tags/Database/"/>
     
       <category term="Database" scheme="http://chenqx.github.com/categories/Database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Linux]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Linux/"/>
+    <id>http://chenqx.github.com/2014/10/29/Linux/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-10-29T02:47:36.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Linux" scheme="http://chenqx.github.com/tags/Linux/"/>
+    
+      <category term="Linux" scheme="http://chenqx.github.com/categories/Linux/"/>
     
   </entry>
   
