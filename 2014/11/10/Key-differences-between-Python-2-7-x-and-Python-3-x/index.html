@@ -1,0 +1,722 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Python 2.7.x 和 Python 3.x 的主要差异 | Chan&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Chan">
+    
+    <meta name="description" content="因这学期负责Python课程的助教，刚开始上机试验的几节课，有很多同学用 Python3.4 的编译器编译 Python 2.7 的程序而导致不通过。Python 2.7.x 和 Python 3.x 版本并非完全兼容。　　许多 Python 初学者想知道他们应该从 Python 的哪个版本开始学习">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Chan&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon_new.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo_new.png" alt="Chan&#39;s blog" title="Chan&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Chan&#39;s blog">Chan&#39;s blog</a></h1>
+				<h2 class="blog-motto">Vi Veri Veniversum Vivus Vici</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">About</a></li>
+					
+
+					<li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:chenqx.github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/" title="Python 2.7.x 和 Python 3.x 的主要差异" itemprop="url">Python 2.7.x 和 Python 3.x 的主要差异</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://chenqx.github.com" title="Chan">Chan</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-11-10T12:04:25.000Z" itemprop="datePublished">Nov 10 2014</time>
+    Updated:<time datetime="2014-11-10T13:46:58.000Z" itemprop="dateModified">Nov 10 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#future_模块"><span class="toc-number">1.</span> <span class="toc-text">future 模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print_函数"><span class="toc-number">2.</span> <span class="toc-text">print 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整除"><span class="toc-number">3.</span> <span class="toc-text">整除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">4.</span> <span class="toc-text">Unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xrange模块"><span class="toc-number">5.</span> <span class="toc-text">xrange模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python_3_中的_range_对象的_contains_方法"><span class="toc-number">6.</span> <span class="toc-text">Python 3 中的 range 对象的 contains 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raising_exceptions"><span class="toc-number">7.</span> <span class="toc-text">Raising exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handling_exceptions"><span class="toc-number">8.</span> <span class="toc-text">Handling exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next()_函数_and_-next()_方法"><span class="toc-number">9.</span> <span class="toc-text">next() 函数 and .next() 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For_循环变量和全局命名空间泄漏"><span class="toc-number">10.</span> <span class="toc-text">For 循环变量和全局命名空间泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不可排序类型"><span class="toc-number">11.</span> <span class="toc-text">比较不可排序类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过_input()_解析用户的输入"><span class="toc-number">12.</span> <span class="toc-text">通过 input() 解析用户的输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回可迭代对象，而不是列表"><span class="toc-number">13.</span> <span class="toc-text">返回可迭代对象，而不是列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多的关于_Python_2_和_Python_3_的文章"><span class="toc-number">14.</span> <span class="toc-text">更多的关于 Python 2 和 Python 3 的文章</span></a></li></ol>
+		</div>
+		
+		<p>　　因这学期负责Python课程的助教，刚开始上机试验的几节课，有很多同学用 Python3.4 的编译器编译 Python 2.7 的程序而导致不通过。Python 2.7.x 和 Python 3.x 版本并非完全兼容。<br>　　许多 Python 初学者想知道他们应该从 Python 的哪个版本开始学习。对于这个问题我的答案是 “你学习你喜欢的教程的版本，然后检查他们之间的不同。” 但如果你并未了解过两个版本之间的差异，个人推荐使用 Python 2.7.x 版本，毕竟大部分教材等资料还是用Python 2.7.x来写的。<br>　　但是如果你开始一个新项目，并且有选择权？我想说的是目前没有对错，只要你计划使用的库 Python 2.7.x 和 Python 3.x 双方都支持的话。尽管如此，当在编写它们中的任何一个的代码，或者是你计划移植你的项目的时候，是非常值得看看这两个主要流行的 Python 版本之间的差别的，以便避免常见的陷阱。<br>　　本文翻译自：<a href="http://nbviewer.ipython.org/github/rasbt/python_reference/blob/master/tutorials/key_differences_between_python_2_and_3.ipynb?create=1" target="_blank" rel="external">《Key differences between Python 2.7.x and Python 3.x》</a></p>
+<h2 id="future_模块"><strong><strong>future</strong> 模块</strong></h2>
+<hr>
+<p>　　Python 3.x 介绍的 一些Python 2 不兼容的关键字和特性可以通过在 Python 2 的内置 <code>__future__</code> 模块导入。如果你计划让你的代码支持 Python 3.x，建议你使用 <code>__future__</code> 模块导入。例如，如果我想要 在Python 2 中表现 Python 3.x 中的整除，我们可以通过如下导入</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</div></pre></td></tr></table></figure>
+
+<p>　　更多的 <code>__future__</code> 模块可被导入的特性被列在下表中：</p>
+<table>
+<thead>
+<tr>
+<th><strong>feature</strong></th>
+<th style="text-align:right"><strong>optional in</strong></th>
+<th style="text-align:center"><strong>mandatory in</strong></th>
+<th><strong>effect</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nested_scopes</td>
+<td style="text-align:right">2.1.0b1</td>
+<td style="text-align:center">2.2</td>
+<td><a href="http://legacy.python.org/dev/peps/pep-0227/" target="_blank" rel="external">PEP 227</a>: Statically Nested Scopes</td>
+</tr>
+<tr>
+<td>generators</td>
+<td style="text-align:right">2.2.0a1</td>
+<td style="text-align:center">2.3</td>
+<td><a href="http://legacy.python.org/dev/peps/pep-0255/" target="_blank" rel="external">PEP 255</a>: Simple Generators</td>
+</tr>
+<tr>
+<td>division</td>
+<td style="text-align:right">2.2.0a2</td>
+<td style="text-align:center">3.0</td>
+<td><a href="http://legacy.python.org/dev/peps/pep-0238/" target="_blank" rel="external">PEP 238</a>: Changing the Division Operator</td>
+</tr>
+<tr>
+<td>absolute_import</td>
+<td style="text-align:right">2.5.0a1</td>
+<td style="text-align:center">3.0</td>
+<td><a href="http://legacy.python.org/dev/peps/pep-0328/" target="_blank" rel="external">PEP 328</a>: Imports: Multi-Line and Absolute/Relative</td>
+</tr>
+<tr>
+<td>with_statement</td>
+<td style="text-align:right">2.5.0a1</td>
+<td style="text-align:center">2.6</td>
+<td><a href="http://www.python.org/dev/peps/pep-0343" target="_blank" rel="external">PEP 343</a>: The “with” Statement</td>
+</tr>
+<tr>
+<td>print_function</td>
+<td style="text-align:right">2.5.0a2</td>
+<td style="text-align:center">3.0</td>
+<td><a href="http://legacy.python.org/dev/peps/pep-3105/" target="_blank" rel="external">PEP 3105</a>: Make print a function</td>
+</tr>
+<tr>
+<td>unicode_literals</td>
+<td style="text-align:right">2.5.0a2</td>
+<td style="text-align:center">3.0</td>
+<td><a href="http://legacy.python.org/dev/peps/pep-3112/" target="_blank" rel="external">PEP 3112</a>: Bytes literals in Python 3000</td>
+</tr>
+</tbody>
+</table>
+<p>(Source: <a href="https://docs.python.org/2/library/future.html" target="_blank" rel="external">https://docs.python.org/2/library/future.html</a>)</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> platform <span class="keyword">import</span> python_version</div></pre></td></tr></table></figure>
+
+<h2 id="print_函数"><strong>print 函数</strong></h2>
+<hr>
+<p>　　很琐碎，而 <code>print</code> 语法的变化可能是最广为人知的了，但是仍值得一提的是： Python 2 的 print 声明已经被 <code>print()</code> 函数取代了，这意味着我们必须包装我们想打印在小括号中的对象。<br>Python 2 不具有额外的小括号问题。但对比一下，如果我们按照 Python 2 的方式不使用小括号调用 <code>print</code> 函数，Python 3 将抛出一个语法异常（<code>SyntaxError</code>）。<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">print</span> <span class="string">'Hello, World!'</span></div><div class="line">print(<span class="string">'Hello, World!'</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">"text"</span>, ; <span class="keyword">print</span> <span class="string">'print more text on the same line'</span></div></pre></td></tr></table></figure>
+
+<p><em>run result: &gt;&gt;&gt;</em><br>Python 2.7.6<br>Hello, World!<br>Hello, World!<br>text print more text on the same line</p>
+<p><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">print(<span class="string">'Hello, World!'</span>)</div><div class="line">print(<span class="string">"some text,"</span>, end=<span class="string">""</span>) </div><div class="line">print(<span class="string">' print more text on the same line'</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1<br>Hello, World!<br>some text, print more text on the same line</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Hello, World!'</span></div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>  File “<ipython-input-3-139a7c5835bd>“, line 1<br>　　print ‘Hello, World!’<br>　　　　　　　　　　　^<br>SyntaxError: invalid syntax</ipython-input-3-139a7c5835bd></p>
+<p><strong>Note:</strong><br>　　以上通过 Python 2 使用 <code>Printing &quot;Hello, World&quot;</code> 是非常正常的，尽管如此，如果你有多个对象在小括号中，我们将创建一个元组，因为 <code>print</code> 在 Python 2 中是一个声明，而不是一个函数调用。</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line">print(<span class="string">'a'</span>, <span class="string">'b'</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">'a'</span>, <span class="string">'b'</span></div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.7<br>(‘a’, ‘b’)<br>a b</p>
+<h2 id="整除"><strong>整除</strong></h2>
+<hr>
+<p>　　如果你正在移植代码，这个变化是特别危险的。或者你在 Python 2 上执行 Python 3 的代码。因为这个整除的变化表现在它会被忽视（即它不会抛出语法异常）。<br>　　因此，我还是倾向于使用一个 <code>float(3)/2</code> 或 <code>3/2.0</code> 代替在我的 Python 3 脚本保存在 Python 2 中的 <code>3/2</code> 的一些麻烦（并且反而过来也一样，我建议在你的 Python 2 脚本中使用 <code>from __future__ import division</code>）<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">print</span> <span class="string">'3 / 2 ='</span>, <span class="number">3</span> / <span class="number">2</span></div><div class="line"><span class="keyword">print</span> <span class="string">'3 // 2 ='</span>, <span class="number">3</span> // <span class="number">2</span></div><div class="line"><span class="keyword">print</span> <span class="string">'3 / 2.0 ='</span>, <span class="number">3</span> / <span class="number">2.0</span></div><div class="line"><span class="keyword">print</span> <span class="string">'3 // 2.0 ='</span>, <span class="number">3</span> // <span class="number">2.0</span></div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6<br>3 / 2 = 1<br>3 // 2 = 1<br>3 / 2.0 = 1.5<br>3 // 2.0 = 1.0</p>
+<p><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">print(<span class="string">'3 / 2 ='</span>, <span class="number">3</span> / <span class="number">2</span>)</div><div class="line">print(<span class="string">'3 // 2 ='</span>, <span class="number">3</span> // <span class="number">2</span>)</div><div class="line">print(<span class="string">'3 / 2.0 ='</span>, <span class="number">3</span> / <span class="number">2.0</span>)</div><div class="line">print(<span class="string">'3 // 2.0 ='</span>, <span class="number">3</span> // <span class="number">2.0</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1<br>3 / 2 = 1.5<br>3 // 2 = 1<br>3 / 2.0 = 1.5<br>3 // 2.0 = 1.0
+　　</p>
+<h2 id="Unicode"><strong>Unicode</strong></h2>
+<hr>
+<p>　　Python 2 有 ASCII str() 类型，<code>unicode()</code> 是单独的，不是 <code>byte</code> 类型。<br>　　现在， 在 Python 3，我们最终有了 <code>Unicode (utf-8)</code> 字符串，以及一个字节类：<code>byte</code> 和 <code>bytearrays</code>。<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> type(unicode(<span class="string">'this is like a python3 str type'</span>))</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>&lt; type ‘unicode’ &gt;</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> type(<span class="string">b'byte type does not exist'</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>&lt; type ‘str’ &gt;</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'they are really'</span> + <span class="string">b' the same'</span></div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>they are really the same</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> type(bytearray(<span class="string">b'bytearray oddly does exist though'</span>))</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>&lt; type ‘bytearray’ &gt;<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">print(<span class="string">'strings are now utf-8 \u03BCnico\u0394é!'</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1<br>strings are now utf-8 μnicoΔé!<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version(), end=<span class="string">""</span>)</div><div class="line">print(<span class="string">' has'</span>, type(<span class="string">b' bytes for storing data'</span>))</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1 has &lt; class ‘bytes’ &gt;<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'and Python'</span>, python_version(), end=<span class="string">""</span>)</div><div class="line">print(<span class="string">' also has'</span>, type(bytearray(<span class="string">b'bytearrays'</span>)))</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>and Python 3.4.1 also has &lt; class ‘bytearray’&gt;<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'note that we cannot add a string'</span> + <span class="string">b'bytes for data'</span></div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>-—————————————————————————————————————<br>TypeError                                 Traceback (most recent call last)<br>&lt; ipython-input-13-d3e8942ccf81&gt; in &lt; module&gt;()<br>——&gt; 1 ‘note that we cannot add a string’ + b’bytes for data’</p>
+<p>TypeError: Can’t convert ‘bytes’ object to str implicitly</p>
+<h2 id="xrange模块"><strong>xrange模块</strong></h2>
+<hr>
+<p>　　在 Python 2 中 <code>xrange()</code> 创建迭代对象的用法是非常流行的。比如： <code>for</code> 循环或者是列表/集合/字典推导式。<br>　　这个表现十分像生成器（比如。“惰性求值”）。但是这个 <code>xrange-iterable</code> 是无穷的，意味着你可以无限遍历。<br>　　由于它的惰性求值，如果你不得仅仅不遍历它一次，<code>xrange()</code> 函数 比 <code>range()</code> 更快（比如 <code>for</code> 循环）。尽管如此，对比迭代一次，不建议你重复迭代多次，因为生成器每次都从头开始。<br>　　在 Python 3 中，<code>range()</code> 是像 <code>xrange()</code> 那样实现以至于一个专门的 <code>xrange()</code> 函数都不再存在（在 Python 3 中 <code>xrange()</code> 会抛出命名异常）。</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> timeit</div><div class="line">n = <span class="number">10000</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_range</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</div><div class="line">        <span class="keyword">pass</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_xrange</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</div><div class="line">        <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+
+<p><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">print</span> <span class="string">'\ntiming range()'</span></div><div class="line">%timeit test_range(n)</div><div class="line"><span class="keyword">print</span> <span class="string">'\n\ntiming xrange()'</span></div><div class="line">%timeit test_xrange(n)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6</p>
+<p>timing range()<br>1000 loops, best of 3: 433 µs per loop</p>
+<p>timing xrange()<br>1000 loops, best of 3: 350 µs per loop<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">print(<span class="string">'\ntiming range()'</span>)</div><div class="line">%timeit test_range(n)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1</p>
+<p>timing range()<br>1000 loops, best of 3: 520 µs per loop</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(xrange(<span class="number">10</span>))</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>-—————————————————————————————————————<br>NameError                                 Traceback (most recent call last)</p>
+<p><ipython-input-5-5d8f9b79ea70> in <module>()<br>——&gt; 1 print(xrange(10))</module></ipython-input-5-5d8f9b79ea70></p>
+<p>NameError: name ‘xrange’ is not defined</p>
+<h2 id="Python_3_中的_range_对象的_contains_方法"><strong>Python 3 中的 range 对象的 <strong>contains</strong> 方法</strong></h2>
+<hr>
+<p>　　另外一件值得一提的事情就是在 Python 3 中 <code>range</code> 有一个新的 <code>__contains__</code> 方法（感谢 Yuchen Ying 指出了这个），<code>__contains__</code> 方法可以加速 “查找” 在 Python 3.x 中显著的整数和布尔类型。</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">10000000</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">val_in_range</span><span class="params">(x, val)</span>:</span></div><div class="line">    <span class="keyword">return</span> val <span class="keyword">in</span> range(x)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">val_in_xrange</span><span class="params">(x, val)</span>:</span></div><div class="line">    <span class="keyword">return</span> val <span class="keyword">in</span> xrange(x)</div><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line"><span class="keyword">assert</span>(val_in_range(x, x/<span class="number">2</span>) == <span class="keyword">True</span>)</div><div class="line"><span class="keyword">assert</span>(val_in_range(x, x//<span class="number">2</span>) == <span class="keyword">True</span>)</div><div class="line">%timeit val_in_range(x, x/<span class="number">2</span>)</div><div class="line">%timeit val_in_range(x, x//<span class="number">2</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1<br>1 loops, best of 3: 742 ms per loop<br>1000000 loops, best of 3: 1.19 µs per loop<br>　　基于以上的 timeit 的结果，当它使一个整数类型，而不是浮点类型的时候，你可以看到执行查找的速度是 60000 倍快。尽管如此，因为 Python 2.x 的 <code>range</code> 或者是 <code>xrange</code> 没有一个 <code>__contains__</code> 方法，这个整数类型或者是浮点类型的查询速度不会相差太大。</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">assert</span>(val_in_xrange(x, x/<span class="number">2.0</span>) == <span class="keyword">True</span>)</div><div class="line"><span class="keyword">assert</span>(val_in_xrange(x, x/<span class="number">2</span>) == <span class="keyword">True</span>)</div><div class="line"><span class="keyword">assert</span>(val_in_range(x, x/<span class="number">2</span>) == <span class="keyword">True</span>)</div><div class="line"><span class="keyword">assert</span>(val_in_range(x, x//<span class="number">2</span>) == <span class="keyword">True</span>)</div><div class="line">%timeit val_in_xrange(x, x/<span class="number">2.0</span>)</div><div class="line">%timeit val_in_xrange(x, x/<span class="number">2</span>)</div><div class="line">%timeit val_in_range(x, x/<span class="number">2.0</span>)</div><div class="line">%timeit val_in_range(x, x/<span class="number">2</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.7<br>1 loops, best of 3: 285 ms per loop<br>1 loops, best of 3: 179 ms per loop<br>1 loops, best of 3: 658 ms per loop<br>1 loops, best of 3: 556 ms per loop<br>　　下面说下 <code>__contain__</code>方法并没有加入到 Python 2.x 中的证据：</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">range.__contains__</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1</p>
+<p>&lt; slot wrapper ‘<strong>contains</strong>‘ of ‘range’ objects &gt;</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line">range.__contains__</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.7</p>
+<p>-—————————————————————————————————————<br>AttributeError                            Traceback (most recent call last)<br>&lt; ipython-input-7-05327350dafb&gt; in &lt; module&gt;()<br>      1 print ‘Python’, python<em>version()<br>——&gt; 2 range.`<em>_contains</em></em>`</p>
+<p>AttributeError: ‘builtin<em>function<em>or_method’ object has no attribute `’__contains</em></em>‘`</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line">xrange.__contains__</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.7</p>
+<p>-—————————————————————————————————————<br>AttributeError                            Traceback (most recent call last)<br>&lt; ipython-input-8-7d1a71bfee8e&gt; in &lt; module&gt;()<br>      1 print ‘Python’, python<em>version()<br>——&gt; 2 xrange.`<em>_contains</em></em>`</p>
+<p>AttributeError: type object ‘xrange’ has no attribute <code>&#39;__contains__&#39;</code><br><strong>注意在 Python 2 和 Python 3 中速度的不同</strong><br>　　有些人指出了 Python 3 的 <code>range()</code> 和 Python 2 的 <code>xrange()</code> 之间的速度不同。因为他们是用相同的方法实现的，因此期望相同的速度。尽管如此，这事实在于 Python 3 倾向于比 Python 2 运行的慢一点。</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_while</span><span class="params">()</span>:</span></div><div class="line">    i = <span class="number">0</span></div><div class="line">    <span class="keyword">while</span> i &lt; <span class="number">20000</span>:</div><div class="line">        i += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span></div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">%timeit test_while()</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1<br>100 loops, best of 3: 2.68 ms per loop</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line">%timeit test_while()</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6<br>1000 loops, best of 3: 1.72 ms per loop</p>
+<h2 id="Raising_exceptions"><strong>Raising exceptions</strong></h2>
+<hr>
+<p>　　Python 2 接受新旧两种语法标记，在 Python 3 中如果我不用小括号把异常参数括起来就会阻塞（并且反过来引发一个语法异常）。<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">raise</span> IOError, <span class="string">"file error"</span></div></pre></td></tr></table></figure>
+
+<p><em>run result:</em> </p>
+<p>-—————————————————————————————————————<br>IOError                                   Traceback (most recent call last)<br>&lt; ipython-input-8-25f049caebb0&gt; in &lt; module&gt;()<br>——&gt; 1 raise IOError, “file error”</p>
+<p>IOError: file error</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">raise</span> IOError(<span class="string">"file error"</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>-—————————————————————————————————————<br>IOError                                   Traceback (most recent call last)<br>&lt; ipython-input-9-6f1c43f525b2&gt; in &lt; module&gt;()<br>——&gt; 1 raise IOError(“file error”)</p>
+<p>IOError: file error</p>
+<p><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">raise</span> IOError, <span class="string">"file error"</span></div></pre></td></tr></table></figure>
+
+<p><em>run result:</em> </p>
+<p>  File “<ipython-input-10-25f049caebb0>“, line 1<br>    raise IOError, “file error”<br>　　　　　　^<br>SyntaxError: invalid syntax<br>　　在 Python 3 中，可以这样抛出异常：</ipython-input-10-25f049caebb0></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line"><span class="keyword">raise</span> IOError(<span class="string">"file error"</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1</p>
+<p>-—————————————————————————————————————<br>OSError                                   Traceback (most recent call last)<br>&lt; ipython-input-11-c350544d15da&gt; in &lt; module&gt;()<br>      1 print(‘Python’, python_version())<br>——&gt; 2 raise IOError(“file error”)</p>
+<p>OSError: file error</p>
+<h2 id="Handling_exceptions"><strong>Handling exceptions</strong></h2>
+<hr>
+<p>　　在 Python 3 中处理异常也轻微的改变了，在 Python 3 中我们现在使用 <code>as</code> 作为关键词。<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    let_us_cause_a_NameError</div><div class="line"><span class="keyword">except</span> NameError, err:</div><div class="line">    <span class="keyword">print</span> err, <span class="string">'--&gt; our error message'</span></div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6<br>name ‘let_us_cause_a_NameError’ is not defined —&gt; our error message<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    let_us_cause_a_NameError</div><div class="line"><span class="keyword">except</span> NameError <span class="keyword">as</span> err:</div><div class="line">    print(err, <span class="string">'--&gt; our error message'</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em> </p>
+<p>Python 3.4.1<br>name ‘let_us_cause_a_NameError’ is not defined —&gt; our error message</p>
+<h2 id="next()_函数_and_-next()_方法"><strong>next() 函数 and .next() 方法</strong></h2>
+<hr>
+<p>　　因为 <code>next() (.next())</code> 是一个如此普通的使用函数（方法），这里有另外一个语法改变（或者是实现上改变了），值得一提的是：在 Python 2.7.5 中函数和方法你都可以使用，<code>next()</code> 函数在 Python 3 中一直保留着（调用 <code>.next()</code> 抛出属性异常）。<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line">my_generator = (letter <span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'abcdefg'</span>)</div><div class="line">next(my_generator)</div><div class="line">my_generator.next()</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6</p>
+<p>‘b<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">my_generator = (letter <span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'abcdefg'</span>)</div><div class="line">next(my_generator)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1</p>
+<p>‘a’</p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">my_generator.next()</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>-—————————————————————————————————————<br>AttributeError                            Traceback (most recent call last)<br>&lt; ipython-input-14-125f388bb61b&gt; in &lt; module&gt;()<br>——&gt; 1 my_generator.next()</p>
+<p>AttributeError: ‘generator’ object has no attribute ‘next’</p>
+<h2 id="For_循环变量和全局命名空间泄漏"><strong>For 循环变量和全局命名空间泄漏</strong></h2>
+<hr>
+<p>　　好消息：在 Python 3.x 中 <code>for</code> 循环变量不会再导致命名空间泄漏。<br>　　在 Python 3.x 中做了一个改变，在 What’s New In Python 3.0 中有如下描述：<br>　　“列表推导不再支持 <code>[... for var in item1, item2, ...]</code> 这样的语法。使用 <code>[... for var in (item1, item2, ...)]</code> 代替。也需要提醒的是列表推导有不同的语义：  他们关闭了在 <code>list()</code> 构造器中的生成器表达式的语法糖, 并且特别是循环控制变量不再泄漏进周围的作用范围域.”<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line">i = <span class="number">1</span></div><div class="line"><span class="keyword">print</span> <span class="string">'before: i ='</span>, i</div><div class="line"><span class="keyword">print</span> <span class="string">'comprehension: '</span>, [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)]</div><div class="line"><span class="keyword">print</span> <span class="string">'after: i ='</span>, i</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6<br>before: i = 1<br>comprehension:  [0, 1, 2, 3, 4]<br>after: i = 4<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">i = <span class="number">1</span></div><div class="line">print(<span class="string">'before: i ='</span>, i)</div><div class="line">print(<span class="string">'comprehension:'</span>, [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)])</div><div class="line">print(<span class="string">'after: i ='</span>, i)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1<br>before: i = 1<br>comprehension: [0, 1, 2, 3, 4]<br>after: i = 1</p>
+<h2 id="比较不可排序类型"><strong>比较不可排序类型</strong></h2>
+<hr>
+<p>　　在 Python 3 中的另外一个变化就是当对不可排序类型做比较的时候，会抛出一个类型错误。<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">print</span> <span class="string">"[1, 2] &gt; 'foo' = "</span>, [<span class="number">1</span>, <span class="number">2</span>] &gt; <span class="string">'foo'</span></div><div class="line"><span class="keyword">print</span> <span class="string">"(1, 2) &gt; 'foo' = "</span>, (<span class="number">1</span>, <span class="number">2</span>) &gt; <span class="string">'foo'</span></div><div class="line"><span class="keyword">print</span> <span class="string">"[1, 2] &gt; (1, 2) = "</span>, [<span class="number">1</span>, <span class="number">2</span>] &gt; (<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6<br>[1, 2] &gt; ‘foo’ =  False<br>(1, 2) &gt; ‘foo’ =  True<br>[1, 2] &gt; (1, 2) =  False<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">print(<span class="string">"[1, 2] &gt; 'foo' = "</span>, [<span class="number">1</span>, <span class="number">2</span>] &gt; <span class="string">'foo'</span>)</div><div class="line">print(<span class="string">"(1, 2) &gt; 'foo' = "</span>, (<span class="number">1</span>, <span class="number">2</span>) &gt; <span class="string">'foo'</span>)</div><div class="line">print(<span class="string">"[1, 2] &gt; (1, 2) = "</span>, [<span class="number">1</span>, <span class="number">2</span>] &gt; (<span class="number">1</span>, <span class="number">2</span>))</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1</p>
+<p>-—————————————————————————————————————<br>TypeError                                 Traceback (most recent call last)<br>&lt; ipython-input-16-a9031729f4a0&gt; in &lt; module&gt;()<br>      1 print(‘Python’, python_version())<br>——&gt; 2 print(“[1, 2] &gt; ‘foo’ = “, [1, 2] &gt; ‘foo’)<br>      3 print(“(1, 2) &gt; ‘foo’ = “, (1, 2) &gt; ‘foo’)<br>      4 print(“[1, 2] &gt; (1, 2) = “, [1, 2] &gt; (1, 2))</p>
+<p>TypeError: unorderable types: list() &gt; str()</p>
+<h2 id="通过_input()_解析用户的输入"><strong>通过 input() 解析用户的输入</strong></h2>
+<hr>
+<p>　　幸运的是，在 Python 3 中已经解决了把用户的输入存储为一个 <code>str</code> 对象的问题。为了避免在 Python 2 中的读取非字符串类型的危险行为，我们不得不使用 <code>raw_input()</code> 代替。<br><strong><em>Python 2</em></strong><br>    Python 2.7.6<br>    [GCC 4.0.1 (Apple Inc. build 5493)] on darwin<br>    Type “help”, “copyright”, “credits” or “license” for more information.</p>
+<pre><code><span class="input"><span class="prompt">&gt;&gt;&gt;</span> my_input = input(<span class="string">'enter a number: '</span>)</span>
+<span class="input"><span class="prompt">
+enter a number: 123
+
+&gt;&gt;&gt;</span> type(my_input)</span>
+&lt;type <span class="string">'int'</span>&gt;
+
+<span class="input"><span class="prompt">&gt;&gt;&gt;</span> my_input = raw_input(<span class="string">'enter a number: '</span>)</span>
+<span class="input"><span class="prompt">
+enter a number: 123
+
+&gt;&gt;&gt;</span> type(my_input)</span>
+&lt;type <span class="string">'str'</span>&gt;
+</code></pre><p><strong><em>Python 3</em></strong><br>    Python 3.4.1<br>    [GCC 4.2.1 (Apple Inc. build 5577)] on darwin<br>    Type “help”, “copyright”, “credits” or “license” for more information.</p>
+<pre><code><span class="input"><span class="prompt">&gt;&gt;&gt;</span> my_input = input(<span class="string">'enter a number: '</span>)</span>
+<span class="input"><span class="prompt">
+
+enter a number: 123
+
+
+&gt;&gt;&gt;</span> type(my_input)</span>
+&lt;<span class="class"><span class="keyword">class</span> '<span class="title">str</span>'&gt;</span>
+</code></pre><h2 id="返回可迭代对象，而不是列表"><strong>返回可迭代对象，而不是列表</strong></h2>
+<hr>
+<p>　　如果在 xrange 章节看到的，现在在 Python 3 中一些方法和函数返回迭代对象 — 代替 Python 2 中的列表<br>　　因为我们通常那些遍历只有一次，我认为这个改变对节约内存很有意义。尽管如此，它也是可能的，相对于生成器 —- 如需要遍历多次。它是不那么高效的。<br>　　而对于那些情况下，我们真正需要的是列表对象，我们可以通过 <code>list()</code> 函数简单的把迭代对象转换成一个列表。<br><strong><em>Python 2</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version() </div><div class="line"><span class="keyword">print</span> range(<span class="number">3</span>) </div><div class="line"><span class="keyword">print</span> type(range(<span class="number">3</span>))</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 2.7.6<br>[0, 1, 2]<br>&lt; type ‘list’&gt;<br><strong><em>Python 3</em></strong></p>
+<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line">print(range(<span class="number">3</span>))</div><div class="line">print(type(range(<span class="number">3</span>)))</div><div class="line">print(list(range(<span class="number">3</span>)))</div></pre></td></tr></table></figure>
+
+<p><em>run result:</em><br>Python 3.4.1<br>range(0, 3)<br>&lt; class ‘range’&gt;<br>[0, 1, 2]<br>　　在 Python 3 中一些经常使用到的不再返回列表的函数和方法：</p>
+<ul>
+<li><code>zip()</code></li>
+<li><code>map()</code></li>
+<li><code>filter()</code></li>
+<li>dictionary’s <code>.keys()</code> method</li>
+<li>dictionary’s <code>.values()</code> method</li>
+<li>dictionary’s <code>.items()</code> method</li>
+</ul>
+<h2 id="更多的关于_Python_2_和_Python_3_的文章"><strong>更多的关于 Python 2 和 Python 3 的文章</strong></h2>
+<hr>
+<p>　　下面是我建议后续的关于 Python 2 和 Python 3 的一些好文章。<br><strong>移植到 Python 3</strong></p>
+<ul>
+<li><a href="https://wiki.python.org/moin/Python2orPython3" target="_blank" rel="external">Should I use Python 2 or Python 3 for my development activity?</a></li>
+<li><a href="https://docs.python.org/3.0/whatsnew/3.0.html" target="_blank" rel="external">What’s New In Python 3.0</a></li>
+<li><a href="http://python3porting.com/differences.html" target="_blank" rel="external">Porting to Python 3</a></li>
+<li><a href="https://docs.python.org/3/howto/pyporting.html" target="_blank" rel="external">Porting Python 2 Code to Python 3</a></li>
+<li><a href="http://nothingbutsnark.svbtle.com/my-view-on-the-current-state-of-python-3" target="_blank" rel="external">How keep Python 3 moving forward</a></li>
+</ul>
+<p><strong>Python 3 的拥护者和反对者</strong></p>
+<ul>
+<li><a href="http://asmeurer.github.io/python3-presentation/slides.html#1" target="_blank" rel="external">10 awesome features of Python that you can’t use because you refuse to upgrade to Python 3</a></li>
+<li><a href="http://lucumr.pocoo.org/2014/5/12/everything-about-unicode/" target="_blank" rel="external">Everything you did not want to know about Unicode in Python 3</a></li>
+<li><a href="https://medium.com/@deliciousrobots/5d2ad703365dverything-about-unicode/" target="_blank" rel="external">Python 3 is killing Python</a></li>
+<li><a href="https://medium.com/@opinionbreaker/python-3-can-revive-python-2a7af4788b10" target="_blank" rel="external">Python 3 can revive Python</a></li>
+<li><a href="http://sealedabstract.com/rants/python-3-is-fine/" target="_blank" rel="external">Python 3 is fine</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Python/">Python</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/" data-title="Python 2.7.x 和 Python 3.x 的主要差异 | Chan&#39;s blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2014/11/09/Scrapy-Tutorial-for-BBSSpider/"  title="Scrapy爬虫抓取网站数据">
+ <strong>NEXT:</strong><br/> 
+ <span>Scrapy爬虫抓取网站数据
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/" data-title=”Python 2.7.x 和 Python 3.x 的主要差异” data-url="http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chenqx"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#future_模块"><span class="toc-number">1.</span> <span class="toc-text">future 模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print_函数"><span class="toc-number">2.</span> <span class="toc-text">print 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整除"><span class="toc-number">3.</span> <span class="toc-text">整除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">4.</span> <span class="toc-text">Unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xrange模块"><span class="toc-number">5.</span> <span class="toc-text">xrange模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python_3_中的_range_对象的_contains_方法"><span class="toc-number">6.</span> <span class="toc-text">Python 3 中的 range 对象的 contains 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raising_exceptions"><span class="toc-number">7.</span> <span class="toc-text">Raising exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handling_exceptions"><span class="toc-number">8.</span> <span class="toc-text">Handling exceptions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next()_函数_and_-next()_方法"><span class="toc-number">9.</span> <span class="toc-text">next() 函数 and .next() 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For_循环变量和全局命名空间泄漏"><span class="toc-number">10.</span> <span class="toc-text">For 循环变量和全局命名空间泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不可排序类型"><span class="toc-number">11.</span> <span class="toc-text">比较不可排序类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过_input()_解析用户的输入"><span class="toc-number">12.</span> <span class="toc-text">通过 input() 解析用户的输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回可迭代对象，而不是列表"><span class="toc-number">13.</span> <span class="toc-text">返回可迭代对象，而不是列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多的关于_Python_2_和_Python_3_的文章"><span class="toc-number">14.</span> <span class="toc-text">更多的关于 Python 2 和 Python 3 的文章</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Database/" title="Database">Database<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Machine-Learning/" title="Machine Learning">Machine Learning<sup>1</sup></a></li>
+		
+			<li><a href="/categories/NLP/" title="NLP">NLP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+	  <li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
+	  <li><a href="http://www.pami.sjtu.edu.cn/" target="_blank" title="PAMI Lab">PAMI Lab</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> Follow brain, heart is stupid as shit. <br/>
+			 </p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/chenqx" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://chenqx.github.com" target="_blank" title="Chan">Chan</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-56584658-1', 'http://chenqx.github.io/');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
