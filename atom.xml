@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-11T01:48:05.651Z</updated>
+  <updated>2014-11-11T02:18:34.242Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,10 +19,9 @@
     <link href="http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/"/>
     <id>http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/</id>
     <published>2014-11-10T12:04:25.000Z</published>
-    <updated>2014-11-11T00:53:25.000Z</updated>
+    <updated>2014-11-11T02:02:01.000Z</updated>
     <content type="html"><![CDATA[<p>　　因这学期负责Python课程的助教，刚开始上机试验的几节课，有很多同学用 Python3.4 的编译器编译 Python 2.7 的程序而导致不通过。Python 2.7.x 和 Python 3.x 版本并非完全兼容。<br>　　许多 Python 初学者想知道他们应该从 Python 的哪个版本开始学习。对于这个问题我的答案是 “你学习你喜欢的教程的版本，然后检查他们之间的不同。” 但如果你并未了解过两个版本之间的差异，个人推荐使用 Python 2.7.x 版本，毕竟大部分教材等资料还是用Python 2.7.x来写的。<br>　　但是如果你开始一个新项目，并且有选择权？我想说的是目前没有对错，只要你计划使用的库 Python 2.7.x 和 Python 3.x 双方都支持的话。尽管如此，当在编写它们中的任何一个的代码，或者是你计划移植你的项目的时候，是非常值得看看这两个主要流行的 Python 版本之间的差别的，以便避免常见的陷阱。<br>　　本文翻译自：<a href="http://nbviewer.ipython.org/github/rasbt/python_reference/blob/master/tutorials/key_differences_between_python_2_and_3.ipynb?create=1" target="_blank" rel="external">《Key differences between Python 2.7.x and Python 3.x》</a></p>
 <h2 id="__future__模块"><strong><code>__future__</code>模块</strong></h2>
-<hr>
 <p>　　Python 3.x 介绍的 一些Python 2 不兼容的关键字和特性可以通过在 Python 2 的内置 <code>__future__</code> 模块导入。如果你计划让你的代码支持 Python 3.x，建议你使用 <code>__future__</code> 模块导入。例如，如果我想要 在Python 2 中表现 Python 3.x 中的整除，我们可以通过如下导入</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</div></pre></td></tr></table></figure>
 
@@ -85,7 +84,6 @@
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> platform <span class="keyword">import</span> python_version</div></pre></td></tr></table></figure>
 
 <h2 id="print函数"><strong><code>print</code>函数</strong></h2>
-<hr>
 <p>　　很琐碎，而 <code>print</code> 语法的变化可能是最广为人知的了，但是仍值得一提的是： Python 2 的 print 声明已经被 <code>print()</code> 函数取代了，这意味着我们必须包装我们想打印在小括号中的对象。<br>Python 2 不具有额外的小括号问题。但对比一下，如果我们按照 Python 2 的方式不使用小括号调用 <code>print</code> 函数，Python 3 将抛出一个语法异常（<code>SyntaxError</code>）。</p>
 <p><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">print</span> <span class="string">'Hello, World!'</span></div><div class="line">print(<span class="string">'Hello, World!'</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">"text"</span>, ; <span class="keyword">print</span> <span class="string">'print more text on the same line'</span></div></pre></td></tr></table></figure>
@@ -103,7 +101,6 @@
 
 <p><em>run result:</em><br>Python 2.7.7<br>(‘a’, ‘b’)<br>a b</p>
 <h2 id="整除"><strong>整除</strong></h2>
-<hr>
 <p>　　如果你正在移植代码，这个变化是特别危险的。或者你在 Python 2 上执行 Python 3 的代码。因为这个整除的变化表现在它会被忽视（即它不会抛出语法异常）。<br>　　因此，我还是倾向于使用一个 <code>float(3)/2</code> 或 <code>3/2.0</code> 代替在我的 Python 3 脚本保存在 Python 2 中的 <code>3/2</code> 的一些麻烦（并且反而过来也一样，我建议在你的 Python 2 脚本中使用 <code>from __future__ import division</code>）<br>　　<br><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">print</span> <span class="string">'3 / 2 ='</span>, <span class="number">3</span> / <span class="number">2</span></div><div class="line"><span class="keyword">print</span> <span class="string">'3 // 2 ='</span>, <span class="number">3</span> // <span class="number">2</span></div><div class="line"><span class="keyword">print</span> <span class="string">'3 / 2.0 ='</span>, <span class="number">3</span> / <span class="number">2.0</span></div><div class="line"><span class="keyword">print</span> <span class="string">'3 // 2.0 ='</span>, <span class="number">3</span> // <span class="number">2.0</span></div></pre></td></tr></table></figure>
 
@@ -113,7 +110,6 @@
 
 <p><em>run result:</em><br>Python 3.4.1<br>3 / 2 = 1.5<br>3 // 2 = 1<br>3 / 2.0 = 1.5<br>3 // 2.0 = 1.0</p>
 <h2 id="Unicode"><strong><code>Unicode</code></strong></h2>
-<hr>
 <p>　　Python 2 有 ASCII str() 类型，<code>unicode()</code> 是单独的，不是 <code>byte</code> 类型。<br>　　现在， 在 Python 3，我们最终有了 <code>Unicode (utf-8)</code> 字符串，以及一个字节类：<code>byte</code> 和 <code>bytearrays</code>。</p>
 <p><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div></pre></td></tr></table></figure>
@@ -146,7 +142,6 @@
 <p><em>run result:</em><br>-—————————————————————————————————————<br>TypeError                                 Traceback (most recent call last)<br>&lt; ipython-input-13-d3e8942ccf81&gt; in &lt; module&gt;()<br>——&gt; 1 ‘note that we cannot add a string’ + b’bytes for data’</p>
 <p>TypeError: Can’t convert ‘bytes’ object to str implicitly</p>
 <h2 id="xrange模块"><strong><code>xrange</code>模块</strong></h2>
-<hr>
 <p>　　在 Python 2 中 <code>xrange()</code> 创建迭代对象的用法是非常流行的。比如： <code>for</code> 循环或者是列表/集合/字典推导式。<br>　　这个表现十分像生成器（比如。“惰性求值”）。但是这个 <code>xrange-iterable</code> 是无穷的，意味着你可以无限遍历。<br>　　由于它的惰性求值，如果你不得仅仅不遍历它一次，<code>xrange()</code> 函数 比 <code>range()</code> 更快（比如 <code>for</code> 循环）。尽管如此，对比迭代一次，不建议你重复迭代多次，因为生成器每次都从头开始。<br>　　在 Python 3 中，<code>range()</code> 是像 <code>xrange()</code> 那样实现以至于一个专门的 <code>xrange()</code> 函数都不再存在（在 Python 3 中 <code>xrange()</code> 会抛出命名异常）。</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> timeit</div><div class="line">n = <span class="number">10000</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_range</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</div><div class="line">        <span class="keyword">pass</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_xrange</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</div><div class="line">        <span class="keyword">pass</span></div></pre></td></tr></table></figure>
 
@@ -167,7 +162,6 @@
 <p><ipython-input-5-5d8f9b79ea70> in <module>()<br>——&gt; 1 print(xrange(10))</module></ipython-input-5-5d8f9b79ea70></p>
 <p>NameError: name ‘xrange’ is not defined</p>
 <h2 id="Python3中的range对象的__contains__方法"><strong>Python3中的<code>range</code>对象的<code>__contains__</code>方法</strong></h2>
-<hr>
 <p>　　另外一件值得一提的事情就是在 Python 3 中 <code>range</code> 有一个新的 <code>__contains__</code> 方法（感谢 Yuchen Ying 指出了这个），<code>__contains__</code> 方法可以加速 “查找” 在 Python 3.x 中显著的整数和布尔类型。</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">10000000</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">val_in_range</span><span class="params">(x, val)</span>:</span></div><div class="line">    <span class="keyword">return</span> val <span class="keyword">in</span> range(x)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">val_in_xrange</span><span class="params">(x, val)</span>:</span></div><div class="line">    <span class="keyword">return</span> val <span class="keyword">in</span> xrange(x)</div><div class="line">print(<span class="string">'Python'</span>, python_version())</div><div class="line"><span class="keyword">assert</span>(val_in_range(x, x/<span class="number">2</span>) == <span class="keyword">True</span>)</div><div class="line"><span class="keyword">assert</span>(val_in_range(x, x//<span class="number">2</span>) == <span class="keyword">True</span>)</div><div class="line">%timeit val_in_range(x, x/<span class="number">2</span>)</div><div class="line">%timeit val_in_range(x, x//<span class="number">2</span>)</div></pre></td></tr></table></figure>
 
@@ -201,7 +195,6 @@
 
 <p><em>run result:</em><br>Python 2.7.6<br>1000 loops, best of 3: 1.72 ms per loop</p>
 <h2 id="Raising_exceptions"><strong>Raising exceptions</strong></h2>
-<hr>
 <p>　　Python 2 接受新旧两种语法标记，在 Python 3 中如果我不用小括号把异常参数括起来就会阻塞（并且反过来引发一个语法异常）。</p>
 <p><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div></pre></td></tr></table></figure>
@@ -230,7 +223,6 @@
 <p>-—————————————————————————————————————<br>OSError                                   Traceback (most recent call last)<br>&lt; ipython-input-11-c350544d15da&gt; in &lt; module&gt;()<br>      1 print(‘Python’, python_version())<br>——&gt; 2 raise IOError(“file error”)</p>
 <p>OSError: file error</p>
 <h2 id="Handling_exceptions"><strong>Handling exceptions</strong></h2>
-<hr>
 <p>　　在 Python 3 中处理异常也轻微的改变了，在 Python 3 中我们现在使用 <code>as</code> 作为关键词。</p>
 <p><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    let_us_cause_a_NameError</div><div class="line"><span class="keyword">except</span> NameError, err:</div><div class="line">    <span class="keyword">print</span> err, <span class="string">'--&gt; our error message'</span></div></pre></td></tr></table></figure>
@@ -242,7 +234,6 @@
 <p><em>run result:</em> </p>
 <p>Python 3.4.1<br>name ‘let_us_cause_a_NameError’ is not defined —&gt; our error message</p>
 <h2 id="next()函数_and_-next()方法"><strong><code>next()</code>函数 and <code>.next()</code>方法</strong></h2>
-<hr>
 <p>　　因为 <code>next() (.next())</code> 是一个如此普通的使用函数（方法），这里有另外一个语法改变（或者是实现上改变了），值得一提的是：在 Python 2.7.5 中函数和方法你都可以使用，<code>next()</code> 函数在 Python 3 中一直保留着（调用 <code>.next()</code> 抛出属性异常）。</p>
 <p><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line">my_generator = (letter <span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'abcdefg'</span>)</div><div class="line">next(my_generator)</div><div class="line">my_generator.next()</div></pre></td></tr></table></figure>
@@ -259,7 +250,6 @@
 <p><em>run result:</em><br>-—————————————————————————————————————<br>AttributeError                            Traceback (most recent call last)<br>&lt; ipython-input-14-125f388bb61b&gt; in &lt; module&gt;()<br>——&gt; 1 my_generator.next()</p>
 <p>AttributeError: ‘generator’ object has no attribute ‘next’</p>
 <h2 id="For循环变量和全局命名空间泄漏"><strong><code>For</code>循环变量和全局命名空间泄漏</strong></h2>
-<hr>
 <p>　　好消息：在 Python 3.x 中 <code>for</code> 循环变量不会再导致命名空间泄漏。<br>　　在 Python 3.x 中做了一个改变，在 What’s New In Python 3.0 中有如下描述：<br>　　“列表推导不再支持 <code>[... for var in item1, item2, ...]</code> 这样的语法。使用 <code>[... for var in (item1, item2, ...)]</code> 代替。也需要提醒的是列表推导有不同的语义：  他们关闭了在 <code>list()</code> 构造器中的生成器表达式的语法糖, 并且特别是循环控制变量不再泄漏进周围的作用范围域.”</p>
 <p><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line">i = <span class="number">1</span></div><div class="line"><span class="keyword">print</span> <span class="string">'before: i ='</span>, i</div><div class="line"><span class="keyword">print</span> <span class="string">'comprehension: '</span>, [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)]</div><div class="line"><span class="keyword">print</span> <span class="string">'after: i ='</span>, i</div></pre></td></tr></table></figure>
@@ -270,7 +260,6 @@
 
 <p><em>run result:</em><br>Python 3.4.1<br>before: i = 1<br>comprehension: [0, 1, 2, 3, 4]<br>after: i = 1</p>
 <h2 id="比较不可排序类型"><strong>比较不可排序类型</strong></h2>
-<hr>
 <p>　　在 Python 3 中的另外一个变化就是当对不可排序类型做比较的时候，会抛出一个类型错误。</p>
 <p><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version()</div><div class="line"><span class="keyword">print</span> <span class="string">"[1, 2] &gt; 'foo' = "</span>, [<span class="number">1</span>, <span class="number">2</span>] &gt; <span class="string">'foo'</span></div><div class="line"><span class="keyword">print</span> <span class="string">"(1, 2) &gt; 'foo' = "</span>, (<span class="number">1</span>, <span class="number">2</span>) &gt; <span class="string">'foo'</span></div><div class="line"><span class="keyword">print</span> <span class="string">"[1, 2] &gt; (1, 2) = "</span>, [<span class="number">1</span>, <span class="number">2</span>] &gt; (<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure>
@@ -283,7 +272,6 @@
 <p>-—————————————————————————————————————<br>TypeError                                 Traceback (most recent call last)<br>&lt; ipython-input-16-a9031729f4a0&gt; in &lt; module&gt;()<br>      1 print(‘Python’, python_version())<br>——&gt; 2 print(“[1, 2] &gt; ‘foo’ = “, [1, 2] &gt; ‘foo’)<br>      3 print(“(1, 2) &gt; ‘foo’ = “, (1, 2) &gt; ‘foo’)<br>      4 print(“[1, 2] &gt; (1, 2) = “, [1, 2] &gt; (1, 2))</p>
 <p>TypeError: unorderable types: list() &gt; str()</p>
 <h2 id="通过input()解析用户的输入"><strong>通过<code>input()</code>解析用户的输入</strong></h2>
-<hr>
 <p>　　幸运的是，在 Python 3 中已经解决了把用户的输入存储为一个 <code>str</code> 对象的问题。为了避免在 Python 2 中的读取非字符串类型的危险行为，我们不得不使用 <code>raw_input()</code> 代替。</p>
 <p><strong><em>Python 2</em></strong><br>    Python 2.7.6<br>    [GCC 4.0.1 (Apple Inc. build 5493)] on darwin<br>    Type “help”, “copyright”, “credits” or “license” for more information.</p>
 <pre><code><span class="input"><span class="prompt">&gt;&gt;&gt;</span> my_input = input(<span class="string">'enter a number: '</span>)</span>
@@ -307,7 +295,6 @@ enter a number: 123
 &gt;&gt;&gt;</span> type(my_input)</span>
 &lt;<span class="class"><span class="keyword">class</span> '<span class="title">str</span>'&gt;</span>
 </code></pre><h2 id="返回可迭代对象，而不是列表"><strong>返回可迭代对象，而不是列表</strong></h2>
-<hr>
 <p>　　如果在 xrange 章节看到的，现在在 Python 3 中一些方法和函数返回迭代对象 — 代替 Python 2 中的列表<br>　　因为我们通常那些遍历只有一次，我认为这个改变对节约内存很有意义。尽管如此，它也是可能的，相对于生成器 —- 如需要遍历多次。它是不那么高效的。<br>　　而对于那些情况下，我们真正需要的是列表对象，我们可以通过 <code>list()</code> 函数简单的把迭代对象转换成一个列表。</p>
 <p><strong><em>Python 2</em></strong></p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">'Python'</span>, python_version() </div><div class="line"><span class="keyword">print</span> range(<span class="number">3</span>) </div><div class="line"><span class="keyword">print</span> type(range(<span class="number">3</span>))</div></pre></td></tr></table></figure>
@@ -326,7 +313,6 @@ enter a number: 123
 <li>dictionary’s <code>.items()</code> method</li>
 </ul>
 <h2 id="更多的关于_Python_2_和_Python_3_的文章"><strong>更多的关于 Python 2 和 Python 3 的文章</strong></h2>
-<hr>
 <p>　　下面是我建议后续的关于 Python 2 和 Python 3 的一些好文章。</p>
 <p><strong>移植到 Python 3</strong></p>
 <ul>
@@ -360,9 +346,8 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/"/>
     <id>http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/</id>
     <published>2014-11-09T05:34:46.000Z</published>
-    <updated>2014-11-11T01:04:44.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="Scrapy_at_a_glance"><strong><code>Scrapy at a glance</code></strong></h2>
-<hr>
+    <updated>2014-11-11T02:06:25.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="Scrapy_at_a_glance"><strong>Scrapy at a glance</strong></h2>
 <p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。<br>　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。</p>
 <ul>
 <li><a href="http://www.scrapy.org/" target="_blank" rel="external">官方主页</a></li>
@@ -381,12 +366,10 @@ enter a number: 123
 <li><code>调度中间件</code>：介于Scrapy引擎和调度之间的中间件，从Scrapy引擎发送到调度的请求和响应。</li>
 </ul>
 <p>　　使用Scrapy可以很方便的完成网上数据的采集工作，它为我们完成了大量的工作，而不需要自己费大力气去开发。</p>
-<h2 id="Scrapy_Tutorial"><strong><code>Scrapy Tutorial</code></strong></h2>
-<hr>
+<h2 id="Scrapy_Tutorial"><strong>Scrapy Tutorial</strong></h2>
 <p>　　在本文中，假定您已经安装好<code>Scrapy</code>。 如若不然，请参考 <a href="http://doc.scrapy.org/en/0.24/intro/install.html#intro-install" target="_blank" rel="external"><em>Installation guide</em></a>。<br>　　接下来以爬取<a href="https://bbs.sjtu.edu.cn/frame2.html" target="_blank" rel="external"><em>饮水思源BBS</em></a>数据为例来讲述爬取过程，详见<a href="https://github.com/chenqx/spiderDemo/tree/master/SJTUbbsSpiderDemo" target="_blank" rel="external"><em> bbsdmoz代码</em></a>。<br>　　本篇教程中将带您完成下列任务：</p><p style="background:#f1f1f1"><br>　　1. 创建一个Scrapy项目<br>　　2. 定义提取的Item<br>　　3. 编写爬取网站的 spider 并提取 Item<br>　　4. 编写 Item Pipeline 来存储提取到的Item(即数据)</p>
 <p>　　Scrapy由Python编写。如果您刚接触并且好奇这门语言的特性以及Scrapy的详情， 对于已经熟悉其他语言并且想快速学习Python的编程老手， 我们推荐 <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="external">Learn Python The Hard Way</a> ， 对于想从Python开始学习的编程新手， <a href="https://wiki.python.org/moin/BeginnersGuide/NonProgrammers" target="_blank" rel="external">非程序员的Python学习资料列表 </a>将是您的选择。</p>
-<h2 id="Creating_a_project"><strong><code>Creating a project</code></strong></h2>
-<hr>
+<h2 id="Creating_a_project"><strong>Creating a project</strong></h2>
 <p>　　在开始爬取之前，您必须创建一个新的Scrapy项目。进入您打算存储代码的目录中，运行下列命令：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrapy startproject bbsdmoz</div></pre></td></tr></table></figure>
 
@@ -402,14 +385,12 @@ enter a number: 123
 <li><code>bbsDmoz/settings.py</code>: 项目的设置文件.</li>
 <li><code>bbsDmoz/spiders/</code>: 放置<code>spider</code>代码的目录.</li>
 </ul>
-<h2 id="Defining_our_Item"><strong><code>Defining our Item</code></strong></h2>
-<hr>
+<h2 id="Defining_our_Item"><strong>Defining our Item</strong></h2>
 <p>　　Item 是保存爬取到的数据的容器；其使用方法和python字典类似，并且提供了额外保护机制来避免拼写错误导致的未定义字段错误。<br>　　类似在ORM中做的一样，您可以通过创建一个 <code>scrapy.Item</code> 类，并且定义类型为 <code>scrapy.Field</code> 的类属性来定义一个Item。(如果不了解ORM,不用担心，您会发现这个步骤非常简单)<br>　　首先根据需要从bbs网站获取到的数据对item进行建模。 我们需要从中获取<em>url，发帖板块，发帖人，以及帖子的内容</em>。 对此，在item中定义相应的字段。编辑 bbsDmoz 目录中的 <code>items.py</code> 文件：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># Define here the models for your scraped items</span></div><div class="line"><span class="comment"># See documentation in:</span></div><div class="line"><span class="comment"># http://doc.scrapy.org/en/latest/topics/items.html</span></div><div class="line"><span class="keyword">from</span> scrapy.item <span class="keyword">import</span> Item, Field</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BbsDmozItem</span><span class="params">(Item)</span>:</span></div><div class="line">    <span class="comment"># define the fields for your item here like:</span></div><div class="line">    <span class="comment"># name = scrapy.Field()</span></div><div class="line">    url   = Field()</div><div class="line">    forum = Field()</div><div class="line">    poster = Field()</div><div class="line">    content = Field()</div></pre></td></tr></table></figure>
 
 <p>　　一开始这看起来可能有点复杂，但是通过定义item， 您可以很方便的使用Scrapy的其他方法。而这些方法需要知道您的item的定义。</p>
-<h2 id="Our_first_Spider"><strong><code>Our first Spider</code></strong></h2>
-<hr>
+<h2 id="Our_first_Spider"><strong>Our first Spider</strong></h2>
 <p>　　Spider是用户编写用于从单个网站(或者一些网站)爬取数据的类。<br>　　其包含了一个用于下载的初始URL，如何跟进网页中的链接以及如何分析页面中的内容， 提取生成 item 的方法。</p>
 <h3 id="创建一个Spider">创建一个Spider</h3>
 <p>　　为了创建一个Spider，保存在 bbsDmoz/spiders，您必须继承 scrapy.Spider 类，且定义以下三个属性:</p>
@@ -448,8 +429,7 @@ enter a number: 123
 <p>　　以下为我们的第一个<strong><code>Spider代码</code></strong>，保存在 <code>bbsDmoz/spiders</code> 目录下的 <code>forumSpider.py</code> 文件中：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="string">'''</span></div><div class="line">bbsSpider, Created on Oct, 2014</div><div class="line">#version: 1.0</div><div class="line">#author: chenqx @http://chenqx.github.com</div><div class="line">See more: http://doc.scrapy.org/en/latest/index.html</div><div class="line">'''</div><div class="line"><span class="keyword">from</span> scrapy.selector <span class="keyword">import</span> Selector</div><div class="line"><span class="keyword">from</span> scrapy.http <span class="keyword">import</span>  Request</div><div class="line"><span class="keyword">from</span> scrapy.contrib.spiders <span class="keyword">import</span> CrawlSpider</div><div class="line"><span class="keyword">from</span> scrapy.contrib.loader <span class="keyword">import</span> ItemLoader</div><div class="line"><span class="keyword">from</span> scrapy.contrib.linkextractors.sgml <span class="keyword">import</span> SgmlLinkExtractor</div><div class="line"><span class="keyword">from</span> BbsDmoz.items <span class="keyword">import</span> BbsDmozItem</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">forumSpider</span><span class="params">(CrawlSpider)</span>:</span></div><div class="line">  <span class="comment"># name of spiders</span></div><div class="line">  name = <span class="string">'bbsSpider'</span></div><div class="line">  allow_domain = [<span class="string">'bbs.sjtu.edu.cn'</span>]</div><div class="line">  start_urls = [ <span class="string">'https://bbs.sjtu.edu.cn/bbsall'</span> ]</div><div class="line">  link_extractor = {</div><div class="line">      <span class="string">'page'</span>:  SgmlLinkExtractor(allow = <span class="string">'/bbsdoc,board,\w+\.html$'</span>),</div><div class="line">      <span class="string">'page_down'</span>:  SgmlLinkExtractor(allow = <span class="string">'/bbsdoc,board,\w+,page,\d+\.html$'</span>),</div><div class="line">      <span class="string">'content'</span>:  SgmlLinkExtractor(allow = <span class="string">'/bbscon,board,\w+,file,M\.\d+\.A\.html$'</span>),</div><div class="line">    } </div><div class="line">  _x_query = {</div><div class="line">      <span class="string">'page_content'</span>:    <span class="string">'//pre/text()[2]'</span>,</div><div class="line">      <span class="string">'poster'</span>    :    <span class="string">'//pre/a/text()'</span>,</div><div class="line">      <span class="string">'forum'</span>    :    <span class="string">'//center/text()[2]'</span>,</div><div class="line">    }</div><div class="line">  <span class="comment">#extract all target links</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> self.link_extractor[<span class="string">'page'</span>].extract_links(response):</div><div class="line">      <span class="keyword">yield</span> Request(url = link.url, callback=self.parse_page) </div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">parse_page</span><span class="params">(self, response)</span>:</span></div><div class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> self.link_extractor[<span class="string">'page_down'</span>].extract_links(response):</div><div class="line">      <span class="keyword">yield</span> Request(url = link.url, callback=self.parse_page)</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> self.link_extractor[<span class="string">'content'</span>].extract_links(response):</div><div class="line">      <span class="keyword">yield</span> Request(url = link.url, callback=self.parse_content)</div><div class="line">  <span class="comment">#parse items</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">parse_content</span><span class="params">(self, response)</span>:</span></div><div class="line">    bbsItem_loader = ItemLoader(item=BbsDmozItem(), response = response)</div><div class="line">    url = str(response.url)</div><div class="line">    bbsItem_loader.add_value(<span class="string">'url'</span>, url)</div><div class="line">    bbsItem_loader.add_xpath(<span class="string">'forum'</span>, self._x_query[<span class="string">'forum'</span>])</div><div class="line">    bbsItem_loader.add_xpath(<span class="string">'poster'</span>, self._x_query[<span class="string">'poster'</span>])</div><div class="line">    bbsItem_loader.add_xpath(<span class="string">'content'</span>, self._x_query[<span class="string">'page_content'</span>])</div><div class="line">    <span class="keyword">return</span> bbsItem_loader.load_item()</div></pre></td></tr></table></figure>
 
-<h2 id="Define_Item_Pipeline"><strong><code>Define Item Pipeline</code></strong></h2>
-<hr>
+<h2 id="Define_Item_Pipeline"><strong>Define Item Pipeline</strong></h2>
 <p>　　当Item在Spider中被收集之后，它将会被传递到Item Pipeline，一些组件会按照一定的顺序执行对Item的处理。<br>　　每个item pipeline组件(有时称之为“Item Pipeline”)是实现了简单方法的Python类。他们接收到Item并通过它执行一些行为，同时也决定此Item是否继续通过pipeline，或是被丢弃而不再进行处理。<br>　　以下是<code>item pipeline</code>的一些典型应用：</p>
 <ul>
 <li>清理HTML数据</li>
@@ -474,28 +454,24 @@ enter a number: 123
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ITEM_PIPELINES = {</div><div class="line">    <span class="string">'bbsDmoz.pipelines.XmlWritePipeline'</span>: <span class="number">1000</span>,</div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p>　　分配给每个类的整型值，确定了他们运行的顺序，item按数字从低到高的顺序，通过pipeline，通常将这些数字定义在0-1000范围内。</p>
-<h2 id="Settings"><strong><code>Settings</code></strong></h2>
-<hr>
+<h2 id="Settings"><strong>Settings</strong></h2>
 <p>　　Scrapy设定(<code>settings</code>)提供了定制Scrapy组件的方法。您可以控制包括核心(core)，插件(extension)，pipeline及spider组件。<br>　　设定为代码提供了提取以key-value映射的配置值的的全局命名空间(namespace)。 设定可以通过下面介绍的多种机制进行设置。<br>　　设定(settings)同时也是选择当前激活的Scrapy项目的方法(如果您有多个的话)。<br>　　在<code>setting</code>配置文件中，你可一定以抓取的速率、是否在桌面显示抓取过程信息等。详细请参考<a href="http://scrapy-zh.likedoc.net/zh_CN/latest/topics/settings.html#topics-settings-ref" target="_blank" rel="external">内置设定列表请参考</a> 。<br>　　本爬虫的<code>setting</code>配置如下：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># Scrapy settings for bbs project</span></div><div class="line"><span class="comment"># For simplicity, this file contains only the most important settings by</span></div><div class="line"><span class="comment"># default. All the other settings are documented here:</span></div><div class="line"><span class="comment"># http://doc.scrapy.org/en/latest/topics/settings.html</span></div><div class="line">BOT_NAME = <span class="string">'bbsDomz'</span></div><div class="line">CONCURRENT_REQUESTS = <span class="number">200</span></div><div class="line">LOG_LEVEL = <span class="string">'INFO'</span></div><div class="line">COOKIES_ENABLED = <span class="keyword">True</span></div><div class="line">RETRY_ENABLED = <span class="keyword">True</span></div><div class="line">SPIDER_MODULES = [<span class="string">'bbsDomz.spiders'</span>]</div><div class="line">NEWSPIDER_MODULE = <span class="string">'bbsDomz.spiders'</span></div><div class="line"><span class="comment"># JOBDIR = 'jobdir'</span></div><div class="line">ITEM_PIPELINES = {</div><div class="line">    <span class="string">'bbsDomz.pipelines.XmlWritePipeline'</span>: <span class="number">1000</span>,</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<h2 id="Crawling"><strong><code>Crawling</code></strong></h2>
-<hr>
+<h2 id="Crawling"><strong>Crawling</strong></h2>
 <p>　　写好爬虫程序后，我们就可以运行程序抓取数据。进入项目的根目录<code>bbsDomz/</code>下，执行下列命令启动spider：</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrapy crawl bbsSpider</div></pre></td></tr></table></figure>
 
 <p>　　这样就等程序运行结束就还可以啦。</p>
-<h2 id="Further_reading"><strong><code>Further reading</code></strong></h2>
-<hr>
+<h2 id="Further_reading"><strong>Further reading</strong></h2>
 <ul>
 <li><a href="http://doc.scrapy.org/en/0.24/index.html" target="_blank" rel="external">Scrapy 0.24 documentation</a></li>
 <li><a href="http://blog.pluskid.org/?p=366&amp;cpage=1" target="_blank" rel="external">Scrapy 轻松定制网络爬虫</a><br><img src="/img/blogImage/pacman.jpg" alt="The End"></li>
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="Scrapy_at_a_glance"><strong><code>Scrapy at a glance</code></strong></h2>
-<hr>
-<p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信]]>
+    <![CDATA[<h2 id="Scrapy_at_a_glance"><strong>Scrapy at a glance</strong></h2>
+<p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中]]>
     </summary>
     
       <category term="Python" scheme="http://chenqx.github.com/tags/Python/"/>
@@ -511,9 +487,8 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/11/01/Text-Mining/"/>
     <id>http://chenqx.github.com/2014/11/01/Text-Mining/</id>
     <published>2014-11-01T07:56:48.000Z</published>
-    <updated>2014-11-05T14:02:34.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
-<hr>
+    <updated>2014-11-11T02:15:35.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="Introduction"><strong>Introduction</strong></h2>
 <h3 id="简介_">简介　</h3>
 <p>　　在现实世界中，可获取的大部信息是以文本形式存储在文本数据库中的，由来自各种数据源的大量文档组成，如新闻文档、研究论文、书籍、数字图书馆、电子邮件和Web页面。由于电子形式的文本信息飞速增涨，文本挖掘已经成为信息领域的研究热点。<br>　　文本数据库中存储的数据可能是高度非结构化的，如WWW上的网页。也可能是半结构化的，如e-mail消息和一些XML网页：而其它的则可能是良结构化的。良结构化文本数据的典型代表是图书馆数据库中的文档，这些文档可能包含结构字段，如标题、作者、出版日期、长度、分类等等，也可能包含大量非结构化文本成分，如摘要和内容。通常，具有较好结构的文本数据库可以使用关系数据库系统实现，而对非结构化的文本成分需要采用特殊的处理方法对其进行转化。<br>　　文本挖掘(Text Mining)是一个从非结构化文本信息中获取用户感兴趣或者有用的模式的过程。其中被普遍认可的文本挖掘定义如下：文本挖掘是指从大量文本数据中抽取事先未知的、可理解的、最终可用的知识的过程，同时运用这些知识更好地组织信息以便将来参考。<br>　　文本挖掘的主要用途是从原本未经处理的文本中提取出未知的知识，但是文本挖掘也是一项非常困难的工作,因为它必须处理那些本来就模糊而且非结构化的文本数据,所以它是一个多学科混杂的领域,涵盖了信息技术、文本分析、模式识别、统计学、数据可视化、数据库技术、机器学习以及数据挖掘等技术 。文本挖掘是从数据挖掘发展而来，因此其定义与我们熟知的数据挖掘定义相类似。但与传统的数据挖掘相比，文本挖掘有其独特之处，主要表现在:文档本身是半结构化或非结构化的，无确定形式并且缺乏机器可理解的语义;而数据挖掘的对象以数据库中的结构化数据为主，并利用关系表等存储结构来发现知识。因此，有些数据挖掘技术并不适用于文本挖掘，即使可用，也需要建立在对文本集预处理的基础之上。<br>　　文本挖掘是应用驱动的。它在商业智能、信息检索、生物信息处理等方面都有广泛的应用；例如，客户关系管理，自动邮件回复，垃圾邮件过滤，自动简历评审，搜索引擎等等。</p>
 <h3 id="基本步骤">基本步骤</h3>
@@ -527,11 +502,9 @@ enter a number: 123
 </ol>
 </blockquote>
 <p><img src="http://newtonblogimg.qiniudn.com/textminingflowchart.jpg" alt="Text Mining Flow Chart"><br>　　本篇文章将在接下来的篇幅中，详细的介绍以上几个步骤。</p>
-<h2 id="获取文本数据源"><strong><code>获取文本数据源</code></strong></h2>
-<hr>
+<h2 id="获取文本数据源"><strong>获取文本数据源</strong></h2>
 <p>　　各文档数据库，语料库，论文集<br>　　web网页，如通过爬虫抓取，RSS订阅<br>　　<br>　　等</p>
-<h2 id="文本预处理"><strong><code>文本预处理</code></strong></h2>
-<hr>
+<h2 id="文本预处理"><strong>文本预处理</strong></h2>
 <h3 id="文本数据预处理">文本数据预处理</h3>
 <p>去标签，去停用词，分词，生成数据集</p>
 <h3 id="特征表达">特征表达</h3>
@@ -562,28 +535,23 @@ enter a number: 123
 　　　</p>
 <h4 id="线性判别分析"><em><code>线性判别分析</code></em></h4>
 <p>　　线性判别式分析(Linear Discriminant Analysis, LDA)，也叫做Fisher线性判别(Fisher Linear Discriminant ，FLD)。LDA基本思想是将高维的模式样本投影到最佳鉴别矢量空间，以达到抽取分类信息和压缩特征空间维数的效果，投影后保证模式样本在新的子空间有最大的类间距离和最小的类内距离，即模式在该空间中有最佳的可分离性。因此，它是一种有效的特征抽取方法。使用这种方法能够使投影后模式样本的类间散布矩阵最大，并且同时类内散布矩阵最小。就是说，它能够保证投影后模式样本在新的空间中有最小的类内距离和最大的类间距离，即模式在该空间中有最佳的可分离性。</p>
-<h2 id="挖掘与分析"><strong><code>挖掘与分析</code></strong></h2>
-<hr>
+<h2 id="挖掘与分析"><strong>挖掘与分析</strong></h2>
 <h3 id="文本分类与聚类">文本分类与聚类</h3>
 <h3 id="信息抽取">信息抽取</h3>
 <h3 id="关系抽取">关系抽取</h3>
 <h3 id="关联分析">关联分析</h3>
-<h2 id="评估与可视化"><strong><code>评估与可视化</code></strong></h2>
-<hr>
+<h2 id="评估与可视化"><strong>评估与可视化</strong></h2>
 <h3 id="评估">评估</h3>
 <h3 id="可视化">可视化</h3>
-<h2 id="Conclusion"><strong><code>Conclusion</code></strong></h2>
-<hr>
-<h2 id="References"><strong><code>References</code></strong></h2>
-<hr>
+<h2 id="Conclusion"><strong>Conclusion</strong></h2>
+<h2 id="References"><strong>References</strong></h2>
 <p>[1] Ronen Feldman and James Sanger, The Text Mining Handbook, Cambridge University Press.<br>[2] Kao Anne, Poteet, Steve R. (Editors), Natural Language Processing and Text Mining, Springer.</p>
 <p><img src="/img/blogImage/pacman.jpg" alt="The End"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="Introduction"><strong><code>Introduction</code></strong></h2>
-<hr>
+    <![CDATA[<h2 id="Introduction"><strong>Introduction</strong></h2>
 <h3 id="简介_">简介　</h3>
-<p>　　在现实世界中，可获取的大部信息是以文本形式存储在文本数据库中的，由来自各种数]]>
+<p>　　在现实世界中，可获取的大部信息是以文本形式存储在文本数据库中的，由来自各种数据源的大量文档组成，如新闻文档、研究]]>
     </summary>
     
       <category term="Text Mining" scheme="http://chenqx.github.com/tags/Text-Mining/"/>
@@ -601,28 +569,24 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/10/29/Python-fastest-way-to-read-a-large-file/"/>
     <id>http://chenqx.github.com/2014/10/29/Python-fastest-way-to-read-a-large-file/</id>
     <published>2014-10-29T02:34:59.000Z</published>
-    <updated>2014-11-09T02:37:49.000Z</updated>
+    <updated>2014-11-11T02:12:37.000Z</updated>
     <content type="html"><![CDATA[<p>　　最近处理文本文档时（文件约2GB大小），出现<code>memoryError</code>错误和文件读取太慢的问题，后来找到了两种比较快<code>Large File Reading</code> 的方法，本文将介绍这两种读取方法。</p>
-<h2 id="Preliminary"><strong><code>Preliminary</code></strong></h2>
-<hr>
+<h2 id="Preliminary"><strong>Preliminary</strong></h2>
 <p>　　我们谈到“文本处理”时，我们通常是指处理的内容。Python 将文本文件的内容读入可以操作的字符串变量非常容易。文件对象提供了三个“读”方法： <code>.read()</code>、<code>.readline()</code> 和 <code>.readlines()</code>。每种方法可以接受一个变量以限制每次读取的数据量，但它们通常不使用变量。 <code>.read()</code> 每次读取整个文件，它通常用于将文件内容放到一个字符串变量中。然而 <code>.read()</code> 生成文件内容最直接的字符串表示，但对于连续的面向行的处理，它却是不必要的，并且如果文件大于可用内存，则不可能实现这种处理。下面是<code>read()</code>方法示例：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    f = open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>)</div><div class="line">    <span class="keyword">print</span> f.read()</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">if</span> f:</div><div class="line">        f.close()</div></pre></td></tr></table></figure>
 
 <p>　　调用<code>read()</code>会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用<code>read(size)</code>方法，每次最多读取size个字节的内容。另外，调用<code>readline()</code>可以每次读取一行内容，调用<code>readlines()</code>一次读取所有内容并按行返回list。因此，要根据需要决定怎么调用。<br>　　如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">    process(line) <span class="comment"># &lt;do something with line&gt;</span></div></pre></td></tr></table></figure>
 
-<h2 id="Read_In_Chunks"><strong><code>Read In Chunks</code></strong></h2>
-<hr>
+<h2 id="Read_In_Chunks"><strong>Read In Chunks</strong></h2>
 <p>　　处理大文件是很容易想到的就是将大文件分割成若干小文件处理，处理完每个小文件后释放该部分内存。这里用了 <code>iter &amp; yield</code>：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_in_chunks</span><span class="params">(filePath, chunk_size=<span class="number">1024</span>*<span class="number">1024</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Lazy function (generator) to read a file piece by piece.</div><div class="line">    Default chunk size: 1M</div><div class="line">    You can set your own chunk size </div><div class="line">    """</div><div class="line">    file_object = open(filePath)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        chunk_data = file_object.read(chunk_size)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> chunk_data:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="keyword">yield</span> chunk_data</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line"></div><div class="line">    filePath = <span class="string">'./path/filename'</span></div><div class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> read_in_chunks(filePath):</div><div class="line">        process(chunk) <span class="comment"># &lt;do something with chunk&gt;</span></div></pre></td></tr></table></figure>
 
-<h2 id="Using_with_open()"><strong><code>Using</code> <em><code>with open()</code></em></strong></h2>
-<hr>
+<h2 id="Using_with_open()"><strong>Using <em><code>with open()</code></em></strong></h2>
 <p>　　<code>with</code>语句打开和关闭文件，包括抛出一个内部块异常。<code>for line in f</code>文件对象<code>f</code>视为一个迭代器，会自动的采用缓冲<code>IO</code>和内存管理，所以你不必担心大文件。</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#If the file is line based</span></div><div class="line"><span class="keyword">with</span> open(...) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">        process(line) <span class="comment"># &lt;do something with line&gt;</span></div></pre></td></tr></table></figure>
 
-<h2 id="Conclusion"><strong><code>Conclusion</code></strong></h2>
-<hr>
+<h2 id="Conclusion"><strong>Conclusion</strong></h2>
 <p>　　在使用python进行大文件读取时，应该让系统来处理，使用最简单的方式，交给解释器，就管好自己的工作就行了。<br>　　<br><img src="/img/blogImage/pacman.jpg" alt="The End"></p>
 ]]></content>
     <summary type="html">
@@ -633,25 +597,6 @@ enter a number: 123
       <category term="Python" scheme="http://chenqx.github.com/tags/Python/"/>
     
       <category term="Python" scheme="http://chenqx.github.com/categories/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Data Base]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Data-Base/"/>
-    <id>http://chenqx.github.com/2014/10/29/Data-Base/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-11-09T02:39:49.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Database" scheme="http://chenqx.github.com/tags/Database/"/>
-    
-      <category term="Database" scheme="http://chenqx.github.com/categories/Database/"/>
     
   </entry>
   
@@ -671,6 +616,25 @@ enter a number: 123
       <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
     
       <category term="NLP" scheme="http://chenqx.github.com/categories/NLP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Data Base]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Data-Base/"/>
+    <id>http://chenqx.github.com/2014/10/29/Data-Base/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-11-09T02:39:49.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Database" scheme="http://chenqx.github.com/tags/Database/"/>
+    
+      <category term="Database" scheme="http://chenqx.github.com/categories/Database/"/>
     
   </entry>
   
@@ -755,7 +719,7 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/"/>
     <id>http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/</id>
     <published>2014-09-20T10:11:03.000Z</published>
-    <updated>2014-11-11T00:50:51.000Z</updated>
+    <updated>2014-11-11T01:58:12.000Z</updated>
     <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。</p>
 <hr>
 <p>　　你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。</p>
@@ -784,7 +748,6 @@ enter a number: 123
 <li>事实上，你需要2周时间的苦练，而不是3天。</li>
 </ul>
 </blockquote>
-<hr>
 <h2 id="1st_Level_–_Survive"><strong>1st Level – Survive</strong></h2>
 <p>　　1. 安装 <a href="http://www.vim.org/docs.php" target="_blank" rel="external">Vim</a><br>　　2. 启动 Vim<br>　　3. <strong>什么也别干！请先阅读</strong></p>
 <p>　　当你安装好一个编辑器后，你一定会想在其中输入点什么东西，然后看看这个编辑器是什么样子。但vim不是这样的，请按照下面的命令操作：
@@ -819,7 +782,6 @@ enter a number: 123
 <li>以 : 开始的命令你需要输入 <enter>回车，例如 — 如果我写成 :q 也就是说你要输入 :q＜enter＞.</enter></li>
 </ul>
 </blockquote>
-<hr>
 <h2 id="2nd_Level_–_Feel_comfortable"><strong>2nd Level – Feel comfortable</strong></h2>
 <p>　　上面的那些命令只能让你存活下来，现在是时候学习一些更多的命令了，下面是我的建议：（陈皓注：所有的命令都需要在Normal模式下使用，如果你不知道现在在什么样的模式，你就狂按几次ESC键）</p>
 <h3 id="各种插入模式">各种插入模式</h3>
@@ -867,7 +829,6 @@ enter a number: 123
 </ul>
 </blockquote>
 <p>　　花点时间熟悉一下上面的命令，一旦你掌握他们了，你就几乎可以干其它编辑器都能干的事了。但是到现在为止，你还是觉得使用vim还是有点笨拙，不过没关系，你可以进阶到第三级了。</p>
-<hr>
 <h2 id="3rd_Level_–_Better_Stronger_Faster"><strong>3rd Level – Better Stronger Faster</strong></h2>
 <p>　　先恭喜你！你干的很不错。我们可以开始一些更为有趣的事了。在第三级，我们只谈那些和vi可以兼容的命令。</p>
 <h3 id="更好">更好</h3>
@@ -928,7 +889,6 @@ enter a number: 123
 <li>等等<br>（可视化选择是一个很有意思的命令，你可以先按v，然后移动光标，你就会看到文本被选择，然后，你可能d，也可y，也可以变大写等）</li>
 </ul>
 </blockquote>
-<hr>
 <h2 id="4th_Level_–_Vim_Superpowers"><strong>4th Level – Vim Superpowers</strong></h2>
 <p>　　你只需要掌握前面的命令，你就可以很舒服的使用VIM了。但是，现在，我们向你介绍的是VIM杀手级的功能。下面这些功能是我只用vim的原因。</p>
 <h3 id="在当前行上移动光标">在当前行上移动光标</h3>
@@ -1022,12 +982,9 @@ enter a number: 123
 <li><c-w>+ (或 <c-w>-) : 增加尺寸<br><img src="http://newtonblogimg.qiniudn.com/split.gif" alt="Split"></c-w></c-w></li>
 </ul>
 </blockquote>
-<hr>
 <h2 id="Conclusion"><strong>Conclusion</strong></h2>
 <p>　　上面是作者最常用的90%的命令。　<br>　　我建议你每天都学1到2个新的命令。<br>　　在两到三周后，你会感到vim的强大的。<br>　　有时候，学习VIM就像是在死背一些东西。<br>　　幸运的是，vim有很多很不错的工具和优秀的文档。<br>　　运行vimtutor直到你熟悉了那些基本命令。<br>　　其在线帮助文档中你应该要仔细阅读的是 :help usr_02.txt.<br>　　你会学习到诸如  !， 目录，寄存器，插件等很多其它的功能。<br>　　学习vim就像学弹钢琴一样，一旦学会，受益无穷。</p>
-<hr>
 <h2 id="Further_reading"><strong>Further reading</strong></h2>
-<hr>
 <p>　　from <a href="http://coolshell.cn/articles/5426.html" target="_blank" rel="external">@coolshell</a>     </p>
 ]]></content>
     <summary type="html">
@@ -1049,7 +1006,7 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/09/10/Cmd-An-Effective-Markdown-Editor/"/>
     <id>http://chenqx.github.com/2014/09/10/Cmd-An-Effective-Markdown-Editor/</id>
     <published>2014-09-10T08:36:24.000Z</published>
-    <updated>2014-11-11T00:48:16.000Z</updated>
+    <updated>2014-11-11T02:17:45.000Z</updated>
     <content type="html"><![CDATA[<p>　　为了更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 为我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。</p>
 <p>　　您可以使用 Cmd Markdown：</p>
 <blockquote>
@@ -1060,7 +1017,6 @@ enter a number: 123
 <li>撰写发布学术论文（LaTeX 公式支持）</li>
 </ul>
 </blockquote>
-<hr>
 <h2 id="什么是_Markdown">什么是 Markdown</h2>
 <p>　　Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> 某些文字，更棒的是，它还可以</p>
 <h3 id="书写一个质能守恒公式[^LaTeX]">书写一个质能守恒公式[^LaTeX]</h3>
@@ -1104,7 +1060,6 @@ enter a number: 123
 <h3 id="更详细语法说明">更详细语法说明</h3>
 <p>　　想要查看更详细的语法说明，可以参考我们准备的 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown" target="_blank" rel="external">Cmd Markdown 简明语法手册</a>，进阶用户可以参考 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#cmd-markdown-高阶语法手册" target="_blank" rel="external">Cmd Markdown 高阶语法手册</a> 了解更多高级功能。</p>
 <p>　　总而言之，不同于其它 <em>所见即所得</em> 的编辑器：你只需使用键盘专注于书写文本内容，就可以生成印刷级的排版格式，省却在键盘和工具栏之间来回切换，调整内容和格式的麻烦。<strong>Markdown 在流畅的书写和印刷级的阅读体验之间找到了平衡。</strong> 目前它已经成为世界上最大的技术分享网站 GitHub 和 技术问答网站 StackOverFlow 的御用书写格式。</p>
-<hr>
 <h2 id="什么是_Cmd_Markdown">什么是 Cmd Markdown</h2>
 <p>　　您可以使用很多工具书写 Markdown，但是 Cmd Markdown 是这个星球上我们已知的、最好的 Markdown 工具——没有之一 ：）因为深信文字的力量，所以我们和你一样，对流畅书写，分享思想和知识，以及阅读体验有极致的追求，我们把对于这些诉求的回应整合在 Cmd Markdown，并且一次，两次，三次，乃至无数次地提升这个工具的体验，最终将它演化成一个 <strong>编辑/发布/阅读</strong> Markdown 的在线平台——您可以在任何地方，任何系统/设备上管理这里的文字。</p>
 <h3 id="实时同步预览">实时同步预览</h3>
@@ -1137,7 +1092,6 @@ enter a number: 123
 <p><img src="https://www.zybuluo.com/static/img/file-list.png" alt="file-list"></p>
 <h3 id="文稿发布和分享">文稿发布和分享</h3>
 <p>　　在您使用 Cmd Markdown 记录，创作，整理，阅读文稿的同时，我们不仅希望它是一个有力的工具，更希望您的思想和知识通过这个平台，连同优质的阅读体验，将他们分享给有相同志趣的人，进而鼓励更多的人来到这里记录分享他们的思想和知识，尝试点击 <i class="icon-share"></i> (Ctrl+Alt+P) 发布这份文档给好友吧！</p>
-<hr>
 <p>See more <a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">@Cmdeditor</a>     </p>
 <p>[^LaTeX]: 支持 <strong>LaTeX</strong> 编辑显示支持，例如：$\sum_{i=1}^n a_i=0$， 访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">MathJax</a> 参考更多使用方法。</p>
 <p>[^code]: 代码高亮功能支持包括 Java, Python, JavaScript 在内的，<strong>四十一</strong>种主流编程语言。</p>

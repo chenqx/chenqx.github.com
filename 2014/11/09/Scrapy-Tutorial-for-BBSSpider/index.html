@@ -10,8 +10,7 @@
     <meta name="author" content="Chan">
     
     <meta name="description" content="Scrapy at a glance
-
-　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon ">
+　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon A">
     
     
     
@@ -96,8 +95,7 @@
 		
 		</div>
 		
-		<h2 id="Scrapy_at_a_glance"><strong><code>Scrapy at a glance</code></strong></h2>
-<hr>
+		<h2 id="Scrapy_at_a_glance"><strong>Scrapy at a glance</strong></h2>
 <p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。<br>　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。</p>
 <ul>
 <li><a href="http://www.scrapy.org/" target="_blank" rel="external">官方主页</a></li>
@@ -116,12 +114,10 @@
 <li><code>调度中间件</code>：介于Scrapy引擎和调度之间的中间件，从Scrapy引擎发送到调度的请求和响应。</li>
 </ul>
 <p>　　使用Scrapy可以很方便的完成网上数据的采集工作，它为我们完成了大量的工作，而不需要自己费大力气去开发。</p>
-<h2 id="Scrapy_Tutorial"><strong><code>Scrapy Tutorial</code></strong></h2>
-<hr>
+<h2 id="Scrapy_Tutorial"><strong>Scrapy Tutorial</strong></h2>
 <p>　　在本文中，假定您已经安装好<code>Scrapy</code>。 如若不然，请参考 <a href="http://doc.scrapy.org/en/0.24/intro/install.html#intro-install" target="_blank" rel="external"><em>Installation guide</em></a>。<br>　　接下来以爬取<a href="https://bbs.sjtu.edu.cn/frame2.html" target="_blank" rel="external"><em>饮水思源BBS</em></a>数据为例来讲述爬取过程，详见<a href="https://github.com/chenqx/spiderDemo/tree/master/SJTUbbsSpiderDemo" target="_blank" rel="external"><em> bbsdmoz代码</em></a>。<br>　　本篇教程中将带您完成下列任务：</p><p style="background:#f1f1f1"><br>　　1. 创建一个Scrapy项目<br>　　2. 定义提取的Item<br>　　3. 编写爬取网站的 spider 并提取 Item<br>　　4. 编写 Item Pipeline 来存储提取到的Item(即数据)</p>
 <p>　　Scrapy由Python编写。如果您刚接触并且好奇这门语言的特性以及Scrapy的详情， 对于已经熟悉其他语言并且想快速学习Python的编程老手， 我们推荐 <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="external">Learn Python The Hard Way</a> ， 对于想从Python开始学习的编程新手， <a href="https://wiki.python.org/moin/BeginnersGuide/NonProgrammers" target="_blank" rel="external">非程序员的Python学习资料列表 </a>将是您的选择。</p>
-<h2 id="Creating_a_project"><strong><code>Creating a project</code></strong></h2>
-<hr>
+<h2 id="Creating_a_project"><strong>Creating a project</strong></h2>
 <p>　　在开始爬取之前，您必须创建一个新的Scrapy项目。进入您打算存储代码的目录中，运行下列命令：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrapy startproject bbsdmoz</div></pre></td></tr></table></figure>
 
@@ -137,14 +133,12 @@
 <li><code>bbsDmoz/settings.py</code>: 项目的设置文件.</li>
 <li><code>bbsDmoz/spiders/</code>: 放置<code>spider</code>代码的目录.</li>
 </ul>
-<h2 id="Defining_our_Item"><strong><code>Defining our Item</code></strong></h2>
-<hr>
+<h2 id="Defining_our_Item"><strong>Defining our Item</strong></h2>
 <p>　　Item 是保存爬取到的数据的容器；其使用方法和python字典类似，并且提供了额外保护机制来避免拼写错误导致的未定义字段错误。<br>　　类似在ORM中做的一样，您可以通过创建一个 <code>scrapy.Item</code> 类，并且定义类型为 <code>scrapy.Field</code> 的类属性来定义一个Item。(如果不了解ORM,不用担心，您会发现这个步骤非常简单)<br>　　首先根据需要从bbs网站获取到的数据对item进行建模。 我们需要从中获取<em>url，发帖板块，发帖人，以及帖子的内容</em>。 对此，在item中定义相应的字段。编辑 bbsDmoz 目录中的 <code>items.py</code> 文件：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># Define here the models for your scraped items</span></div><div class="line"><span class="comment"># See documentation in:</span></div><div class="line"><span class="comment"># http://doc.scrapy.org/en/latest/topics/items.html</span></div><div class="line"><span class="keyword">from</span> scrapy.item <span class="keyword">import</span> Item, Field</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BbsDmozItem</span><span class="params">(Item)</span>:</span></div><div class="line">    <span class="comment"># define the fields for your item here like:</span></div><div class="line">    <span class="comment"># name = scrapy.Field()</span></div><div class="line">    url   = Field()</div><div class="line">    forum = Field()</div><div class="line">    poster = Field()</div><div class="line">    content = Field()</div></pre></td></tr></table></figure>
 
 <p>　　一开始这看起来可能有点复杂，但是通过定义item， 您可以很方便的使用Scrapy的其他方法。而这些方法需要知道您的item的定义。</p>
-<h2 id="Our_first_Spider"><strong><code>Our first Spider</code></strong></h2>
-<hr>
+<h2 id="Our_first_Spider"><strong>Our first Spider</strong></h2>
 <p>　　Spider是用户编写用于从单个网站(或者一些网站)爬取数据的类。<br>　　其包含了一个用于下载的初始URL，如何跟进网页中的链接以及如何分析页面中的内容， 提取生成 item 的方法。</p>
 <h3 id="创建一个Spider">创建一个Spider</h3>
 <p>　　为了创建一个Spider，保存在 bbsDmoz/spiders，您必须继承 scrapy.Spider 类，且定义以下三个属性:</p>
@@ -183,8 +177,7 @@
 <p>　　以下为我们的第一个<strong><code>Spider代码</code></strong>，保存在 <code>bbsDmoz/spiders</code> 目录下的 <code>forumSpider.py</code> 文件中：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="string">'''</span></div><div class="line">bbsSpider, Created on Oct, 2014</div><div class="line">#version: 1.0</div><div class="line">#author: chenqx @http://chenqx.github.com</div><div class="line">See more: http://doc.scrapy.org/en/latest/index.html</div><div class="line">'''</div><div class="line"><span class="keyword">from</span> scrapy.selector <span class="keyword">import</span> Selector</div><div class="line"><span class="keyword">from</span> scrapy.http <span class="keyword">import</span>  Request</div><div class="line"><span class="keyword">from</span> scrapy.contrib.spiders <span class="keyword">import</span> CrawlSpider</div><div class="line"><span class="keyword">from</span> scrapy.contrib.loader <span class="keyword">import</span> ItemLoader</div><div class="line"><span class="keyword">from</span> scrapy.contrib.linkextractors.sgml <span class="keyword">import</span> SgmlLinkExtractor</div><div class="line"><span class="keyword">from</span> BbsDmoz.items <span class="keyword">import</span> BbsDmozItem</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">forumSpider</span><span class="params">(CrawlSpider)</span>:</span></div><div class="line">  <span class="comment"># name of spiders</span></div><div class="line">  name = <span class="string">'bbsSpider'</span></div><div class="line">  allow_domain = [<span class="string">'bbs.sjtu.edu.cn'</span>]</div><div class="line">  start_urls = [ <span class="string">'https://bbs.sjtu.edu.cn/bbsall'</span> ]</div><div class="line">  link_extractor = {</div><div class="line">      <span class="string">'page'</span>:  SgmlLinkExtractor(allow = <span class="string">'/bbsdoc,board,\w+\.html$'</span>),</div><div class="line">      <span class="string">'page_down'</span>:  SgmlLinkExtractor(allow = <span class="string">'/bbsdoc,board,\w+,page,\d+\.html$'</span>),</div><div class="line">      <span class="string">'content'</span>:  SgmlLinkExtractor(allow = <span class="string">'/bbscon,board,\w+,file,M\.\d+\.A\.html$'</span>),</div><div class="line">    } </div><div class="line">  _x_query = {</div><div class="line">      <span class="string">'page_content'</span>:    <span class="string">'//pre/text()[2]'</span>,</div><div class="line">      <span class="string">'poster'</span>    :    <span class="string">'//pre/a/text()'</span>,</div><div class="line">      <span class="string">'forum'</span>    :    <span class="string">'//center/text()[2]'</span>,</div><div class="line">    }</div><div class="line">  <span class="comment">#extract all target links</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> self.link_extractor[<span class="string">'page'</span>].extract_links(response):</div><div class="line">      <span class="keyword">yield</span> Request(url = link.url, callback=self.parse_page) </div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">parse_page</span><span class="params">(self, response)</span>:</span></div><div class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> self.link_extractor[<span class="string">'page_down'</span>].extract_links(response):</div><div class="line">      <span class="keyword">yield</span> Request(url = link.url, callback=self.parse_page)</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> self.link_extractor[<span class="string">'content'</span>].extract_links(response):</div><div class="line">      <span class="keyword">yield</span> Request(url = link.url, callback=self.parse_content)</div><div class="line">  <span class="comment">#parse items</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">parse_content</span><span class="params">(self, response)</span>:</span></div><div class="line">    bbsItem_loader = ItemLoader(item=BbsDmozItem(), response = response)</div><div class="line">    url = str(response.url)</div><div class="line">    bbsItem_loader.add_value(<span class="string">'url'</span>, url)</div><div class="line">    bbsItem_loader.add_xpath(<span class="string">'forum'</span>, self._x_query[<span class="string">'forum'</span>])</div><div class="line">    bbsItem_loader.add_xpath(<span class="string">'poster'</span>, self._x_query[<span class="string">'poster'</span>])</div><div class="line">    bbsItem_loader.add_xpath(<span class="string">'content'</span>, self._x_query[<span class="string">'page_content'</span>])</div><div class="line">    <span class="keyword">return</span> bbsItem_loader.load_item()</div></pre></td></tr></table></figure>
 
-<h2 id="Define_Item_Pipeline"><strong><code>Define Item Pipeline</code></strong></h2>
-<hr>
+<h2 id="Define_Item_Pipeline"><strong>Define Item Pipeline</strong></h2>
 <p>　　当Item在Spider中被收集之后，它将会被传递到Item Pipeline，一些组件会按照一定的顺序执行对Item的处理。<br>　　每个item pipeline组件(有时称之为“Item Pipeline”)是实现了简单方法的Python类。他们接收到Item并通过它执行一些行为，同时也决定此Item是否继续通过pipeline，或是被丢弃而不再进行处理。<br>　　以下是<code>item pipeline</code>的一些典型应用：</p>
 <ul>
 <li>清理HTML数据</li>
@@ -209,19 +202,16 @@
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ITEM_PIPELINES = {</div><div class="line">    <span class="string">'bbsDmoz.pipelines.XmlWritePipeline'</span>: <span class="number">1000</span>,</div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p>　　分配给每个类的整型值，确定了他们运行的顺序，item按数字从低到高的顺序，通过pipeline，通常将这些数字定义在0-1000范围内。</p>
-<h2 id="Settings"><strong><code>Settings</code></strong></h2>
-<hr>
+<h2 id="Settings"><strong>Settings</strong></h2>
 <p>　　Scrapy设定(<code>settings</code>)提供了定制Scrapy组件的方法。您可以控制包括核心(core)，插件(extension)，pipeline及spider组件。<br>　　设定为代码提供了提取以key-value映射的配置值的的全局命名空间(namespace)。 设定可以通过下面介绍的多种机制进行设置。<br>　　设定(settings)同时也是选择当前激活的Scrapy项目的方法(如果您有多个的话)。<br>　　在<code>setting</code>配置文件中，你可一定以抓取的速率、是否在桌面显示抓取过程信息等。详细请参考<a href="http://scrapy-zh.likedoc.net/zh_CN/latest/topics/settings.html#topics-settings-ref" target="_blank" rel="external">内置设定列表请参考</a> 。<br>　　本爬虫的<code>setting</code>配置如下：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># Scrapy settings for bbs project</span></div><div class="line"><span class="comment"># For simplicity, this file contains only the most important settings by</span></div><div class="line"><span class="comment"># default. All the other settings are documented here:</span></div><div class="line"><span class="comment"># http://doc.scrapy.org/en/latest/topics/settings.html</span></div><div class="line">BOT_NAME = <span class="string">'bbsDomz'</span></div><div class="line">CONCURRENT_REQUESTS = <span class="number">200</span></div><div class="line">LOG_LEVEL = <span class="string">'INFO'</span></div><div class="line">COOKIES_ENABLED = <span class="keyword">True</span></div><div class="line">RETRY_ENABLED = <span class="keyword">True</span></div><div class="line">SPIDER_MODULES = [<span class="string">'bbsDomz.spiders'</span>]</div><div class="line">NEWSPIDER_MODULE = <span class="string">'bbsDomz.spiders'</span></div><div class="line"><span class="comment"># JOBDIR = 'jobdir'</span></div><div class="line">ITEM_PIPELINES = {</div><div class="line">    <span class="string">'bbsDomz.pipelines.XmlWritePipeline'</span>: <span class="number">1000</span>,</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<h2 id="Crawling"><strong><code>Crawling</code></strong></h2>
-<hr>
+<h2 id="Crawling"><strong>Crawling</strong></h2>
 <p>　　写好爬虫程序后，我们就可以运行程序抓取数据。进入项目的根目录<code>bbsDomz/</code>下，执行下列命令启动spider：</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrapy crawl bbsSpider</div></pre></td></tr></table></figure>
 
 <p>　　这样就等程序运行结束就还可以啦。</p>
-<h2 id="Further_reading"><strong><code>Further reading</code></strong></h2>
-<hr>
+<h2 id="Further_reading"><strong>Further reading</strong></h2>
 <ul>
 <li><a href="http://doc.scrapy.org/en/0.24/index.html" target="_blank" rel="external">Scrapy 0.24 documentation</a></li>
 <li><a href="http://blog.pluskid.org/?p=366&amp;cpage=1" target="_blank" rel="external">Scrapy 轻松定制网络爬虫</a><br><img src="/img/blogImage/pacman.jpg" alt="The End"></li>
@@ -344,25 +334,25 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
 		
+			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+		
 			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
 		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
-		
 			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
 		</ul>
 </div>
