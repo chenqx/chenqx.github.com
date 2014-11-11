@@ -140,7 +140,7 @@
 <li>忘记了释放内存，造成内存泄露。含有这种错误的函数每被调用一次就丢失一块内存。刚开始时系统的内存充足，你看不到错误。终有一次程序突然死掉，系统出现提示：内存耗尽。动态内存的申请与释放必须配对，程序中<code>malloc</code>与<code>free</code>的使用次数一定要相同，否则肯定有错误（<code>new/delete</code>同理）。</li>
 <li>释放了内存却继续使用它。</li>
 </ul>
-<p>　　有三种情况：<br>　　（1）程序中的对象调用关系过于复杂，实在难以搞清楚某个对象究竟是否已经释放了内存，此时应该重新设计数据结构，从根本上解决对象管理的混乱局面。<br>　　（2）函数的<code>return</code>语句写错了，注意不要返回指向“栈内存”的“指针”或者“引用”，因为该内存在函数体结束时被自动销毁。<br>　　（3）使用<code>free</code>或<code>delete</code>释放了内存后，没有将指针设置为NULL。<strong>导致产生“野指针”</strong>。<br>　　<strong>那么如何避免产生野指针呢</strong>？这里列出了5条规则，平常写程序时多注意一下，养成良好的习惯。</p>
+<p>　　有三种情况：<br>　　(1). 程序中的对象调用关系过于复杂，实在难以搞清楚某个对象究竟是否已经释放了内存，此时应该重新设计数据结构，从根本上解决对象管理的混乱局面。<br>　　(2). 函数的<code>return</code>语句写错了，注意不要返回指向“栈内存”的“指针”或者“引用”，因为该内存在函数体结束时被自动销毁。<br>　　(3). 使用<code>free</code>或<code>delete</code>释放了内存后，没有将指针设置为NULL。<strong>导致产生“野指针”</strong>。<br>　　<strong>那么如何避免产生野指针呢</strong>？这里列出了5条规则，平常写程序时多注意一下，养成良好的习惯。</p>
 <blockquote>
 <p>规则1：用<code>malloc</code>或<code>new</code>申请内存之后，应该立即检查指针值是否为NULL。防止使用指针值为NULL的内存。<br>规则2：不要忘记为数组和动态内存赋初值。防止将未被初始化的内存作为右值使用。<br>规则3：避免数组或指针的下标越界，特别要当心发生“多1”或者“少1”操作。<br>规则4：动态内存的申请与释放必须配对，防止内存泄漏。<br>规则5：用<code>free</code>或<code>delete</code>释放了内存之后，立即将指针设置为<code>NULL</code>，防止产生“野指针”。</p>
 </blockquote>
@@ -357,29 +357,29 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
 		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
 		
-			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
 		</ul>
 </div>
