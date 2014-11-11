@@ -185,7 +185,7 @@
 
 <p>　　(2). 指针p被free或者delete之后，没有置为NULL，让人误以为p是个合法的指针。</p>
 <p>　　(3). 指针操作超越了变量的作用域范围。这种情况让人防不胜防，示例程序如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> A{</div><div class="line">    <span class="keyword">public</span>:</div><div class="line">　　<span class="keyword">void</span> Func(<span class="keyword">void</span>){ <span class="built_in">cout</span> &lt;&lt; “Func of <span class="keyword">class</span> A” &lt;&lt; endl; }</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">void</span> Test(<span class="keyword">void</span>){</div><div class="line">    A *p;</div><div class="line">    {</div><div class="line">　　A a;</div><div class="line">　　p = &a; <span class="comment">// 注意 a 的生命期</span></div><div class="line">　　}</div><div class="line">　　p-&gt;Func(); <span class="comment">// p是“野指针”</span></div><div class="line">}</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> A{</div><div class="line">    <span class="keyword">public</span>:</div><div class="line">　　<span class="keyword">void</span> Func(<span class="keyword">void</span>){ <span class="built_in">cout</span> &lt;&lt; “Func of <span class="keyword">class</span> A” &lt;&lt; endl; }</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">void</span> Test(<span class="keyword">void</span>){</div><div class="line">    A *p;</div><div class="line">    {</div><div class="line">    A a;</div><div class="line">    p = &a; <span class="comment">// 注意 a 的生命期</span></div><div class="line">    }</div><div class="line">    p-&gt;Func(); <span class="comment">// p是“野指针”</span></div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p>　　函数<code>Test</code>在执行语句<code>p-&gt;Func()</code>时，对象a已经消失，而p是指向a的，所以p就成了“野指针”。但奇怪的是我运行这个程序时居然没有出错，这可能与编译器有关。</p>
 <h2 id="有了malloc/free为什么还要new/delete">有了malloc/free为什么还要new/delete</h2>
@@ -357,29 +357,29 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
 		
-			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
 		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
-			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
 		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
 		</ul>
 </div>
