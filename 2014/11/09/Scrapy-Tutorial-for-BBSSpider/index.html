@@ -104,7 +104,7 @@
 <li><a href="http://doc.scrapy.org/en/0.24/index.html" target="_blank" rel="external">Scrapy 0.24 documentation</a></li>
 <li><a href="https://github.com/scrapy/scrapy" target="_blank" rel="external">GitHub项目主页</a></li>
 </ul>
-<p>　　Scrapy 使用了 Twisted异步网络库来处理网络通讯。整体架构大致如下：<br><img src="http://newtonblogimg.qiniudn.com/Scrapy%20Architecture.png" alt="Scrapy Architecture"><br>Scrapy主要包括了以下组件：</p>
+<p>　　Scrapy 使用了 Twisted异步网络库来处理网络通讯。整体架构大致如下：<br><img src="http://newtonblogimg.qiniudn.com/Scrapy%20Architecture.png" alt="Scrapy Architecture"><br>　　Scrapy主要包括了以下组件：</p>
 <ul>
 <li><code>引擎</code>：用来处理整个系统的数据流处理，触发事务。</li>
 <li><code>调度器</code>：用来接受引擎发过来的请求，压入队列中，并在引擎再次请求的时候返回。</li>
@@ -118,7 +118,7 @@
 <p>　　使用Scrapy可以很方便的完成网上数据的采集工作，它为我们完成了大量的工作，而不需要自己费大力气去开发。</p>
 <h2 id="Scrapy_Tutorial"><strong><code>Scrapy Tutorial</code></strong></h2>
 <hr>
-<p>　　在本文中，假定您已经安装好<code>Scrapy</code>。 如若不然，请参考 <a href="http://doc.scrapy.org/en/0.24/intro/install.html#intro-install" target="_blank" rel="external"><em><code>Installation guide</code></em></a>。<br>　　接下来以爬取<a href="https://bbs.sjtu.edu.cn/frame2.html" target="_blank" rel="external"><em>饮水思源BBS</em></a>数据为例来讲述爬取过程，详见<a href="https://github.com/chenqx/spiderDemo/tree/master/SJTUbbsSpiderDemo" target="_blank" rel="external"><em> bbsdmoz代码</em></a>。<br>　　本篇教程中将带您完成下列任务：</p><p style="background:#f1f1f1"><br>　　1. 创建一个Scrapy项目<br>　　2. 定义提取的Item<br>　　3. 编写爬取网站的 spider 并提取 Item<br>　　4. 编写 Item Pipeline 来存储提取到的Item(即数据)</p>
+<p>　　在本文中，假定您已经安装好<code>Scrapy</code>。 如若不然，请参考 <a href="http://doc.scrapy.org/en/0.24/intro/install.html#intro-install" target="_blank" rel="external"><em>Installation guide</em></a>。<br>　　接下来以爬取<a href="https://bbs.sjtu.edu.cn/frame2.html" target="_blank" rel="external"><em>饮水思源BBS</em></a>数据为例来讲述爬取过程，详见<a href="https://github.com/chenqx/spiderDemo/tree/master/SJTUbbsSpiderDemo" target="_blank" rel="external"><em> bbsdmoz代码</em></a>。<br>　　本篇教程中将带您完成下列任务：</p><p style="background:#f1f1f1"><br>　　1. 创建一个Scrapy项目<br>　　2. 定义提取的Item<br>　　3. 编写爬取网站的 spider 并提取 Item<br>　　4. 编写 Item Pipeline 来存储提取到的Item(即数据)</p>
 <p>　　Scrapy由Python编写。如果您刚接触并且好奇这门语言的特性以及Scrapy的详情， 对于已经熟悉其他语言并且想快速学习Python的编程老手， 我们推荐 <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="external">Learn Python The Hard Way</a> ， 对于想从Python开始学习的编程新手， <a href="https://wiki.python.org/moin/BeginnersGuide/NonProgrammers" target="_blank" rel="external">非程序员的Python学习资料列表 </a>将是您的选择。</p>
 <h2 id="Creating_a_project"><strong><code>Creating a project</code></strong></h2>
 <hr>
@@ -257,10 +257,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/" title="Python 2.7.x 和 Python 3.x 的主要差异">
+ <a href="/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/" title="Python 2.7.x 与 Python 3.x 的主要差异">
   <strong>上一篇：</strong><br/>
   <span>
-  Python 2.7.x 和 Python 3.x 的主要差异</span>
+  Python 2.7.x 与 Python 3.x 的主要差异</span>
 </a>
 </div>
 
@@ -344,25 +344,25 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
 		
-			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
-		
 			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+		
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 		</ul>
 </div>
@@ -409,6 +409,8 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 		
 		
+		
+		<a href="mailto:chenqiuxing@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
 		
 	</div>
 		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2014 

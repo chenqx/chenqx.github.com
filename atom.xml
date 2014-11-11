@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-10T17:00:01.010Z</updated>
+  <updated>2014-11-11T01:48:05.651Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Python 2.7.x 和 Python 3.x 的主要差异]]></title>
+    <title><![CDATA[Python 2.7.x 与 Python 3.x 的主要差异]]></title>
     <link href="http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/"/>
     <id>http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/</id>
     <published>2014-11-10T12:04:25.000Z</published>
-    <updated>2014-11-10T14:36:39.000Z</updated>
+    <updated>2014-11-11T00:53:25.000Z</updated>
     <content type="html"><![CDATA[<p>　　因这学期负责Python课程的助教，刚开始上机试验的几节课，有很多同学用 Python3.4 的编译器编译 Python 2.7 的程序而导致不通过。Python 2.7.x 和 Python 3.x 版本并非完全兼容。<br>　　许多 Python 初学者想知道他们应该从 Python 的哪个版本开始学习。对于这个问题我的答案是 “你学习你喜欢的教程的版本，然后检查他们之间的不同。” 但如果你并未了解过两个版本之间的差异，个人推荐使用 Python 2.7.x 版本，毕竟大部分教材等资料还是用Python 2.7.x来写的。<br>　　但是如果你开始一个新项目，并且有选择权？我想说的是目前没有对错，只要你计划使用的库 Python 2.7.x 和 Python 3.x 双方都支持的话。尽管如此，当在编写它们中的任何一个的代码，或者是你计划移植你的项目的时候，是非常值得看看这两个主要流行的 Python 版本之间的差别的，以便避免常见的陷阱。<br>　　本文翻译自：<a href="http://nbviewer.ipython.org/github/rasbt/python_reference/blob/master/tutorials/key_differences_between_python_2_and_3.ipynb?create=1" target="_blank" rel="external">《Key differences between Python 2.7.x and Python 3.x》</a></p>
 <h2 id="__future__模块"><strong><code>__future__</code>模块</strong></h2>
 <hr>
@@ -360,7 +360,7 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/"/>
     <id>http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/</id>
     <published>2014-11-09T05:34:46.000Z</published>
-    <updated>2014-11-10T07:10:08.000Z</updated>
+    <updated>2014-11-11T01:04:44.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Scrapy_at_a_glance"><strong><code>Scrapy at a glance</code></strong></h2>
 <hr>
 <p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。<br>　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。</p>
@@ -369,7 +369,7 @@ enter a number: 123
 <li><a href="http://doc.scrapy.org/en/0.24/index.html" target="_blank" rel="external">Scrapy 0.24 documentation</a></li>
 <li><a href="https://github.com/scrapy/scrapy" target="_blank" rel="external">GitHub项目主页</a></li>
 </ul>
-<p>　　Scrapy 使用了 Twisted异步网络库来处理网络通讯。整体架构大致如下：<br><img src="http://newtonblogimg.qiniudn.com/Scrapy%20Architecture.png" alt="Scrapy Architecture"><br>Scrapy主要包括了以下组件：</p>
+<p>　　Scrapy 使用了 Twisted异步网络库来处理网络通讯。整体架构大致如下：<br><img src="http://newtonblogimg.qiniudn.com/Scrapy%20Architecture.png" alt="Scrapy Architecture"><br>　　Scrapy主要包括了以下组件：</p>
 <ul>
 <li><code>引擎</code>：用来处理整个系统的数据流处理，触发事务。</li>
 <li><code>调度器</code>：用来接受引擎发过来的请求，压入队列中，并在引擎再次请求的时候返回。</li>
@@ -383,7 +383,7 @@ enter a number: 123
 <p>　　使用Scrapy可以很方便的完成网上数据的采集工作，它为我们完成了大量的工作，而不需要自己费大力气去开发。</p>
 <h2 id="Scrapy_Tutorial"><strong><code>Scrapy Tutorial</code></strong></h2>
 <hr>
-<p>　　在本文中，假定您已经安装好<code>Scrapy</code>。 如若不然，请参考 <a href="http://doc.scrapy.org/en/0.24/intro/install.html#intro-install" target="_blank" rel="external"><em><code>Installation guide</code></em></a>。<br>　　接下来以爬取<a href="https://bbs.sjtu.edu.cn/frame2.html" target="_blank" rel="external"><em>饮水思源BBS</em></a>数据为例来讲述爬取过程，详见<a href="https://github.com/chenqx/spiderDemo/tree/master/SJTUbbsSpiderDemo" target="_blank" rel="external"><em> bbsdmoz代码</em></a>。<br>　　本篇教程中将带您完成下列任务：</p><p style="background:#f1f1f1"><br>　　1. 创建一个Scrapy项目<br>　　2. 定义提取的Item<br>　　3. 编写爬取网站的 spider 并提取 Item<br>　　4. 编写 Item Pipeline 来存储提取到的Item(即数据)</p>
+<p>　　在本文中，假定您已经安装好<code>Scrapy</code>。 如若不然，请参考 <a href="http://doc.scrapy.org/en/0.24/intro/install.html#intro-install" target="_blank" rel="external"><em>Installation guide</em></a>。<br>　　接下来以爬取<a href="https://bbs.sjtu.edu.cn/frame2.html" target="_blank" rel="external"><em>饮水思源BBS</em></a>数据为例来讲述爬取过程，详见<a href="https://github.com/chenqx/spiderDemo/tree/master/SJTUbbsSpiderDemo" target="_blank" rel="external"><em> bbsdmoz代码</em></a>。<br>　　本篇教程中将带您完成下列任务：</p><p style="background:#f1f1f1"><br>　　1. 创建一个Scrapy项目<br>　　2. 定义提取的Item<br>　　3. 编写爬取网站的 spider 并提取 Item<br>　　4. 编写 Item Pipeline 来存储提取到的Item(即数据)</p>
 <p>　　Scrapy由Python编写。如果您刚接触并且好奇这门语言的特性以及Scrapy的详情， 对于已经熟悉其他语言并且想快速学习Python的编程老手， 我们推荐 <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="external">Learn Python The Hard Way</a> ， 对于想从Python开始学习的编程新手， <a href="https://wiki.python.org/moin/BeginnersGuide/NonProgrammers" target="_blank" rel="external">非程序员的Python学习资料列表 </a>将是您的选择。</p>
 <h2 id="Creating_a_project"><strong><code>Creating a project</code></strong></h2>
 <hr>
@@ -637,11 +637,11 @@ enter a number: 123
   </entry>
   
   <entry>
-    <title><![CDATA[Java]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Java/"/>
-    <id>http://chenqx.github.com/2014/10/29/Java/</id>
-    <published>2014-10-29T02:33:37.000Z</published>
-    <updated>2014-10-29T02:40:16.000Z</updated>
+    <title><![CDATA[Data Base]]></title>
+    <link href="http://chenqx.github.com/2014/10/29/Data-Base/"/>
+    <id>http://chenqx.github.com/2014/10/29/Data-Base/</id>
+    <published>2014-10-29T02:31:58.000Z</published>
+    <updated>2014-11-09T02:39:49.000Z</updated>
     <content type="html"><![CDATA[<p>　　Building…</p>
 ]]></content>
     <summary type="html">
@@ -649,28 +649,9 @@ enter a number: 123
 ]]>
     </summary>
     
-      <category term="Java" scheme="http://chenqx.github.com/tags/Java/"/>
+      <category term="Database" scheme="http://chenqx.github.com/tags/Database/"/>
     
-      <category term="Java" scheme="http://chenqx.github.com/categories/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[C/C++]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/C-C/"/>
-    <id>http://chenqx.github.com/2014/10/29/C-C/</id>
-    <published>2014-10-29T02:31:59.000Z</published>
-    <updated>2014-10-29T02:45:42.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="C/C++" scheme="http://chenqx.github.com/tags/C-C/"/>
-    
-      <category term="C/C++" scheme="http://chenqx.github.com/categories/C-C/"/>
+      <category term="Database" scheme="http://chenqx.github.com/categories/Database/"/>
     
   </entry>
   
@@ -690,25 +671,6 @@ enter a number: 123
       <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
     
       <category term="NLP" scheme="http://chenqx.github.com/categories/NLP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Data Base]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Data-Base/"/>
-    <id>http://chenqx.github.com/2014/10/29/Data-Base/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-11-09T02:39:49.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Database" scheme="http://chenqx.github.com/tags/Database/"/>
-    
-      <category term="Database" scheme="http://chenqx.github.com/categories/Database/"/>
     
   </entry>
   
@@ -751,11 +713,49 @@ enter a number: 123
   </entry>
   
   <entry>
+    <title><![CDATA[Java]]></title>
+    <link href="http://chenqx.github.com/2014/10/10/Java/"/>
+    <id>http://chenqx.github.com/2014/10/10/Java/</id>
+    <published>2014-10-10T02:33:37.000Z</published>
+    <updated>2014-11-11T00:52:03.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Java" scheme="http://chenqx.github.com/tags/Java/"/>
+    
+      <category term="Java" scheme="http://chenqx.github.com/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[C/C++]]></title>
+    <link href="http://chenqx.github.com/2014/09/28/C-C/"/>
+    <id>http://chenqx.github.com/2014/09/28/C-C/</id>
+    <published>2014-09-28T02:31:59.000Z</published>
+    <updated>2014-11-11T00:51:05.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="C/C++" scheme="http://chenqx.github.com/tags/C-C/"/>
+    
+      <category term="C/C++" scheme="http://chenqx.github.com/categories/C-C/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[简明 Vim 练级攻略]]></title>
-    <link href="http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/"/>
-    <id>http://chenqx.github.com/2014/10/28/Learn-Vim-Progressively/</id>
-    <published>2014-10-28T10:11:03.000Z</published>
-    <updated>2014-11-10T07:29:56.000Z</updated>
+    <link href="http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/"/>
+    <id>http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/</id>
+    <published>2014-09-20T10:11:03.000Z</published>
+    <updated>2014-11-11T00:50:51.000Z</updated>
     <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。</p>
 <hr>
 <p>　　你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。</p>
@@ -1046,10 +1046,10 @@ enter a number: 123
   
   <entry>
     <title><![CDATA[Cmd - An Effective Markdown Editor]]></title>
-    <link href="http://chenqx.github.com/2014/10/28/Cmd-An-Effective-Markdown-Editor/"/>
-    <id>http://chenqx.github.com/2014/10/28/Cmd-An-Effective-Markdown-Editor/</id>
-    <published>2014-10-28T08:36:24.000Z</published>
-    <updated>2014-11-10T07:29:29.000Z</updated>
+    <link href="http://chenqx.github.com/2014/09/10/Cmd-An-Effective-Markdown-Editor/"/>
+    <id>http://chenqx.github.com/2014/09/10/Cmd-An-Effective-Markdown-Editor/</id>
+    <published>2014-09-10T08:36:24.000Z</published>
+    <updated>2014-11-11T00:48:16.000Z</updated>
     <content type="html"><![CDATA[<p>　　为了更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 为我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。</p>
 <p>　　您可以使用 Cmd Markdown：</p>
 <blockquote>

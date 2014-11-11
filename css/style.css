@@ -1016,6 +1016,8 @@ article .article-content img,
 article .article-content video,
 article .article-content figure img {
   max-width: 100%;
+  display: block;
+  margin: auto;
   height: auto;
   vertical-align: middle;
   padding-top: 0.5em;
