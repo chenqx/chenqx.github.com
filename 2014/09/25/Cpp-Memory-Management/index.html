@@ -132,10 +132,18 @@
 
 <p>　　但是<strong>注意</strong>：对于多数C++的实现，<code>new[]</code>操作符中的个数参数是数组的大小加上额外的存储对象数目的一些字节。在你的内存分配机制重要考虑的这一点。你应该尽量避免分配对象数组，从而使你的内存分配策略简单。</p>
 <h2 id="常见的内存错误及其对策">常见的内存错误及其对策</h2>
-<p>　　发生内存错误是件非常麻烦的事情。编译器不能自动发现这些错误，通常是在程序运行时才能捕捉到。而这些错误大多没有明显的症状，时隐时现，增加了改错的难度。有时用户怒气冲冲地把你找来，程序却没有发生任何问题，你一走，错误又发作了。 常见的内存错误及其对策如下：<br>　　<em> 内存分配未成功，却使用了它。<br>　　编程新手常犯这种错误，因为他们没有意识到内存分配会不成功。常用解决办法是，在使用内存之前检查指针是否为<code>NULL</code>。如果指针<code>p</code>是函数的参数，那么在函数的入口处用<code>assert(p!=NULL)</code>进行<br>　　检查。如果是用<code>malloc</code>或<code>new</code>来申请内存，应该用<code>if(p==NULL)</code> 或<code>if(p!=NULL)</code>进行防错处理。
-　　</em> 内存分配虽然成功，但是尚未初始化就引用它。<br>　　犯这种错误主要有两个起因：一是没有初始化的观念；二是误以为内存的缺省初值全为零，导致引用初值错误（例如数组）。 内存的缺省初值究竟是什么并没有统一的标准，尽管有些时候为零值，我们宁可信其无不可信其有。所以无论用何种方式创建数组，都别忘了赋初值，即便是赋零值也不可省略，不要嫌麻烦。<br>　　<em> 内存分配成功并且已经初始化，但操作越过了内存的边界。<br>　　例如在使用数组时经常发生下标“多1”或者“少1”的操作。特别是在<code>for</code>循环语句中，循环次数很容易搞错，导致数组操作越界。
-　　</em> 忘记了释放内存，造成内存泄露。<br>　　含有这种错误的函数每被调用一次就丢失一块内存。刚开始时系统的内存充足，你看不到错误。终有一次程序突然死掉，系统出现提示：内存耗尽。<br>　　动态内存的申请与释放必须配对，程序中<code>malloc</code>与<code>free</code>的使用次数一定要相同，否则肯定有错误（<code>new/delete</code>同理）。<br>　　* 释放了内存却继续使用它。</p>
-<p>　　有三种情况：<br>　　（1）程序中的对象调用关系过于复杂，实在难以搞清楚某个对象究竟是否已经释放了内存，此时应该重新设计数据结构，从根本上解决对象管理的混乱局面。<br>　　（2）函数的<code>return</code>语句写错了，注意不要返回指向“栈内存”的“指针”或者“引用”，因为该内存在函数体结束时被自动销毁。<br>　　（3）使用<code>free</code>或<code>delete</code>释放了内存后，没有将指针设置为NULL。<strong>导致产生“野指针”</strong>。<br>　　<strong>那么如何避免产生野指针呢</strong>？这里列出了5条规则，平常写程序时多注意一下，养成良好的习惯。<br>　　规则1：用<code>malloc</code>或<code>new</code>申请内存之后，应该立即检查指针值是否为NULL。防止使用指针值为NULL的内存。<br>　　规则2：不要忘记为数组和动态内存赋初值。防止将未被初始化的内存作为右值使用。<br>　　规则3：避免数组或指针的下标越界，特别要当心发生“多1”或者“少1”操作。<br>　　规则4：动态内存的申请与释放必须配对，防止内存泄漏。<br>　　规则5：用<code>free</code>或<code>delete</code>释放了内存之后，立即将指针设置为<code>NULL</code>，防止产生“野指针”。</p>
+<p>　　发生内存错误是件非常麻烦的事情。编译器不能自动发现这些错误，通常是在程序运行时才能捕捉到。而这些错误大多没有明显的症状，时隐时现，增加了改错的难度。有时用户怒气冲冲地把你找来，程序却没有发生任何问题，你一走，错误又发作了。 常见的内存错误及其对策如下：</p>
+<ul>
+<li>内存分配未成功，却使用了它。编程新手常犯这种错误，因为他们没有意识到内存分配会不成功。常用解决办法是，在使用内存之前检查指针是否为<code>NULL</code>。如果指针<code>p</code>是函数的参数，那么在函数的入口处用<code>assert(p!=NULL)</code>进行检查。如果是用<code>malloc</code>或<code>new</code>来申请内存，应该用<code>if(p==NULL)</code> 或<code>if(p!=NULL)</code>进行防错处理。</li>
+<li>内存分配虽然成功，但是尚未初始化就引用它。犯这种错误主要有两个起因：一是没有初始化的观念；二是误以为内存的缺省初值全为零，导致引用初值错误（例如数组）。内存的缺省初值究竟是什么并没有统一的标准，尽管有些时候为零值，我们宁可信其无不可信其有。所以无论用何种方式创建数组，都别忘了赋初值，即便是赋零值也不可省略，不要嫌麻烦。</li>
+<li>内存分配成功并且已经初始化，但操作越过了内存的边界。例如在使用数组时经常发生下标“多1”或者“少1”的操作。特别是在<code>for</code>循环语句中，循环次数很容易搞错，导致数组操作越界。</li>
+<li>忘记了释放内存，造成内存泄露。含有这种错误的函数每被调用一次就丢失一块内存。刚开始时系统的内存充足，你看不到错误。终有一次程序突然死掉，系统出现提示：内存耗尽。动态内存的申请与释放必须配对，程序中<code>malloc</code>与<code>free</code>的使用次数一定要相同，否则肯定有错误（<code>new/delete</code>同理）。</li>
+<li>释放了内存却继续使用它。</li>
+</ul>
+<p>　　有三种情况：<br>　　（1）程序中的对象调用关系过于复杂，实在难以搞清楚某个对象究竟是否已经释放了内存，此时应该重新设计数据结构，从根本上解决对象管理的混乱局面。<br>　　（2）函数的<code>return</code>语句写错了，注意不要返回指向“栈内存”的“指针”或者“引用”，因为该内存在函数体结束时被自动销毁。<br>　　（3）使用<code>free</code>或<code>delete</code>释放了内存后，没有将指针设置为NULL。<strong>导致产生“野指针”</strong>。<br>　　<strong>那么如何避免产生野指针呢</strong>？这里列出了5条规则，平常写程序时多注意一下，养成良好的习惯。</p>
+<blockquote>
+<p>规则1：用<code>malloc</code>或<code>new</code>申请内存之后，应该立即检查指针值是否为NULL。防止使用指针值为NULL的内存。<br>规则2：不要忘记为数组和动态内存赋初值。防止将未被初始化的内存作为右值使用。<br>规则3：避免数组或指针的下标越界，特别要当心发生“多1”或者“少1”操作。<br>规则4：动态内存的申请与释放必须配对，防止内存泄漏。<br>规则5：用<code>free</code>或<code>delete</code>释放了内存之后，立即将指针设置为<code>NULL</code>，防止产生“野指针”。</p>
+</blockquote>
 <h2 id="针与数组的对比">针与数组的对比</h2>
 <p>　　C++/C程序中，指针和数组在不少地方可以相互替换着用，让人产生一种错觉，以为两者是等价的。<br>　　数组要么在静态存储区被创建（如全局数组），要么在栈上被创建。数组名对应着（而不是指向）一块内存，其地址与容量在生命期内保持不变，只有数组的内容可以改变。<br>　　指针可以随时指向任意类型的内存块，它的特征是“可变”，所以我们常用指针来操作动态内存。指针远比数组灵活，但也更危险。<br>　　下面以字符串为例比较指针与数组的特性。</p>
 <h3 id="修改内容">修改内容</h3>
@@ -351,27 +359,27 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
-			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
-		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
 		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
-		
 			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
 		</ul>
 </div>
