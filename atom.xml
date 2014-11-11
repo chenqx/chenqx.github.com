@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-11T02:29:46.940Z</updated>
+  <updated>2014-11-11T11:08:51.628Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -620,25 +620,6 @@ enter a number: 123
   </entry>
   
   <entry>
-    <title><![CDATA[Linux]]></title>
-    <link href="http://chenqx.github.com/2014/10/29/Linux/"/>
-    <id>http://chenqx.github.com/2014/10/29/Linux/</id>
-    <published>2014-10-29T02:31:58.000Z</published>
-    <updated>2014-10-29T02:47:36.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
-    </summary>
-    
-      <category term="Linux" scheme="http://chenqx.github.com/tags/Linux/"/>
-    
-      <category term="Linux" scheme="http://chenqx.github.com/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Natural Language Processing]]></title>
     <link href="http://chenqx.github.com/2014/10/29/Natural-Language-Processing/"/>
     <id>http://chenqx.github.com/2014/10/29/Natural-Language-Processing/</id>
@@ -696,11 +677,30 @@ enter a number: 123
   </entry>
   
   <entry>
+    <title><![CDATA[Algorithm]]></title>
+    <link href="http://chenqx.github.com/2014/09/29/Algorithm/"/>
+    <id>http://chenqx.github.com/2014/09/29/Algorithm/</id>
+    <published>2014-09-29T02:31:58.000Z</published>
+    <updated>2014-11-11T11:07:58.000Z</updated>
+    <content type="html"><![CDATA[<p>　　Building…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　Building…</p>
+]]>
+    </summary>
+    
+      <category term="Algorithm" scheme="http://chenqx.github.com/tags/Algorithm/"/>
+    
+      <category term="Algorithm" scheme="http://chenqx.github.com/categories/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[C/C++]]></title>
-    <link href="http://chenqx.github.com/2014/09/28/C-C/"/>
-    <id>http://chenqx.github.com/2014/09/28/C-C/</id>
-    <published>2014-09-28T02:31:59.000Z</published>
-    <updated>2014-11-11T00:51:05.000Z</updated>
+    <link href="http://chenqx.github.com/2014/09/25/C-C/"/>
+    <id>http://chenqx.github.com/2014/09/25/C-C/</id>
+    <published>2014-09-25T02:31:59.000Z</published>
+    <updated>2014-11-11T11:07:45.000Z</updated>
     <content type="html"><![CDATA[<p>　　Building…</p>
 ]]></content>
     <summary type="html">
