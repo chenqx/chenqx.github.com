@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-12T12:02:57.036Z</updated>
+  <updated>2014-11-12T13:40:26.797Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -346,7 +346,7 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/"/>
     <id>http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/</id>
     <published>2014-11-09T05:34:46.000Z</published>
-    <updated>2014-11-11T02:06:25.000Z</updated>
+    <updated>2014-11-12T13:39:58.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Scrapy_at_a_glance"><strong>Scrapy at a glance</strong></h2>
 <p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。<br>　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。</p>
 <ul>
@@ -374,8 +374,7 @@ enter a number: 123
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrapy startproject bbsdmoz</div></pre></td></tr></table></figure>
 
 <p>　　该命令将会创建包含下列内容的 bbsDmoz 目录：</p>
-<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">bbsDmoz/</div><div class="line">    scrapy.cfg</div><div class="line">    bbsDmoz/</div><div class="line">        __init__.py</div><div class="line">        items.py</div><div class="line">        pipelines.py</div><div class="line">        settings.py</div><div class="line">        spiders/</div><div class="line">            __init__.py</div><div class="line">            ...</div></pre></td></tr></table></figure>
-
+<p>  bbsDmoz/<br>      scrapy.cfg<br>      bbsDmoz/<br>          <strong>init</strong>.py<br>          items.py<br>          pipelines.py<br>          settings.py<br>          spiders/<br>              <strong>init</strong>.py<br>              …</p>
 <p>　　这些文件分别是：</p>
 <ul>
 <li><code>scrapy.cfg</code>: 项目的配置文件</li>
