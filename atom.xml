@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-12T13:40:26.797Z</updated>
+  <updated>2014-11-12T13:53:31.732Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -346,7 +346,7 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/"/>
     <id>http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/</id>
     <published>2014-11-09T05:34:46.000Z</published>
-    <updated>2014-11-12T13:39:58.000Z</updated>
+    <updated>2014-11-12T13:53:07.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Scrapy_at_a_glance"><strong>Scrapy at a glance</strong></h2>
 <p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。<br>　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。</p>
 <ul>
@@ -367,15 +367,28 @@ enter a number: 123
 </ul>
 <p>　　使用Scrapy可以很方便的完成网上数据的采集工作，它为我们完成了大量的工作，而不需要自己费大力气去开发。</p>
 <h2 id="Scrapy_Tutorial"><strong>Scrapy Tutorial</strong></h2>
-<p>　　在本文中，假定您已经安装好<code>Scrapy</code>。 如若不然，请参考 <a href="http://doc.scrapy.org/en/0.24/intro/install.html#intro-install" target="_blank" rel="external"><em>Installation guide</em></a>。<br>　　接下来以爬取<a href="https://bbs.sjtu.edu.cn/frame2.html" target="_blank" rel="external"><em>饮水思源BBS</em></a>数据为例来讲述爬取过程，详见<a href="https://github.com/chenqx/spiderDemo/tree/master/SJTUbbsSpiderDemo" target="_blank" rel="external"><em> bbsdmoz代码</em></a>。<br>　　本篇教程中将带您完成下列任务：</p><p style="background:#f1f1f1"><br>　　1. 创建一个Scrapy项目<br>　　2. 定义提取的Item<br>　　3. 编写爬取网站的 spider 并提取 Item<br>　　4. 编写 Item Pipeline 来存储提取到的Item(即数据)</p>
-<p>　　Scrapy由Python编写。如果您刚接触并且好奇这门语言的特性以及Scrapy的详情， 对于已经熟悉其他语言并且想快速学习Python的编程老手， 我们推荐 <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="external">Learn Python The Hard Way</a> ， 对于想从Python开始学习的编程新手， <a href="https://wiki.python.org/moin/BeginnersGuide/NonProgrammers" target="_blank" rel="external">非程序员的Python学习资料列表 </a>将是您的选择。</p>
+<p>　　在本文中，假定您已经安装好<code>Scrapy</code>。 如若不然，请参考 <a href="http://doc.scrapy.org/en/0.24/intro/install.html#intro-install" target="_blank" rel="external"><em>Installation guide</em></a>。<br>　　接下来以爬取<a href="https://bbs.sjtu.edu.cn/frame2.html" target="_blank" rel="external"><em>饮水思源BBS</em></a>数据为例来讲述爬取过程，详见<a href="https://github.com/chenqx/spiderDemo/tree/master/SJTUbbsSpiderDemo" target="_blank" rel="external"><em> bbsdmoz代码</em></a>。<br>　　本篇教程中将带您完成下列任务：</p>
+<pre><code><span class="bullet">1. </span>创建一个Scrapy项目
+<span class="bullet">2. </span>定义提取的Item
+<span class="bullet">3. </span>编写爬取网站的 spider 并提取 Item
+<span class="bullet">4. </span>编写 Item Pipeline 来存储提取到的Item(即数据)
+</code></pre><p>　　Scrapy由Python编写。如果您刚接触并且好奇这门语言的特性以及Scrapy的详情， 对于已经熟悉其他语言并且想快速学习Python的编程老手， 我们推荐 <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="external">Learn Python The Hard Way</a> ， 对于想从Python开始学习的编程新手， <a href="https://wiki.python.org/moin/BeginnersGuide/NonProgrammers" target="_blank" rel="external">非程序员的Python学习资料列表 </a>将是您的选择。</p>
 <h2 id="Creating_a_project"><strong>Creating a project</strong></h2>
 <p>　　在开始爬取之前，您必须创建一个新的Scrapy项目。进入您打算存储代码的目录中，运行下列命令：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scrapy startproject bbsdmoz</div></pre></td></tr></table></figure>
 
 <p>　　该命令将会创建包含下列内容的 bbsDmoz 目录：</p>
-<p>  bbsDmoz/<br>      scrapy.cfg<br>      bbsDmoz/<br>          <strong>init</strong>.py<br>          items.py<br>          pipelines.py<br>          settings.py<br>          spiders/<br>              <strong>init</strong>.py<br>              …</p>
-<p>　　这些文件分别是：</p>
+<pre><code>bbsDmoz/
+scrapy.cfg
+bbsDmoz/
+    __init__.py
+    items.py
+    pipelines.py
+    settings.py
+    spiders/
+        __init__.py
+        <span class="keyword">...</span>
+</code></pre><p>　　这些文件分别是：</p>
 <ul>
 <li><code>scrapy.cfg</code>: 项目的配置文件</li>
 <li><code>bbsDmoz/</code>: 该项目的<code>python</code>模块。之后您将在此加入代码。</li>
@@ -406,10 +419,10 @@ enter a number: 123
 <li><code>//td</code>: 选择所有的 <code>&lt;td&gt;</code> 元素</li>
 <li><code>//div[@class=&quot;mine&quot;]</code>: 选择所有具有 <code>class=&quot;mine&quot;</code> 属性的 <code>div</code> 元素</li>
 </ul>
-<p>　　以饮水思源BBS一页面为例：<a href="https://bbs.sjtu.edu.cn/bbstcon?board=PhD&amp;reid=1406973178&amp;file=M.1406973178.A" target="_blank" rel="external">https://bbs.sjtu.edu.cn/bbstcon?board=PhD&amp;reid=1406973178&amp;file=M.1406973178.A</a><br>　　观察HTML页面源码并创建我们需要的数据(种子名字，描述和大小)的XPath表达式。<br>　　通过观察，我们可以发现<code>poster</code>是包含在 <code>pre/a</code> 标签中的:</p>
+<p>　　以饮水思源BBS一页面为例：<a href="https://bbs.sjtu.edu.cn/bbstcon?board=PhD&amp;reid=1406973178&amp;file=M.1406973178.A" target="_blank" rel="external">https://bbs.sjtu.edu.cn/bbstcon?board=PhD&amp;reid=1406973178&amp;file=M.1406973178.A</a><br>　　观察HTML页面源码并创建我们需要的数据(种子名字，描述和大小)的XPath表达式。<br>　　通过观察，我们可以发现<code>poster</code>是包含在 <code>pre/a</code> 标签中的，这里是<code>userid=jasperstream</code>:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"><span class="tag">&lt;<span class="title">pre</span>&gt;</span></div><div class="line">[<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">'bbspst?board=PhD&file=M.1406973178.A'</span>&gt;</span>回复本文<span class="tag">&lt;/<span class="title">a</span>&gt;</span>][<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">'bbscon?board=PhD&file=M.1406973178.A'</span>&gt;</span>原帖<span class="tag">&lt;/<span class="title">a</span>&gt;</span>] 发信人: <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"bbsqry?userid=jasperstream"</span>&gt;</span>jasperstream<span class="tag">&lt;/<span class="title">a</span>&gt;</span></div></pre></td></tr></table></figure>
 
-<p>　　因此可以提取其XPath表达式为：</p>
+<p>　　因此可以提取<code>jasperstream</code>的 XPath 表达式为：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'//pre/a/text()'</span></div></pre></td></tr></table></figure>
 
 <p>　　同理我可以提取其他内容的XPath，并最好在提取之后验证其正确性。上边仅仅是几个简单的XPath例子，XPath实际上要比这远远强大的多。 如果您想了解的更多，我们推荐 这篇XPath教程。<br>　　为了配合XPath，Scrapy除了提供了 Selector 之外，还提供了方法来避免每次从response中提取数据时生成selector的麻烦。<br>　　Selector有四个基本的方法(点击相应的方法可以看到详细的API文档):</p>
