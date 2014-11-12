@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Chan's blog]]></title>
+  <title><![CDATA[Chan's Blog]]></title>
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-11T15:01:36.118Z</updated>
+  <updated>2014-11-12T12:02:57.036Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
