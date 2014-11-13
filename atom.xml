@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-13T13:26:19.819Z</updated>
+  <updated>2014-11-13T13:32:44.406Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -942,7 +942,7 @@ close_spider(spider)
     <link href="http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/"/>
     <id>http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/</id>
     <published>2014-09-20T10:11:03.000Z</published>
-    <updated>2014-11-13T13:15:07.000Z</updated>
+    <updated>2014-11-13T13:32:26.000Z</updated>
     <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。
 　　</p>
 <hr>
@@ -1113,7 +1113,7 @@ close_spider(spider)
 &gt;　 <span class="constant">A</span>, 输入字符串，按 <span class="constant">ESC</span>。
 </code></pre><p><img src="http://newtonblogimg.qiniudn.com/append-to-many-lines.gif" alt="Append to Many Lines"></p>
 <h3 id="分屏">分屏</h3>
-<p>　　下面是主要的命令，你可以使用VIM的帮助 :help split. 你可以参考本站以前的一篇文章VIM分屏。</p>
+<p>　　下面是主要的命令，你可以使用VIM的帮助 :<code>help split</code>。你可以参考本站以前的一篇文章VIM分屏。</p>
 <pre><code>&gt;　 :split → 创建分屏 (:vsplit创建垂直分屏)
 &gt;　 <span class="tag">&lt;<span class="title">C-w</span>&gt;</span><span class="tag">&lt;<span class="title">dir</span>&gt;</span> : dir就是方向，可以是 hjkl 或是 ←↓↑→ 中的一个，其用来切换分屏。
 &gt;　 <span class="tag">&lt;<span class="title">C-w</span>&gt;</span>_ (或 <span class="tag">&lt;<span class="title">C-w</span>&gt;</span>|) : 最大化尺寸 (<span class="tag">&lt;<span class="title">C-w</span>&gt;</span>| 垂直分屏)
