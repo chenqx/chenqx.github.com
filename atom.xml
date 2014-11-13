@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-13T13:45:48.723Z</updated>
+  <updated>2014-11-13T13:52:08.625Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -942,16 +942,14 @@ close_spider(spider)
     <link href="http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/"/>
     <id>http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/</id>
     <published>2014-09-20T10:11:03.000Z</published>
-    <updated>2014-11-13T13:42:26.000Z</updated>
-    <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。
-　　</p>
-<hr>
+    <updated>2014-11-13T13:50:51.000Z</updated>
+    <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令，非常不错。</p>
 <p>　　你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。</p>
 <p>　　Vim the Six Billion Dollar editor</p>
 <blockquote>
 <p><em>Better, Stronger, Faster.</em></p>
 </blockquote>
-<p>学习 vim 并且其会成为你最后一个使用的文本编辑器。没有比这个更好的文本编辑器了，非常地难学，但是却不可思议地好用。<br>　　我建议下面这四个步骤：<br>　　<br>　　(1). 存活<br>　　(2). 感觉良好<br>　　(3). 觉得更好，更强，更快<br>　　(4). 使用VIM的超能力</p>
+<p>　　学习 vim 并且其会成为你最后一个使用的文本编辑器。没有比这个更好的文本编辑器了，非常地难学，但是却不可思议地好用。<br>　　我建议下面这四个步骤：<br>　　<br>　　(1). 存活<br>　　(2). 感觉良好<br>　　(3). 觉得更好，更强，更快<br>　　(4). 使用VIM的超能力</p>
 <p>　　当你走完这篇文章，你会成为一个vim的 superstar。在开始学习以前，我需要给你一些警告：</p>
 <ul>
 <li>学习vim在开始时是痛苦的。</li>
@@ -977,7 +975,7 @@ close_spider(spider)
 <pre><code>&gt;　hjkl (强例推荐使用其移动光标，但不必需) →你也可以使用光标键 (←↓↑→). 注<span class="symbol">:</span> j 就像下箭头。
 <span class="input"><span class="prompt">&gt;　:help &lt;command&gt;</span> → 显示相关命令的帮助。你也可以就输入 <span class="symbol">:help</span> 而不跟命令。（陈皓注：退出帮助需要输入<span class="symbol">:q</span>）</span>
 </code></pre><p>　　你能在vim幸存下来只需要上述的那5个命令，你就可以编辑文本了，你一定要把这些命令练成一种下意识的状态。于是你就可以开始进阶到第二级了。</p>
-<p>　　但是，在你进入第二级时，需要再说一下 Normal 模式。在一般的编辑器下，当你需要copy一段文字的时候，你需要使用 Ctrl 键，比如：<code>Ctrl-C</code>。也就是说，Ctrl键就好像功能键一样，当你按下了功能键Ctrl后，C就不在是C了，而且就是一个命令或是一个快键键了，在VIM的Normal模式下，所有的键就是功能键了。这个你需要知道。<br>　　<br>　　标记:</p>
+<p>　　但是，在你进入第二级时，需要再说一下 Normal 模式。在一般的编辑器下，当你需要copy一段文字的时候，你需要使用 Ctrl 键，比如：<code>Ctrl-C</code>。也就是说，Ctrl键就好像功能键一样，当你按下了功能键Ctrl后，C就不在是C了，而且就是一个命令或是一个快键键了，在VIM的Normal模式下，所有的键就是功能键了。这个你需要知道。<br>　　<br><strong>标记:</strong></p>
 <pre><code>&gt;　下面的文字中，如果是 <span class="variable">Ctrl</span>-λ我会写成 ＜<span class="variable">C</span>-λ＞.
 &gt;　以 : 开始的命令你需要输入 &lt;enter&gt;回车，例如 — 如果我写成 :q 也就是说你要输入 :q＜enter＞.
 </code></pre><h2 id="2nd_Level_–_Feel_comfortable"><strong>2nd Level – Feel comfortable</strong></h2>
