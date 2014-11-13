@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-13T09:28:56.445Z</updated>
+  <updated>2014-11-13T09:32:59.200Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -683,7 +683,7 @@ close_spider(spider)
     <link href="http://chenqx.github.com/2014/10/01/Java-Design-Pattern-Singleton-Pattern/"/>
     <id>http://chenqx.github.com/2014/10/01/Java-Design-Pattern-Singleton-Pattern/</id>
     <published>2014-10-01T03:33:37.000Z</published>
-    <updated>2014-11-13T09:28:36.000Z</updated>
+    <updated>2014-11-13T09:32:48.000Z</updated>
     <content type="html"><![CDATA[<h2 id="单例模式介绍">单例模式介绍</h2>
 <p>　　单例模式最初的定义出现于《设计模式》（艾迪生维斯理, 1994）：</p>
 <blockquote>
@@ -718,7 +718,7 @@ close_spider(spider)
 
 <p>　　这种方式基于<code>classloder</code>机制避免了多线程的同步问题，不过，<code>instance</code>在类装载时就实例化，虽然导致类装载的原因有很多种，在单例模式中大多数都是调用<code>getInstance</code>方法， 但是也不能确定有其他的方式（或者其他的静态方法）导致类装载，这时候初始化<code>instance</code>显然没有达到<code>lazy loading</code>的效果。</p>
 <h3 id="静态内部类">静态内部类</h3>
-<p>　　因为单例是静态的<code>final</code>变量，当类第一次加载到内存中的时候就初始化了，其<code>thread-safe</code>性由 JVM 来负责保证</p>
+<p>　　因为单例是静态的<code>final</code>变量，当类第一次加载到内存中的时候就初始化了，其<code>thread-safe</code>性由 JVM 来负责保证。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();  </div><div class="line">    }  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">return</span> SingletonHolder.INSTANCE;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p>　　首先，其他类在引用这个<code>Singleton</code>的类时，只是新建了一个引用，并没有开辟一个的堆空间存放（对象所在的内存空间）。接着，当使用<code>Singleton.getInstance()</code>方法后，Java虚拟机（JVM）会加载<code>SingletonHolder.class</code>（JLS规定每个class对象只能被初始化一次），并实例化一个<code>Singleton</code>对象。这种方式的缺点是需要在Java的另外一个内存空间（Java PermGen 永久代内存，这块内存是虚拟机加载class文件存放的位置）占用一个大块的空间。</p>
