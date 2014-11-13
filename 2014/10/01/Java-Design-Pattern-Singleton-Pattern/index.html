@@ -12,9 +12,9 @@
     <meta name="description" content="单例模式介绍
 　　单例模式最初的定义出现于《设计模式》（艾迪生维斯理, 1994）：
 
-“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”
+保证一个类仅有一个实例，并提供一个访问它的全局访问点。
 
-　　单例模式，也叫单子模式，是一种简单和常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全">
+　　单例模式，也叫单子模式，是一种简单和常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全局对">
     
     
     
@@ -102,7 +102,7 @@
 		<h2 id="单例模式介绍">单例模式介绍</h2>
 <p>　　单例模式最初的定义出现于《设计模式》（艾迪生维斯理, 1994）：</p>
 <blockquote>
-<p>“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”</p>
+<p><em>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</em></p>
 </blockquote>
 <p>　　<strong><a href="http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F" target="_blank" rel="external">单例模式</a></strong>，也叫单子模式，是一种简单和常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。比如在某个服务器程序中，该服务器的配置信息存放在一个文件中，这些配置数据由一个单例对象统一读取，然后服务进程中的其他对象再通过这个单例对象获取这些配置信息。这种方式简化了在复杂环境下的配置管理。<br>　　单例模式主要有3个特点：</p>
 <pre><code>(1). 单例类确保自己只有一个实例。
@@ -114,12 +114,13 @@
 <ul>
 <li>私有构造函数 - 其他类不能实例化一个新的对象。</li>
 <li>私有化引用 - 不能进行外部修改。</li>
-<li><p>公有静态方法是唯一可以获得对象的方式。<br>　　单例模式的实现方式有五种方法：懒汉，恶汉，双重校验锁，枚举和静态内部类。</p>
+<li>公有静态方法是唯一可以获得对象的方式。</li>
+</ul>
+<p>　　单例模式的实现方式有五种方法：懒汉，恶汉，双重校验锁，枚举和静态内部类。</p>
 <h3 id="懒汉方式">懒汉方式</h3>
-<p>　　<strong>懒汉方式</strong>，指全局的单例实例在第一次被使用时构建。注意线程安全<br>与否。</p>
-</li>
-<li><p><code>线程不安全</code></p>
-</li>
+<p>　　<strong>懒汉方式</strong>，指全局的单例实例在第一次被使用时构建。注意线程安全与否。</p>
+<ul>
+<li><code>线程不安全</code></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Non Thread Safe</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) {  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    }  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
 
@@ -277,31 +278,31 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
 		
-			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
-		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
+			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
 		</ul>
 </div>
