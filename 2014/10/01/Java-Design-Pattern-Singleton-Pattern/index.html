@@ -116,18 +116,14 @@
 <li>私有化引用 - 不能进行外部修改。</li>
 <li>公有静态方法是唯一可以获得对象的方式。</li>
 </ul>
-<p>　　单例模式的实现方式有五种方法：懒汉，恶汉，双重校验锁，枚举和静态内部类。</p>
+<p>　　单例模式的实现方式有五种方法：懒汉，恶汉，静态内部类，枚举和双重校验锁。</p>
 <h3 id="懒汉方式">懒汉方式</h3>
 <p>　　<strong>懒汉方式</strong>，指全局的单例实例在第一次被使用时构建。注意线程安全与否。</p>
-<ul>
-<li><code>线程不安全</code></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Non Thread Safe</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) {  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    }  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
+<p>　　<em>线程不安全</em></p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Non Thread Safe</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) {  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    }  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p>　　这种写法<code>lazy loading</code>很明显，但是致命的是在多线程不能正常工作。</p>
-<ul>
-<li><code>线程安全</code></li>
-</ul>
+<p>　　<em>线程安全</em></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Thread Safe</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) {  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    }  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p>　　这种写法能够在多线程中很好的工作，而且看起来它也具备很好的<code>lazy loading</code>，但是，遗憾的是，效率很低，99%情况下不需要同步。</p>
@@ -290,17 +286,17 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
