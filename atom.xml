@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-13T07:05:15.048Z</updated>
+  <updated>2014-11-13T09:18:30.339Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -679,19 +679,82 @@ close_spider(spider)
   </entry>
   
   <entry>
-    <title><![CDATA[Java]]></title>
-    <link href="http://chenqx.github.com/2014/10/01/Java/"/>
-    <id>http://chenqx.github.com/2014/10/01/Java/</id>
+    <title><![CDATA[Java设计模式：单例模式]]></title>
+    <link href="http://chenqx.github.com/2014/10/01/Java-Design-Pattern-Singleton-Pattern/"/>
+    <id>http://chenqx.github.com/2014/10/01/Java-Design-Pattern-Singleton-Pattern/</id>
     <published>2014-10-01T03:33:37.000Z</published>
-    <updated>2014-11-11T11:10:20.000Z</updated>
-    <content type="html"><![CDATA[<p>　　Building…</p>
+    <updated>2014-11-13T09:17:55.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="单例模式介绍">单例模式介绍</h2>
+<p>　　单例模式最初的定义出现于《设计模式》（艾迪生维斯理, 1994）：</p>
+<blockquote>
+<p>“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”</p>
+</blockquote>
+<p>　　<strong><a href="http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F" target="_blank" rel="external">单例模式</a></strong>，也叫单子模式，是一种简单和常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。比如在某个服务器程序中，该服务器的配置信息存放在一个文件中，这些配置数据由一个单例对象统一读取，然后服务进程中的其他对象再通过这个单例对象获取这些配置信息。这种方式简化了在复杂环境下的配置管理。<br>　　单例模式主要有3个特点：</p>
+<pre><code>(1). 单例类确保自己只有一个实例。
+(2). 单例类必须自己创建自己的实例。
+(3). 单例类必须为其他对象提供唯一的实例。
+</code></pre><p>　　实现单例模式的思路是：一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用<code>getInstance</code>这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例。<br>　　单例模式在多线程的应用场合下必须小心使用。如果当唯一实例尚未创建时，有两个线程同时调用创建方法，那么它们同时没有检测到唯一实例的存在，从而同时各自创建了一个实例，这样就有两个实例被构造出来，从而违反了单例模式中实例唯一的原则。 </p>
+<h2 id="Java中单例模式的写法">Java中单例模式的写法</h2>
+<p>　　单例模式是Java中最常用的模式之一，它通过阻止外部实例化和修改，来控制所创建的对象的数量。这个概念可以被推广到仅有一个对象能更高效运行的系统，或者限制对象实例化为特定的数目的系统中(From:<a href="http://www.programcreek.com/2011/07/java-design-pattern-singleton/" target="_blank" rel="external">Java Design Pattern: Singleton</a>)。例如：</p>
+<ul>
+<li>私有构造函数 - 其他类不能实例化一个新的对象。</li>
+<li>私有化引用 - 不能进行外部修改。</li>
+<li><p>公有静态方法是唯一可以获得对象的方式。<br>　　单例模式的实现方式有五种方法：懒汉，恶汉，双重校验锁，枚举和静态内部类。</p>
+<h3 id="懒汉方式">懒汉方式</h3>
+<p>　　<strong>懒汉方式</strong>，指全局的单例实例在第一次被使用时构建。注意线程安全<br>与否。</p>
+</li>
+<li><p><code>线程不安全</code></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Non Thread Safe</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) {  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    }  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　这种写法<code>lazy loading</code>很明显，但是致命的是在多线程不能正常工作。</p>
+<ul>
+<li><code>线程安全</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Thread Safe</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) {  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    }  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　这种写法能够在多线程中很好的工作，而且看起来它也具备很好的<code>lazy loading</code>，但是，遗憾的是，效率很低，99%情况下不需要同步。</p>
+<h3 id="饿汉方式">饿汉方式</h3>
+<p>　　<strong>饿汉方式</strong>，指全局的单例实例在类装载时构建。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　这种方式基于<code>classloder</code>机制避免了多线程的同步问题，不过，<code>instance</code>在类装载时就实例化，虽然导致类装载的原因有很多种，在单例模式中大多数都是调用<code>getInstance</code>方法， 但是也不能确定有其他的方式（或者其他的静态方法）导致类装载，这时候初始化<code>instance</code>显然没有达到<code>lazy loading</code>的效果。</p>
+<h3 id="静态内部类">静态内部类</h3>
+<p>　　因为单例是静态的<code>final</code>变量，当类第一次加载到内存中的时候就初始化了，其<code>thread-safe</code>性由 JVM 来负责保证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>{  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();  </div><div class="line">    }  </div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span> (){}  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span>() {  </div><div class="line">    <span class="keyword">return</span> SingletonHolder.INSTANCE;  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　首先，其他类在引用这个<code>Singleton</code>的类时，只是新建了一个引用，并没有开辟一个的堆空间存放（对象所在的内存空间）。接着，当使用<code>Singleton.getInstance()</code>方法后，Java虚拟机（JVM）会加载<code>SingletonHolder.class</code>（JLS规定每个class对象只能被初始化一次），并实例化一个<code>Singleton</code>对象。这种方式的缺点是需要在Java的另外一个内存空间（Java PermGen 永久代内存，这块内存是虚拟机加载class文件存放的位置）占用一个大块的空间。</p>
+<h3 id="枚举">枚举</h3>
+<p>　　枚举单例（Enum Singleton）是实现单例模式的一种新方式，枚举这个特性是在Java5才出现的。《Effective Java》一书中有介绍这个特性，它不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton {  </div><div class="line">    INSTANCE;  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whateverMethod</span>() {  </div><div class="line">    }  </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　默认枚举实例的创建是线程安全的，但是在枚举中的其他任何方法由程序员自己负责。如果你正在使用实例方法，那么你需要确保线程安全（如果它影响到其他对象的状态的话）。传统单例存在的另外一个问题是一旦你实现了序列化接口，那么它们不再保持单例了，但是枚举单例，JVM对序列化有保证。枚举实现单例的好处：有序列化和线程安全的保证，代码简单。</p>
+<h3 id="双重校验锁">双重校验锁</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> <span class="title">Singleton</span>(){}</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span>(){</div><div class="line">        <span class="keyword">if</span>(singleton == <span class="keyword">null</span>){ </div><div class="line">           synchronize (Singleton.class){</div><div class="line">               <span class="keyword">if</span>( singleton == <span class="keyword">null</span> ) { <span class="comment">// double check </span></div><div class="line">                   singleton = <span class="keyword">new</span> Singleton();</div><div class="line">               }</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　当两个线程执行完第一个 <code>singleton == null</code> 后等待锁， 其中一个线程获得锁并进入<code>synchronize</code>后，实例化了，然后退出释放锁，另外一个线程获得锁，进入又想实例化，会判断是否进行实例化了，如果存在，就不进行实例化了。</p>
+<h2 id="Conlusion">Conlusion</h2>
+<p>　　单例模式有五种写法：懒汉、饿汉、静态内部类、枚举、双重检验锁。一般来说，推荐使用饿汉和静态内部类两种方式。</p>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="http://blog.javachen.com/2013/06/09/note-about-java-singleton-model/#" target="_blank" rel="external">Java笔记：单例模式</a></li>
+<li><a href="http://cantellow.iteye.com/blog/838473" target="_blank" rel="external">单例模式的七种写法</a></li>
+<li><a href="http://www.cnblogs.com/codeguy/p/3580486.html" target="_blank" rel="external">JAVA中单例模式的几种实现方式</a></li>
+</ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>　　Building…</p>
-]]>
+    <![CDATA[<h2 id="单例模式介绍">单例模式介绍</h2>
+<p>　　单例模式最初的定义出现于《设计模式》（艾迪生维斯理, 1994）：</p>
+<blockquote>
+<p>“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”</p>
+</blockquote>
+<p>　　]]>
     </summary>
     
       <category term="Java" scheme="http://chenqx.github.com/tags/Java/"/>
+    
+      <category term="Design Pattern" scheme="http://chenqx.github.com/tags/Design-Pattern/"/>
     
       <category term="Java" scheme="http://chenqx.github.com/categories/Java/"/>
     
