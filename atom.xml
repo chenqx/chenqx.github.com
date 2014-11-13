@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-11-13T13:38:25.113Z</updated>
+  <updated>2014-11-13T13:45:48.723Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -942,7 +942,7 @@ close_spider(spider)
     <link href="http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/"/>
     <id>http://chenqx.github.com/2014/09/20/Learn-Vim-Progressively/</id>
     <published>2014-09-20T10:11:03.000Z</published>
-    <updated>2014-11-13T13:38:04.000Z</updated>
+    <updated>2014-11-13T13:42:26.000Z</updated>
     <content type="html"><![CDATA[<p>　　vim的学习曲线相当的大<a href="http://coolshell.cn/articles/3125.html" target="_blank" rel="external">（参看各种文本编辑器的学习曲线）</a>，所以，如果你一开始看到的是一大堆VIM的命令分类，你一定会对这个编辑器失去兴趣的。下面的文章翻译自<a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/" target="_blank" rel="external">《Learn Vim Progressively》</a>，我觉得这是给新手最好的VIM的升级教程了，没有列举所有的命令，只是列举了那些最有用的命令。非常不错。
 　　</p>
 <hr>
@@ -977,11 +977,11 @@ close_spider(spider)
 <pre><code>&gt;　hjkl (强例推荐使用其移动光标，但不必需) →你也可以使用光标键 (←↓↑→). 注<span class="symbol">:</span> j 就像下箭头。
 <span class="input"><span class="prompt">&gt;　:help &lt;command&gt;</span> → 显示相关命令的帮助。你也可以就输入 <span class="symbol">:help</span> 而不跟命令。（陈皓注：退出帮助需要输入<span class="symbol">:q</span>）</span>
 </code></pre><p>　　你能在vim幸存下来只需要上述的那5个命令，你就可以编辑文本了，你一定要把这些命令练成一种下意识的状态。于是你就可以开始进阶到第二级了。</p>
-<p>　　但是，在你进入第二级时，需要再说一下 Normal 模式。在一般的编辑器下，当你需要copy一段文字的时候，你需要使用 Ctrl 键，比如：Ctrl-C。也就是说，Ctrl键就好像功能键一样，当你按下了功能键Ctrl后，C就不在是C了，而且就是一个命令或是一个快键键了，在VIM的Normal模式下，所有的键就是功能键了。这个你需要知道。<br>　　<br>　　标记:</p>
+<p>　　但是，在你进入第二级时，需要再说一下 Normal 模式。在一般的编辑器下，当你需要copy一段文字的时候，你需要使用 Ctrl 键，比如：<code>Ctrl-C</code>。也就是说，Ctrl键就好像功能键一样，当你按下了功能键Ctrl后，C就不在是C了，而且就是一个命令或是一个快键键了，在VIM的Normal模式下，所有的键就是功能键了。这个你需要知道。<br>　　<br>　　标记:</p>
 <pre><code>&gt;　下面的文字中，如果是 <span class="variable">Ctrl</span>-λ我会写成 ＜<span class="variable">C</span>-λ＞.
 &gt;　以 : 开始的命令你需要输入 &lt;enter&gt;回车，例如 — 如果我写成 :q 也就是说你要输入 :q＜enter＞.
 </code></pre><h2 id="2nd_Level_–_Feel_comfortable"><strong>2nd Level – Feel comfortable</strong></h2>
-<p>　　上面的那些命令只能让你存活下来，现在是时候学习一些更多的命令了，下面是我的建议：（陈皓注：所有的命令都需要在Normal模式下使用，如果你不知道现在在什么样的模式，你就狂按几次ESC键）</p>
+<p>　　上面的那些命令只能让你存活下来，现在是时候学习一些更多的命令了，下面是我的建议：所有的命令都需要在Normal模式下使用，如果你不知道现在在什么样的模式，你就狂按几次ESC键</p>
 <h3 id="各种插入模式">各种插入模式</h3>
 <pre><code><span class="blockquote">&gt;　a → 在光标后插入</span>
 <span class="blockquote">&gt;　o → 在当前行后插入一个新行</span>
@@ -1005,7 +1005,7 @@ close_spider(spider)
 <span class="input"><span class="prompt">&gt;　:saveas &lt;path/to/file&gt;</span> → 另存为 &lt;path/to/file&gt;
 &gt;　<span class="symbol">:x</span>， <span class="constant">ZZ</span> 或 <span class="symbol">:wq</span> → 保存并退出 (<span class="symbol">:x</span> 表示仅在需要时保存，<span class="constant">ZZ</span>不需要输入冒号并回车)</span>
 &gt;　<span class="symbol">:q!</span> → 退出不保存 <span class="symbol">:qa!</span> 强行退出所有的正在编辑的文件，就算别的文件有更改。
-&gt;　<span class="symbol">:bn</span> 和 <span class="symbol">:bp</span> → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。（陈皓注：我喜欢使用<span class="symbol">:n</span>到下一个文件）
+&gt;　<span class="symbol">:bn</span> 和 <span class="symbol">:bp</span> → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。（我喜欢使用<span class="symbol">:n</span>到下一个文件）
 </code></pre><p>　　花点时间熟悉一下上面的命令，一旦你掌握他们了，你就几乎可以干其它编辑器都能干的事了。但是到现在为止，你还是觉得使用vim还是有点笨拙，不过没关系，你可以进阶到第三级了。</p>
 <h2 id="3rd_Level_–_Better_Stronger_Faster"><strong>3rd Level – Better Stronger Faster</strong></h2>
 <p>　　先恭喜你！你干的很不错。我们可以开始一些更为有趣的事了。在第三级，我们只谈那些和vi可以兼容的命令。</p>
@@ -1063,7 +1063,7 @@ close_spider(spider)
 </code></pre><p><img src="http://newtonblogimg.qiniudn.com/line_moves.jpg" alt="Line Moves"></p>
 <p>　　还有一个很有用的命令是 dt” → 删除所有的内容，直到遇到双引号—— “。</p>
 <h3 id="区域选择">区域选择</h3>
-<p>　　在visual 模式下，这些命令很强大，其命令格式为&lt;　action&gt;a&lt;　object&gt; 和 &lt;　action&gt;i&lt;　object&gt;</p>
+<p>　　在visual 模式下，这些命令很强大，其命令格式为<code>&lt;action&gt;a&lt;object&gt;</code>和 <code>&lt;action&gt;i&lt;object&gt;</code></p>
 <pre><code><span class="blockquote">&gt;　action可以是任何的命令，如 d (删除), y (拷贝), v (可以视模式选择)。</span>
 <span class="blockquote">&gt;　object 可能是： w 一个单词， W 一个以空格为分隔的单词， s 一个句字， p 一个段落。也可以是一个特别的字符："、 '、 )、 }、 ]。</span>
 </code></pre><p>　　假设你有一个字符串 (map (+) (“foo”)).而光标键在第一个 o 的位置。</p>
@@ -1081,7 +1081,7 @@ close_spider(spider)
 <span class="input"><span class="prompt">&gt;　&lt;　C-d&gt;</span> → 向下移动 &gt; (你也可以使用hjkl来移动光标，或是使用%，或是别的)</span>
 &gt;　<span class="constant">I</span>-- [<span class="constant">ESC</span>] → <span class="constant">I</span>是插入，插入“--”，按<span class="constant">ESC</span>键来为每一行生效。
 </code></pre><p><img src="http://newtonblogimg.qiniudn.com/rectangular-blocks.gif" alt="Rectangular Blocks"></p>
-<p>　　在Windows下的vim，你需要使用 &lt; C-q&gt; 而不是 &lt; C-v&gt; ，&lt; C-v&gt; 是拷贝剪贴板。</p>
+<p>　　在Windows下的vim，你需要使用 <code>&lt;C-q&gt;</code>而不是 <code>&lt;C-v&gt;</code> ，<code>&lt;C-v&gt;</code> 是拷贝剪贴板。</p>
 <h3 id="自动提示">自动提示</h3>
 <p>　　在 Insert 模式下，你可以输入一个词的开头，然后按 <code>&lt;C-p&gt;</code>或是<code>&lt; C-n&gt;</code>，自动补齐功能就出现了……<br> 　<img src="http://newtonblogimg.qiniudn.com/completion.gif" alt="Completion"></p>
 <h3 id="宏录制">宏录制</h3>
