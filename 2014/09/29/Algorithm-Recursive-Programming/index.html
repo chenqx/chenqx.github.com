@@ -1,0 +1,602 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>递归算法详解 | ShinChan&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="ShinChan">
+    
+    <meta name="description" content="计算机科学的新学生通常难以理解递归程序设计的概念。递归思想之所以困难，原因在于它非常像是循环推理（circular reasoning）。它也不是一个直观的过程；当我们指挥别人做事的时候，我们极少会递归地指挥他们。
+Introduction
+　　递归算法是一种直接或者间接调用自身函数或者方法的算法。">
+    
+    
+    
+    
+    <link rel="alternative" href="/atom.xml" title="ShinChan&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon_new.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo_new.png" alt="ShinChan&#39;s Blog" title="ShinChan&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="ShinChan&#39;s Blog">ShinChan&#39;s Blog</a></h1>
+				<h2 class="blog-motto">Vi Veri Veniversum Vivus Vici</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">About</a></li>
+					
+
+					<li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:chenqx.github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/09/29/Algorithm-Recursive-Programming/" title="递归算法详解" itemprop="url">递归算法详解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://chenqx.github.com/about" title="ShinChan" target="_blank" itemprop="author">ShinChan</a>
+		
+  <p class="article-time">
+    <time datetime="2014-09-29T02:31:58.000Z" itemprop="datePublished"> Published Sep 29 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从递归的经典示例开始"><span class="toc-number">2.</span> <span class="toc-text">从递归的经典示例开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算阶乘"><span class="toc-number">3.</span> <span class="toc-text">计算阶乘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波纳契数列"><span class="toc-number">3.1.</span> <span class="toc-text">斐波纳契数列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归程序的基本步骤"><span class="toc-number">4.</span> <span class="toc-text">递归程序的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用归纳定义"><span class="toc-number">5.</span> <span class="toc-text">使用归纳定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表示例"><span class="toc-number">5.1.</span> <span class="toc-text">链表示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汉诺塔"><span class="toc-number">5.2.</span> <span class="toc-text">汉诺塔</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将循环转化为递归"><span class="toc-number"></span> <span class="toc-text">将循环转化为递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尾递归介绍"><span class="toc-number"></span> <span class="toc-text">尾递归介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number"></span> <span class="toc-text">Conclusion</span></a>
+		
+		</div>
+		
+		<p>　　计算机科学的新学生通常难以理解递归程序设计的概念。递归思想之所以困难，原因在于它非常像是循环推理（<code>circular reasoning</code>）。它也不是一个直观的过程；当我们指挥别人做事的时候，我们极少会递归地指挥他们。</p>
+<h2 id="Introduction">Introduction</h2>
+<p>　　递归算法是一种直接或者间接调用自身函数或者方法的算法。递归算法的实质是把问题分解成规模缩小的同类问题的子问题，然后递归调用方法来表示问题的解。递归算法对解决一大类问题很有效，它可以使算法简洁和易于理解。递归算法，其实说白了，就是程序的自身调用。它表现在一段程序中往往会遇到调用自身的那样一种coding策略，这样我们就可以利用大道至简的思想，把一个大的复杂的问题层层转换为一个小的和原问题相似的问题来求解的这样一种策略。递归往往能给我们带来非常简洁非常直观的代码形势，从而使我们的编码大大简化，然而递归的思维确实很我们的常规思维相逆的，我们通常都是从上而下的思维问题， 而递归趋势从下往上的进行思维。这样我们就能看到我们会用很少的语句解决了非常大的问题，所以递归策略的最主要体现就是小的代码量解决了非常复杂的问题。<br>　　递归算法解决问题的特点：</p>
+<ul>
+<li>递归就是方法里调用自身。</li>
+<li>在使用递增归策略时，必须有一个明确的递归结束条件，称为递归出口。</li>
+<li>递归算法解题通常显得很简洁，但递归算法解题的运行效率较低。所以一般不提倡用递归算法设计程序。</li>
+<li>在递归调用的过程当中系统为每一层的返回点、局部量等开辟了栈来存储。递归次数过多容易造成栈溢出等，所以一般不提倡用递归算法设计程序。</li>
+</ul>
+<p>　　递归算法要求。递归算法所体现的“重复”一般有三个要求：</p>
+<p>　　(1) 是每次调用在规模上都有所缩小(通常是减半)；<br>　　(2) 是相邻两次重复之间有紧密的联系，前一次要为后一次做准备(通常前一次的输出就作为后一次的输入)；<br>　　(3) 是在问题的规模极小时必须用直接给出解答而不再进行递归调用，因而每次递归调用都是有条件的(以规模未达到直接解答的大小为条件)，无条件递归调用将会成为死循环而不能正常结束。</p>
+<h2 id="从递归的经典示例开始">从递归的经典示例开始</h2>
+<h2 id="计算阶乘">计算阶乘</h2>
+<p>　　计算阶乘是递归程序设计的一个经典示例。计算某个数的阶乘就是用那个数去乘包括 1 在内的所有比它小的数。例如，<code>factorial(5)</code> 等价于 <code>5*4*3*2*1</code>，而 <code>factorial(3)</code> 等价于 <code>3*2*1</code>。<br>　　阶乘的一个有趣特性是，某个数的阶乘等于起始数（starting number）乘以比它小一的数的阶乘。例如，<code>factorial(5)</code> 与 <code>5 * factorial(4)</code> 相同。您很可能会像这样编写阶乘函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> factorial(<span class="keyword">int</span> n){</div><div class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>(<em>注：本文的程序示例用C语言编写</em>)<br>　　不过，这个函数的问题是，它会永远运行下去，因为它没有终止的地方。函数会连续不断地调用 <code>factorial</code>。 当计算到零时，没有条件来停止它，所以它会继续调用零和负数的阶乘。因此，我们的函数需要一个条件，告诉它何时停止。<br>　　由于小于 1 的数的阶乘没有任何意义，所以我们在计算到数字 1 的时候停止，并返回 1 的阶乘（即 1）。因此，真正的递归函数类似于：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> factorial(<span class="keyword">int</span> n){</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">      <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　可见，只要初始值大于零，这个函数就能够终止。停止的位置称为 基线条件（base case）。基线条件是递归程序的 最底层位置，在此位置时没有必要再进行操作，可以直接返回一个结果。所有递归程序都必须至少拥有一个基线条件，而且 必须确保它们最终会达到某个基线条件；否则，程序将永远运行下去，直到程序缺少内存或者栈空间。</p>
+<h3 id="斐波纳契数列">斐波纳契数列</h3>
+<p>　　<a href="http://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97" target="_blank" rel="external">斐波纳契数列</a>(Fibonacci Sequence)，最开始用于描述兔子生长的数目时用上了这数列。从数学上，费波那契数列是以递归的方法来定义：<br><img src="http://newtonblogimg.qiniudn.com/Fibonacci%20Sequence.png" alt="Fibonacci Sequence"><br>　　这样斐波纳契数列的递归程序就可以非常清晰的写出来了：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> Fibonacci(<span class="keyword">int</span> n){</div><div class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>)  </div><div class="line">        <span class="keyword">return</span> n;  </div><div class="line">    <span class="keyword">else</span>  </div><div class="line">        <span class="keyword">return</span> Fibonacci(n-<span class="number">1</span>) + Fibonacci(n-<span class="number">2</span>);  </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2 id="递归程序的基本步骤">递归程序的基本步骤</h2>
+<p>　　每一个递归程序都遵循相同的基本步骤：</p>
+<pre><code>(<span class="number">1</span>) 初始化算法。递归程序通常需要一个开始时使用的种子值（seed <span class="keyword">value</span>）。要完成此任务，可以向函数传递参数，或者提供一个入口函数， 这个函数是非递归的，但可以为递归计算设置种子值。
+(<span class="number">2</span>) 检查要处理的当前值是否已经与基线条件相匹配。如果匹配，则进行处理并返回值。
+(<span class="number">3</span>) 使用更小的或更简单的子问题（或多个子问题）来重新定义答案。
+(<span class="number">4</span>) 对子问题运行算法。
+(<span class="number">5</span>) 将结果合并入答案的表达式。
+(<span class="number">6</span>) 返回结果。
+</code></pre><h2 id="使用归纳定义">使用归纳定义</h2>
+<p>　　有时候，编写递归程序时难以获得更简单的子问题。 不过，使用 归纳定义的（<code>inductively-defined</code>）数据集 可以令子问题的获得更为简单。归纳定义的数据集是根据自身定义的数据结构 —— 这叫做 归纳定义（<code>inductive definition</code>）。<br>　　例如，链表就是根据其本身定义出来的。链表所包含的节点结构体由两部分构成：它所持有的数据，以及指向另一个节点结构体（或者是 NULL，结束链表）的指针。 由于节点结构体内部包含有一个指向节点结构体的指针，所以称之为是归纳定义的。<br>　　使用归纳数据编写递归过程非常简单。注意，与我们的递归程序非常类似，链表的定义也包括一个基线条件 —— 在这里是 NULL 指针。 由于 NULL 指针会结束一个链表，所以我们也可以使用 NULL 指针条件作为基于链表的很多递归程序的基线条件。</p>
+<h3 id="链表示例">链表示例</h3>
+<p>　　让我们来看一些基于链表的递归函数示例。假定我们有一个数字列表，并且要将它们加起来。履行递归过程序列的每一个步骤， 　　以确定它如何应用于我们的求和函数：</p>
+<pre><code>(<span class="number">1</span>) 初始化算法。这个算法的种子值是要处理的第一个节点，将它作为参数传递给函数。
+(<span class="number">2</span>) 检查基线条件。程序需要检查确认当前节点是否为 <span class="keyword">NULL</span> 列表。如果是，则返回零，因为一个空列表的所有成员的和为零。
+(<span class="number">3</span>) 使用更简单的子问题重新定义答案。我们可以将答案定义为当前节点的内容加上列表中其余部分的和。为了确定列表其余部分的和， 我们针对下一个节点来调用这个函数。
+(<span class="number">4</span>) 合并结果。递归调用之后，我们将当前节点的值加到递归调用的结果上。
+</code></pre><p>　　这样我们就可以很简单的写出链表求和的递归程序，实例如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> sum_list(<span class="keyword">struct</span> list_node *l){</div><div class="line">    <span class="keyword">if</span>(l == NULL)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> l.data + sum_list(l.next);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="汉诺塔">汉诺塔</h3>
+<p>　　汉诺塔（Hanoi）问题也是一个经典的递归问题，该问题描述如下：</p>
+<pre><code>汉诺塔问题：古代有一个梵塔，塔内有三个座<span class="literal">A</span>、B、C，<span class="literal">A</span>座上有<span class="number">64</span>个盘子，盘子大小不等，大的在下，小的在上（如图）。有一个和尚想把这<span class="number">64</span>个盘子从<span class="literal">A</span>座移到B座，但每次只能允许移动一个盘子，并且在移动过程中，<span class="number">3</span>个座上的盘子始终保持大盘在下，小盘在上。
+</code></pre><p>　　<img src="http://newtonblogimg.qiniudn.com/Hanoi%20Tower%20Solving.png" alt="此处输入图片的描述"></p>
+<ul>
+<li>如果只有 1 个盘子，则不需要利用B塔，直接将盘子从A移动到C。</li>
+<li>如果有 2 个盘子，可以先将盘子1上的盘子2移动到B；将盘子1移动到C；将盘子2移动到C。这说明了：可以借助B将2个盘子从A移动到C，当然，也可以借助C将2个盘子从A移动到B。</li>
+<li>如果有3个盘子，那么根据2个盘子的结论，可以借助c将盘子1上的两个盘子从A移动到B；将盘子1从A移动到C，A变成空座；借助A座，将B上的两个盘子移动到C。<br>　　以此类此，上述的思路可以一直扩展到 n 个盘子的情况：将 n-1个盘子看做一个整体，也就是我们要求的子问题，以借助B塔为例，可以借助空塔B将盘子A上面的 n-1 个盘子从A移动到B；将A最大的盘子移动到C，A变成空塔；借助空塔A，将B塔上的 n-2 个盘子移动到A，将C最大的盘子移动到C，B变成空塔…<br>　　根据以上的分析，不难写出程序：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> Hanoi (<span class="keyword">int</span> n, <span class="keyword">char</span> A, <span class="keyword">char</span> B, <span class="keyword">char</span> C){</div><div class="line">    <span class="keyword">if</span> (n==<span class="number">1</span>){ <span class="comment">//end condition</span></div><div class="line">        move(A,B);<span class="comment">//‘move’ can be defined to be a print function</span></div><div class="line">    }</div><div class="line">    <span class="keyword">else</span>{</div><div class="line">        Hanoi(n-<span class="number">1</span>,A,C,B);<span class="comment">//move sub [n-1] pans from A to B</span></div><div class="line">        move(A,C);<span class="comment">//move the bottom(max) pan to C</span></div><div class="line">        Hanoi(n-<span class="number">1</span>,B,A,C);<span class="comment">//move sub [n-1] pans from B to C</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h1 id="将循环转化为递归">将循环转化为递归</h1>
+<p>　　在下表中了解循环的特性，看它们可以如何与递归函数的特性相对比。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Properties</strong></th>
+<th style="text-align:right"><strong>Loops</strong></th>
+<th style="text-align:center"><strong>Recursive functions</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>重复</td>
+<td style="text-align:right">为了获得结果，反复执行同一代码块；以完成代码块或者执行 continue 命令信号而实现重复执行。</td>
+<td style="text-align:center">为了获得结果，反复执行同一代码块；以反复调用自己为信号而实现重复执行。</td>
+</tr>
+<tr>
+<td>终止条件</td>
+<td style="text-align:right">为了确保能够终止，循环必须要有一个或多个能够使其终止的条件，而且必须保证它能在某种情况下满足这些条件的其中之一。</td>
+<td style="text-align:center">为了确保能够终止，递归函数需要有一个基线条件，令函数停止递归。</td>
+</tr>
+<tr>
+<td>状态</td>
+<td style="text-align:right">循环进行时更新当前状态。</td>
+<td style="text-align:center">当前状态作为参数传递。</td>
+</tr>
+</tbody>
+</table>
+<p>　　可见，递归函数与循环有很多类似之处。实际上，可以认为循环和递归函数是能够相互转换的。 区别在于，使用递归函数极少被迫修改任何一个变量 —— 只需要将新值作为参数传递给下一次函数调用。 这就使得您可以获得避免使用可更新变量的所有益处，同时能够进行重复的、有状态的行为。<br>　　下面还是以阶乘为例子，循环写法为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> factorial(<span class="keyword">int</span> n){</div><div class="line">    <span class="keyword">int</span> product = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>){</div><div class="line">        product *= n;</div><div class="line">        n--;</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> product;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　递归写法在第二节中已经介绍过了，这里就不重复了。大家可以比较一下，自己动手写就个。</p>
+<h1 id="尾递归介绍">尾递归介绍</h1>
+<p>　　对于递归函数的使用，人们所关心的一个问题是栈空间的增长。确实，随着被调用次数的增加，某些种类的递归函数会线性地增加栈空间的使用 —— 不过，有一类函数，即尾部递归函数，不管递归有多深，栈的大小都保持不变。尾递归属于线性递归，更准确的说是线性递归的子集。<br>　　函数所做的最后一件事情是一个函数调用（递归的或者非递归的），这被称为 尾部调用（<code>tail-call</code>）。使用尾部调用的递归称为 <em>尾部递归</em>。当编译器检测到一个函数调用是尾递归的时候，它就覆盖当前的活动记录而不是在栈中去创建一个新的。编译器可以做到这点，因为递归调用是当前活跃期内最后一条待执行的语句，于是当这个调用返回时栈帧中并没有其他事情可做，因此也就没有保存栈帧的必要了。通过覆盖当前的栈帧而不是在其之上重新添加一个，这样所使用的栈空间就大大缩减了，这使得实际的运行效率会变得更高。<br>　　让我们来看一些尾部调用和非尾部调用函数示例，以了解尾部调用的含义到底是什么：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> test1(){</div><div class="line">    <span class="keyword">int</span> a = <span class="number">3</span>;</div><div class="line">    test1(); <span class="comment">/* recursive, but not a tail call.  We continue */</span></div><div class="line">             <span class="comment">/* processing in the function after it returns. */</span></div><div class="line">    a = a + <span class="number">4</span>;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">}</div><div class="line"><span class="keyword">int</span> test2(){</div><div class="line">    <span class="keyword">int</span> q = <span class="number">4</span>;</div><div class="line">    q = q + <span class="number">5</span>;</div><div class="line">    <span class="keyword">return</span> q + test1(); <span class="comment">/* test1() is not in tail position.</span></div><div class="line">                         * There is still more work to be</div><div class="line">                         * done after test1() returns (like</div><div class="line">                         * adding q to the result*/</div><div class="line">}</div><div class="line"><span class="keyword">int</span> test3(){</div><div class="line">    <span class="keyword">int</span> b = <span class="number">5</span>;</div><div class="line">    b = b + <span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> test1();  <span class="comment">/* This is a tail-call.  The return value</span></div><div class="line">                      * of test1() is used as the return value</div><div class="line">                      * for this function.*/</div><div class="line">                      </div><div class="line">}</div><div class="line"><span class="keyword">int</span> test4(){</div><div class="line">    test3(); <span class="comment">/* not in tail position */</span></div><div class="line">    test3(); <span class="comment">/* not in tail position */</span></div><div class="line">    <span class="keyword">return</span> test3(); <span class="comment">/* in tail position */</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>　　可见，要使调用成为真正的尾部调用，在尾部调用函数返回之前，对其结果 <em>不能执行任何其他操作</em>。<br><em>注意</em>，由于在函数中不再做任何事情，那个函数的实际的栈结构也就不需要了。惟一的问题是，很多程序设计语言和编译器不知道 如何除去没有用的栈结构。如果我们能找到一个除去这些不需要的栈结构的方法，那么我们的尾部递归函数就可以在固定大小的栈中运行。<br>　　在尾部调用之后除去栈结构的方法称为 <em>尾部调用优化</em> 。<br>　　那么这种优化是什么？我们可以通过询问其他问题来回答那个问题：</p>
+<pre><code>(1) 函数在尾部被调用之后，还需要使用哪个本地变量？哪个也不需要。
+(2) 会对返回的值进行什么处理？什么处理也没有。
+(3) 传递到函数的哪个参数将会被使用？哪个都没有。
+</code></pre><p>　　好像一旦控制权传递给了尾部调用的函数，栈中就再也没有有用的内容了。虽然还占据着空间，但函数的栈结构此时实际上已经没有用了，因此，尾部调用优化就是要在尾部进行函数调用时使用下一个栈结构 <em>覆盖</em> 当前的栈结构，同时保持原来的返回地址。<br>　　我们所做的本质上是对栈进行处理。再也不需要活动记录（<code>activation record</code>），所以我们将删掉它，并将尾部调用的函数重定向返回到调用我们的函数。 这意味着我们必须手工重新编写栈来仿造一个返回地址，以使得尾部调用的函数能直接返回到调用它的函数。
+　　</p>
+<h1 id="Conclusion">Conclusion</h1>
+<p>　　递归是一门伟大的艺术，使得程序的正确性更容易确认，而不需要牺牲性能，但这需要程序员以一种新的眼光来研究程序设计。对新程序员 来说，命令式程序设计通常是一个更为自然和直观的起点，这就是为什么大部分程序设计说明都集中关注命令式语言和方法的原因。 不过，随着程序越来越复杂，递归程序设计能够让程序员以可维护且逻辑一致的方式更好地组织代码。</p>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="http://www.ibm.com/developerworks/linux/library/l-recurs/index.html" target="_blank" rel="external">Mastering recursive programming</a></li>
+<li><a href="http://blog.csdn.net/wangjinyu501/article/details/8248492" target="_blank" rel="external">递归算法</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Algorithm/">Algorithm</a>
+  </div>
+
+</div>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://chenqx.github.com/2014/09/29/Algorithm-Recursive-Programming/" data-title="递归算法详解 | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/10/01/Java-Design-Pattern-Singleton-Pattern/" title="Java设计模式：单例模式">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Java设计模式：单例模式</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/09/25/Cpp-Memory-Management/"  title="C/C++内存管理详解">
+ <strong>下一篇：</strong><br/> 
+ <span>C/C++内存管理详解
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2014/09/29/Algorithm-Recursive-Programming/" data-title=”递归算法详解” data-url="http://chenqx.github.com/2014/09/29/Algorithm-Recursive-Programming/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chenqx"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从递归的经典示例开始"><span class="toc-number">2.</span> <span class="toc-text">从递归的经典示例开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算阶乘"><span class="toc-number">3.</span> <span class="toc-text">计算阶乘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波纳契数列"><span class="toc-number">3.1.</span> <span class="toc-text">斐波纳契数列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归程序的基本步骤"><span class="toc-number">4.</span> <span class="toc-text">递归程序的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用归纳定义"><span class="toc-number">5.</span> <span class="toc-text">使用归纳定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表示例"><span class="toc-number">5.1.</span> <span class="toc-text">链表示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汉诺塔"><span class="toc-number">5.2.</span> <span class="toc-text">汉诺塔</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将循环转化为递归"><span class="toc-number"></span> <span class="toc-text">将循环转化为递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尾递归介绍"><span class="toc-number"></span> <span class="toc-text">尾递归介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number"></span> <span class="toc-text">Conclusion</span></a>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+		
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Database/" title="Database">Database<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Machine-Learning/" title="Machine Learning">Machine Learning<sup>1</sup></a></li>
+		
+			<li><a href="/categories/NLP/" title="NLP">NLP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+		
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            <a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a>
+          </li>
+        
+          <li>
+            <a href="http://www.pami.sjtu.edu.cn/" target="_blank" title="PAMI Lab">PAMI Lab</a>
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p>   <br/>
+			 </p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/chenqx" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4180579" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:chenqiuxing@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2014 
+		
+		<a href="http://chenqx.github.com/about" target="_blank" title="ShinChan">ShinChan</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-56584658-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+<div id="totop">
+<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </body>
+</html>
