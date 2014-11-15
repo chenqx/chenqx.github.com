@@ -92,7 +92,7 @@ Introduction
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从递归的经典示例开始"><span class="toc-number">2.</span> <span class="toc-text">从递归的经典示例开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算阶乘"><span class="toc-number">2.1.</span> <span class="toc-text">计算阶乘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波纳契数列"><span class="toc-number">2.2.</span> <span class="toc-text">斐波纳契数列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归程序的基本步骤"><span class="toc-number">3.</span> <span class="toc-text">递归程序的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用归纳定义"><span class="toc-number">4.</span> <span class="toc-text">使用归纳定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表示例"><span class="toc-number">4.1.</span> <span class="toc-text">链表示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汉诺塔"><span class="toc-number">4.2.</span> <span class="toc-text">汉诺塔</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将循环转化为递归"><span class="toc-number"></span> <span class="toc-text">将循环转化为递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尾递归介绍"><span class="toc-number"></span> <span class="toc-text">尾递归介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number"></span> <span class="toc-text">Conclusion</span></a>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从递归的经典示例开始"><span class="toc-number">2.</span> <span class="toc-text">从递归的经典示例开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算阶乘"><span class="toc-number">2.1.</span> <span class="toc-text">计算阶乘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波纳契数列"><span class="toc-number">2.2.</span> <span class="toc-text">斐波纳契数列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归程序的基本步骤"><span class="toc-number">3.</span> <span class="toc-text">递归程序的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用归纳定义"><span class="toc-number">4.</span> <span class="toc-text">使用归纳定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表求和示例"><span class="toc-number">4.1.</span> <span class="toc-text">链表求和示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汉诺塔问题"><span class="toc-number">4.2.</span> <span class="toc-text">汉诺塔问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将循环转化为递归"><span class="toc-number"></span> <span class="toc-text">将循环转化为递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尾递归介绍"><span class="toc-number"></span> <span class="toc-text">尾递归介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number"></span> <span class="toc-text">Conclusion</span></a>
 		
 		</div>
 		
@@ -106,7 +106,7 @@ Introduction
 <li>在递归调用的过程当中系统为每一层的返回点、局部量等开辟了栈来存储。递归次数过多容易造成栈溢出等，所以一般不提倡用递归算法设计程序。</li>
 </ul>
 <p>　　递归算法要求。递归算法所体现的“重复”一般有三个要求：</p>
-<p>　　(1) 是每次调用在规模上都有所缩小(通常是减半)；<br>　　(2) 是相邻两次重复之间有紧密的联系，前一次要为后一次做准备(通常前一次的输出就作为后一次的输入)；<br>　　(3) 是在问题的规模极小时必须用直接给出解答而不再进行递归调用，因而每次递归调用都是有条件的(以规模未达到直接解答的大小为条件)，无条件递归调用将会成为死循环而不能正常结束。</p>
+<p>　　(1) 是每次调用在规模上都有所缩小（通常是减半）；<br>　　(2) 是相邻两次重复之间有紧密的联系，前一次要为后一次做准备（通常前一次的输出就作为后一次的输入）；<br>　　(3) 是在问题的规模极小时必须用直接给出解答而不再进行递归调用，因而每次递归调用都是有条件的(以规模未达到直接解答的大小为条件)，无条件递归调用将会成为死循环而不能正常结束。</p>
 <h2 id="从递归的经典示例开始">从递归的经典示例开始</h2>
 <h3 id="计算阶乘">计算阶乘</h3>
 <p>　　计算阶乘是递归程序设计的一个经典示例。计算某个数的阶乘就是用那个数去乘包括 1 在内的所有比它小的数。例如，<code>factorial(5)</code> 等价于 <code>5*4*3*2*1</code>，而 <code>factorial(3)</code> 等价于 <code>3*2*1</code>。<br>　　阶乘的一个有趣特性是，某个数的阶乘等于起始数（starting number）乘以比它小一的数的阶乘。例如，<code>factorial(5)</code> 与 <code>5 * factorial(4)</code> 相同。您很可能会像这样编写阶乘函数：</p>
@@ -129,8 +129,8 @@ Introduction
 (<span class="number">5</span>) 将结果合并入答案的表达式。
 (<span class="number">6</span>) 返回结果。
 </code></pre><h2 id="使用归纳定义">使用归纳定义</h2>
-<p>　　有时候，编写递归程序时难以获得更简单的子问题。 不过，使用 归纳定义的（<code>inductively-defined</code>）数据集 可以令子问题的获得更为简单。归纳定义的数据集是根据自身定义的数据结构 —— 这叫做 <em>归纳定义</em>（<code>inductive definition</code>）。<br>　　例如，链表就是根据其本身定义出来的。链表所包含的节点结构体由两部分构成：它所持有的数据，以及指向另一个节点结构体（或者是 NULL，结束链表）的指针。 由于节点结构体内部包含有一个指向节点结构体的指针，所以称之为是归纳定义的。<br>　　使用归纳数据编写递归过程非常简单。注意，与我们的递归程序非常类似，链表的定义也包括一个基线条件 —— 在这里是 NULL 指针。 由于 NULL 指针会结束一个链表，所以我们也可以使用 NULL 指针条件作为基于链表的很多递归程序的基线条件。</p>
-<h3 id="链表示例">链表示例</h3>
+<p>　　有时候，编写递归程序时难以获得更简单的子问题。 不过，使用 归纳定义的（<code>inductively-defined</code>）数据集 可以令子问题的获得更为简单。归纳定义的数据集是根据自身定义的数据结构 —— 这叫做 <em>归纳定义</em>（<code>inductive definition</code>）。<br>　　例如，链表就是根据其本身定义出来的。链表所包含的节点结构体由两部分构成：它所持有的数据，以及指向另一个节点结构体（或者是 NULL，结束链表）的指针。 由于节点结构体内部包含有一个指向节点结构体的指针，所以称之为是归纳定义的。<br>　　使用归纳数据编写递归过程非常简单。注意，与我们的递归程序非常类似，链表的定义也包括一个基线条件 —— 在这里是 NULL 指针。 由于 NULL 指针会结束一个链表，所以我们也可以使用 NULL 指针条件作为基于链表的很多递归程序的基线条件。<br>　　下面看两个例子。</p>
+<h3 id="链表求和示例">链表求和示例</h3>
 <p>　　让我们来看一些基于链表的递归函数示例。假定我们有一个数字列表，并且要将它们加起来。履行递归过程序列的每一个步骤，以确定它如何应用于我们的求和函数：</p>
 <pre><code>(<span class="number">1</span>) 初始化算法。这个算法的种子值是要处理的第一个节点，将它作为参数传递给函数。
 (<span class="number">2</span>) 检查基线条件。程序需要检查确认当前节点是否为 <span class="keyword">NULL</span> 列表。如果是，则返回零，因为一个空列表的所有成员的和为零。
@@ -139,8 +139,8 @@ Introduction
 </code></pre><p>　　这样我们就可以很简单的写出链表求和的递归程序，实例如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> sum_list(<span class="keyword">struct</span> list_node *l){</div><div class="line">    <span class="keyword">if</span>(l == NULL)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> l.data + sum_list(l.next);</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<h3 id="汉诺塔">汉诺塔</h3>
-<p>　　汉诺塔（Hanoi）问题也是一个经典的递归问题，该问题描述如下：</p>
+<h3 id="汉诺塔问题">汉诺塔问题</h3>
+<p>　　汉诺塔（Hanoi Tower）问题也是一个经典的递归问题，该问题描述如下：</p>
 <pre><code>汉诺塔问题：古代有一个梵塔，塔内有三个座<span class="literal">A</span>、B、C，<span class="literal">A</span>座上有<span class="number">64</span>个盘子，盘子大小不等，大的在下，小的在上（如图）。有一个和尚想把这<span class="number">64</span>个盘子从<span class="literal">A</span>座移到B座，但每次只能允许移动一个盘子，并且在移动过程中，<span class="number">3</span>个座上的盘子始终保持大盘在下，小盘在上。
 </code></pre><p>　　<img src="http://newtonblogimg.qiniudn.com/Hanoi%20Tower%20Solving.png" alt="Hanoi Tower Solving"></p>
 <ul>
@@ -212,7 +212,7 @@ Introduction
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Algorithm/">Algorithm</a>
+  <span></span> <a href="/tags/Algorithm/">Algorithm</a><a href="/tags/C-C/">C/C++</a>
   </div>
 
 </div>
@@ -273,7 +273,7 @@ var duoshuoQuery = {short_name:"chenqx"};
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从递归的经典示例开始"><span class="toc-number">2.</span> <span class="toc-text">从递归的经典示例开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算阶乘"><span class="toc-number">2.1.</span> <span class="toc-text">计算阶乘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波纳契数列"><span class="toc-number">2.2.</span> <span class="toc-text">斐波纳契数列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归程序的基本步骤"><span class="toc-number">3.</span> <span class="toc-text">递归程序的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用归纳定义"><span class="toc-number">4.</span> <span class="toc-text">使用归纳定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表示例"><span class="toc-number">4.1.</span> <span class="toc-text">链表示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汉诺塔"><span class="toc-number">4.2.</span> <span class="toc-text">汉诺塔</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将循环转化为递归"><span class="toc-number"></span> <span class="toc-text">将循环转化为递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尾递归介绍"><span class="toc-number"></span> <span class="toc-text">尾递归介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number"></span> <span class="toc-text">Conclusion</span></a>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从递归的经典示例开始"><span class="toc-number">2.</span> <span class="toc-text">从递归的经典示例开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算阶乘"><span class="toc-number">2.1.</span> <span class="toc-text">计算阶乘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波纳契数列"><span class="toc-number">2.2.</span> <span class="toc-text">斐波纳契数列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归程序的基本步骤"><span class="toc-number">3.</span> <span class="toc-text">递归程序的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用归纳定义"><span class="toc-number">4.</span> <span class="toc-text">使用归纳定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链表求和示例"><span class="toc-number">4.1.</span> <span class="toc-text">链表求和示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汉诺塔问题"><span class="toc-number">4.2.</span> <span class="toc-text">汉诺塔问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将循环转化为递归"><span class="toc-number"></span> <span class="toc-text">将循环转化为递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尾递归介绍"><span class="toc-number"></span> <span class="toc-text">尾递归介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number"></span> <span class="toc-text">Conclusion</span></a>
  
   </div>
 
@@ -319,31 +319,31 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
-		
 			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
 		
 		</ul>
 </div>
@@ -563,38 +563,6 @@ ga('send', 'pageview');
 
 <script src="/js/totop.js"></script>
 
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
 
