@@ -146,7 +146,7 @@ Introduction
 <ul>
 <li>如果只有 1 个盘子，则不需要利用B塔，直接将盘子从A移动到C。</li>
 <li>如果有 2 个盘子，可以先将盘子1上的盘子2移动到B；将盘子1移动到C；将盘子2移动到C。这说明了：可以借助B将2个盘子从A移动到C，当然，也可以借助C将2个盘子从A移动到B。</li>
-<li>如果有3个盘子，那么根据2个盘子的结论，可以借助c将盘子1上的两个盘子从A移动到B；将盘子1从A移动到C，A变成空座；借助A座，将B上的两个盘子移动到C。<br>　　以此类推，上述的思路可以一直扩展到 n 个盘子的情况：将 n-1个盘子看做一个整体，也就是我们要求的子问题，以借助B塔为例，可以借助空塔B将盘子A上面的 n-1 个盘子从A移动到B；将A最大的盘子移动到C，A变成空塔；借助空塔A，将B塔上的 n-2 个盘子移动到A，将C最大的盘子移动到C，B变成空塔…<br>　　根据以上的分析，不难写出程序：</li>
+<li>如果有3个盘子，那么根据2个盘子的结论，可以借助c将盘子1上的两个盘子从A移动到B；将盘子1从A移动到C，A变成空座；借助A座，将B上的两个盘子移动到C。<br>　　以此类推，上述的思路可以一直扩展到 n 个盘子的情况，将将较小的 n-1个盘子看做一个整体，也就是我们要求的子问题，以借助B塔为例，可以借助空塔B将盘子A上面的 n-1 个盘子从A移动到B；将A最大的盘子移动到C，A变成空塔；借助空塔A，将B塔上的 n-2 个盘子移动到A，将C最大的盘子移动到C，B变成空塔…<br>　　根据以上的分析，不难写出程序：</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> Hanoi (<span class="keyword">int</span> n, <span class="keyword">char</span> A, <span class="keyword">char</span> B, <span class="keyword">char</span> C){</div><div class="line">    <span class="keyword">if</span> (n==<span class="number">1</span>){ <span class="comment">//end condition</span></div><div class="line">        move(A,B);<span class="comment">//‘move’ can be defined to be a print function</span></div><div class="line">    }</div><div class="line">    <span class="keyword">else</span>{</div><div class="line">        Hanoi(n-<span class="number">1</span>,A,C,B);<span class="comment">//move sub [n-1] pans from A to B</span></div><div class="line">        move(A,C);<span class="comment">//move the bottom(max) pan to C</span></div><div class="line">        Hanoi(n-<span class="number">1</span>,B,A,C);<span class="comment">//move sub [n-1] pans from B to C</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
 
@@ -181,7 +181,7 @@ Introduction
 <p>　　可见，递归函数与循环有很多类似之处。实际上，可以认为循环和递归函数是能够相互转换的。 区别在于，使用递归函数极少被迫修改任何一个变量 —— 只需要将新值作为参数传递给下一次函数调用。 这就使得您可以获得避免使用可更新变量的所有益处，同时能够进行重复的、有状态的行为。<br>　　下面还是以阶乘为例子，循环写法为：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> factorial(<span class="keyword">int</span> n){</div><div class="line">    <span class="keyword">int</span> product = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>){</div><div class="line">        product *= n;</div><div class="line">        n--;</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> product;</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<p>　　递归写法在第二节中已经介绍过了，这里就不重复了。大家可以比较一下，自己动手写就个。</p>
+<p>　　递归写法在第二节中已经介绍过了，这里就不重复了，可以比较一下。</p>
 <h1 id="尾递归介绍">尾递归介绍</h1>
 <p>　　对于递归函数的使用，人们所关心的一个问题是栈空间的增长。确实，随着被调用次数的增加，某些种类的递归函数会线性地增加栈空间的使用 —— 不过，有一类函数，即尾部递归函数，不管递归有多深，栈的大小都保持不变。尾递归属于线性递归，更准确的说是线性递归的子集。<br>　　函数所做的最后一件事情是一个函数调用（递归的或者非递归的），这被称为 尾部调用（<code>tail-call</code>）。使用尾部调用的递归称为 <em>尾部递归</em>。当编译器检测到一个函数调用是尾递归的时候，它就覆盖当前的活动记录而不是在栈中去创建一个新的。编译器可以做到这点，因为递归调用是当前活跃期内最后一条待执行的语句，于是当这个调用返回时栈帧中并没有其他事情可做，因此也就没有保存栈帧的必要了。通过覆盖当前的栈帧而不是在其之上重新添加一个，这样所使用的栈空间就大大缩减了，这使得实际的运行效率会变得更高。<br>　　让我们来看一些尾部调用和非尾部调用函数示例，以了解尾部调用的含义到底是什么：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> test1(){</div><div class="line">    <span class="keyword">int</span> a = <span class="number">3</span>;</div><div class="line">    test1(); <span class="comment">/* recursive, but not a tail call.  We continue */</span></div><div class="line">             <span class="comment">/* processing in the function after it returns. */</span></div><div class="line">    a = a + <span class="number">4</span>;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">}</div><div class="line"><span class="keyword">int</span> test2(){</div><div class="line">    <span class="keyword">int</span> q = <span class="number">4</span>;</div><div class="line">    q = q + <span class="number">5</span>;</div><div class="line">    <span class="keyword">return</span> q + test1(); <span class="comment">/* test1() is not in tail position.</span></div><div class="line">                         * There is still more work to be</div><div class="line">                         * done after test1() returns (like</div><div class="line">                         * adding q to the result*/</div><div class="line">}</div><div class="line"><span class="keyword">int</span> test3(){</div><div class="line">    <span class="keyword">int</span> b = <span class="number">5</span>;</div><div class="line">    b = b + <span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> test1();  <span class="comment">/* This is a tail-call.  The return value</span></div><div class="line">                      * of test1() is used as the return value</div><div class="line">                      * for this function.*/</div><div class="line">                      </div><div class="line">}</div><div class="line"><span class="keyword">int</span> test4(){</div><div class="line">    test3(); <span class="comment">/* not in tail position */</span></div><div class="line">    test3(); <span class="comment">/* not in tail position */</span></div><div class="line">    <span class="keyword">return</span> test3(); <span class="comment">/* in tail position */</span></div><div class="line">}</div></pre></td></tr></table></figure>
@@ -323,7 +323,7 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
 		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
 		
@@ -331,15 +331,15 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
