@@ -184,7 +184,7 @@ Introduction
 <p>　　递归写法在第二节中已经介绍过了，这里就不重复了，可以比较一下。</p>
 <h1 id="尾递归介绍">尾递归介绍</h1>
 <p>　　对于递归函数的使用，人们所关心的一个问题是栈空间的增长。确实，随着被调用次数的增加，某些种类的递归函数会线性地增加栈空间的使用 —— 不过，有一类函数，即尾部递归函数，不管递归有多深，栈的大小都保持不变。尾递归属于线性递归，更准确的说是线性递归的子集。<br>　　函数所做的最后一件事情是一个函数调用（递归的或者非递归的），这被称为 尾部调用（<code>tail-call</code>）。使用尾部调用的递归称为 <em>尾部递归</em>。当编译器检测到一个函数调用是尾递归的时候，它就覆盖当前的活动记录而不是在栈中去创建一个新的。编译器可以做到这点，因为递归调用是当前活跃期内最后一条待执行的语句，于是当这个调用返回时栈帧中并没有其他事情可做，因此也就没有保存栈帧的必要了。通过覆盖当前的栈帧而不是在其之上重新添加一个，这样所使用的栈空间就大大缩减了，这使得实际的运行效率会变得更高。<br>　　让我们来看一些尾部调用和非尾部调用函数示例，以了解尾部调用的含义到底是什么：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> test1(){</div><div class="line">    <span class="keyword">int</span> a = <span class="number">3</span>;</div><div class="line">    test1(); <span class="comment">/* recursive, but not a tail call.  We continue */</span></div><div class="line">             <span class="comment">/* processing in the function after it returns. */</span></div><div class="line">    a = a + <span class="number">4</span>;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">}</div><div class="line"><span class="keyword">int</span> test2(){</div><div class="line">    <span class="keyword">int</span> q = <span class="number">4</span>;</div><div class="line">    q = q + <span class="number">5</span>;</div><div class="line">    <span class="keyword">return</span> q + test1(); <span class="comment">/* test1() is not in tail position.</span></div><div class="line">                         * There is still more work to be</div><div class="line">                         * done after test1() returns (like</div><div class="line">                         * adding q to the result*/</div><div class="line">}</div><div class="line"><span class="keyword">int</span> test3(){</div><div class="line">    <span class="keyword">int</span> b = <span class="number">5</span>;</div><div class="line">    b = b + <span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> test1();  <span class="comment">/* This is a tail-call.  The return value</span></div><div class="line">                      * of test1() is used as the return value</div><div class="line">                      * for this function.*/</div><div class="line">                      </div><div class="line">}</div><div class="line"><span class="keyword">int</span> test4(){</div><div class="line">    test3(); <span class="comment">/* not in tail position */</span></div><div class="line">    test3(); <span class="comment">/* not in tail position */</span></div><div class="line">    <span class="keyword">return</span> test3(); <span class="comment">/* in tail position */</span></div><div class="line">}</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> test1(){</div><div class="line">    <span class="keyword">int</span> a = <span class="number">3</span>;</div><div class="line">    test1(); <span class="comment">/* recursive, but not a tail call.  We continue */</span></div><div class="line">             <span class="comment">/* processing in the function after it returns. */</span></div><div class="line">    a = a + <span class="number">4</span>;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">}</div><div class="line"><span class="keyword">int</span> test2(){</div><div class="line">    <span class="keyword">int</span> q = <span class="number">4</span>;</div><div class="line">    q = q + <span class="number">5</span>;</div><div class="line">    <span class="keyword">return</span> q + test1(); <span class="comment">/* test1() is not in tail position.</span></div><div class="line">                         * There is still more work to be</div><div class="line">                         * done after test1() returns (like</div><div class="line">                         * adding q to the result*/</div><div class="line">}</div><div class="line"><span class="keyword">int</span> test3(){</div><div class="line">    <span class="keyword">int</span> b = <span class="number">5</span>;</div><div class="line">    b = b + <span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> test1();  <span class="comment">/* This is a tail-call.  The return value</span></div><div class="line">                      * of test1() is used as the return value</div><div class="line">                      * for this function.*/                    </div><div class="line">}</div><div class="line"><span class="keyword">int</span> test4(){</div><div class="line">    test3(); <span class="comment">/* not in tail position */</span></div><div class="line">    test3(); <span class="comment">/* not in tail position */</span></div><div class="line">    <span class="keyword">return</span> test3(); <span class="comment">/* in tail position */</span></div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p>　　可见，要使调用成为真正的尾部调用，在尾部调用函数返回之前，对其结果 <em>不能执行任何其他操作</em>。<br><em>注意</em>，由于在函数中不再做任何事情，那个函数的实际的栈结构也就不需要了。惟一的问题是，很多程序设计语言和编译器不知道 如何除去没有用的栈结构。如果我们能找到一个除去这些不需要的栈结构的方法，那么我们的尾部递归函数就可以在固定大小的栈中运行。<br>　　在尾部调用之后除去栈结构的方法称为 <em>尾部调用优化</em> 。<br>　　那么这种优化是什么？我们可以通过询问其他问题来回答那个问题：</p>
 <pre><code>(1) 函数在尾部被调用之后，还需要使用哪个本地变量？哪个也不需要。
@@ -319,31 +319,31 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
-			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
-		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>1</sup></a></li>
-		
 			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
-		
 			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
 		</ul>
 </div>
