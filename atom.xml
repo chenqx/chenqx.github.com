@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-12-08T10:36:02.952Z</updated>
+  <updated>2014-12-08T10:46:29.511Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -39,8 +39,8 @@
     <link href="http://chenqx.github.com/2014/12/03/A-Few-Useful-Things-to-Know-about-Machine-Learning/"/>
     <id>http://chenqx.github.com/2014/12/03/A-Few-Useful-Things-to-Know-about-Machine-Learning/</id>
     <published>2014-12-03T08:48:46.000Z</published>
-    <updated>2014-12-08T08:59:03.000Z</updated>
-    <content type="html"><![CDATA[<p>　　下图是<a href="https://breezedeus.github.io/2012/10/30/breezedeus-things-about-ml.html" target="_blank" rel="external">BreezeDeus</a>对Pedro Domingos 发表在 Communications of the ACM 2012年第10期的的论文<a href="http://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf" target="_blank" rel="external">《A few useful things to know about machine learning》</a>的总结，大图可以在<a href="http://pan.baidu.com/s/1hqBX1h6" target="_blank" rel="external">这里下载</a>。也可以阅读<a href="http://www.valleytalk.org/wp-content/uploads/2012/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%82%A3%E4%BA%9B%E4%BA%8B.pdf" target="_blank" rel="external">中文翻译</a>。一篇介绍 Machine Learning 的非常不错的文章。<br>　　<br><img src="http://newtonblogimg.qiniudn.com/A%20few%20useful%20things%20to%20know%20about%20machine%20learning.jpg" alt="A Few Useful Things to Know about Machine Learning"></p>
+    <updated>2014-12-08T10:45:54.000Z</updated>
+    <content type="html"><![CDATA[<p>　　下图是<a href="https://breezedeus.github.io/2012/10/30/breezedeus-things-about-ml.html" target="_blank" rel="external">BreezeDeus</a>对Pedro Domingos 发表在 Communications of the ACM 2012年第10期的的论文<a href="http://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf" target="_blank" rel="external">《A few useful things to know about machine learning》</a>的总结，大图可以在<a href="http://pan.baidu.com/s/1hqBX1h6" target="_blank" rel="external">这里下载</a>。也可以阅读<a href="http://www.valleytalk.org/wp-content/uploads/2012/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%82%A3%E4%BA%9B%E4%BA%8B.pdf" target="_blank" rel="external">译文</a>。一篇介绍 Machine Learning 的非常不错的文章。<br>　　<br><img src="http://newtonblogimg.qiniudn.com/A%20few%20useful%20things%20to%20know%20about%20machine%20learning.jpg" alt="A Few Useful Things to Know about Machine Learning"></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>　　下图是<a href="https://breezedeus.github.io/2012/10/30/breezedeus-things-about-ml.html" target="_blank" rel="external">BreezeDeus</a>对Pedr]]>
