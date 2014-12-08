@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-12-08T10:02:10.218Z</updated>
+  <updated>2014-12-08T10:05:04.060Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,12 +19,11 @@
     <link href="http://chenqx.github.com/2014/12/08/8-Easy-Steps-to-Becoming-A-Data%20Scientist/"/>
     <id>http://chenqx.github.com/2014/12/08/8-Easy-Steps-to-Becoming-A-Data Scientist/</id>
     <published>2014-12-08T11:48:46.000Z</published>
-    <updated>2014-12-08T10:01:43.000Z</updated>
-    <content type="html"><![CDATA[<p><img src="/img/blogImage/How-to-become-a-data-scientist.jpg" alt="8 Easy Steps to Becoming A Data Scientist"></p>
+    <updated>2014-12-08T10:04:48.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://blog.datacamp.com/wp-content/uploads/2014/08/How-to-become-a-data-scientist.jpg" alt="8 Easy Steps to Becoming A Data Scientist"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p><img src="/img/blogImage/How-to-become-a-data-scientist.jpg" alt="8 Easy Steps to Becoming A Data Scientist"></p>
-]]>
+    <![CDATA[<p><img src="http://blog.datacamp.com/wp-content/uploads/2014/08/How-to-become-a-data-scientist.jpg" alt="8 Easy Steps to Becoming A Data Sc]]>
     </summary>
     
       <category term="Data Mining" scheme="http://chenqx.github.com/tags/Data-Mining/"/>
