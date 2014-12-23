@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-12-22T02:11:00.388Z</updated>
+  <updated>2014-12-23T01:13:45.659Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -13,6 +13,19 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Spider Advanced for Dynamic Website Crawling ]]></title>
+    <link href="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/"/>
+    <id>http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/</id>
+    <published>2014-12-23T01:13:05.000Z</published>
+    <updated>2014-12-23T01:13:05.000Z</updated>
+    <content type="html"><![CDATA[]]></content>
+    <summary type="html">
+    <![CDATA[]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[8 Easy Steps to Becoming a Data Scientist]]></title>
