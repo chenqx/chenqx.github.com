@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-12-24T13:43:28.157Z</updated>
+  <updated>2014-12-24T13:47:51.798Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/"/>
     <id>http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/</id>
     <published>2014-12-23T01:13:05.000Z</published>
-    <updated>2014-12-24T13:43:14.000Z</updated>
-    <content type="html"><![CDATA[<p>　　前面一文<a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Scrapy爬虫抓取网站数据</a>已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行到js的话是无法看到商品数据列表信息的。<br>　　这篇文章以典型的<strong>比价网站</strong>为例，如：<a href="http://gouwu.sogou.com/" target="_blank" rel="external"><strong>搜狗购物</strong></a>，<a href="http://www.etao.com/" target="_blank" rel="external"><strong>一淘网</strong></a>，抓取给定需要检索商品列表的商品价格及其来源网站。如下图：<br>　　<img src="http://newtonblogimg.qiniudn.com/searching.png" alt="Search list"><br>　　<img src="http://newtonblogimg.qiniudn.com/items.png" alt="抓取内容"></p>
+    <updated>2014-12-24T13:47:36.000Z</updated>
+    <content type="html"><![CDATA[<p>　　前面一文<a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Scrapy爬虫抓取网站数据</a>已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行到js的话是无法看到商品数据列表信息的。<br>　　这篇文章以典型的<strong>比价网站</strong>为例，如：<a href="http://gouwu.sogou.com/" target="_blank" rel="external"><strong>搜狗购物</strong></a>，<a href="http://www.etao.com/" target="_blank" rel="external"><strong>一淘网</strong></a>，抓取给定商品的价格及其来源网站。如下图：<br>　　<img src="http://newtonblogimg.qiniudn.com/searching.png" alt="Search list"><br>　　<img src="http://newtonblogimg.qiniudn.com/items.png" alt="抓取内容"></p>
 <h2 id="Preliminaries">Preliminaries</h2>
 <p>　　抓取前先了解一些概念和工具。</p>
 <h3 id="什么是动态网页">什么是动态网页</h3>
