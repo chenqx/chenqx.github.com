@@ -9,7 +9,7 @@
     
     <meta name="author" content="ShinChan">
     
-    <meta name="description" content="前面一文Scrapy爬虫抓取网站数据已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行">
+    <meta name="description" content="前面一文Scrapy爬虫抓取网站数据已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种Ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行">
     
     
     
@@ -94,7 +94,7 @@
 		
 		</div>
 		
-		<p>　　前面一文<a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Scrapy爬虫抓取网站数据</a>已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行到js的话是无法看到商品数据列表信息的。<br>　　这篇文章以典型的<strong>比价网站</strong>为例，如：<a href="http://gouwu.sogou.com/" target="_blank" rel="external"><strong>搜狗购物</strong></a>，<a href="http://www.etao.com/" target="_blank" rel="external"><strong>一淘网</strong></a>，抓取给定商品的价格及其来源网站。如下图：<br>　　<img src="http://newtonblogimg.qiniudn.com/searching.png" alt="Search list"><br>　　<img src="http://newtonblogimg.qiniudn.com/items.png" alt="抓取内容"></p>
+		<p>　　前面一文<a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Scrapy爬虫抓取网站数据</a>已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种Ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行到js的话是无法看到商品数据列表信息的。<br>　　这篇文章以典型的<strong>比价网站</strong>为例，如：<a href="http://gouwu.sogou.com/" target="_blank" rel="external"><strong>搜狗购物</strong></a>，<a href="http://www.etao.com/" target="_blank" rel="external"><strong>一淘网</strong></a>，抓取给定商品的价格及其来源网站。如下图：<br>　　<img src="http://newtonblogimg.qiniudn.com/searching.png" alt="Search list"><br>　　<img src="http://newtonblogimg.qiniudn.com/items.png" alt="抓取内容"></p>
 <h2 id="Preliminaries">Preliminaries</h2>
 <p>　　抓取前先了解一些概念和工具。</p>
 <h3 id="什么是动态网页">什么是动态网页</h3>
@@ -107,7 +107,7 @@
 <h2 id="编写_Spider">编写 Spider</h2>
 <p>　　这里就不详细说明 <code>item</code>、<code>pipeline</code>、<code>setting</code>文件的编写了。如果对这些模块不熟的话可以先看看 <a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Our first spider</a>。</p>
 <h3 id="获得检索商品页面">获得检索商品页面</h3>
-<p>　　搜索某一产品，如Iphone6，我们就可以得到该产品检索结果的起始页面的 <code>start_urls</code>。但通常情况下，我们可能要得到很多商品相应的信息，那该怎么处理呢？容易想到的是让浏览器模拟我们手动输入，自动响应检索事件，从而得到目标页面。另一种方法是，我们将目标产品存到一个配置文件中，之间将<code>http://gouwu.sogou.com/shop?query=</code>+ <code>ItemList</code> 作为 <code>start_urls</code>。这里采用后一种方法：</p>
+<p>　　搜索某一款产品，如 Iphone6，我们就可以得到该产品检索结果的起始页面的 <code>start_urls</code>。但通常情况下，我们可能要得到很多商品相应的信息，那该怎么处理呢？容易想到的是让浏览器模拟我们手动输入，自动响应检索事件，从而得到目标页面。另一种方法是，我们将目标产品存到一个配置文件中，之间将<code>http://gouwu.sogou.com/shop?query=</code>+ <code>ItemList</code> 作为 <code>start_urls</code>。这里采用后一种方法：</p>
 <figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#import lstData</span></div><div class="line">start_urls = [ (<span class="string">'http://gouwu.sogou.com/shop?query='</span> + searchWord ) <span class="keyword">for</span> searchWord <span class="keyword">in</span> lstData().lst]</div></pre></td></tr></table></figure>
 
 <h3 id="解析网页">解析网页</h3>
@@ -238,31 +238,31 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>3</sup></a></li>
 		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>2</sup></a></li>
-		
 			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>2</sup></a></li>
 		
 			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>2</sup></a></li>
 		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
-		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
 		
 		</ul>
 </div>
