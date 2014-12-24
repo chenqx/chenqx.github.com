@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Spider Advanced for Dynamic Website Crawling  | ShinChan&#39;s Blog</title>
+    <title>Scrapy爬虫之抓取动态网站 | ShinChan&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="ShinChan">
+    
+    <meta name="description" content="前面一文Scrapy爬虫抓取网站数据已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行">
     
     
     
@@ -71,7 +73,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/" title="Spider Advanced for Dynamic Website Crawling " itemprop="url">Spider Advanced for Dynamic Website Crawling </a>
+      <a href="/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/" title="Scrapy爬虫之抓取动态网站" itemprop="url">Scrapy爬虫之抓取动态网站</a>
   </h1>
   <p class="article-author">By
        
@@ -92,18 +94,30 @@
 		
 		</div>
 		
-		  
+		<p>　　前面一文<a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Scrapy爬虫抓取网站数据</a>已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行到js的话是无法看到商品数据列表信息的。<br>　　这篇文章以典型的比价网站为例，如：<a href="http://gouwu.sogou.com/" target="_blank" rel="external">搜狗购物</a>，<a href="http://www.etao.com/" target="_blank" rel="external">一淘</a>，抓取给定需要检索商品列表的商品价格及其来源网站。如下图：<br>　　<img src="http://newtonblogimg.qiniudn.com/search.png" alt="Search list"><br>　　<img src="http://newtonblogimg.qiniudn.com/item.png" alt="抓取内容"><br>　　<br>　　这个可以通过两步来验证：在页面上右键查看源代码，和右键审查元素所看到的html代码是不一样的，如果后者中能看到商品数据信息，而前者没有的话，就说明这个页面是动态生成的。
+　　</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Python/">Python</a><a href="/tags/Scrapy/">Scrapy</a>
+  </div>
 
 </div>
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/" data-title="Spider Advanced for Dynamic Website Crawling  | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/" data-title="Scrapy爬虫之抓取动态网站 | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -125,7 +139,7 @@
 
 	<!-- 多说评论框 start -->
 
-	<div class="ds-thread" data-thread-key="2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/" data-title=”Spider Advanced for Dynamic Website Crawling ” data-url="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/"></div>
+	<div class="ds-thread" data-thread-key="2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/" data-title=”Scrapy爬虫之抓取动态网站” data-url="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -177,7 +191,7 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/categories/NLP/" title="NLP">NLP<sup>1</sup></a></li>
 		
-			<li><a href="/categories/Python/" title="Python">Python<sup>3</sup></a></li>
+			<li><a href="/categories/Python/" title="Python">Python<sup>4</sup></a></li>
 		
 			<li><a href="/categories/Tools/" title="Tools">Tools<sup>1</sup></a></li>
 		
@@ -190,35 +204,35 @@ var duoshuoQuery = {short_name:"chenqx"};
 	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
+			<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
+		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>3</sup></a></li>
 		
-			<li><a href="/tags/Python/" title="Python">Python<sup>3</sup></a></li>
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
 			<li><a href="/tags/NLP/" title="NLP">NLP<sup>2</sup></a></li>
 		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>2</sup></a></li>
 		
-			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
+			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>1</sup></a></li>
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+			<li><a href="/tags/Database/" title="Database">Database<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
 		</ul>
 </div>

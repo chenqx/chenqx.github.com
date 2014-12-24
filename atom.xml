@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2014-12-23T01:13:45.659Z</updated>
+  <updated>2014-12-24T08:43:53.906Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -15,15 +15,23 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Spider Advanced for Dynamic Website Crawling ]]></title>
+    <title><![CDATA[Scrapy爬虫之抓取动态网站]]></title>
     <link href="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/"/>
     <id>http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/</id>
     <published>2014-12-23T01:13:05.000Z</published>
-    <updated>2014-12-23T01:13:05.000Z</updated>
-    <content type="html"><![CDATA[]]></content>
+    <updated>2014-12-24T08:43:24.000Z</updated>
+    <content type="html"><![CDATA[<p>　　前面一文<a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Scrapy爬虫抓取网站数据</a>已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，还有各种ajax，这样就获取不到网页内容获取到后台数据后再组合成html展示出来的，单纯获取页面数据回来，而没有执行到js的话是无法看到商品数据列表信息的。<br>　　这篇文章以典型的比价网站为例，如：<a href="http://gouwu.sogou.com/" target="_blank" rel="external">搜狗购物</a>，<a href="http://www.etao.com/" target="_blank" rel="external">一淘</a>，抓取给定需要检索商品列表的商品价格及其来源网站。如下图：<br>　　<img src="http://newtonblogimg.qiniudn.com/search.png" alt="Search list"><br>　　<img src="http://newtonblogimg.qiniudn.com/item.png" alt="抓取内容"><br>　　<br>　　这个可以通过两步来验证：在页面上右键查看源代码，和右键审查元素所看到的html代码是不一样的，如果后者中能看到商品数据信息，而前者没有的话，就说明这个页面是动态生成的。
+　　</p>
+]]></content>
     <summary type="html">
-    <![CDATA[]]>
+    <![CDATA[<p>　　前面一文<a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Scrapy爬虫抓取网站数据</a>已经介绍了如]]>
     </summary>
+    
+      <category term="Python" scheme="http://chenqx.github.com/tags/Python/"/>
+    
+      <category term="Scrapy" scheme="http://chenqx.github.com/tags/Scrapy/"/>
+    
+      <category term="Python" scheme="http://chenqx.github.com/categories/Python/"/>
     
   </entry>
   
