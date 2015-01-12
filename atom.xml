@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-01-09T01:55:03.787Z</updated>
+  <updated>2015-01-12T07:26:47.100Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -13,6 +13,25 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Scrapy爬虫抓取动态网站]]></title>
+    <link href="http://chenqx.github.com/2015/01/09/Regular-Expressions-Tutorial-In-Thirty-Minutes/"/>
+    <id>http://chenqx.github.com/2015/01/09/Regular-Expressions-Tutorial-In-Thirty-Minutes/</id>
+    <published>2015-01-09T07:24:05.000Z</published>
+    <updated>2015-01-12T07:26:06.000Z</updated>
+    <content type="html"><![CDATA[]]></content>
+    <summary type="html">
+    <![CDATA[]]>
+    </summary>
+    
+      <category term="Tools" scheme="http://chenqx.github.com/tags/Tools/"/>
+    
+      <category term="NLP" scheme="http://chenqx.github.com/tags/NLP/"/>
+    
+      <category term="Tools" scheme="http://chenqx.github.com/categories/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Scrapy爬虫抓取动态网站]]></title>
