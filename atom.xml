@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-01-31T10:45:00.631Z</updated>
+  <updated>2015-01-31T11:04:27.756Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -15,19 +15,17 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Using Python for Importing Data to MySQL]]></title>
-    <link href="http://chenqx.github.com/2015/01/31/Using-Python-for-Importing-Data-to-MySQL/"/>
-    <id>http://chenqx.github.com/2015/01/31/Using-Python-for-Importing-Data-to-MySQL/</id>
+    <title><![CDATA[常用数据格式介绍]]></title>
+    <link href="http://chenqx.github.com/2015/01/31/Introduction-to-Common-Data-Storage-Format/"/>
+    <id>http://chenqx.github.com/2015/01/31/Introduction-to-Common-Data-Storage-Format/</id>
     <published>2015-01-31T10:32:25.000Z</published>
-    <updated>2015-01-31T10:37:42.000Z</updated>
+    <updated>2015-01-31T11:03:34.000Z</updated>
     <content type="html"><![CDATA[]]></content>
     <summary type="html">
     <![CDATA[]]>
     </summary>
     
-      <category term="Python" scheme="http://chenqx.github.com/tags/Python/"/>
-    
-      <category term="MySQL" scheme="http://chenqx.github.com/tags/MySQL/"/>
+      <category term="Tools" scheme="http://chenqx.github.com/tags/Tools/"/>
     
       <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
     
