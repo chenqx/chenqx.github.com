@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-01-22T08:49:40.935Z</updated>
+  <updated>2015-01-31T09:53:59.999Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -360,11 +360,51 @@
   </entry>
   
   <entry>
+    <title><![CDATA[Quant]]></title>
+    <link href="http://chenqx.github.com/2014/12/25/Quant/"/>
+    <id>http://chenqx.github.com/2014/12/25/Quant/</id>
+    <published>2014-12-25T01:13:05.000Z</published>
+    <updated>2015-01-31T09:53:02.000Z</updated>
+    <content type="html"><![CDATA[<p>Updating</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Updating</p>
+]]>
+    </summary>
+    
+      <category term="Quant" scheme="http://chenqx.github.com/tags/Quant/"/>
+    
+      <category term="Quant" scheme="http://chenqx.github.com/categories/Quant/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hadoop/Spark]]></title>
+    <link href="http://chenqx.github.com/2014/12/25/Hadoop-Spark/"/>
+    <id>http://chenqx.github.com/2014/12/25/Hadoop-Spark/</id>
+    <published>2014-12-25T01:13:05.000Z</published>
+    <updated>2015-01-31T09:45:01.000Z</updated>
+    <content type="html"><![CDATA[<p>Updating</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Updating</p>
+]]>
+    </summary>
+    
+      <category term="Hadoop" scheme="http://chenqx.github.com/tags/Hadoop/"/>
+    
+      <category term="Spark" scheme="http://chenqx.github.com/tags/Spark/"/>
+    
+      <category term="Hadoop/Spark" scheme="http://chenqx.github.com/categories/Hadoop-Spark/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Scrapy爬虫抓取动态网站]]></title>
     <link href="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/"/>
     <id>http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/</id>
     <published>2014-12-23T01:13:05.000Z</published>
-    <updated>2014-12-30T07:48:31.000Z</updated>
+    <updated>2015-01-31T09:48:56.000Z</updated>
     <content type="html"><![CDATA[<p>　　前面一文<a href="http://chenqx.github.io/2014/11/09/Scrapy-Tutorial-for-BBSSpider/" target="_blank" rel="external">Scrapy爬虫抓取网站数据</a>已经介绍了如何实现一个爬虫，文中介绍静态bbs网页的抓取。但是，互联网大部分的web页面都是动态的，经常逛的网站例如京东、淘宝等，商品列表都是js，并有Ajax渲染，这样就获取不到网页内容（获取到后台数据后再组合成html展示出来的）。单纯获取页面而没有执行到js的话是无法看到商品数据列表信息的。<br>　　那么，我们可以怎么获取这些数据呢？本文以典型的<strong>比价网站</strong>为例，如：<a href="http://gouwu.sogou.com/" target="_blank" rel="external"><strong>搜狗购物</strong></a>，<a href="http://www.etao.com/" target="_blank" rel="external"><strong>一淘网</strong></a>，抓取给定商品的价格及其来源网站，如下图。详见<a href="https://github.com/chenqx/spiderDemo/tree/master/gouwu.sogou.com" target="_blank" rel="external">完整的爬虫代码</a>。<br>　　<img src="http://newtonblogimg.qiniudn.com/searching.png" alt="Search list"><br>　　<img src="http://newtonblogimg.qiniudn.com/items.png" alt="抓取内容"></p>
 <h2 id="Preliminaries">Preliminaries</h2>
 <p>　　抓取前先了解一些概念和工具。</p>
@@ -406,7 +446,7 @@
     
       <category term="Scrapy" scheme="http://chenqx.github.com/tags/Scrapy/"/>
     
-      <category term="Python" scheme="http://chenqx.github.com/categories/Python/"/>
+      <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
     
   </entry>
   
@@ -780,7 +820,7 @@ enter a number: 123
     <link href="http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/"/>
     <id>http://chenqx.github.com/2014/11/09/Scrapy-Tutorial-for-BBSSpider/</id>
     <published>2014-11-09T05:34:46.000Z</published>
-    <updated>2014-11-29T13:27:52.000Z</updated>
+    <updated>2015-01-31T09:48:37.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Scrapy_at_a_glance"><strong>Scrapy at a glance</strong></h2>
 <p>　　Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。<br>　　其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。</p>
 <ul>
@@ -928,7 +968,7 @@ close_spider(spider)
     
       <category term="Scrapy" scheme="http://chenqx.github.com/tags/Scrapy/"/>
     
-      <category term="Python" scheme="http://chenqx.github.com/categories/Python/"/>
+      <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
     
   </entry>
   
@@ -1019,7 +1059,7 @@ close_spider(spider)
     <link href="http://chenqx.github.com/2014/10/29/Python-fastest-way-to-read-a-large-file/"/>
     <id>http://chenqx.github.com/2014/10/29/Python-fastest-way-to-read-a-large-file/</id>
     <published>2014-10-29T02:34:59.000Z</published>
-    <updated>2014-11-11T02:12:37.000Z</updated>
+    <updated>2015-01-31T09:48:15.000Z</updated>
     <content type="html"><![CDATA[<p>　　最近处理文本文档时（文件约2GB大小），出现<code>memoryError</code>错误和文件读取太慢的问题，后来找到了两种比较快<code>Large File Reading</code> 的方法，本文将介绍这两种读取方法。</p>
 <h2 id="Preliminary"><strong>Preliminary</strong></h2>
 <p>　　我们谈到“文本处理”时，我们通常是指处理的内容。Python 将文本文件的内容读入可以操作的字符串变量非常容易。文件对象提供了三个“读”方法： <code>.read()</code>、<code>.readline()</code> 和 <code>.readlines()</code>。每种方法可以接受一个变量以限制每次读取的数据量，但它们通常不使用变量。 <code>.read()</code> 每次读取整个文件，它通常用于将文件内容放到一个字符串变量中。然而 <code>.read()</code> 生成文件内容最直接的字符串表示，但对于连续的面向行的处理，它却是不必要的，并且如果文件大于可用内存，则不可能实现这种处理。下面是<code>read()</code>方法示例：</p>
@@ -1046,7 +1086,7 @@ close_spider(spider)
     
       <category term="Python" scheme="http://chenqx.github.com/tags/Python/"/>
     
-      <category term="Python" scheme="http://chenqx.github.com/categories/Python/"/>
+      <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
     
   </entry>
   
@@ -1117,7 +1157,7 @@ close_spider(spider)
     <link href="http://chenqx.github.com/2014/10/01/Java-Design-Pattern-Singleton-Pattern/"/>
     <id>http://chenqx.github.com/2014/10/01/Java-Design-Pattern-Singleton-Pattern/</id>
     <published>2014-10-01T03:33:37.000Z</published>
-    <updated>2014-11-14T12:40:39.000Z</updated>
+    <updated>2015-01-31T09:47:53.000Z</updated>
     <content type="html"><![CDATA[<h2 id="单例模式介绍">单例模式介绍</h2>
 <p>　　单例模式最初的定义出现于《设计模式》（艾迪生维斯理, 1994）：</p>
 <blockquote>
@@ -1186,7 +1226,7 @@ close_spider(spider)
     
       <category term="Design Pattern" scheme="http://chenqx.github.com/tags/Design-Pattern/"/>
     
-      <category term="Java" scheme="http://chenqx.github.com/categories/Java/"/>
+      <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
     
   </entry>
   
@@ -1318,7 +1358,7 @@ close_spider(spider)
     <link href="http://chenqx.github.com/2014/09/25/Cpp-Memory-Management/"/>
     <id>http://chenqx.github.com/2014/09/25/Cpp-Memory-Management/</id>
     <published>2014-09-25T02:31:59.000Z</published>
-    <updated>2014-11-11T15:01:24.000Z</updated>
+    <updated>2015-01-31T09:47:35.000Z</updated>
     <content type="html"><![CDATA[<p>　　内存管理是C++最令人切齿痛恨的问题，也是C++最有争议的问题，C++高手从中获得了更好的性能，更大的自由，C++菜鸟的收获则是一遍一遍的检查代码和对C++的痛恨，但内存管理在C++中无处不在，内存泄漏几乎在每个C++程序中都会发生，因此要想成为C++高手，内存管理一关是必须要过的，除非放弃C++，转到Java或者.NET，他们的内存管理基本是自动的，当然你也放弃了自由和对内存的支配权，还放弃了C++超绝的性能。<br>　　伟大的Bill Gates 曾经失言：</p>
 <blockquote>
 <p>　<em>640K ought to be enough for everybody</em> — Bill Gates 1981</p>
@@ -1471,7 +1511,7 @@ close_spider(spider)
     
       <category term="C/C++" scheme="http://chenqx.github.com/tags/C-C/"/>
     
-      <category term="C/C++" scheme="http://chenqx.github.com/categories/C-C/"/>
+      <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
     
   </entry>
   
