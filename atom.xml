@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-01-31T09:53:59.999Z</updated>
+  <updated>2015-01-31T09:59:04.947Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -13,6 +13,46 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Quant]]></title>
+    <link href="http://chenqx.github.com/2015/01/22/Quant/"/>
+    <id>http://chenqx.github.com/2015/01/22/Quant/</id>
+    <published>2015-01-22T00:10:05.000Z</published>
+    <updated>2015-01-31T09:56:58.000Z</updated>
+    <content type="html"><![CDATA[<p>Updating</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Updating</p>
+]]>
+    </summary>
+    
+      <category term="Quant" scheme="http://chenqx.github.com/tags/Quant/"/>
+    
+      <category term="Quant" scheme="http://chenqx.github.com/categories/Quant/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hadoop/Spark]]></title>
+    <link href="http://chenqx.github.com/2015/01/12/Hadoop-Spark/"/>
+    <id>http://chenqx.github.com/2015/01/12/Hadoop-Spark/</id>
+    <published>2015-01-12T01:20:21.000Z</published>
+    <updated>2015-01-31T09:58:45.000Z</updated>
+    <content type="html"><![CDATA[<p>Updating</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Updating</p>
+]]>
+    </summary>
+    
+      <category term="Hadoop" scheme="http://chenqx.github.com/tags/Hadoop/"/>
+    
+      <category term="Spark" scheme="http://chenqx.github.com/tags/Spark/"/>
+    
+      <category term="Hadoop/Spark" scheme="http://chenqx.github.com/categories/Hadoop-Spark/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[正则表达式30分钟入门教程]]></title>
@@ -360,46 +400,6 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Quant]]></title>
-    <link href="http://chenqx.github.com/2014/12/25/Quant/"/>
-    <id>http://chenqx.github.com/2014/12/25/Quant/</id>
-    <published>2014-12-25T01:13:05.000Z</published>
-    <updated>2015-01-31T09:53:02.000Z</updated>
-    <content type="html"><![CDATA[<p>Updating</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Updating</p>
-]]>
-    </summary>
-    
-      <category term="Quant" scheme="http://chenqx.github.com/tags/Quant/"/>
-    
-      <category term="Quant" scheme="http://chenqx.github.com/categories/Quant/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hadoop/Spark]]></title>
-    <link href="http://chenqx.github.com/2014/12/25/Hadoop-Spark/"/>
-    <id>http://chenqx.github.com/2014/12/25/Hadoop-Spark/</id>
-    <published>2014-12-25T01:13:05.000Z</published>
-    <updated>2015-01-31T09:45:01.000Z</updated>
-    <content type="html"><![CDATA[<p>Updating</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Updating</p>
-]]>
-    </summary>
-    
-      <category term="Hadoop" scheme="http://chenqx.github.com/tags/Hadoop/"/>
-    
-      <category term="Spark" scheme="http://chenqx.github.com/tags/Spark/"/>
-    
-      <category term="Hadoop/Spark" scheme="http://chenqx.github.com/categories/Hadoop-Spark/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Scrapy爬虫抓取动态网站]]></title>
     <link href="http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/"/>
     <id>http://chenqx.github.com/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/</id>
@@ -493,7 +493,7 @@
     <link href="http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/"/>
     <id>http://chenqx.github.com/2014/11/10/Key-differences-between-Python-2-7-x-and-Python-3-x/</id>
     <published>2014-11-10T12:04:25.000Z</published>
-    <updated>2014-11-11T02:02:01.000Z</updated>
+    <updated>2015-01-31T09:55:46.000Z</updated>
     <content type="html"><![CDATA[<p>　　因这学期负责Python课程的助教，刚开始上机试验的几节课，有很多同学用 Python3.4 的编译器编译 Python 2.7 的程序而导致不通过。Python 2.7.x 和 Python 3.x 版本并非完全兼容。<br>　　许多 Python 初学者想知道他们应该从 Python 的哪个版本开始学习。对于这个问题我的答案是 “你学习你喜欢的教程的版本，然后检查他们之间的不同。” 但如果你并未了解过两个版本之间的差异，个人推荐使用 Python 2.7.x 版本，毕竟大部分教材等资料还是用Python 2.7.x来写的。<br>　　但是如果你开始一个新项目，并且有选择权？我想说的是目前没有对错，只要你计划使用的库 Python 2.7.x 和 Python 3.x 双方都支持的话。尽管如此，当在编写它们中的任何一个的代码，或者是你计划移植你的项目的时候，是非常值得看看这两个主要流行的 Python 版本之间的差别的，以便避免常见的陷阱。<br>　　本文翻译自：<a href="http://nbviewer.ipython.org/github/rasbt/python_reference/blob/master/tutorials/key_differences_between_python_2_and_3.ipynb?create=1" target="_blank" rel="external">《Key differences between Python 2.7.x and Python 3.x》</a></p>
 <h2 id="__future__模块"><strong><code>__future__</code>模块</strong></h2>
 <p>　　Python 3.x 介绍的 一些Python 2 不兼容的关键字和特性可以通过在 Python 2 的内置 <code>__future__</code> 模块导入。如果你计划让你的代码支持 Python 3.x，建议你使用 <code>__future__</code> 模块导入。例如，如果我想要 在Python 2 中表现 Python 3.x 中的整除，我们可以通过如下导入</p>
@@ -811,7 +811,7 @@ enter a number: 123
     
       <category term="Python" scheme="http://chenqx.github.com/tags/Python/"/>
     
-      <category term="Python" scheme="http://chenqx.github.com/categories/Python/"/>
+      <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
     
   </entry>
   
