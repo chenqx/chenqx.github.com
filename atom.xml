@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-01-31T09:59:04.947Z</updated>
+  <updated>2015-01-31T10:01:34.884Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -1114,7 +1114,7 @@ close_spider(spider)
     <link href="http://chenqx.github.com/2014/10/16/MongoDB-Introduction/"/>
     <id>http://chenqx.github.com/2014/10/16/MongoDB-Introduction/</id>
     <published>2014-10-16T02:31:58.000Z</published>
-    <updated>2014-11-21T12:02:43.000Z</updated>
+    <updated>2015-01-31T10:01:00.000Z</updated>
     <content type="html"><![CDATA[<p>　　Updating…</p>
 ]]></content>
     <summary type="html">
@@ -1122,9 +1122,9 @@ close_spider(spider)
 ]]>
     </summary>
     
-      <category term="Database" scheme="http://chenqx.github.com/tags/Database/"/>
+      <category term="MongoDB" scheme="http://chenqx.github.com/tags/MongoDB/"/>
     
-      <category term="Database" scheme="http://chenqx.github.com/categories/Database/"/>
+      <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
     
   </entry>
   
