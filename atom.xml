@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-01-31T11:04:27.756Z</updated>
+  <updated>2015-01-31T11:13:22.074Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -15,14 +15,25 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[常用数据格式介绍]]></title>
+    <title><![CDATA[常用数据存储格式介绍]]></title>
     <link href="http://chenqx.github.com/2015/01/31/Introduction-to-Common-Data-Storage-Format/"/>
     <id>http://chenqx.github.com/2015/01/31/Introduction-to-Common-Data-Storage-Format/</id>
     <published>2015-01-31T10:32:25.000Z</published>
-    <updated>2015-01-31T11:03:34.000Z</updated>
-    <content type="html"><![CDATA[]]></content>
+    <updated>2015-01-31T11:12:58.000Z</updated>
+    <content type="html"><![CDATA[<p>　　本文介绍一些常用的数据存储格式，包括Text, Excel, CSV, XML, JSON 和数据库 (典型的如关系数据库 MySQL, NoSQL 数据库 MongDB 等 )。</p>
+<h2 id="Text_文件">Text 文件</h2>
+<h2 id="Excel_文件">Excel 文件</h2>
+<h2 id="CSV_文件">CSV 文件</h2>
+<h2 id="XML_文件">XML 文件</h2>
+<h2 id="JSON_文件">JSON 文件</h2>
+<h2 id="MySQL">MySQL</h2>
+<h2 id="MongDB">MongDB</h2>
+<h2 id="Further_reading">Further reading</h2>
+]]></content>
     <summary type="html">
-    <![CDATA[]]>
+    <![CDATA[<p>　　本文介绍一些常用的数据存储格式，包括Text, Excel, CSV, XML, JSON 和数据库 (典型的如关系数据库 MySQL, NoSQL 数据库 MongDB 等 )。</p>
+<h2 id="Text_文件">Text 文件</h2>
+<h2 id="Ex]]>
     </summary>
     
       <category term="Tools" scheme="http://chenqx.github.com/tags/Tools/"/>
