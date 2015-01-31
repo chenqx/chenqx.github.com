@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-01-31T11:13:22.074Z</updated>
+  <updated>2015-01-31T14:32:41.737Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,21 +19,24 @@
     <link href="http://chenqx.github.com/2015/01/31/Introduction-to-Common-Data-Storage-Format/"/>
     <id>http://chenqx.github.com/2015/01/31/Introduction-to-Common-Data-Storage-Format/</id>
     <published>2015-01-31T10:32:25.000Z</published>
-    <updated>2015-01-31T11:12:58.000Z</updated>
+    <updated>2015-01-31T14:32:13.000Z</updated>
     <content type="html"><![CDATA[<p>　　本文介绍一些常用的数据存储格式，包括Text, Excel, CSV, XML, JSON 和数据库 (典型的如关系数据库 MySQL, NoSQL 数据库 MongDB 等 )。</p>
-<h2 id="Text_文件">Text 文件</h2>
-<h2 id="Excel_文件">Excel 文件</h2>
-<h2 id="CSV_文件">CSV 文件</h2>
-<h2 id="XML_文件">XML 文件</h2>
-<h2 id="JSON_文件">JSON 文件</h2>
+<h2 id="Text/Excel_文件">Text/Excel 文件</h2>
+<p>　　Text 文本文档文件，扩展名 <code>.txt</code>，要注意其编码方式。<br>　　Excel 电子表格格式，扩展名 <code>.xls</code> 或 <code>.xlsx</code>。<br>　　日常的文本和数据存储和处理文件。</p>
+<h2 id="CSV_格式">CSV 格式</h2>
+<p>　　<a href="http://baike.baidu.com/link?url=dhwYFIs5NGA1J4waLi0TL9Bc22hlAXOOXf4Xyw2cL6nb2wXd_3qyq2zwQFIFD7wGMppWUMq_-l31jvHw2BoB1dZ5qPcRn6C66BHRwVtT5vq" target="_blank" rel="external">CSV（Comma-Separated Values）逗号分隔值文件格式</a>，有时也称为字符分隔值，因为分隔字符也可以不是逗号。其文件以纯文本形式存储表格数据（数字和文本）。纯文本意味着该文件是一个字符序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种换行符分隔；每条记录由字段组成，字段间的分隔符是其它字符或字符串，最常见的是逗号或制表符。通常，所有记录都有完全相同的字段序列。<br>Sample:</p>
+<h2 id="XML_格式">XML 格式</h2>
+<p>　　<a href="http://baike.baidu.com/link?url=mH5ljhstNglG0VVH7qeusk7qobQQf9588CyskVr7htybk2Kf65r_wBnj56xh989XPZ_5aO80FF6Ig7Qnsmxc5necJJFm8T2-cqEm-Eu3A-ufg6M86iiRpBpStTmq85NA" target="_blank" rel="external">XML（eXtensible Markup Language）可扩展标记语言</a>，是一种标记语言。标记指计算机所能理解的信息符号，通过此种标记，计算机之间可以处理包含各种信息的文章等。如何定义这些标记，既可以选择国际通用的标记语言，比如HTML，也可以使用像XML这样由相关人士自由决定的标记语言，这就是语言的可扩展性。XML是从标准通用标记语言（SGML）中简化修改出来的。它主要用到的有可扩展标记语言、可扩展样式语言（XSL）、XBRL和<a href="http://baike.baidu.com/view/307399.htm" target="_blank" rel="external">XPath</a>等。<br>Sample:
+　　</p>
+<h2 id="JSON_格式">JSON 格式</h2>
+<p>　　<a href="http://baike.baidu.com/link?url=pLBYQifS2bEX1u-pcDWV5SvIVLa6vFtLRZn_ExdBGF3WyfEqFw0pesXvxKzgZPqqJNnILyEZ7NXgpDZjZSE8F_" target="_blank" rel="external">JSON(JavaScript Object Notation)</a> 是一种轻量级的数据交换格式。它基于JavaScript（Standard ECMA-262 3rd Edition - December 1999）的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。这些特性使JSON成为理想的数据交换语言。易于人阅读和编写，同时也易于机器解析和生成(网络传输速度快)。<br>Sample:</p>
 <h2 id="MySQL">MySQL</h2>
 <h2 id="MongDB">MongDB</h2>
 <h2 id="Further_reading">Further reading</h2>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>　　本文介绍一些常用的数据存储格式，包括Text, Excel, CSV, XML, JSON 和数据库 (典型的如关系数据库 MySQL, NoSQL 数据库 MongDB 等 )。</p>
-<h2 id="Text_文件">Text 文件</h2>
-<h2 id="Ex]]>
+<h2 id="Text/Excel_文件">Text/Excel 文件</h2]]>
     </summary>
     
       <category term="Tools" scheme="http://chenqx.github.com/tags/Tools/"/>
