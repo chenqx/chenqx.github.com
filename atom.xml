@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-02-01T07:41:05.841Z</updated>
+  <updated>2015-02-01T07:43:01.691Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenqx.github.com/2015/01/31/Introduction-to-Common-Data-Storage-Format/"/>
     <id>http://chenqx.github.com/2015/01/31/Introduction-to-Common-Data-Storage-Format/</id>
     <published>2015-01-31T10:32:25.000Z</published>
-    <updated>2015-02-01T07:40:53.000Z</updated>
+    <updated>2015-02-01T07:42:37.000Z</updated>
     <content type="html"><![CDATA[<p>　　本文介绍一些常用的数据存储格式，包括Text, Excel, CSV, XML, JSON 和数据库 (典型的如关系数据库 MySQL, NoSQL 数据库 MongDB 等 )。</p>
 <h2 id="Text/Excel_文件">Text/Excel 文件</h2>
 <p>　　Text 文本文档文件，扩展名 <code>.txt</code>，要注意其编码方式。<br>　　Excel 电子表格格式，扩展名 <code>.xls</code> 或 <code>.xlsx</code>。<br>　　日常的文本、数据存储和处理文件。</p>
@@ -33,7 +33,7 @@
 </code></pre><p>　　<br>　　4条记录，每条记录为电影名，上映时间，国家，用“，”分隔。</p>
 <h2 id="XML_格式">XML 格式</h2>
 <blockquote>
-<p>   “当 XML（扩展标记语言）于 1998 年 2 月被引入软件工业界时，它给整个行业带来了一场风暴。有史以来第一次，这个世界拥有了一种用来结构化文档和数据的通用且适应性强的格式，它不仅仅可以用于 WEB，而且可以被用于任何地方。”<br>——《Designing With Web Standards Second Edition》, Jeffrey Zeldman</p>
+<p>   “当 XML（扩展标记语言）于 1998 年 2 月被引入软件工业界时，它给整个行业带来了一场风暴。有史以来第一次，这个世界拥有了一种用来结构化文档和数据的通用且适应性强的格式，它不仅仅可以用于 WEB，而且可以被用于任何地方。”<br>                                ——《Designing With Web Standards Second Edition》, Jeffrey Zeldman</p>
 </blockquote>
 <p>　　<a href="http://baike.baidu.com/link?url=mH5ljhstNglG0VVH7qeusk7qobQQf9588CyskVr7htybk2Kf65r_wBnj56xh989XPZ_5aO80FF6Ig7Qnsmxc5necJJFm8T2-cqEm-Eu3A-ufg6M86iiRpBpStTmq85NA" target="_blank" rel="external">XML（eXtensible Markup Language）可扩展标记语言</a>，是一种标记语言， 扩展名 <code>.csv</code>。标记指计算机所能理解的信息符号，通过此种标记，计算机之间可以处理包含各种信息的文章等。如何定义这些标记，既可以选择国际通用的标记语言，比如HTML，也可以使用像XML这样由相关人士自由决定的标记语言，这就是语言的可扩展性。XML是从标准通用标记语言（SGML）中简化修改出来的。它主要用到的有可扩展标记语言、可扩展样式语言（XSL）、XBRL和<a href="http://baike.baidu.com/view/307399.htm" target="_blank" rel="external">XPath</a>等。但 XML 需要存储标签，需要额外的内存。<br>　　<em>查看 <a href="http://www.w3school.com.cn/x.asp" target="_blank" rel="external">XML 教程</a></em>。</p>
 <p><strong>Example - Books.xml</strong></p>
