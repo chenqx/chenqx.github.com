@@ -1,0 +1,588 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>VS2010配置和连接MySQL详解 | ShinChan&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="ShinChan">
+    
+    <meta name="description" content="本文介绍 VS2010(Microsoft Visual Studio 10.0) 下利用 MySQL官方 connector API 的配置和连接。
+
+Download MySQL Connector/C++
+
+
+VS2008 以上的版本都适用
+
+环境配置
+　　下面是在 VS2010 版本下的配置">
+    
+    
+    
+    
+    <link rel="alternative" href="/atom.xml" title="ShinChan&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon_new.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo_new.png" alt="ShinChan&#39;s Blog" title="ShinChan&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="ShinChan&#39;s Blog">ShinChan&#39;s Blog</a></h1>
+				<h2 class="blog-motto">Vi Veri Veniversum Vivus Vici</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">About</a></li>
+					
+
+					<li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:chenqx.github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/" title="VS2010配置和连接MySQL详解" itemprop="url">VS2010配置和连接MySQL详解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://chenqx.github.com/about" title="ShinChan" target="_blank" itemprop="author">ShinChan</a>
+		
+  <p class="article-time">
+    <time datetime="2015-02-06T11:08:41.000Z" itemprop="datePublished"> Published Feb 6 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境配置"><span class="toc-number">1.</span> <span class="toc-text">环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建MySQL数据库"><span class="toc-number">2.</span> <span class="toc-text">创建MySQL数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地连接和操作MySQL"><span class="toc-number">3.</span> <span class="toc-text">本地连接和操作MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程连接MySQL"><span class="toc-number">4.</span> <span class="toc-text">远程连接MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-number">4.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-number">4.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Further_reading"><span class="toc-number">5.</span> <span class="toc-text">Further reading</span></a></li></ol>
+		
+		</div>
+		
+		<p>　　本文介绍 VS2010(Microsoft Visual Studio 10.0) 下利用 MySQL官方 connector API 的配置和连接。</p>
+<ul>
+<li><a href="http://dev.mysql.com/downloads/connector/cpp/" target="_blank" rel="external">Download MySQL Connector/C++</a></li>
+</ul>
+<blockquote>
+<p>VS2008 以上的版本都适用</p>
+</blockquote>
+<h2 id="环境配置">环境配置</h2>
+<p>　　下面是在 VS2010 版本下的配置过程。</p>
+<ul>
+<li><ol>
+<li>Project -&gt;property -&gt;c/c++&gt;general -&gt;additional include directories<br>D:\Microsoft Visual Studio 10.0\library\mysql\include\cppconn;<br>D:\Microsoft Visual Studio 10.0\library\mysql\include;<br><img src="http://newtonblogimg.qiniudn.com/step1.png" alt=""></li>
+</ol>
+</li>
+<li><ol>
+<li>Project -&gt;property -&gt;linker -&gt;general -&gt;additional include directories<br>D:\MySQL\MySQL Server 5.6\lib;<br>D:\MySQL\MySQL Server 5.6\bin;<br>D:\Microsoft Visual Studio 10.0\library\mysql\lib;<br><img src="http://newtonblogimg.qiniudn.com/step2.png" alt=""></li>
+</ol>
+</li>
+<li><ol>
+<li>Project -&gt;property -&gt;linker -&gt;input -&gt;additional include directories<br>mysqlcppconn.lib;<br>mysqlcppconn-static.lib;<br>libmysql.lib;<br><img src="http://newtonblogimg.qiniudn.com/step3.png" alt=""></li>
+</ol>
+</li>
+<li><ol>
+<li>将mysql\lib下的mysqlcppconn.dll文件和 \$MySQL\bin\libmysql.dll 复制到Windows\system32 文件夹底下。<br>　　这样就配置好了。</li>
+</ol>
+</li>
+</ul>
+<h2 id="创建MySQL数据库">创建MySQL数据库</h2>
+<p>　　这里简单建立一个连接测试数据库 <code>contest</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt;create database contest;</div><div class="line">mysql&gt;use contest</div><div class="line">mysql&gt;create table test(</div><div class="line">   &gt; id int(4) not null primary key auto_increment,</div><div class="line">   &gt; name char(32) not null,;</div></pre></td></tr></table></figure>
+
+<h2 id="本地连接和操作MySQL">本地连接和操作MySQL</h2>
+<p>　　头文件定义（系统默认生成）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Head file Definition</span></div><div class="line"><span class="preprocessor">#<span class="keyword">pragma</span> once</span></div><div class="line"><span class="keyword">class</span> mysqlWriter</div><div class="line">{</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	mysqlWriter(<span class="keyword">void</span>);</div><div class="line">	~mysqlWriter(<span class="keyword">void</span>);</div><div class="line">};</div></pre></td></tr></table></figure>
+
+<p>　　函数定义</p>
+<figure class="highlight C++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// cpp2mysql.cpp : Defines the entry point for the console application.</span></div><div class="line"><span class="comment">/*</span></div><div class="line">cpp2mysql.cpp, Created on Feb, 2015</div><div class="line">#version: 1.0</div><div class="line">#author: By chenqx @http://chenqx.github.com</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> "StdAfx.h"</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> "mysqlWriter.h"</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;string&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;mysql_connection.h&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;mysql_driver.h&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;statement.h&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;prepared_statement.h&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> sql;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line">mysqlWriter::mysqlWriter(<span class="keyword">void</span>){</div><div class="line">	mysql::MySQL_Driver *driver;</div><div class="line">	Connection *con;</div><div class="line">	Statement *state;</div><div class="line">	ResultSet *result;</div><div class="line">	PreparedStatement  *prep_stmt;</div><div class="line"></div><div class="line">	driver = sql::mysql::get_mysql_driver_instance();</div><div class="line">	con = driver-&gt;connect(<span class="string">"tcp://127.0.0.1:3306"</span>, <span class="string">"root"</span>,<span class="string">"passwd"</span>); <span class="comment">//Connect localhost</span></div><div class="line">	state = con-&gt;createStatement();</div><div class="line">	<span class="comment">//Set the database being used.</span></div><div class="line">	con-&gt;setSchema(<span class="string">"contest"</span>);</div><div class="line"></div><div class="line">	prep_stmt = con-&gt;prepareStatement(<span class="string">"INSERT INTO test(name) VALUES (?)"</span>);</div><div class="line">	</div><div class="line">	<span class="comment">//Insert values.</span></div><div class="line">	prep_stmt-&gt;setString(<span class="number">1</span>, <span class="string">"testvalue"</span>);</div><div class="line">	prep_stmt-&gt;execute();</div><div class="line">    </div><div class="line">    <span class="comment">//SQL query</span></div><div class="line">	result = state-&gt;executeQuery(<span class="string">"select * from test"</span>);</div><div class="line">	<span class="keyword">while</span>(result-&gt;next()){</div><div class="line">		<span class="keyword">int</span> id = result-&gt;getInt(<span class="string">"id"</span>);</div><div class="line">		<span class="built_in">string</span> count = result-&gt;getString(<span class="string">"name"</span>);</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;id&lt;&lt;<span class="string">":"</span>&lt;&lt;count&lt;&lt;endl;</div><div class="line">	}</div><div class="line">    </div><div class="line">    <span class="comment">// Release.</span></div><div class="line">	<span class="keyword">delete</span> prep_stmt;</div><div class="line">	<span class="keyword">delete</span> state;</div><div class="line">	<span class="keyword">delete</span> con;</div><div class="line">}</div><div class="line"></div><div class="line">mysqlWriter::~mysqlWriter(<span class="keyword">void</span>){</div><div class="line">    <span class="comment">//pass</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2 id="远程连接MySQL">远程连接MySQL</h2>
+<p>　　有时候需要操作非本地其它 PC 上的 MySQL 数据库，在连接前需要对访问的计算机进行配置，添加访问权限。这里提供两种方法：</p>
+<h3 id="方法一">方法一</h3>
+<ul>
+<li>1. d:\MySQL\bin>MySQL -h localhost -u root </li>
+</ul>
+<p>　　这样应该可以进入MySQL服务器，代码如下:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;update user set host = '%' where user = 'root'; </div><div class="line">mysql&gt;select host, user from user;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>2. 授予访问权限</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'mypassword' WITH GRANT OPTION</div></pre></td></tr></table></figure>
+
+<ul>
+<li>3. 修改生效</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt;FLUSH PRIVILEGES</div></pre></td></tr></table></figure>
+
+<ul>
+<li>4. 退出重启MySQL服务器 </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt;EXIT</div></pre></td></tr></table></figure>
+
+<p>　　这样就可以在其它任何的主机上以root身份登录啦！<br>　　数据库操作如上节所述。</p>
+<h3 id="方法二">方法二</h3>
+<ul>
+<li>1. 在控制台执行 mysql -u root -p mysql，系统提示输入数据库root用户的密码，输入完成后即进入mysql控制台，这个命令的第一个mysql是执行命令，第二个mysql是系统数据名称，不一样的。 </li>
+<li>2. 在mysql控制台执行：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'root'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'yourPassword'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li><p>3. 在mysql控制台执行命令中的 ‘root’@’%’ 可以这样理解: root是用户名，%是主机名或IP地址，这里的%代表任意主机或IP地址，你也可替换成任意其它用户名或指定唯一的IP地址；’yourPassword’是给授权用户指定的登录数据库的密码；另外需要说明一点的是我这里的都是授权所有权限，可以指定部分权限，GRANT具体操作详情见：<a href="http://dev.mysql.com/doc/refman/5.1/en/grant.html。" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.1/en/grant.html。</a></p>
+</li>
+<li><p>4. 不放心的话可以 在mysql 控制台执行下面命令检查一下用户表里的内容。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> host, <span class="keyword">user</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span></div></pre></td></tr></table></figure>
+
+<p>　　数据库操作如上节所述。</p>
+<h2 id="Further_reading">Further reading</h2>
+<ul>
+<li><a href="http://dev.mysql.com/doc/connector-cpp/en/index.html" target="_blank" rel="external">MySQL Connector/C++ Developer Guide</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Develop/">Develop</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/C/">C++</a><a href="/tags/MySQL/">MySQL</a>
+  </div>
+
+</div>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/" data-title="VS2010配置和连接MySQL详解 | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/01/31/Introduction-to-Common-Data-Storage-Format/"  title="常用数据存储格式介绍">
+ <strong>下一篇：</strong><br/> 
+ <span>常用数据存储格式介绍
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/" data-title=”VS2010配置和连接MySQL详解” data-url="http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chenqx"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境配置"><span class="toc-number">1.</span> <span class="toc-text">环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建MySQL数据库"><span class="toc-number">2.</span> <span class="toc-text">创建MySQL数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地连接和操作MySQL"><span class="toc-number">3.</span> <span class="toc-text">本地连接和操作MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程连接MySQL"><span class="toc-number">4.</span> <span class="toc-text">远程连接MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-number">4.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-number">4.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Further_reading"><span class="toc-number">5.</span> <span class="toc-text">Further reading</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Develop/" title="Develop">Develop<sup>9</sup></a></li>
+		
+			<li><a href="/categories/Hadoop-Spark/" title="Hadoop/Spark">Hadoop/Spark<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+		
+			<li><a href="/categories/NLP/" title="NLP">NLP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Quant/" title="Quant">Quant<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
+		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>3</sup></a></li>
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Tools/" title="Tools">Tools<sup>2</sup></a></li>
+		
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/C/" title="C++">C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Spark/" title="Spark">Spark<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            <a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a>
+          </li>
+        
+          <li>
+            <a href="http://www.pami.sjtu.edu.cn/" target="_blank" title="PAMI Lab">PAMI Lab</a>
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p>   <br/>
+			 </p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/chenqx" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4180579" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:chenqiuxing@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2015 
+		
+		<a href="http://chenqx.github.com/about" target="_blank" title="ShinChan">ShinChan</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-56584658-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+<div id="totop">
+<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </body>
+</html>

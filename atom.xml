@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-02-01T08:02:50.296Z</updated>
+  <updated>2015-02-06T11:36:07.720Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -13,6 +13,110 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[VS2010配置和连接MySQL详解]]></title>
+    <link href="http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/"/>
+    <id>http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/</id>
+    <published>2015-02-06T11:08:41.000Z</published>
+    <updated>2015-02-06T11:35:44.000Z</updated>
+    <content type="html"><![CDATA[<p>　　本文介绍 VS2010(Microsoft Visual Studio 10.0) 下利用 MySQL官方 connector API 的配置和连接。</p>
+<ul>
+<li><a href="http://dev.mysql.com/downloads/connector/cpp/" target="_blank" rel="external">Download MySQL Connector/C++</a></li>
+</ul>
+<blockquote>
+<p>VS2008 以上的版本都适用</p>
+</blockquote>
+<h2 id="环境配置">环境配置</h2>
+<p>　　下面是在 VS2010 版本下的配置过程。</p>
+<ul>
+<li><ol>
+<li>Project -&gt;property -&gt;c/c++&gt;general -&gt;additional include directories<br>D:\Microsoft Visual Studio 10.0\library\mysql\include\cppconn;<br>D:\Microsoft Visual Studio 10.0\library\mysql\include;<br><img src="http://newtonblogimg.qiniudn.com/step1.png" alt=""></li>
+</ol>
+</li>
+<li><ol>
+<li>Project -&gt;property -&gt;linker -&gt;general -&gt;additional include directories<br>D:\MySQL\MySQL Server 5.6\lib;<br>D:\MySQL\MySQL Server 5.6\bin;<br>D:\Microsoft Visual Studio 10.0\library\mysql\lib;<br><img src="http://newtonblogimg.qiniudn.com/step2.png" alt=""></li>
+</ol>
+</li>
+<li><ol>
+<li>Project -&gt;property -&gt;linker -&gt;input -&gt;additional include directories<br>mysqlcppconn.lib;<br>mysqlcppconn-static.lib;<br>libmysql.lib;<br><img src="http://newtonblogimg.qiniudn.com/step3.png" alt=""></li>
+</ol>
+</li>
+<li><ol>
+<li>将mysql\lib下的mysqlcppconn.dll文件和 \$MySQL\bin\libmysql.dll 复制到Windows\system32 文件夹底下。<br>　　这样就配置好了。</li>
+</ol>
+</li>
+</ul>
+<h2 id="创建MySQL数据库">创建MySQL数据库</h2>
+<p>　　这里简单建立一个连接测试数据库 <code>contest</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt;create database contest;</div><div class="line">mysql&gt;use contest</div><div class="line">mysql&gt;create table test(</div><div class="line">   &gt; id int(4) not null primary key auto_increment,</div><div class="line">   &gt; name char(32) not null,;</div></pre></td></tr></table></figure>
+
+<h2 id="本地连接和操作MySQL">本地连接和操作MySQL</h2>
+<p>　　头文件定义（系统默认生成）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Head file Definition</span></div><div class="line"><span class="preprocessor">#<span class="keyword">pragma</span> once</span></div><div class="line"><span class="keyword">class</span> mysqlWriter</div><div class="line">{</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	mysqlWriter(<span class="keyword">void</span>);</div><div class="line">	~mysqlWriter(<span class="keyword">void</span>);</div><div class="line">};</div></pre></td></tr></table></figure>
+
+<p>　　函数定义</p>
+<figure class="highlight C++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// cpp2mysql.cpp : Defines the entry point for the console application.</span></div><div class="line"><span class="comment">/*</span></div><div class="line">cpp2mysql.cpp, Created on Feb, 2015</div><div class="line">#version: 1.0</div><div class="line">#author: By chenqx @http://chenqx.github.com</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> "StdAfx.h"</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> "mysqlWriter.h"</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;string&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;mysql_connection.h&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;mysql_driver.h&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;statement.h&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;prepared_statement.h&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> sql;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line">mysqlWriter::mysqlWriter(<span class="keyword">void</span>){</div><div class="line">	mysql::MySQL_Driver *driver;</div><div class="line">	Connection *con;</div><div class="line">	Statement *state;</div><div class="line">	ResultSet *result;</div><div class="line">	PreparedStatement  *prep_stmt;</div><div class="line"></div><div class="line">	driver = sql::mysql::get_mysql_driver_instance();</div><div class="line">	con = driver-&gt;connect(<span class="string">"tcp://127.0.0.1:3306"</span>, <span class="string">"root"</span>,<span class="string">"passwd"</span>); <span class="comment">//Connect localhost</span></div><div class="line">	state = con-&gt;createStatement();</div><div class="line">	<span class="comment">//Set the database being used.</span></div><div class="line">	con-&gt;setSchema(<span class="string">"contest"</span>);</div><div class="line"></div><div class="line">	prep_stmt = con-&gt;prepareStatement(<span class="string">"INSERT INTO test(name) VALUES (?)"</span>);</div><div class="line">	</div><div class="line">	<span class="comment">//Insert values.</span></div><div class="line">	prep_stmt-&gt;setString(<span class="number">1</span>, <span class="string">"testvalue"</span>);</div><div class="line">	prep_stmt-&gt;execute();</div><div class="line">    </div><div class="line">    <span class="comment">//SQL query</span></div><div class="line">	result = state-&gt;executeQuery(<span class="string">"select * from test"</span>);</div><div class="line">	<span class="keyword">while</span>(result-&gt;next()){</div><div class="line">		<span class="keyword">int</span> id = result-&gt;getInt(<span class="string">"id"</span>);</div><div class="line">		<span class="built_in">string</span> count = result-&gt;getString(<span class="string">"name"</span>);</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;id&lt;&lt;<span class="string">":"</span>&lt;&lt;count&lt;&lt;endl;</div><div class="line">	}</div><div class="line">    </div><div class="line">    <span class="comment">// Release.</span></div><div class="line">	<span class="keyword">delete</span> prep_stmt;</div><div class="line">	<span class="keyword">delete</span> state;</div><div class="line">	<span class="keyword">delete</span> con;</div><div class="line">}</div><div class="line"></div><div class="line">mysqlWriter::~mysqlWriter(<span class="keyword">void</span>){</div><div class="line">    <span class="comment">//pass</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2 id="远程连接MySQL">远程连接MySQL</h2>
+<p>　　有时候需要操作非本地其它 PC 上的 MySQL 数据库，在连接前需要对访问的计算机进行配置，添加访问权限。这里提供两种方法：</p>
+<h3 id="方法一">方法一</h3>
+<ul>
+<li>1. d:\MySQL\bin>MySQL -h localhost -u root </li>
+</ul>
+<p>　　这样应该可以进入MySQL服务器，代码如下:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;update user set host = '%' where user = 'root'; </div><div class="line">mysql&gt;select host, user from user;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>2. 授予访问权限</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'mypassword' WITH GRANT OPTION</div></pre></td></tr></table></figure>
+
+<ul>
+<li>3. 修改生效</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt;FLUSH PRIVILEGES</div></pre></td></tr></table></figure>
+
+<ul>
+<li>4. 退出重启MySQL服务器 </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt;EXIT</div></pre></td></tr></table></figure>
+
+<p>　　这样就可以在其它任何的主机上以root身份登录啦！<br>　　数据库操作如上节所述。</p>
+<h3 id="方法二">方法二</h3>
+<ul>
+<li>1. 在控制台执行 mysql -u root -p mysql，系统提示输入数据库root用户的密码，输入完成后即进入mysql控制台，这个命令的第一个mysql是执行命令，第二个mysql是系统数据名称，不一样的。 </li>
+<li>2. 在mysql控制台执行：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'root'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'yourPassword'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li><p>3. 在mysql控制台执行命令中的 ‘root’@’%’ 可以这样理解: root是用户名，%是主机名或IP地址，这里的%代表任意主机或IP地址，你也可替换成任意其它用户名或指定唯一的IP地址；’yourPassword’是给授权用户指定的登录数据库的密码；另外需要说明一点的是我这里的都是授权所有权限，可以指定部分权限，GRANT具体操作详情见：<a href="http://dev.mysql.com/doc/refman/5.1/en/grant.html。" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.1/en/grant.html。</a></p>
+</li>
+<li><p>4. 不放心的话可以 在mysql 控制台执行下面命令检查一下用户表里的内容。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> host, <span class="keyword">user</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span></div></pre></td></tr></table></figure>
+
+<p>　　数据库操作如上节所述。</p>
+<h2 id="Further_reading">Further reading</h2>
+<ul>
+<li><a href="http://dev.mysql.com/doc/connector-cpp/en/index.html" target="_blank" rel="external">MySQL Connector/C++ Developer Guide</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>　　本文介绍 VS2010(Microsoft Visual Studio 10.0) 下利用 MySQL官方 connector API 的配置和连接。</p>
+<ul>
+<li><a href="http://dev.mysql.com/downloads/connec]]>
+    </summary>
+    
+      <category term="C++" scheme="http://chenqx.github.com/tags/C/"/>
+    
+      <category term="MySQL" scheme="http://chenqx.github.com/tags/MySQL/"/>
+    
+      <category term="Develop" scheme="http://chenqx.github.com/categories/Develop/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[常用数据存储格式介绍]]></title>
