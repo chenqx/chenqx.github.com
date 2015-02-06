@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-02-06T11:43:41.971Z</updated>
+  <updated>2015-02-06T11:46:52.644Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,33 +19,23 @@
     <link href="http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/"/>
     <id>http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/</id>
     <published>2015-02-06T11:08:41.000Z</published>
-    <updated>2015-02-06T11:43:20.000Z</updated>
+    <updated>2015-02-06T11:46:37.000Z</updated>
     <content type="html"><![CDATA[<p>　　本文介绍 VS2010(Microsoft Visual Studio 10.0) 下利用 MySQL官方 connector API 的配置和连接。</p>
 <ul>
 <li><a href="http://dev.mysql.com/downloads/connector/cpp/" target="_blank" rel="external">Download MySQL Connector/C++</a></li>
 </ul>
-<p>　　根据自己的系统下载相应的版本。解压或安装后文件夹名字太长，将“mysql-connector-c++-noinstall-1.0.5-win32”改为“mysql”</p>
+<p>　　根据自己的系统下载相应的版本。解压或安装后文件夹名字太长，这里将“mysql-connector-c++-noinstall-1.0.5-win32”改为“mysql”。</p>
 <blockquote>
 <p>VS2008 以上的版本都适用</p>
 </blockquote>
 <h2 id="环境配置">环境配置</h2>
 <p>　　下面是在 VS2010 版本下的配置过程。</p>
 <ul>
-<li><ol>
-<li>Project -&gt;property -&gt;c/c++&gt;general -&gt;additional include directories 添加下面两项。<br>D:\Microsoft Visual Studio 10.0\library\mysql\include\cppconn;<br>D:\Microsoft Visual Studio 10.0\library\mysql\include;<br><img src="http://newtonblogimg.qiniudn.com/step1.png" alt=""></li>
-</ol>
+<li>1. 菜单 Project -&gt;property -&gt;c/c++&gt;general -&gt;additional include directories 添加下面两项。<br>D:\Microsoft Visual Studio 10.0\library\mysql\include\cppconn;<br>D:\Microsoft Visual Studio 10.0\library\mysql\include;<br><img src="http://newtonblogimg.qiniudn.com/step1.png" alt=""></li>
+<li>2. 菜单 Project -&gt;property -&gt;linker -&gt;general -&gt;additional include directories 添加下面三项。<br>D:\MySQL\MySQL Server 5.6\lib;<br>D:\MySQL\MySQL Server 5.6\bin;<br>D:\Microsoft Visual Studio 10.0\library\mysql\lib;<br><img src="http://newtonblogimg.qiniudn.com/step2.png" alt=""></li>
+<li><p>3. 菜单 Project -&gt;property -&gt;linker -&gt;input -&gt;additional include directories  添加下面三项。<br>mysqlcppconn.lib;<br>mysqlcppconn-static.lib;<br>libmysql.lib;<br><img src="http://newtonblogimg.qiniudn.com/step3.png" alt=""></p>
 </li>
-<li><ol>
-<li>Project -&gt;property -&gt;linker -&gt;general -&gt;additional include directories 添加下面三项。<br>D:\MySQL\MySQL Server 5.6\lib;<br>D:\MySQL\MySQL Server 5.6\bin;<br>D:\Microsoft Visual Studio 10.0\library\mysql\lib;<br><img src="http://newtonblogimg.qiniudn.com/step2.png" alt=""></li>
-</ol>
-</li>
-<li><ol>
-<li>Project -&gt;property -&gt;linker -&gt;input -&gt;additional include directories  添加下面三项。<br>mysqlcppconn.lib;<br>mysqlcppconn-static.lib;<br>libmysql.lib;<br><img src="http://newtonblogimg.qiniudn.com/step3.png" alt=""></li>
-</ol>
-</li>
-<li><ol>
-<li>将mysql\lib下的mysqlcppconn.dll文件和 \$MySQL\bin\libmysql.dll 复制到Windows\system32 文件夹底下。<br>　　这样就配置好了。</li>
-</ol>
+<li><p>4. 将mysql\lib下的mysqlcppconn.dll文件和 \$MySQL\bin\libmysql.dll 复制到Windows\system32 文件夹底下。<br>　　这样就配置好了。</p>
 </li>
 </ul>
 <h2 id="创建MySQL数据库">创建MySQL数据库</h2>

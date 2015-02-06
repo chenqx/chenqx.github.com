@@ -13,7 +13,7 @@
 
 Download MySQL Connector/C++
 
-　　根据自己的系统下载相应的版本。解压或安装后文件夹名字太长，将“mysql-conn">
+　　根据自己的系统下载相应的版本。解压或安装后文件夹名字太长，这里将“mysql-co">
     
     
     
@@ -102,28 +102,18 @@ Download MySQL Connector/C++
 <ul>
 <li><a href="http://dev.mysql.com/downloads/connector/cpp/" target="_blank" rel="external">Download MySQL Connector/C++</a></li>
 </ul>
-<p>　　根据自己的系统下载相应的版本。解压或安装后文件夹名字太长，将“mysql-connector-c++-noinstall-1.0.5-win32”改为“mysql”</p>
+<p>　　根据自己的系统下载相应的版本。解压或安装后文件夹名字太长，这里将“mysql-connector-c++-noinstall-1.0.5-win32”改为“mysql”。</p>
 <blockquote>
 <p>VS2008 以上的版本都适用</p>
 </blockquote>
 <h2 id="环境配置">环境配置</h2>
 <p>　　下面是在 VS2010 版本下的配置过程。</p>
 <ul>
-<li><ol>
-<li>Project -&gt;property -&gt;c/c++&gt;general -&gt;additional include directories 添加下面两项。<br>D:\Microsoft Visual Studio 10.0\library\mysql\include\cppconn;<br>D:\Microsoft Visual Studio 10.0\library\mysql\include;<br><img src="http://newtonblogimg.qiniudn.com/step1.png" alt=""></li>
-</ol>
+<li>1. 菜单 Project -&gt;property -&gt;c/c++&gt;general -&gt;additional include directories 添加下面两项。<br>D:\Microsoft Visual Studio 10.0\library\mysql\include\cppconn;<br>D:\Microsoft Visual Studio 10.0\library\mysql\include;<br><img src="http://newtonblogimg.qiniudn.com/step1.png" alt=""></li>
+<li>2. 菜单 Project -&gt;property -&gt;linker -&gt;general -&gt;additional include directories 添加下面三项。<br>D:\MySQL\MySQL Server 5.6\lib;<br>D:\MySQL\MySQL Server 5.6\bin;<br>D:\Microsoft Visual Studio 10.0\library\mysql\lib;<br><img src="http://newtonblogimg.qiniudn.com/step2.png" alt=""></li>
+<li><p>3. 菜单 Project -&gt;property -&gt;linker -&gt;input -&gt;additional include directories  添加下面三项。<br>mysqlcppconn.lib;<br>mysqlcppconn-static.lib;<br>libmysql.lib;<br><img src="http://newtonblogimg.qiniudn.com/step3.png" alt=""></p>
 </li>
-<li><ol>
-<li>Project -&gt;property -&gt;linker -&gt;general -&gt;additional include directories 添加下面三项。<br>D:\MySQL\MySQL Server 5.6\lib;<br>D:\MySQL\MySQL Server 5.6\bin;<br>D:\Microsoft Visual Studio 10.0\library\mysql\lib;<br><img src="http://newtonblogimg.qiniudn.com/step2.png" alt=""></li>
-</ol>
-</li>
-<li><ol>
-<li>Project -&gt;property -&gt;linker -&gt;input -&gt;additional include directories  添加下面三项。<br>mysqlcppconn.lib;<br>mysqlcppconn-static.lib;<br>libmysql.lib;<br><img src="http://newtonblogimg.qiniudn.com/step3.png" alt=""></li>
-</ol>
-</li>
-<li><ol>
-<li>将mysql\lib下的mysqlcppconn.dll文件和 \$MySQL\bin\libmysql.dll 复制到Windows\system32 文件夹底下。<br>　　这样就配置好了。</li>
-</ol>
+<li><p>4. 将mysql\lib下的mysqlcppconn.dll文件和 \$MySQL\bin\libmysql.dll 复制到Windows\system32 文件夹底下。<br>　　这样就配置好了。</p>
 </li>
 </ul>
 <h2 id="创建MySQL数据库">创建MySQL数据库</h2>
@@ -290,43 +280,43 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
 		
-			<li><a href="/tags/NLP/" title="NLP">NLP<sup>3</sup></a></li>
-		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>3</sup></a></li>
 		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>2</sup></a></li>
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>3</sup></a></li>
 		
 			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>2</sup></a></li>
 		
 			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>2</sup></a></li>
+		
 			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Tools/" title="Tools">Tools<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Spark/" title="Spark">Spark<sup>1</sup></a></li>
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
 			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
 		
-			<li><a href="/tags/C/" title="C++">C++<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
-		
-			<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Quant/" title="Quant">Quant<sup>1</sup></a></li>
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+			<li><a href="/tags/Quant/" title="Quant">Quant<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/C/" title="C++">C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Spark/" title="Spark">Spark<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>1</sup></a></li>
 		
 		</ul>
 </div>
