@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-02-06T11:55:51.541Z</updated>
+  <updated>2015-02-06T11:59:27.394Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/"/>
     <id>http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/</id>
     <published>2015-02-06T11:08:41.000Z</published>
-    <updated>2015-02-06T11:55:35.000Z</updated>
+    <updated>2015-02-06T11:59:08.000Z</updated>
     <content type="html"><![CDATA[<p>　　本文介绍 VS2010(Microsoft Visual Studio 10.0) 下利用 MySQL官方 connector API 的配置和连接。</p>
 <ul>
 <li><a href="http://dev.mysql.com/downloads/connector/cpp/" target="_blank" rel="external">Download MySQL Connector/C++</a></li>
@@ -53,11 +53,11 @@
 <p>　　有时候需要操作非本地其它 PC 上的 MySQL 数据库，在连接前需要对访问的计算机进行配置，添加访问权限。这里提供两种方法：</p>
 <h3 id="方法一">方法一</h3>
 <ul>
-<li>1. 进入MySQL bin 目录：</li>
+<li>1. 进入MySQL 安装路径的 bin 目录：</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd $\MySQL\bin\&gt;MySQL -h localhost -u root</div></pre></td></tr></table></figure>
 
-<p>　　这样应该可以进入MySQL服务器，代码如下:</p>
+<p>　　这样应该可以进入MySQL服务器，代码如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;update user set host = '%' where user = 'root'; </div><div class="line">mysql&gt;select host, user from user;</div></pre></td></tr></table></figure>
 
 <ul>
