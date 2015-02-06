@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-02-06T11:59:27.394Z</updated>
+  <updated>2015-02-06T12:02:01.303Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/"/>
     <id>http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/</id>
     <published>2015-02-06T11:08:41.000Z</published>
-    <updated>2015-02-06T11:59:08.000Z</updated>
+    <updated>2015-02-06T12:01:39.000Z</updated>
     <content type="html"><![CDATA[<p>　　本文介绍 VS2010(Microsoft Visual Studio 10.0) 下利用 MySQL官方 connector API 的配置和连接。</p>
 <ul>
 <li><a href="http://dev.mysql.com/downloads/connector/cpp/" target="_blank" rel="external">Download MySQL Connector/C++</a></li>
@@ -106,7 +106,7 @@
 <li><a href="http://dev.mysql.com/downloads/connec]]>
     </summary>
     
-      <category term="C++" scheme="http://chenqx.github.com/tags/C/"/>
+      <category term="C/C++" scheme="http://chenqx.github.com/tags/C-C/"/>
     
       <category term="MySQL" scheme="http://chenqx.github.com/tags/MySQL/"/>
     
