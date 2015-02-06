@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-02-06T11:46:52.644Z</updated>
+  <updated>2015-02-06T11:51:11.092Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/"/>
     <id>http://chenqx.github.com/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/</id>
     <published>2015-02-06T11:08:41.000Z</published>
-    <updated>2015-02-06T11:46:37.000Z</updated>
+    <updated>2015-02-06T11:50:47.000Z</updated>
     <content type="html"><![CDATA[<p>　　本文介绍 VS2010(Microsoft Visual Studio 10.0) 下利用 MySQL官方 connector API 的配置和连接。</p>
 <ul>
 <li><a href="http://dev.mysql.com/downloads/connector/cpp/" target="_blank" rel="external">Download MySQL Connector/C++</a></li>
@@ -73,7 +73,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt;EXIT</div></pre></td></tr></table></figure>
 
-<p>　　这样就可以在其它任何的主机上以root身份登录啦！<br>　　数据库操作如上节所述。</p>
+<p>　　这样就可以在其它任何的主机上以root身份登录啦！</p>
 <h3 id="方法二">方法二</h3>
 <ul>
 <li>1. 在控制台执行 mysql -u root -p mysql，系统提示输入数据库root用户的密码，输入完成后即进入mysql控制台，这个命令的第一个mysql是执行命令，第二个mysql是系统数据名称，不一样的。 </li>
@@ -88,6 +88,9 @@
 </li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> host, <span class="keyword">user</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span></div></pre></td></tr></table></figure>
+
+<p>　　设置好后通过 TCP 远程计算机的IP 即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">con = driver-&gt;connect(<span class="string">"tcp://xxx.xxx.xxx.xxx:3306"</span>, <span class="string">"user"</span>,<span class="string">"passwd"</span>); <span class="comment">//Connect remote TCP + IP</span></div></pre></td></tr></table></figure>
 
 <p>　　数据库操作如上节所述。</p>
 <h2 id="Further_reading">Further reading</h2>
