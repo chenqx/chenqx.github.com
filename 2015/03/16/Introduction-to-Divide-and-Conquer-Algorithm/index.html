@@ -1,0 +1,547 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>分治算法 | ShinChan&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="ShinChan">
+    
+    <meta name="description" content="基本概念
+　　在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”（Divide and Conquer），就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基">
+    
+    
+    
+    
+    <link rel="alternative" href="/atom.xml" title="ShinChan&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon_new.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo_new.png" alt="ShinChan&#39;s Blog" title="ShinChan&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="ShinChan&#39;s Blog">ShinChan&#39;s Blog</a></h1>
+				<h2 class="blog-motto">Vi Veri Veniversum Vivus Vici</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">About</a></li>
+					
+
+					<li><a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:chenqx.github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/16/Introduction-to-Divide-and-Conquer-Algorithm/" title="分治算法" itemprop="url">分治算法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://chenqx.github.com/about" title="ShinChan" target="_blank" itemprop="author">ShinChan</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-16T06:42:32.000Z" itemprop="datePublished"> Published Mar 16 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思想及策略"><span class="toc-number">2.</span> <span class="toc-text">基本思想及策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法适用的情况"><span class="toc-number">3.</span> <span class="toc-text">分治法适用的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本步骤"><span class="toc-number">4.</span> <span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂性分析"><span class="toc-number">5.</span> <span class="toc-text">复杂性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例：_归并排序"><span class="toc-number">6.</span> <span class="toc-text">示例： 归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可使用分治法求解的一些经典问题"><span class="toc-number">7.</span> <span class="toc-text">可使用分治法求解的一些经典问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法设计程序时的思维过程"><span class="toc-number">8.</span> <span class="toc-text">分治法设计程序时的思维过程</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="基本概念">基本概念</h2>
+<p>　　在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”（Divide and Conquer），就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……<br>　　任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。</p>
+<h2 id="基本思想及策略">基本思想及策略</h2>
+<p>　　分治法的设计思想是：将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。<br>　　分治策略是：对于一个规模为n的问题，若该问题可以容易地解决（比如说规模n较小）则直接解决，否则将其分解为k个规模较小的子问题，这些子问题互相独立且与原问题形式相同，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。这种算法设计策略叫做分治法。<br>　　如果原问题可分割成k个子问题，1&lt; k≤n，且这些子问题都可解并可利用这些子问题的解求出原问题的解，那么这种分治法就是可行的。由分治法产生的子问题往往是原问题的较小模式，这就为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
+<h2 id="分治法适用的情况">分治法适用的情况</h2>
+<p>　　分治法所能解决的问题一般具有以下几个特征：</p>
+<ul>
+<li><p>该问题的规模缩小到一定的程度就可以容易地解决。绝大多数问题都可以满足的，因为问题的计算复杂性一般是随着问题规模的增加而增加</p>
+</li>
+<li><p>该问题可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质。这条特征是应用分治法的前提它也是大多数问题可以满足的，此特征反映了递归思想的应用。</p>
+</li>
+<li>利用该问题分解出的子问题的解可以合并为该问题的解。这条特征是关键，能否利用分治法完全取决于问题是否具有第三条特征，如果具备了第一条和第二条特征，而不具备第三条特征，则可以考虑用贪心法或动态规划法。</li>
+<li>该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。这条特征涉及到分治法的效率，如果各子问题是不独立的则分治法要做许多不必要的工作，重复地解公共的子问题，此时虽然可用分治法，但一般用动态规划法较好。</li>
+</ul>
+<h2 id="基本步骤">基本步骤</h2>
+<p>　　分治法在每一层递归上都有三个步骤：<br>　　<code>step1 分解</code>：将原问题分解为若干个规模较小，相互独立，与原问题形式相同的子问题；<br>　　<code>step2 解决</code>：若子问题规模较小而容易被解决则直接解，否则递归地解各个子问题<br>　　<code>step3 合并</code>：将各个子问题的解合并为原问题的解。</p>
+<p>　　它的一般的算法设计模式如下：</p>
+<pre><code>Divide-and-Conquer(P)
+    <span class="number">1.</span> <span class="keyword">if</span> |P|≤n0
+    <span class="number">2.</span> then <span class="keyword">return</span>(ADHOC(P))
+    <span class="number">3.</span> 将P分解为较小的子问题 P1 ,P2 ,<span class="keyword">...</span>,Pk
+    <span class="number">4.</span> <span class="keyword">for</span> i←<span class="number">1</span> to k
+    <span class="number">5.</span> do yi ← Divide-and-Conquer(Pi) △ 递归解决Pi
+    <span class="number">6.</span> <span class="literal">T</span> ← MERGE(y1,y2,<span class="keyword">...</span>,yk) △ 合并子问题
+    <span class="number">7.</span> <span class="keyword">return</span>(<span class="literal">T</span>)
+</code></pre><p>　　其中|P|表示问题P的规模；n0为一阈值，表示当问题P的规模不超过n0时，问题已容易直接解出，不必再继续分解。ADHOC(P)是该分治法中的基本子算法，用于直接解小规模的问题P。因此，当P的规模不超过n0时直接用算法ADHOC(P)求解。算法MERGE(y1,y2,…,yk)是该分治法中的合并子算法，用于将P的子问题P1 ,P2 ,…,Pk的相应的解y1,y2,…,yk合并为P的解。</p>
+<h2 id="复杂性分析">复杂性分析</h2>
+<p>　　一个分治法将规模为n的问题分成k个规模为n／m的子问题去解。设分解阀值n0=1，且adhoc解规模为1的问题耗费1个单位时间。再设将原问题分解为k个子问题以及用merge将k个子问题的解合并为原问题的解需用f(n)个单位时间。用T(n)表示该分治法解规模为|P|=n的问题所需的计算时间，则有：<br>　　<br>$T\left ( n \right )= kT\left ( n/m \right )+f\left ( n \right )$</p>
+<p>　　通过迭代法求得方程的解：<br>　　递归方程及其解只给出n等于m的方幂时T(n)的值，但是如果认为T(n)足够平滑，那么由n等于m的方幂时T(n)的值可以估计T(n)的增长速度。通常假定T(n)是单调上升的，从而当 mi≤n&lt; mi+1　时，T(mi)≤T(n)&lt; T(mi+1)。</p>
+<h2 id="示例：_归并排序">示例： 归并排序</h2>
+<p>　　归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。以二路归并为例：<br><img src="http://newtonblogimg.qiniudn.com/mergesort.png" alt="此处输入图片的描述"><br>　　代码示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="comment">//将有二个有序数列a[first...mid]和a[mid...last]合并。</span></div><div class="line"><span class="keyword">void</span> mergearray(<span class="keyword">int</span> a[], <span class="keyword">int</span> first, <span class="keyword">int</span> mid, <span class="keyword">int</span> last, <span class="keyword">int</span> temp[]){</div><div class="line">    <span class="keyword">int</span> i = first, j = mid + <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> m = mid,   n = last;</div><div class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span> (i &lt;= m && j &lt;= n){</div><div class="line">        <span class="keyword">if</span> (a[i] &lt;= a[j])</div><div class="line">            temp[k++] = a[i++];</div><div class="line">        <span class="keyword">else</span></div><div class="line">            temp[k++] = a[j++];</div><div class="line">    }</div><div class="line">    <span class="keyword">while</span> (i &lt;= m)</div><div class="line">        temp[k++] = a[i++];</div><div class="line">    <span class="keyword">while</span> (j &lt;= n)</div><div class="line">        temp[k++] = a[j++];</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; k; i++)</div><div class="line">        a[first + i] = temp[i];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">void</span> mergesort(<span class="keyword">int</span> a[], <span class="keyword">int</span> first, <span class="keyword">int</span> last, <span class="keyword">int</span> temp[]){</div><div class="line">    <span class="keyword">if</span> (first &lt; last){</div><div class="line">        <span class="keyword">int</span> mid = (first + last) / <span class="number">2</span>;</div><div class="line">        mergesort(a, first, mid, temp);    <span class="comment">//左边有序</span></div><div class="line">        mergesort(a, mid + <span class="number">1</span>, last, temp); <span class="comment">//右边有序</span></div><div class="line">        mergearray(a, first, mid, last, temp); <span class="comment">//再将二个有序数列合并</span></div><div class="line">     }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">bool</span> MergeSort(<span class="keyword">int</span> a[], <span class="keyword">int</span> n){</div><div class="line">    <span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">    <span class="keyword">if</span> (p == NULL)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    mergesort(a, <span class="number">0</span>, n - <span class="number">1</span>, p);</div><div class="line">    <span class="keyword">delete</span>[] p;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">int</span> main(){</div><div class="line">    <span class="keyword">int</span> arr[] = {<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">6</span>};</div><div class="line">    </div><div class="line">    MergeSort(arr, <span class="number">8</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i){</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;arr[i]&lt;&lt;<span class="string">" "</span>;</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="built_in">cout</span>&lt;&lt;endl;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2 id="可使用分治法求解的一些经典问题">可使用分治法求解的一些经典问题</h2>
+<ul>
+<li>二分搜索</li>
+<li>大整数乘法</li>
+<li>Strassen矩阵乘法</li>
+<li>棋盘覆盖</li>
+<li>归排序</li>
+<li>快速排序</li>
+<li>线性时间选择</li>
+<li>最接近点对问题</li>
+<li>循环赛日程表</li>
+<li>汉诺塔</li>
+</ul>
+<h2 id="分治法设计程序时的思维过程">分治法设计程序时的思维过程</h2>
+<p>　　实际上就是类似于数学归纳法，找到解决本问题的求解方程公式，然后根据方程公式设计递归程序。<br>　　1、一定是先找到最小问题规模时的求解方法<br>　　2、然后考虑随着问题规模增大时的求解方法<br>　　3、找到求解的递归函数式后（各种规模或因子），设计递归程序即可。</p>
+<p>auther:<a href="http://www.cnblogs.com/steven_oyj/archive/2010/05/22/1741370.html" target="_blank" rel="external"> 红脸书生</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Algorithm/">Algorithm</a>
+  </div>
+
+</div>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://chenqx.github.com/2015/03/16/Introduction-to-Divide-and-Conquer-Algorithm/" data-title="分治算法 | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/02/06/Config-and-Connect-MySQL-in-Visual-Studio/"  title="VS2010配置和连接MySQL详解">
+ <strong>下一篇：</strong><br/> 
+ <span>VS2010配置和连接MySQL详解
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2015/03/16/Introduction-to-Divide-and-Conquer-Algorithm/" data-title=”分治算法” data-url="http://chenqx.github.com/2015/03/16/Introduction-to-Divide-and-Conquer-Algorithm/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chenqx"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思想及策略"><span class="toc-number">2.</span> <span class="toc-text">基本思想及策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法适用的情况"><span class="toc-number">3.</span> <span class="toc-text">分治法适用的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本步骤"><span class="toc-number">4.</span> <span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂性分析"><span class="toc-number">5.</span> <span class="toc-text">复杂性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例：_归并排序"><span class="toc-number">6.</span> <span class="toc-text">示例： 归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可使用分治法求解的一些经典问题"><span class="toc-number">7.</span> <span class="toc-text">可使用分治法求解的一些经典问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法设计程序时的思维过程"><span class="toc-number">8.</span> <span class="toc-text">分治法设计程序时的思维过程</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Algorithm/" title="Algorithm">Algorithm<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Develop/" title="Develop">Develop<sup>9</sup></a></li>
+		
+			<li><a href="/categories/Hadoop-Spark/" title="Hadoop/Spark">Hadoop/Spark<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Machine-Learning/" title="Machine Learning">Machine Learning<sup>2</sup></a></li>
+		
+			<li><a href="/categories/NLP/" title="NLP">NLP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Quant/" title="Quant">Quant<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
+		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>3</sup></a></li>
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Tools/" title="Tools">Tools<sup>2</sup></a></li>
+		
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Spark/" title="Spark">Spark<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Quant/" title="Quant">Quant<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            <a href="https://github.com/chenqx" target="_blank" title="GitHub">GitHub</a>
+          </li>
+        
+          <li>
+            <a href="http://www.pami.sjtu.edu.cn/" target="_blank" title="PAMI Lab">PAMI Lab</a>
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p>   <br/>
+			 </p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/chenqx" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4180579" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:chenqiuxing@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2015 
+		
+		<a href="http://chenqx.github.com/about" target="_blank" title="ShinChan">ShinChan</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-56584658-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+<div id="totop">
+<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </body>
+</html>
