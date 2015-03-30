@@ -91,7 +91,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思想及策略"><span class="toc-number">2.</span> <span class="toc-text">基本思想及策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法适用的情况"><span class="toc-number">3.</span> <span class="toc-text">分治法适用的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本步骤"><span class="toc-number">4.</span> <span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂性分析"><span class="toc-number">5.</span> <span class="toc-text">复杂性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例：_归并排序"><span class="toc-number">6.</span> <span class="toc-text">示例： 归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可使用分治法求解的一些经典问题："><span class="toc-number">7.</span> <span class="toc-text">可使用分治法求解的一些经典问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法设计程序时的思维过程"><span class="toc-number">8.</span> <span class="toc-text">分治法设计程序时的思维过程</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思想及策略"><span class="toc-number">2.</span> <span class="toc-text">基本思想及策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法适用的情况"><span class="toc-number">3.</span> <span class="toc-text">分治法适用的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本步骤"><span class="toc-number">4.</span> <span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂性分析"><span class="toc-number">5.</span> <span class="toc-text">复杂性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例：_归并排序"><span class="toc-number">6.</span> <span class="toc-text">示例： 归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可使用分治法求解的一些经典问题"><span class="toc-number">7.</span> <span class="toc-text">可使用分治法求解的一些经典问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法设计程序时的思维过程"><span class="toc-number">8.</span> <span class="toc-text">分治法设计程序时的思维过程</span></a></li></ol>
 		
 		</div>
 		
@@ -128,7 +128,7 @@
 <p>　　归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。以二路归并为例：<br><img src="http://newtonblogimg.qiniudn.com/mergesort.png" alt="二路归并排序示例"><br>　　代码示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="comment">//将有二个有序数列a[first...mid]和a[mid...last]合并。</span></div><div class="line"><span class="keyword">void</span> mergearray(<span class="keyword">int</span> a[], <span class="keyword">int</span> first, <span class="keyword">int</span> mid, <span class="keyword">int</span> last, <span class="keyword">int</span> temp[]){</div><div class="line">    <span class="keyword">int</span> i = first, j = mid + <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> m = mid,   n = last;</div><div class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span> (i &lt;= m && j &lt;= n){</div><div class="line">        <span class="keyword">if</span> (a[i] &lt;= a[j])</div><div class="line">            temp[k++] = a[i++];</div><div class="line">        <span class="keyword">else</span></div><div class="line">            temp[k++] = a[j++];</div><div class="line">    }</div><div class="line">    <span class="keyword">while</span> (i &lt;= m)</div><div class="line">        temp[k++] = a[i++];</div><div class="line">    <span class="keyword">while</span> (j &lt;= n)</div><div class="line">        temp[k++] = a[j++];</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; k; i++)</div><div class="line">        a[first + i] = temp[i];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">void</span> mergesort(<span class="keyword">int</span> a[], <span class="keyword">int</span> first, <span class="keyword">int</span> last, <span class="keyword">int</span> temp[]){</div><div class="line">    <span class="keyword">if</span> (first &lt; last){</div><div class="line">        <span class="keyword">int</span> mid = (first + last) / <span class="number">2</span>;</div><div class="line">        mergesort(a, first, mid, temp);    <span class="comment">//左边有序</span></div><div class="line">        mergesort(a, mid + <span class="number">1</span>, last, temp); <span class="comment">//右边有序</span></div><div class="line">        mergearray(a, first, mid, last, temp); <span class="comment">//再将二个有序数列合并</span></div><div class="line">     }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">bool</span> MergeSort(<span class="keyword">int</span> a[], <span class="keyword">int</span> n){</div><div class="line">    <span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">    <span class="keyword">if</span> (p == NULL)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    mergesort(a, <span class="number">0</span>, n - <span class="number">1</span>, p);</div><div class="line">    <span class="keyword">delete</span>[] p;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">int</span> main(){</div><div class="line">    <span class="keyword">int</span> arr[] = {<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">6</span>};</div><div class="line">    </div><div class="line">    MergeSort(arr, <span class="number">8</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i){</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;arr[i]&lt;&lt;<span class="string">" "</span>;</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="built_in">cout</span>&lt;&lt;endl;</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<h2 id="可使用分治法求解的一些经典问题：">可使用分治法求解的一些经典问题：</h2>
+<h2 id="可使用分治法求解的一些经典问题">可使用分治法求解的一些经典问题</h2>
 <ul>
 <li>二分搜索</li>
 <li>大整数乘法</li>
@@ -211,7 +211,7 @@ var duoshuoQuery = {short_name:"chenqx"};
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思想及策略"><span class="toc-number">2.</span> <span class="toc-text">基本思想及策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法适用的情况"><span class="toc-number">3.</span> <span class="toc-text">分治法适用的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本步骤"><span class="toc-number">4.</span> <span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂性分析"><span class="toc-number">5.</span> <span class="toc-text">复杂性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例：_归并排序"><span class="toc-number">6.</span> <span class="toc-text">示例： 归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可使用分治法求解的一些经典问题："><span class="toc-number">7.</span> <span class="toc-text">可使用分治法求解的一些经典问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法设计程序时的思维过程"><span class="toc-number">8.</span> <span class="toc-text">分治法设计程序时的思维过程</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思想及策略"><span class="toc-number">2.</span> <span class="toc-text">基本思想及策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法适用的情况"><span class="toc-number">3.</span> <span class="toc-text">分治法适用的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本步骤"><span class="toc-number">4.</span> <span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂性分析"><span class="toc-number">5.</span> <span class="toc-text">复杂性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例：_归并排序"><span class="toc-number">6.</span> <span class="toc-text">示例： 归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可使用分治法求解的一些经典问题"><span class="toc-number">7.</span> <span class="toc-text">可使用分治法求解的一些经典问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分治法设计程序时的思维过程"><span class="toc-number">8.</span> <span class="toc-text">分治法设计程序时的思维过程</span></a></li></ol>
  
   </div>
 
@@ -253,43 +253,43 @@ var duoshuoQuery = {short_name:"chenqx"};
 		
 			<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
 		
+			<li><a href="/tags/NLP/" title="NLP">NLP<sup>3</sup></a></li>
+		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>3</sup></a></li>
 		
 			<li><a href="/tags/Machine-Learning/" title="Machine Learning">Machine Learning<sup>3</sup></a></li>
 		
-			<li><a href="/tags/NLP/" title="NLP">NLP<sup>3</sup></a></li>
-		
-			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>2</sup></a></li>
-		
 			<li><a href="/tags/Data-Mining/" title="Data Mining">Data Mining<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>2</sup></a></li>
-		
-			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Tools/" title="Tools">Tools<sup>2</sup></a></li>
 		
-			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
+			<li><a href="/tags/TextEditor/" title="TextEditor">TextEditor<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Quant/" title="Quant">Quant<sup>1</sup></a></li>
+			<li><a href="/tags/Scrapy/" title="Scrapy">Scrapy<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+			<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+			<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Vim/" title="Vim">Vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Quant/" title="Quant">Quant<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Spark/" title="Spark">Spark<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
-		
-			<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Text-Mining/" title="Text Mining">Text Mining<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
 		
 		</ul>
 </div>
