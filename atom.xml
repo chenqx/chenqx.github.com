@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Vi Veri Veniversum Vivus Vici]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenqx.github.com/"/>
-  <updated>2015-04-03T03:29:29.319Z</updated>
+  <updated>2015-04-03T03:31:30.714Z</updated>
   <id>http://chenqx.github.com/</id>
   
   <author>
@@ -19,13 +19,13 @@
     <link href="http://chenqx.github.com/2015/03/30/Methods-of-Linux-Shell-for-Several-Commands/"/>
     <id>http://chenqx.github.com/2015/03/30/Methods-of-Linux-Shell-for-Several-Commands/</id>
     <published>2015-03-30T01:13:05.000Z</published>
-    <updated>2015-04-03T03:28:18.000Z</updated>
+    <updated>2015-04-03T03:31:12.000Z</updated>
     <content type="html"><![CDATA[<h3 id="‘_;_’分隔符"><code>‘ ; ’</code>分隔符</h3>
 <p>　　每个命令之间用 <code>;</code> 隔开，各命令的执行给果，不会影响其它命令的执行。换句话说，各个命令都会执行，但不保证每个命令都执行成功。</p>
 <h3 id="‘_&amp;&amp;_’分隔符"><code>‘ &amp;&amp; ’</code>分隔符</h3>
 <p>　　每个命令之间用 <code>&amp;&amp;</code> 隔开，若前面的命令执行成功，才会去执行后面的命令。这样可以保证所有的命令执行完毕后，执行过程都是成功的。</p>
 <h3 id="‘_||_’分隔符"><code>‘ || ’</code>分隔符</h3>
-<p>　　　每个命令之间用 <code>||</code> 隔开，<code>||</code>是或的意思，只有前面的命令执行失败后才去执行下一条命令，直到执行成功一条命令为止。</p>
+<p>　　每个命令之间用 <code>||</code> 隔开，<code>||</code>是或的意思，只有前面的命令执行失败后才去执行下一条命令，直到执行成功一条命令为止。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h3 id="‘_;_’分隔符"><code>‘ ; ’</code>分隔符</h3>
