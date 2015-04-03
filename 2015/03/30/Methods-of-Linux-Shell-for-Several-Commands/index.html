@@ -4,12 +4,15 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hadoop/Spark | ShinChan&#39;s Blog</title>
+    <title>Linux shell 执行多个命令的几种方法 | ShinChan&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="ShinChan">
     
-    <meta name="description" content="Updating">
+    <meta name="description" content="‘ ; ’分隔符
+　　每个命令之间用 ; 隔开，各命令的执行给果，不会影响其它命令的执行。换句话说，各个命令都会执行，但不保证每个命令都执行成功。
+‘ &amp;amp;&amp;amp; ’分隔符
+　　每个命令之间用 &amp;amp;&amp;amp; 隔开，若前面的命令执行成功，才会去执行后面的命令。这样可以保证所有的命令执">
     
     
     
@@ -73,14 +76,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/01/12/Hadoop-Spark/" title="Hadoop/Spark" itemprop="url">Hadoop/Spark</a>
+      <a href="/2015/03/30/Methods-of-Linux-Shell-for-Several-Commands/" title="Linux shell 执行多个命令的几种方法" itemprop="url">Linux shell 执行多个命令的几种方法</a>
   </h1>
   <p class="article-author">By
        
 		<a href="http://chenqx.github.com/about" title="ShinChan" target="_blank" itemprop="author">ShinChan</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-12T01:20:21.000Z" itemprop="datePublished"> Published Jan 12 2015</time>
+    <time datetime="2015-03-30T01:13:05.000Z" itemprop="datePublished"> Published Mar 30 2015</time>
     
   </p>
 </header>
@@ -90,11 +93,16 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#‘_;_’分隔符"><span class="toc-number">1.</span> <span class="toc-text">‘ ; ’分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#‘_&&_’分隔符"><span class="toc-number">2.</span> <span class="toc-text">‘ && ’分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#‘_||_’分隔符"><span class="toc-number">3.</span> <span class="toc-text">‘ || ’分隔符</span></a></li></ol>
 		
 		</div>
 		
-		<p>Updating</p>
+		<h3 id="‘_;_’分隔符"><code>‘ ; ’</code>分隔符</h3>
+<p>　　每个命令之间用 <code>;</code> 隔开，各命令的执行给果，不会影响其它命令的执行。换句话说，各个命令都会执行，但不保证每个命令都执行成功。</p>
+<h3 id="‘_&amp;&amp;_’分隔符"><code>‘ &amp;&amp; ’</code>分隔符</h3>
+<p>　　每个命令之间用 <code>&amp;&amp;</code> 隔开，若前面的命令执行成功，才会去执行后面的命令。这样可以保证所有的命令执行完毕后，执行过程都是成功的。</p>
+<h3 id="‘_||_’分隔符"><code>‘ || ’</code>分隔符</h3>
+<p>　　　每个命令之间用 <code>||</code> 隔开，<code>||</code>是或的意思，只有前面的命令执行失败后才去执行下一条命令，直到执行成功一条命令为止。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -102,13 +110,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Hadoop-Spark/">Hadoop/Spark</a>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Hadoop/">Hadoop</a><a href="/tags/Spark/">Spark</a>
+  <span></span> <a href="/tags/Linux/">Linux</a>
   </div>
 
 </div>
@@ -116,7 +124,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://chenqx.github.com/2015/01/12/Hadoop-Spark/" data-title="Hadoop/Spark | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://chenqx.github.com/2015/03/30/Methods-of-Linux-Shell-for-Several-Commands/" data-title="Linux shell 执行多个命令的几种方法 | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -125,19 +133,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/01/22/Quantitative-Analysis/" title="Quantitative Analysis">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Quantitative Analysis</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/01/09/Regular-Expressions-Tutorial-In-Thirty-Minutes/"  title="正则表达式30分钟入门教程">
+<a href="/2015/03/16/Introduction-to-Divide-and-Conquer-Algorithm/"  title="分治算法">
  <strong>下一篇：</strong><br/> 
- <span>正则表达式30分钟入门教程
+ <span>分治算法
 </span>
 </a>
 </div>
@@ -146,7 +146,7 @@
 
 	<!-- 多说评论框 start -->
 
-	<div class="ds-thread" data-thread-key="2015/01/12/Hadoop-Spark/" data-title=”Hadoop/Spark” data-url="http://chenqx.github.com/2015/01/12/Hadoop-Spark/"></div>
+	<div class="ds-thread" data-thread-key="2015/03/30/Methods-of-Linux-Shell-for-Several-Commands/" data-title=”Linux shell 执行多个命令的几种方法” data-url="http://chenqx.github.com/2015/03/30/Methods-of-Linux-Shell-for-Several-Commands/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -169,7 +169,7 @@ var duoshuoQuery = {short_name:"chenqx"};
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#‘_;_’分隔符"><span class="toc-number">1.</span> <span class="toc-text">‘ ; ’分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#‘_&&_’分隔符"><span class="toc-number">2.</span> <span class="toc-text">‘ && ’分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#‘_||_’分隔符"><span class="toc-number">3.</span> <span class="toc-text">‘ || ’分隔符</span></a></li></ol>
  
   </div>
 
