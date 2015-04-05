@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Python读取大文件(GB) | ShinChan&#39;s Blog</title>
+    <title>白话详解何为量化投资 | ShinChan&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="ShinChan">
     
-    <meta name="description" content="最近处理文本文档时（文件约2GB大小），出现memoryError错误和文件读取太慢的问题，后来找到了两种比较快Large File Reading 的方法，本文将介绍这两种读取方法。
-Preliminary
-　　我们谈到“文本处理”时，我们通常是指处理的内容。Python 将文本文件的内容读入可以">
+    <meta name="description" content="量化投资( Quantitative Investment )，简单地说，就是利用数学、统计学、信息技术的量化投资方法来管理投资组合。数量化投资的组合构建注重的是对宏观数据、市场行为、企业财务数据、交易数据进行分析，利用数据挖掘技术、统计技术、计算方法等处理数据，以得到最优的投资组合和投资机会。
+
+">
     
     
     
@@ -75,14 +75,14 @@ Preliminary
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/10/29/Python-fastest-way-to-read-a-large-file/" title="Python读取大文件(GB)" itemprop="url">Python读取大文件(GB)</a>
+      <a href="/2014/12/25/Intro-to-Quantitative-Investment/" title="白话详解何为量化投资" itemprop="url">白话详解何为量化投资</a>
   </h1>
   <p class="article-author">By
        
 		<a href="http://chenqx.github.com/about" title="ShinChan" target="_blank" itemprop="author">ShinChan</a>
 		
   <p class="article-time">
-    <time datetime="2014-10-29T02:34:59.000Z" itemprop="datePublished"> Published Oct 29 2014</time>
+    <time datetime="2014-12-25T01:13:05.000Z" itemprop="datePublished"> Published Dec 25 2014</time>
     
   </p>
 </header>
@@ -92,28 +92,29 @@ Preliminary
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Preliminary"><span class="toc-number">1.</span> <span class="toc-text">Preliminary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read_In_Chunks"><span class="toc-number">2.</span> <span class="toc-text">Read In Chunks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using_with_open()"><span class="toc-number">3.</span> <span class="toc-text">Using with open()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#量化投资，故事才刚刚开始"><span class="toc-number">1.</span> <span class="toc-text">量化投资，故事才刚刚开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#量化投资的特征"><span class="toc-number">2.</span> <span class="toc-text">量化投资的特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#量化基金的收益来源：αα……α+β"><span class="toc-number">3.</span> <span class="toc-text">量化基金的收益来源：αα……α+β</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#业绩的持续性和模型的有效性"><span class="toc-number">4.</span> <span class="toc-text">业绩的持续性和模型的有效性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快来，让我们一起看上帝"><span class="toc-number">5.</span> <span class="toc-text">快来，让我们一起看上帝</span></a></li></ol>
 		
 		</div>
 		
-		<p>　　最近处理文本文档时（文件约2GB大小），出现<code>memoryError</code>错误和文件读取太慢的问题，后来找到了两种比较快<code>Large File Reading</code> 的方法，本文将介绍这两种读取方法。</p>
-<h2 id="Preliminary"><strong>Preliminary</strong></h2>
-<p>　　我们谈到“文本处理”时，我们通常是指处理的内容。Python 将文本文件的内容读入可以操作的字符串变量非常容易。文件对象提供了三个“读”方法： <code>.read()</code>、<code>.readline()</code> 和 <code>.readlines()</code>。每种方法可以接受一个变量以限制每次读取的数据量，但它们通常不使用变量。 <code>.read()</code> 每次读取整个文件，它通常用于将文件内容放到一个字符串变量中。然而 <code>.read()</code> 生成文件内容最直接的字符串表示，但对于连续的面向行的处理，它却是不必要的，并且如果文件大于可用内存，则不可能实现这种处理。下面是<code>read()</code>方法示例：</p>
-<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    f = open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>)</div><div class="line">    <span class="keyword">print</span> f.read()</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">if</span> f:</div><div class="line">        f.close()</div></pre></td></tr></table></figure>
-
-<p>　　调用<code>read()</code>会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用<code>read(size)</code>方法，每次最多读取size个字节的内容。另外，调用<code>readline()</code>可以每次读取一行内容，调用<code>readlines()</code>一次读取所有内容并按行返回list。因此，要根据需要决定怎么调用。<br>　　如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便：</p>
-<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">    process(line) <span class="comment"># &lt;do something with line&gt;</span></div></pre></td></tr></table></figure>
-
-<h2 id="Read_In_Chunks"><strong>Read In Chunks</strong></h2>
-<p>　　处理大文件是很容易想到的就是将大文件分割成若干小文件处理，处理完每个小文件后释放该部分内存。这里用了 <code>iter &amp; yield</code>：</p>
-<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_in_chunks</span><span class="params">(filePath, chunk_size=<span class="number">1024</span>*<span class="number">1024</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Lazy function (generator) to read a file piece by piece.</div><div class="line">    Default chunk size: 1M</div><div class="line">    You can set your own chunk size </div><div class="line">    """</div><div class="line">    file_object = open(filePath)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        chunk_data = file_object.read(chunk_size)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> chunk_data:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="keyword">yield</span> chunk_data</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line"></div><div class="line">    filePath = <span class="string">'./path/filename'</span></div><div class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> read_in_chunks(filePath):</div><div class="line">        process(chunk) <span class="comment"># &lt;do something with chunk&gt;</span></div></pre></td></tr></table></figure>
-
-<h2 id="Using_with_open()"><strong>Using <em><code>with open()</code></em></strong></h2>
-<p>　　<code>with</code>语句打开和关闭文件，包括抛出一个内部块异常。<code>for line in f</code>文件对象<code>f</code>视为一个迭代器，会自动的采用缓冲<code>IO</code>和内存管理，所以你不必担心大文件。</p>
-<figure class="highlight Python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#If the file is line based</span></div><div class="line"><span class="keyword">with</span> open(...) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">        process(line) <span class="comment"># &lt;do something with line&gt;</span></div></pre></td></tr></table></figure>
-
-<h2 id="Conclusion"><strong>Conclusion</strong></h2>
-<p>　　在使用python进行大文件读取时，应该让系统来处理，使用最简单的方式，交给解释器，就管好自己的工作就行了。<br>　　<br><img src="/img/blogImage/pacman.jpg" alt="The End"></p>
+		<blockquote>
+<p>量化投资( Quantitative Investment )，简单地说，就是利用数学、统计学、信息技术的量化投资方法来管理投资组合。数量化投资的组合构建注重的是对宏观数据、市场行为、企业财务数据、交易数据进行分析，利用数据挖掘技术、统计技术、计算方法等处理数据，以得到最优的投资组合和投资机会。</p>
+</blockquote>
+<h2 id="量化投资，故事才刚刚开始">量化投资，故事才刚刚开始</h2>
+<p>　　量化投资就是借助现代统计学、数学的方法，从海量历史大数据中寻找能够带来股票上涨的多种“大概率”策略和规律，并在此基础上，综合归纳成因子和模型程序，最终纪律严明地按照这些数量化模型组合来进行独立投资，力求取得稳定的、可持续的、高于平均的超额回报。<br>　　<img src="http://newtonblogimg.qiniudn.com/intro.png" alt=""><br>　　海外量化投资已经非常成熟，而中国采用量化技术的进行投资才起步不久，相对来说量化对冲基金捕捉套利机会用的多一些，而主动管理的纯股票型基金还是少数。此外中国市场无效性和波动性更大，可挖掘的规律更多，故机会与前景看好，可以说，量化投资正步入黄金时代。</p>
+<h2 id="量化投资的特征">量化投资的特征</h2>
+<p><img src="http://newtonblogimg.qiniudn.com/feature.png" alt=""></p>
+<p>　　量化投资的运作和FOF（基金中的基金）有点像类似，基金经理构建出一篮子模型组操作公募基金。每个模型根据自己的构建原理自主选股，好像是一个独立的子基金。在运作过程中，基金经理根据实际情况和业绩因地制宜的对因子或模型进行调整，使之不断迭代，持续有效。一般来说，真正的量化投资，基金经理是模型的构建者和资金的给与者（仓位控制），至于模型选出什么股票，基金经理不是无权干预，而是无法干预。<br>　　<img src="http://newtonblogimg.qiniudn.com/figwar.png" alt=""><br>　　这么一来，量化投资保证了模型的独立自主和自我学习的有效性，最大限度的降低了人性弱点可能带来的错误干预。于是从结果和宏观层面来看，量化投资和普通的主动管理基金就形成了巨大的差别，如图：<br>　　<img src="http://newtonblogimg.qiniudn.com/cmp.png" alt=""><br>　　左边第一列有点夸张，不是说量化投资基金经理很闲，这里主要说的是工作模式。主动投资管理的基金经理要不停的挖掘、调研、选股票，靠的是人；而量化投资基金经理更多的是进行数据分析、构建新的模型、研究外方股东有啥最新最先进的模型进行本土化尝试，股票交给模型来挖，靠的是电脑。<br>　　此外，主动投资管理基金经理都希望挖掘到牛股，那感觉就像杨过对小龙女，不说天长地久吧，想至少赚个好几倍的心还是有的。量化投资则不同，电脑自动买卖，换手率高，股票基本不长期持有，一旦达到目的触发相应规则立刻卖出。那感觉像楚留香，说的直白一点，人家就是来谈恋爱的，不是来结婚的。<br>　　所以一切结果最后体现在持仓上，就是一般量化投资产品没有“十大重仓股”的概念，比如某些量化投资产品持仓300多只股票每个股票占比都小于2%，非常分散，也就保证了量化投资产品可以覆盖多个行业的多只股票，分散投资、分散风险，也就能圈住各个热点板块的轮动。</p>
+<h2 id="量化基金的收益来源：αα……α+β">量化基金的收益来源：αα……α+β</h2>
+<p>　　1、αα……α：量化投资获取超额收益的逻辑是：不求在每只股票上都赚很多钱，但求在很多股票上每只都赚一点钱。一句话，积小胜为大胜，积全市场很多股票的小α为整个基金的大α。原理在于，量化投资的优势不是对单一上市公司的深度挖掘，而是对全市场股票进行的大样本、大数据、大强度的广度挖掘。这一点，“人脑”做不到，只能用“电脑”。<br><img src="http://newtonblogimg.qiniudn.com/sh.png" alt=""><br>　　2、β（市场风险）：这点不用细说，去年以来市场整体向上，自然给量化产品带来很高的系统性收益。</p>
+<h2 id="业绩的持续性和模型的有效性">业绩的持续性和模型的有效性</h2>
+<p>　　持续性的业绩非常重要，一般来讲，某一个基金前一年表现的很好后一年就会很差，只有少数“神一般”的基金经理才能做到改变逻辑、改对逻辑、最终还能获利。量化投资的运作原理决定了对于市场热点而言，它不会赚翻，但是绝不会错过。从业绩上来看，量化投资连续多年把握住了机会，未来如何？可以期待并加以验证！<br><img src="http://newtonblogimg.qiniudn.com/m.png" alt=""><br>　　同时，量化投资的有效性在未来依然会持续很长时间，原因有三：</p>
+<ol>
+<li>历史数据的样本空间会越来越大，而我们对大数据的分析能力也会越来越强，可挖掘的信息就会越来越多；</li>
+<li>投资人的研究能力再厉害人再多，也无法覆盖全市场所有的股票，这就为量化投资提供了施展的空间；</li>
+<li>A股的波动性和无效性，决定了量化投资挖到金矿的概率依然是非常大！<h2 id="快来，让我们一起看上帝">快来，让我们一起看上帝</h2>
+　　量化投资的起源是在海外，如果大家对量化投资感兴趣，想知道原来除了巴菲特之外，这世上还有另外一种股神的话，可以了解一下公认的全球量化之王、华尔街的异类、世界顶级数学家詹姆斯•西蒙斯老师那让人瞠目结舌的人生：<br><img src="http://newtonblogimg.qiniudn.com/pn.png" alt=""><br>　　23岁戴博士帽；26岁为美国政府破译密码；30岁任数学系主任；37岁获几何学最高奖；44岁杀入华尔街成立传奇量化对冲基金；1988年至2010年退休年均回报率高达35%，不仅远远跑赢大市，较索罗斯和巴菲特的成绩高上十余个百分点；花甲之年跻身福布斯富豪榜的72名并承诺捐出大部分财产。</li>
+</ol>
+<p>　　<strong>后续：市场若好，便是晴天；那市场转熊呢…</strong><br>　　<br>　　说了这么多好听的，不好听的也必须要说：单纯的量化投资方式，产品表现好和中小盘的轻舞飞扬不无关系，那么万一中小盘行情结束了呢？万一经济和市场没大家想的那么美好呢？风险无处不在，风险永远是一场说来就来的意外。<br>　　因此，对于量化这种“锋利”的投资方式，在瞬息万变的市场环境中，对冲将是控制风险的最好选择！</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,13 +122,13 @@ Preliminary
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Develop/">Develop</a>
+  <a class="article-category-link" href="/categories/Quant/">Quant</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Python/">Python</a>
+  <span></span> <a href="/tags/Quant/">Quant</a>
   </div>
 
 </div>
@@ -135,7 +136,7 @@ Preliminary
 
 <div class="article-share" id="share">
 
-  <div data-url="http://chenqx.github.com/2014/10/29/Python-fastest-way-to-read-a-large-file/" data-title="Python读取大文件(GB) | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://chenqx.github.com/2014/12/25/Intro-to-Quantitative-Investment/" data-title="白话详解何为量化投资 | ShinChan&#39;s Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -145,18 +146,18 @@ Preliminary
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/11/01/Text-Mining/" title="文本挖掘">
+ <a href="/2015/01/09/Regular-Expressions-Tutorial-In-Thirty-Minutes/" title="正则表达式30分钟入门教程">
   <strong>上一篇：</strong><br/>
   <span>
-  文本挖掘</span>
+  正则表达式30分钟入门教程</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/10/25/Natural-Language-Processing/"  title="Natural Language Processing">
+<a href="/2014/12/23/Spider-Advanced-for-Dynamic-Website-Crawling/"  title="Scrapy爬虫抓取动态网站">
  <strong>下一篇：</strong><br/> 
- <span>Natural Language Processing
+ <span>Scrapy爬虫抓取动态网站
 </span>
 </a>
 </div>
@@ -165,7 +166,7 @@ Preliminary
 
 	<!-- 多说评论框 start -->
 
-	<div class="ds-thread" data-thread-key="2014/10/29/Python-fastest-way-to-read-a-large-file/" data-title=”Python读取大文件(GB)” data-url="http://chenqx.github.com/2014/10/29/Python-fastest-way-to-read-a-large-file/"></div>
+	<div class="ds-thread" data-thread-key="2014/12/25/Intro-to-Quantitative-Investment/" data-title=”白话详解何为量化投资” data-url="http://chenqx.github.com/2014/12/25/Intro-to-Quantitative-Investment/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -188,7 +189,7 @@ var duoshuoQuery = {short_name:"chenqx"};
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Preliminary"><span class="toc-number">1.</span> <span class="toc-text">Preliminary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read_In_Chunks"><span class="toc-number">2.</span> <span class="toc-text">Read In Chunks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using_with_open()"><span class="toc-number">3.</span> <span class="toc-text">Using with open()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#量化投资，故事才刚刚开始"><span class="toc-number">1.</span> <span class="toc-text">量化投资，故事才刚刚开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#量化投资的特征"><span class="toc-number">2.</span> <span class="toc-text">量化投资的特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#量化基金的收益来源：αα……α+β"><span class="toc-number">3.</span> <span class="toc-text">量化基金的收益来源：αα……α+β</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#业绩的持续性和模型的有效性"><span class="toc-number">4.</span> <span class="toc-text">业绩的持续性和模型的有效性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快来，让我们一起看上帝"><span class="toc-number">5.</span> <span class="toc-text">快来，让我们一起看上帝</span></a></li></ol>
  
   </div>
 
@@ -486,6 +487,38 @@ ga('send', 'pageview');
 
 <script src="/js/totop.js"></script>
 
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 
